@@ -5,7 +5,8 @@ on:
   schedule:
     - cron: '0 0 1 * *'
   push:
-    branches: [main]
+    branches:
+      - the-one
 
 permissions:
   contents: write
