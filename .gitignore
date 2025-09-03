@@ -2,4 +2,3 @@ vendor/
 **/vendor/
 composer.lock
 **/composer.lock
-speed_comparison*.png
