@@ -34,6 +34,7 @@ def create_bar_chart(values, title, filename):
     plt.bar(containers, values)
     plt.ylabel('Seconds per 10000')
     plt.title(title)
+    plt.yscale('log')
     plt.tight_layout()
     plt.savefig(filename)
 
