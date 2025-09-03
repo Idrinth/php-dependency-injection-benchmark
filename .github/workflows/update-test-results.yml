@@ -20,7 +20,7 @@ jobs:
       - name: Build and run benchmarks in Docker
         run: |
           set -euo pipefail
-          dirs=(php-di pimple quickly-configured quickly-reflection)
+          readarray -t dirs < <(find . -mindepth 1 -maxdepth 1 -name Dockerfile -exec dirname {} \; | sed 's|^\./||' | sort)
           summary=""
           for dir in "${dirs[@]}"; do
             docker build -t di-benchmark-"$dir" "$dir"
@@ -34,14 +34,12 @@ jobs:
           {
             echo '# PHP Dependency Injection Benchmark'
             echo
-              echo 'This repository benchmarks different dependency' \
-                   'injection containers.'
+            echo 'This repository benchmarks different dependency injection containers.'
             echo
             echo '## Test Results'
             echo
-              echo 'Results from the latest automated run of the Dockerized' \
-                   'benchmarks' \
-                   '(triggered on pushes to main and a monthly schedule):'
+            echo 'Results from the latest automated run of the Dockerized benchmarks'
+            echo '(triggered on pushes to main and a monthly schedule):'
             echo
             echo '```'
             for dir in "${dirs[@]}"; do
@@ -54,9 +52,9 @@ jobs:
             echo '## Summary'
             echo
             echo '| Container | Average | Minimum | Maximum |'
-          echo '| --- | --- | --- | --- |'
-          printf "%b" "$summary"
-        } > README.md
+            echo '| --- | --- | --- | --- |'
+            printf "%b" "$summary"
+          } > README.md
       - name: Generate speed comparison graphs
         run: |
           pip install matplotlib

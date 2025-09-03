@@ -1,7 +1,14 @@
-import matplotlib.pyplot as plt
+import glob
+import os
 import re
 
-containers = ['php-di', 'pimple', 'quickly-configured', 'quickly-reflection']
+import matplotlib.pyplot as plt
+
+containers = sorted(
+    os.path.splitext(os.path.basename(f))[0] for f in glob.glob("*.txt")
+)
+if not containers:
+    raise RuntimeError("No benchmark result files found")
 
 def extract_averages(filename):
     values = []
