@@ -97,3 +97,9 @@ AVERAGE | MINIMUM | MAXIMUM
 | pimple | 0.069630765914917 | 0.068916797637939 | 0.07015585899353 |
 | quickly-configured | 0.0037338256835937 | 0.0037200450897217 | 0.0037591457366943 |
 | quickly-reflection | 0.0038558959960937 | 0.003803014755249 | 0.0039479732513428 |
+
+### Speed Comparison Graphs
+
+![Speed comparison without startup time](speed_comparison_without_startup.png)
+
+![Speed comparison with startup time](speed_comparison_with_startup.png)

@@ -54,15 +54,19 @@ jobs:
             echo '## Summary'
             echo
             echo '| Container | Average | Minimum | Maximum |'
-            echo '| --- | --- | --- | --- |'
-            printf "%b" "$summary"
-          } > README.md
+          echo '| --- | --- | --- | --- |'
+          printf "%b" "$summary"
+        } > README.md
+      - name: Generate speed comparison graphs
+        run: |
+          pip install matplotlib
+          python3 generate_graphs.py
       - name: Commit results
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email \
             'github-actions[bot]@users.noreply.github.com'
-          git add README.md
+          git add README.md speed_comparison_without_startup.png speed_comparison_with_startup.png
           git commit -m "Update test results" || echo "No changes to commit"
           git push
         env:
