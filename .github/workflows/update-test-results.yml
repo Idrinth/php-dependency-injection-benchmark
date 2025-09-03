@@ -47,13 +47,11 @@ jobs:
             echo 'Results from the latest automated run of the Dockerized benchmarks'
             echo '(triggered on pushes to main and a monthly schedule):'
             echo
-            echo '```'
             for dir in "${dirs[@]}"; do
               echo "### $dir"
               cat "$dir".txt
               echo
             done
-            echo '```'
           } > README.md
       - name: Generate speed comparison graphs
         run: |
