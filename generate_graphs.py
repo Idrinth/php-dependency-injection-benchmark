@@ -1,8 +1,26 @@
 import matplotlib.pyplot as plt
+import re
 
 containers = ['php-di', 'pimple', 'quickly-configured', 'quickly-reflection']
-without_startup = [0.0009892463684082, 0.068728637695312, 0.003695821762085, 0.0038602352142334]
-with_startup = [0.0011119842529297, 0.069630765914917, 0.0037338256835937, 0.0038558959960937]
+
+def extract_averages(filename):
+    values = []
+    pattern = re.compile(r"^[0-9.]+ \| [0-9.]+ \| [0-9.]+$")
+    with open(filename) as f:
+        for line in f:
+            line = line.strip()
+            if pattern.match(line):
+                values.append(float(line.split('|')[0]))
+    if len(values) < 2:
+        raise ValueError(f"Expected two average lines in {filename}")
+    return values[0], values[1]
+
+without_startup = []
+with_startup = []
+for container in containers:
+    wos, ws = extract_averages(f"{container}.txt")
+    without_startup.append(wos)
+    with_startup.append(ws)
 
 def create_bar_chart(values, title, filename):
     plt.figure()
