@@ -36,6 +36,12 @@ jobs:
             echo
             echo 'This repository benchmarks different dependency injection containers.'
             echo
+            echo '## Summary'
+            echo
+            echo '| Container | Average | Minimum | Maximum |'
+            echo '| --- | --- | --- | --- |'
+            printf "%b" "$summary"
+            echo
             echo '## Test Results'
             echo
             echo 'Results from the latest automated run of the Dockerized benchmarks'
@@ -48,12 +54,6 @@ jobs:
               echo
             done
             echo '```'
-            echo
-            echo '## Summary'
-            echo
-            echo '| Container | Average | Minimum | Maximum |'
-            echo '| --- | --- | --- | --- |'
-            printf "%b" "$summary"
           } > README.md
       - name: Generate speed comparison graphs
         run: |
