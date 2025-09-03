@@ -4,12 +4,15 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 1 * *'
+  push:
+    branches: [main]
 
 permissions:
   contents: write
 
 jobs:
   tests:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,11 +27,14 @@ jobs:
           {
             echo '# PHP Dependency Injection Benchmark'
             echo
-            echo 'This repository benchmarks different dependency injection containers.'
+              echo 'This repository benchmarks different dependency' \
+                   'injection containers.'
             echo
             echo '## Test Results'
             echo
-            echo 'Results from the latest automated run of the Dockerized benchmarks:'
+              echo 'Results from the latest automated run of the Dockerized' \
+                   'benchmarks' \
+                   '(triggered on pushes to main and a monthly schedule):'
             echo
             echo '```'
             for dir in "${dirs[@]}"; do
@@ -41,7 +47,8 @@ jobs:
       - name: Commit results
         run: |
           git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.email \
+            'github-actions[bot]@users.noreply.github.com'
           git add README.md
           git commit -m "Update test results" || echo "No changes to commit"
           git push
