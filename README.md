@@ -1,6 +1,8 @@
 # PHP Dependency Injection Benchmark
 
 This repository benchmarks different dependency injection containers.
+Each benchmark now runs two test cases:
+one excluding the container start-up time and another including it.
 
 ## Test Results
 
