@@ -1,0 +1,45 @@
+name: Update test results
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run benchmarks in Docker
+        run: |
+          dirs=(php-di pimple quickly-configured quickly-reflection)
+          for dir in "${dirs[@]}"; do
+            docker build -t di-benchmark-"$dir" "$dir"
+            docker run --rm di-benchmark-"$dir" > "$dir".txt
+          done
+          {
+            echo '# PHP Dependency Injection Benchmark'
+            echo
+            echo 'This repository benchmarks different dependency injection containers.'
+            echo
+            echo '## Test Results'
+            echo
+            echo 'Results from the latest automated run of the Dockerized benchmarks:'
+            echo
+            echo '```'
+            for dir in "${dirs[@]}"; do
+              echo "### $dir"
+              cat "$dir".txt
+              echo
+            done
+            echo '```'
+          } > README.md
+      - name: Commit results
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m "Update test results" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
