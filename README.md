@@ -4,7 +4,7 @@ This repository benchmarks different dependency injection containers.
 
 ## Test Results
 
-Results from the latest automated run of the Dockerized benchmarks:
+Results from the latest automated run of the Dockerized benchmarks (triggered on pushes to main and a monthly schedule):
 
 ```
 ### php-di
