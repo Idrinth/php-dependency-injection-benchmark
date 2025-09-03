@@ -1,0 +1,13 @@
+{
+    "name": "benchmark/di-benchmark",
+    "require": {
+        "idrinth/quickly": "^1.0",
+        "pimple/pimple": "^3.5",
+        "php-di/php-di": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Benchmark\\": "src/"
+        }
+    }
+}
