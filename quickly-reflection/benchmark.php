@@ -11,9 +11,12 @@ class E { public function __construct(D $d, C $c, B $b) {} }
 class F { public function __construct(E $e, D $d, B $b) {} }
 
 class QuicklyReflectionAdapter {
+    private QuicklyContainer $container;
+    public function __construct() {
+        $this->container = new QuicklyContainer(['DI_USE_REFLECTION' => 'true']);
+    }
     public function get(string $class): object {
-        $container = new QuicklyContainer(['DI_USE_REFLECTION' => 'true']);
-        return $container->get($class);
+        return $this->container->get($class);
     }
 }
 
@@ -23,6 +26,23 @@ $runs = 5;
 $times = [];
 for ($j = 0; $j < $runs; $j++) {
     $start = microtime(true);
+    for ($i = 0; $i < $iterations; $i++) {
+        $object = $adapter->get(F::class);
+        unset($object);
+    }
+    $time = microtime(true) - $start;
+    $times[] = $time;
+    echo "run $j: $time seconds per $iterations\n";
+}
+
+echo "\nAVERAGE | MINIMUM | MAXIMUM\n";
+echo (array_sum($times)/count($times)) . " | " . min($times) . " | " . max($times) . "\n";
+
+echo "\nINCLUDING STARTUP TIME\n";
+$times = [];
+for ($j = 0; $j < $runs; $j++) {
+    $start = microtime(true);
+    $adapter = new QuicklyReflectionAdapter();
     for ($i = 0; $i < $iterations; $i++) {
         $object = $adapter->get(F::class);
         unset($object);
