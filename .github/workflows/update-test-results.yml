@@ -66,62 +66,9 @@ jobs:
             jq -s 'add' "${container}"-*.json > "${container}.json"
             rm "${container}"-*.json
           done
-      - name: Update README
+      - name: Install Python dependencies and generate graphs
         run: |
-          set -euo pipefail
-          readarray -t dirs < <(
-            ls *.json | sed 's/\.json$//' | sort
-          )
-          summary=""
-          for dir in "${dirs[@]}"; do
-            display_dir="$dir"
-            if [[ "$dir" == *.* ]]; then
-              display_dir="${dir%%.*}(${dir#*.})"
-            fi
-            avg=$(jq -r '.z26_startup.average' "$dir.json")
-            min=$(jq -r '.z26_startup.min' "$dir.json")
-            max=$(jq -r '.z26_startup.max' "$dir.json")
-            summary+="| $display_dir | $avg | $min | $max |\n"
-          done
-          {
-            echo '# PHP Dependency Injection Benchmark'
-            echo
-            echo 'This repository benchmarks different dependency injection'
-            echo 'containers.'
-            echo
-            echo '## Summary'
-            echo
-            echo '| Container | Average | Minimum | Maximum |'
-            echo '| --- | --- | --- | --- |'
-            printf "%b" "$summary"
-            echo
-            printf '%s%s\n' '![Speed comparison without startup time]' \\
-              '(speed_comparison_without_startup.png)'
-            echo
-            printf '%s%s\n' '![Speed comparison with startup time]' \\
-              '(speed_comparison_with_startup.png)'
-            echo
-            echo '## Test Results'
-            echo
-            echo 'Results from the latest automated run of the Dockerized'
-            echo 'benchmarks (triggered on pushes to main'
-            echo 'and a monthly schedule):'
-            echo
-            for dir in "${dirs[@]}"; do
-              display_dir="$dir"
-              if [[ "$dir" == *.* ]]; then
-                display_dir="${dir%%.*}(${dir#*.})"
-              fi
-              echo "### $display_dir"
-              echo '```json'
-              cat "$dir.json"
-              echo '```'
-              echo
-            done
-          } > README.md
-      - name: Generate speed comparison graphs
-        run: |
-          pip install matplotlib
+          pip install matplotlib pyyaml
           python3 generate_graphs.py
       - name: Generate run summary
         run: |
@@ -153,6 +100,8 @@ jobs:
               echo "    maximum: $max"
             done
           } | tee run_summary.yaml "archive/$date.yaml"
+      - name: Generate README
+        run: python3 generate_readme.py
       - name: Commit results
         run: |
           git config --global user.name 'github-actions[bot]'
