@@ -61,7 +61,6 @@ for ($j = 0; $j < $runs; $j++) {
 
 echo "\nAVERAGE | MINIMUM | MAXIMUM\n";
 echo (array_sum($times)/count($times)) . " | " . min($times) . " | " . max($times) . "\n";
-
 echo "\nINCLUDING STARTUP TIME\n";
 $times = [];
 for ($j = 0; $j < $runs; $j++) {
@@ -78,3 +77,5 @@ for ($j = 0; $j < $runs; $j++) {
 
 echo "\nAVERAGE | MINIMUM | MAXIMUM\n";
 echo (array_sum($times)/count($times)) . " | " . min($times) . " | " . max($times) . "\n";
+
+require __DIR__ . '/benchmark-26.php';
