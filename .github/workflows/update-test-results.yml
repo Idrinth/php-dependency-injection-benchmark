@@ -27,19 +27,25 @@ jobs:
           - quickly.reflection
           - symfony.compiled
           - symfony.uncompiled
+        test:
+          - f06
+          - f06_startup
+          - z26
+          - z26_startup
     steps:
       - uses: actions/checkout@v5
       - name: Build and run benchmarks
         run: |
           docker build -t di-benchmark-${{ matrix.container }} \
             -f containers/${{ matrix.container }}/Dockerfile .
-          docker run --rm di-benchmark-${{ matrix.container }} 2>&1 \
-            | tee ${{ matrix.container }}.json
+          docker run --rm di-benchmark-${{ matrix.container }} \
+            php benchmark.php ${{ matrix.test }} 2>&1 \
+            | tee ${{ matrix.container }}-${{ matrix.test }}.json
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.container }}
-          path: ${{ matrix.container }}.json
+          name: ${{ matrix.container }}-${{ matrix.test }}
+          path: ${{ matrix.container }}-${{ matrix.test }}.json
 
   aggregate:
     if: github.actor != 'github-actions[bot]'
@@ -52,6 +58,14 @@ jobs:
         with:
           pattern: '*'
           merge-multiple: true
+      - name: Merge test results
+        run: |
+          set -euo pipefail
+          readarray -t containers < <(ls *-*.json | cut -d'-' -f1 | sort -u)
+          for container in "${containers[@]}"; do
+            jq -s 'add' "${container}"-*.json > "${container}.json"
+            rm "${container}"-*.json
+          done
       - name: Update README
         run: |
           set -euo pipefail
