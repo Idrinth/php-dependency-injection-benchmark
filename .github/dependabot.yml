@@ -5,30 +5,30 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/php-di"
+    directory: "/containers/php-di"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/laravel"
+    directory: "/containers/laravel"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/symfony"
+    directory: "/containers/symfony.compiled"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/nette-di"
+    directory: "/containers/nette-di"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/pimple"
+    directory: "/containers/pimple"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/quickly-reflection"
+    directory: "/containers/quickly.reflection"
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/quickly-configured"
+    directory: "/containers/quickly.configured"
     schedule:
       interval: "weekly"

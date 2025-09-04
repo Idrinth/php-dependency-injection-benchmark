@@ -1,33 +1,16 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__.'/AdapterImplementation.php';
+require_once __DIR__.'/classes-06.php';
 
-use Illuminate\Container\Container;
-
-class A {}
-class B { public function __construct(A $a) {} }
-class C { public function __construct(B $b) {} }
-class D { public function __construct(C $c, B $b, A $a) {} }
-class E { public function __construct(D $d, C $c, B $b) {} }
-class F { public function __construct(E $e, D $d, B $b) {} }
-
-class LaravelAdapter {
-    private Container $container;
-    public function __construct() {
-        $this->container = new Container();
-    }
-    public function get(string $class): object {
-        return $this->container->make($class);
-    }
-}
-
-$adapter = new LaravelAdapter();
+$adapter = new AdapterImplementation();
 $iterations = 10000;
-$runs = 5;
+$runs = 10;
 $times = [];
 for ($j = 0; $j < $runs; $j++) {
     $start = microtime(true);
     for ($i = 0; $i < $iterations; $i++) {
-        $object = $adapter->get(F::class);
+        $object = $adapter->get(F06::class);
         unset($object);
     }
     $time = microtime(true) - $start;
@@ -42,9 +25,9 @@ echo "\nINCLUDING STARTUP TIME\n";
 $times = [];
 for ($j = 0; $j < $runs; $j++) {
     $start = microtime(true);
-    $adapter = new LaravelAdapter();
+    $adapter = new AdapterImplementation();
     for ($i = 0; $i < $iterations; $i++) {
-        $object = $adapter->get(F::class);
+        $object = $adapter->get(F06::class);
         unset($object);
     }
     $time = microtime(true) - $start;
@@ -55,4 +38,3 @@ for ($j = 0; $j < $runs; $j++) {
 echo "\nAVERAGE | MINIMUM | MAXIMUM\n";
 echo (array_sum($times)/count($times)) . " | " . min($times) . " | " . max($times) . "\n";
 
-require __DIR__ . '/benchmark-26.php';
