@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/php-di"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/laravel"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/symfony"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/nette-di"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/pimple"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/quickly-reflection"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/quickly-configured"
+    schedule:
+      interval: "weekly"
