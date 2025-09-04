@@ -1,0 +1,5 @@
+{
+    "require": {
+        "rdlowrey/auryn": "^1.4"
+    }
+}
