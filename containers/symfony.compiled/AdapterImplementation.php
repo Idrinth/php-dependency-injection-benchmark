@@ -7,28 +7,42 @@ class AdapterImplementation {
     private ContainerBuilder $container;
     public function __construct() {
         $c = new ContainerBuilder();
-        $c->register(A06::class, A06::class)->setPublic(true);
-        $c->register(B06::class, B06::class)
-            ->setPublic(true)
-            ->addArgument(new Reference(A06::class));
-        $c->register(C06::class, C06::class)
-            ->setPublic(true)
-            ->addArgument(new Reference(B06::class));
-        $c->register(D06::class, D06::class)
-            ->setPublic(true)
-            ->addArgument(new Reference(C06::class))
-            ->addArgument(new Reference(B06::class))
-            ->addArgument(new Reference(A06::class));
-        $c->register(E06::class, E06::class)
-            ->setPublic(true)
-            ->addArgument(new Reference(D06::class))
-            ->addArgument(new Reference(C06::class))
-            ->addArgument(new Reference(B06::class));
-        $c->register(F06::class, F06::class)
-            ->setPublic(true)
-            ->addArgument(new Reference(E06::class))
-            ->addArgument(new Reference(D06::class))
-            ->addArgument(new Reference(B06::class));
+        foreach ([
+            A06::class,
+            B06::class,
+            C06::class,
+            D06::class,
+            E06::class,
+            F06::class,
+            A26::class,
+            B26::class,
+            C26::class,
+            D26::class,
+            E26::class,
+            F26::class,
+            G26::class,
+            H26::class,
+            I26::class,
+            J26::class,
+            K26::class,
+            L26::class,
+            M26::class,
+            N26::class,
+            O26::class,
+            P26::class,
+            Q26::class,
+            R26::class,
+            S26::class,
+            T26::class,
+            U26::class,
+            V26::class,
+            W26::class,
+            X26::class,
+            Y26::class,
+            Z26::class,
+        ] as $service) {
+            $c->register($service, $service)->setPublic(true)->setAutowired(true);
+        }
         $c->compile();
         $this->container = $c;
     }
