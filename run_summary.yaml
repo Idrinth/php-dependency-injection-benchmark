@@ -1,0 +1,51 @@
+php_version: "8.4.12"
+dependency_versions:
+  laravel:
+    illuminate/container: "^12.28"
+  nette-di:
+    nette/di: "^3.2"
+  php-di:
+    php-di/php-di: "^7.0"
+  pimple:
+    pimple/pimple: "^3.5"
+  quickly.configured:
+    idrinth/quickly: "dev-master"
+  quickly.reflection:
+    idrinth/quickly: "dev-master"
+  symfony.compiled:
+    symfony/dependency-injection: "^7.0"
+  symfony.uncompiled:
+    symfony/dependency-injection: "^7.0"
+results:
+  laravel:
+    average: 0.62267036437988
+    minimum: 0.61787581443787
+    maximum: 0.62684988975525
+  nette-di:
+    average: 0.0030275821685791
+    minimum: 0.0029439926147461
+    maximum: 0.0031428337097168
+  php-di:
+    average: 0.00089924335479736
+    minimum: 0.00082111358642578
+    maximum: 0.0010550022125244
+  pimple:
+    average: 0.070192074775696
+    minimum: 0.069249868392944
+    maximum: 0.071099996566772
+  quickly.configured:
+    average: 0.0038796424865723
+    minimum: 0.003817081451416
+    maximum: 0.0040390491485596
+  quickly.reflection:
+    average: 0.0038904190063477
+    minimum: 0.0038211345672607
+    maximum: 0.0040030479431152
+  symfony.compiled:
+    average: 0.0026464939117432
+    minimum: 0.0025930404663086
+    maximum: 0.0027880668640137
+  symfony.uncompiled:
+    average: 0.0020638227462769
+    minimum: 0.0020380020141602
+    maximum: 0.0020980834960938
