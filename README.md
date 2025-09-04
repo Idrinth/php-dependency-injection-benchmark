@@ -14,6 +14,10 @@ This repository benchmarks different dependency injection containers.
 | quickly-reflection | 0.0039896965026855 | 0.0037670135498047 | 0.0047998428344727 |
 | symfony | 0.002692985534668 | 0.0026350021362305 | 0.002830982208252 |
 
+![Speed comparison without startup time](speed_comparison_without_startup.png)
+
+![Speed comparison with startup time](speed_comparison_with_startup.png)
+
 ## Test Results
 
 Results from the latest automated run of the Dockerized benchmarks

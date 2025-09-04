@@ -42,6 +42,10 @@ jobs:
             echo '| --- | --- | --- | --- |'
             printf "%b" "$summary"
             echo
+            echo '![Speed comparison without startup time](speed_comparison_without_startup.png)'
+            echo
+            echo '![Speed comparison with startup time](speed_comparison_with_startup.png)'
+            echo
             echo '## Test Results'
             echo
             echo 'Results from the latest automated run of the Dockerized benchmarks'
