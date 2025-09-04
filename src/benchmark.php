@@ -5,7 +5,7 @@ require_once __DIR__.'/classes-06.php';
 require_once __DIR__.'/classes-26.php';
 
 $iterations = 10000;
-$runs = 10;
+$runs = 1;
 
 function runBenchmark(string $class, int $iterations, int $runs, bool $includeStartup): array {
     $times = [];
