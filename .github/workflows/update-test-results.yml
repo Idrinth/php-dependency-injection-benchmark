@@ -20,7 +20,7 @@ jobs:
       - name: Build and run benchmarks in Docker
         run: |
           set -euo pipefail
-          readarray -t dirs < <(find containers -mindepth 2 -maxdepth 2 -name Dockerfile -exec dirname {} \; | sed 's|^\./||' | sort)
+          readarray -t dirs < <(find containers -mindepth 2 -maxdepth 2 -name Dockerfile -exec dirname {} \; | sed 's|^containers/||' | sort)
           summary=""
           for dir in "${dirs[@]}"; do
             docker build -t "di-benchmark-$dir" \
