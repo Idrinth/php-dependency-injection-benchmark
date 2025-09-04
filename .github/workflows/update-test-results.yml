@@ -100,10 +100,8 @@ jobs:
             jq -s 'add' "${container}"-*.json > "${container}.json"
             rm "${container}"-*.json
           done
-      - name: Install Python dependencies and generate graphs
-        run: |
-          pip install matplotlib pyyaml
-          python3 generate_graphs.py
+      - name: Generate graphs
+        run: php generate_graphs.php
       - name: Generate run summary
         run: |
           set -euo pipefail
@@ -135,7 +133,7 @@ jobs:
             done
           } | tee run_summary.yaml "archive/$date.yaml"
       - name: Generate README
-        run: python3 generate_readme.py
+        run: php generate_readme.php
       - name: Commit results
         run: |
           git config --global user.name 'github-actions[bot]'
