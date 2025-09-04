@@ -1,0 +1,5 @@
+{
+    "require": {
+        "level-2/dice": "^4.0"
+    }
+}
