@@ -1,5 +1,7 @@
 php_version: "8.4.12"
 dependency_versions:
+  aura-di:
+    aura/di: "^5.0"
   laravel:
     illuminate/container: "^12.28"
   nette-di:
@@ -17,6 +19,10 @@ dependency_versions:
   symfony.uncompiled:
     symfony/dependency-injection: "^7.0"
 results:
+  aura-di:
+    average: 0.0021727323532104493
+    minimum: 0.0019011497497558594
+    maximum: 0.002602100372314453
   laravel:
     average: 0.62267036437988
     minimum: 0.61787581443787
