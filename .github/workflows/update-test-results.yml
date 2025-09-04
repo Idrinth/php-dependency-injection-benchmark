@@ -23,7 +23,8 @@ jobs:
           readarray -t dirs < <(find . -mindepth 3 -maxdepth 3 -name Dockerfile -exec dirname {} \; | sed 's|^\./||' | sort)
           summary=""
           for dir in "${dirs[@]}"; do
-            docker build -t di-benchmark-"$dir" "$dir"
+            docker build -t "di-benchmark-$dir" \
+              -f "$dir/Dockerfile" .
             docker run --rm di-benchmark-"$dir" 2>&1 | tee "$dir".txt
             line=$(tail -n 1 "$dir".txt)
             avg=$(echo "$line" | awk -F'\|' '{print $1}' | tr -d ' ')
