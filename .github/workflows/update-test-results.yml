@@ -23,6 +23,10 @@ jobs:
           readarray -t dirs < <(find containers -mindepth 2 -maxdepth 2 -name Dockerfile -exec dirname {} \; | sed 's|^containers/||' | sort)
           summary=""
           for dir in "${dirs[@]}"; do
+            display_dir="$dir"
+            if [[ "$dir" == *.* ]]; then
+              display_dir="${dir%%.*}(${dir#*.})"
+            fi
             docker build -t "di-benchmark-$dir" \
               -f "containers/$dir/Dockerfile" .
             docker run --rm di-benchmark-"$dir" 2>&1 | tee "$dir".txt
@@ -30,7 +34,7 @@ jobs:
             avg=$(echo "$line" | awk -F'\|' '{print $1}' | tr -d ' ')
             min=$(echo "$line" | awk -F'\|' '{print $2}' | tr -d ' ')
             max=$(echo "$line" | awk -F'\|' '{print $3}' | tr -d ' ')
-            summary+="| $dir | $avg | $min | $max |\n"
+            summary+="| $display_dir | $avg | $min | $max |\n"
           done
           {
             echo '# PHP Dependency Injection Benchmark'
@@ -53,7 +57,11 @@ jobs:
             echo '(triggered on pushes to main and a monthly schedule):'
             echo
             for dir in "${dirs[@]}"; do
-              echo "### $dir"
+              display_dir="$dir"
+              if [[ "$dir" == *.* ]]; then
+                display_dir="${dir%%.*}(${dir#*.})"
+              fi
+              echo "### $display_dir"
               echo '```'
               cat "$dir".txt
               echo '```'
