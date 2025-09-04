@@ -18,6 +18,8 @@ dependency_versions:
     symfony/dependency-injection: "^7.0"
   symfony.uncompiled:
     symfony/dependency-injection: "^7.0"
+  dice:
+    level-2/dice: "^4.0"
 results:
   aura-di:
     average: 0.0021727323532104493
@@ -55,3 +57,7 @@ results:
     average: 0.0020638227462769
     minimum: 0.0020380020141602
     maximum: 0.0020980834960938
+  dice:
+    average: 0
+    minimum: 0
+    maximum: 0

@@ -33,6 +33,9 @@ Tested with PHP 8.4.12.
 - **symfony(uncompiled)**
   - `symfony/dependency-injection`: `^7.0`
 
+- **dice**
+  - `level-2/dice`: `^4.0`
+
 ## Summary
 
 | Container | Average | Minimum | Maximum |
@@ -46,6 +49,7 @@ Tested with PHP 8.4.12.
 | quickly(reflection) | 0.0038904190063477 | 0.0038211345672607 | 0.0040030479431152 |
 | symfony(compiled) | 0.0026464939117432 | 0.0025930404663086 | 0.0027880668640137 |
 | symfony(uncompiled) | 0.0020638227462769 | 0.0020380020141602 | 0.0020980834960938 |
+| dice | 0 | 0 | 0 |
 
 ![Speed comparison without startup time](speed_comparison_without_startup.png)
 
