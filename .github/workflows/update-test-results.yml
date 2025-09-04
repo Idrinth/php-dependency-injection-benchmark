@@ -131,7 +131,10 @@ jobs:
               echo "    minimum: $min"
               echo "    maximum: $max"
             done
-          } | tee run_summary.yaml "archive/$date.yaml"
+          } | tee run_summary.yaml
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+            cp run_summary.yaml "archive/$date.yaml"
+          fi
       - name: Generate README
         run: php generate_readme.php
       - name: Commit results
@@ -140,7 +143,10 @@ jobs:
           git config --global user.email \
             'github-actions[bot]@users.noreply.github.com'
           git add README.md speed_comparison_without_startup.png \
-            speed_comparison_with_startup.png run_summary.yaml archive
+            speed_comparison_with_startup.png run_summary.yaml
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+            git add archive
+          fi
           git commit -m "Update test results" || echo "No changes to commit"
           git push
         env:
