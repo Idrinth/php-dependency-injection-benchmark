@@ -7,28 +7,28 @@ class AdapterImplementation {
     private ContainerBuilder $container;
     public function __construct() {
         $c = new ContainerBuilder();
-        $c->register(A::class, A::class)->setPublic(true);
-        $c->register(B::class, B::class)
+        $c->register(A06::class, A06::class)->setPublic(true);
+        $c->register(B06::class, B06::class)
             ->setPublic(true)
-            ->addArgument(new Reference(A::class));
-        $c->register(C::class, C::class)
+            ->addArgument(new Reference(A06::class));
+        $c->register(C06::class, C06::class)
             ->setPublic(true)
-            ->addArgument(new Reference(B::class));
-        $c->register(D::class, D::class)
+            ->addArgument(new Reference(B06::class));
+        $c->register(D06::class, D06::class)
             ->setPublic(true)
-            ->addArgument(new Reference(C::class))
-            ->addArgument(new Reference(B::class))
-            ->addArgument(new Reference(A::class));
-        $c->register(E::class, E::class)
+            ->addArgument(new Reference(C06::class))
+            ->addArgument(new Reference(B06::class))
+            ->addArgument(new Reference(A06::class));
+        $c->register(E06::class, E06::class)
             ->setPublic(true)
-            ->addArgument(new Reference(D::class))
-            ->addArgument(new Reference(C::class))
-            ->addArgument(new Reference(B::class));
-        $c->register(F::class, F::class)
+            ->addArgument(new Reference(D06::class))
+            ->addArgument(new Reference(C06::class))
+            ->addArgument(new Reference(B06::class));
+        $c->register(F06::class, F06::class)
             ->setPublic(true)
-            ->addArgument(new Reference(E::class))
-            ->addArgument(new Reference(D::class))
-            ->addArgument(new Reference(B::class));
+            ->addArgument(new Reference(E06::class))
+            ->addArgument(new Reference(D06::class))
+            ->addArgument(new Reference(B06::class));
         $c->compile();
         $this->container = $c;
     }

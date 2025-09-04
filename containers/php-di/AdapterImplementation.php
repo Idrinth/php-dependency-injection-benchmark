@@ -9,12 +9,12 @@ class AdapterImplementation {
     public function __construct() {
         $builder = new ContainerBuilder();
         $builder->addDefinitions([
-            A::class => create(),
-            B::class => create()->constructor(get(A::class)),
-            C::class => create()->constructor(get(B::class)),
-            D::class => create()->constructor(get(C::class), get(B::class), get(A::class)),
-            E::class => create()->constructor(get(D::class), get(C::class), get(B::class)),
-            F::class => create()->constructor(get(E::class), get(D::class), get(B::class)),
+            A06::class => create(),
+            B06::class => create()->constructor(get(A06::class)),
+            C06::class => create()->constructor(get(B06::class)),
+            D06::class => create()->constructor(get(C06::class), get(B06::class), get(A06::class)),
+            E06::class => create()->constructor(get(D06::class), get(C06::class), get(B06::class)),
+            F06::class => create()->constructor(get(E06::class), get(D06::class), get(B06::class)),
         ]);
         $this->container = $builder->build();
     }

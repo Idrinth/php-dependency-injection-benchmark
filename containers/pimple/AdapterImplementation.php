@@ -6,12 +6,12 @@ class AdapterImplementation {
     private Container $container;
     public function __construct() {
         $c = new Container();
-        $c[A::class] = $c->factory(fn() => new A());
-        $c[B::class] = $c->factory(fn($c) => new B($c[A::class]));
-        $c[C::class] = $c->factory(fn($c) => new C($c[B::class]));
-        $c[D::class] = $c->factory(fn($c) => new D($c[C::class], $c[B::class], $c[A::class]));
-        $c[E::class] = $c->factory(fn($c) => new E($c[D::class], $c[C::class], $c[B::class]));
-        $c[F::class] = $c->factory(fn($c) => new F($c[E::class], $c[D::class], $c[B::class]));
+        $c[A06::class] = $c->factory(fn() => new A06());
+        $c[B06::class] = $c->factory(fn($c) => new B06($c[A06::class]));
+        $c[C06::class] = $c->factory(fn($c) => new C06($c[B06::class]));
+        $c[D06::class] = $c->factory(fn($c) => new D06($c[C06::class], $c[B06::class], $c[A06::class]));
+        $c[E06::class] = $c->factory(fn($c) => new E06($c[D06::class], $c[C06::class], $c[B06::class]));
+        $c[F06::class] = $c->factory(fn($c) => new F06($c[E06::class], $c[D06::class], $c[B06::class]));
         $this->container = $c;
     }
     public function get(string $class): object {

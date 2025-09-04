@@ -10,12 +10,12 @@ class AdapterImplementation {
         $class = $loader->load(function (Compiler $compiler) {
             $compiler->addConfig([
                 'services' => [
-                    A::class,
-                    B::class,
-                    C::class,
-                    D::class,
-                    E::class,
-                    F::class,
+                    A06::class,
+                    B06::class,
+                    C06::class,
+                    D06::class,
+                    E06::class,
+                    F06::class,
                 ],
             ]);
         });

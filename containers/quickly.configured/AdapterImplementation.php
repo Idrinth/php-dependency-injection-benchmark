@@ -7,28 +7,28 @@ class AdapterImplementation {
     private QuicklyContainer $container;
     public function __construct() {
         $this->container = new QuicklyContainer([], constructors: [
-            F::class => [
-                new ClassObject(E::class),
-                new ClassObject(D::class),
-                new ClassObject(B::class),
+            F06::class => [
+                new ClassObject(E06::class),
+                new ClassObject(D06::class),
+                new ClassObject(B06::class),
             ],
-            E::class => [
-                new ClassObject(D::class),
-                new ClassObject(C::class),
-                new ClassObject(B::class),
+            E06::class => [
+                new ClassObject(D06::class),
+                new ClassObject(C06::class),
+                new ClassObject(B06::class),
             ],
-            D::class => [
-                new ClassObject(C::class),
-                new ClassObject(B::class),
-                new ClassObject(A::class),
+            D06::class => [
+                new ClassObject(C06::class),
+                new ClassObject(B06::class),
+                new ClassObject(A06::class),
             ],
-            C::class => [
-                new ClassObject(B::class),
+            C06::class => [
+                new ClassObject(B06::class),
             ],
-            B::class => [
-                new ClassObject(A::class),
+            B06::class => [
+                new ClassObject(A06::class),
             ],
-            A::class => [],
+            A06::class => [],
         ]);
     }
     public function get(string $class): object {
