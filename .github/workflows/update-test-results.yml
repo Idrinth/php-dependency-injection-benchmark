@@ -73,7 +73,8 @@ jobs:
           {
             echo '# PHP Dependency Injection Benchmark'
             echo
-            echo 'This repository benchmarks different dependency injection containers.'
+            echo 'This repository benchmarks different dependency injection'
+            echo 'containers.'
             echo
             echo '## Summary'
             echo
@@ -81,14 +82,17 @@ jobs:
             echo '| --- | --- | --- | --- |'
             printf "%b" "$summary"
             echo
-            echo '![Speed comparison without startup time](speed_comparison_without_startup.png)'
+            printf '%s%s\n' '![Speed comparison without startup time]' \\
+              '(speed_comparison_without_startup.png)'
             echo
-            echo '![Speed comparison with startup time](speed_comparison_with_startup.png)'
+            printf '%s%s\n' '![Speed comparison with startup time]' \\
+              '(speed_comparison_with_startup.png)'
             echo
             echo '## Test Results'
             echo
-            echo 'Results from the latest automated run of the Dockerized benchmarks'
-            echo '(triggered on pushes to main and a monthly schedule):'
+            echo 'Results from the latest automated run of the Dockerized'
+            echo 'benchmarks (triggered on pushes to main'
+            echo 'and a monthly schedule):'
             echo
             for dir in "${dirs[@]}"; do
               display_dir="$dir"
@@ -106,13 +110,44 @@ jobs:
         run: |
           pip install matplotlib
           python3 generate_graphs.py
+      - name: Generate run summary
+        run: |
+          set -euo pipefail
+          readarray -t dirs < <(
+            ls *.txt | sed 's/\.txt$//' | sort
+          )
+          php_version=$(php -v | head -n1 | awk '{print $2}')
+          date=$(date -u +%Y-%m-%d)
+          mkdir -p archive
+          {
+            echo "php_version: \"${php_version}\""
+            echo "dependency_versions:"
+            for dir in "${dirs[@]}"; do
+              comp_file="containers/$dir/composer.json"
+              package=$(jq -r '.require | to_entries[0].key' "$comp_file")
+              version=$(jq -r '.require | to_entries[0].value' "$comp_file")
+              echo "  $dir:"
+              echo "    $package: \"$version\""
+            done
+            echo "results:"
+            for dir in "${dirs[@]}"; do
+              line=$(tail -n 1 "$dir.txt")
+              avg=$(echo "$line" | awk -F'|' '{print $1}' | tr -d ' ')
+              min=$(echo "$line" | awk -F'|' '{print $2}' | tr -d ' ')
+              max=$(echo "$line" | awk -F'|' '{print $3}' | tr -d ' ')
+              echo "  $dir:"
+              echo "    average: $avg"
+              echo "    minimum: $min"
+              echo "    maximum: $max"
+            done
+          } | tee run_summary.yaml "archive/$date.yaml"
       - name: Commit results
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email \
             'github-actions[bot]@users.noreply.github.com'
           git add README.md speed_comparison_without_startup.png \
-            speed_comparison_with_startup.png
+            speed_comparison_with_startup.png run_summary.yaml archive
           git commit -m "Update test results" || echo "No changes to commit"
           git push
         env:
