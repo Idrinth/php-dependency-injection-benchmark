@@ -2,6 +2,34 @@
 
 This repository benchmarks different dependency injection containers.
 
+Tested with PHP 8.4.12.
+
+## Dependency Versions
+
+- **laravel**
+  - `illuminate/container`: `^12.28`
+
+- **nette-di**
+  - `nette/di`: `^3.2`
+
+- **php-di**
+  - `php-di/php-di`: `^7.0`
+
+- **pimple**
+  - `pimple/pimple`: `^3.5`
+
+- **quickly(configured)**
+  - `idrinth/quickly`: `dev-master`
+
+- **quickly(reflection)**
+  - `idrinth/quickly`: `dev-master`
+
+- **symfony(compiled)**
+  - `symfony/dependency-injection`: `^7.0`
+
+- **symfony(uncompiled)**
+  - `symfony/dependency-injection`: `^7.0`
+
 ## Summary
 
 | Container | Average | Minimum | Maximum |
@@ -18,265 +46,3 @@ This repository benchmarks different dependency injection containers.
 ![Speed comparison without startup time](speed_comparison_without_startup.png)
 
 ![Speed comparison with startup time](speed_comparison_with_startup.png)
-
-## Test Results
-
-Results from the latest automated run of the Dockerized benchmarks
-(triggered on pushes to main and a monthly schedule):
-
-### laravel
-```
-run 0: 0.62110900878906 seconds per 10000
-run 1: 0.61687016487122 seconds per 10000
-run 2: 0.61724781990051 seconds per 10000
-run 3: 0.61825299263 seconds per 10000
-run 4: 0.62038993835449 seconds per 10000
-run 5: 0.61808800697327 seconds per 10000
-run 6: 0.61771202087402 seconds per 10000
-run 7: 0.61708998680115 seconds per 10000
-run 8: 0.61588501930237 seconds per 10000
-run 9: 0.61610913276672 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.61787540912628 | 0.61588501930237 | 0.62110900878906
-
-INCLUDING STARTUP TIME
-run 0: 0.61787581443787 seconds per 10000
-run 1: 0.62684988975525 seconds per 10000
-run 2: 0.62150502204895 seconds per 10000
-run 3: 0.62157607078552 seconds per 10000
-run 4: 0.62171697616577 seconds per 10000
-run 5: 0.62421894073486 seconds per 10000
-run 6: 0.62361907958984 seconds per 10000
-run 7: 0.62317299842834 seconds per 10000
-run 8: 0.6230480670929 seconds per 10000
-run 9: 0.62312078475952 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.62267036437988 | 0.61787581443787 | 0.62684988975525
-```
-
-### nette-di
-```
-run 0: 0.0028519630432129 seconds per 10000
-run 1: 0.0032179355621338 seconds per 10000
-run 2: 0.0029549598693848 seconds per 10000
-run 3: 0.0029129981994629 seconds per 10000
-run 4: 0.0029768943786621 seconds per 10000
-run 5: 0.002957820892334 seconds per 10000
-run 6: 0.002936840057373 seconds per 10000
-run 7: 0.0029129981994629 seconds per 10000
-run 8: 0.0029358863830566 seconds per 10000
-run 9: 0.0029609203338623 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0029619216918945 | 0.0028519630432129 | 0.0032179355621338
-
-INCLUDING STARTUP TIME
-run 0: 0.0031428337097168 seconds per 10000
-run 1: 0.0031230449676514 seconds per 10000
-run 2: 0.0029439926147461 seconds per 10000
-run 3: 0.0030100345611572 seconds per 10000
-run 4: 0.0029881000518799 seconds per 10000
-run 5: 0.0030169486999512 seconds per 10000
-run 6: 0.0030300617218018 seconds per 10000
-run 7: 0.0030579566955566 seconds per 10000
-run 8: 0.0030179023742676 seconds per 10000
-run 9: 0.0029449462890625 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0030275821685791 | 0.0029439926147461 | 0.0031428337097168
-```
-
-### php-di
-```
-run 0: 0.0011730194091797 seconds per 10000
-run 1: 0.00087189674377441 seconds per 10000
-run 2: 0.00083804130554199 seconds per 10000
-run 3: 0.00083494186401367 seconds per 10000
-run 4: 0.00086116790771484 seconds per 10000
-run 5: 0.00085902214050293 seconds per 10000
-run 6: 0.0008389949798584 seconds per 10000
-run 7: 0.00085592269897461 seconds per 10000
-run 8: 0.00086021423339844 seconds per 10000
-run 9: 0.00085806846618652 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.00088512897491455 | 0.00083494186401367 | 0.0011730194091797
-
-INCLUDING STARTUP TIME
-run 0: 0.00096011161804199 seconds per 10000
-run 1: 0.00093507766723633 seconds per 10000
-run 2: 0.00086116790771484 seconds per 10000
-run 3: 0.00084996223449707 seconds per 10000
-run 4: 0.00083208084106445 seconds per 10000
-run 5: 0.00082111358642578 seconds per 10000
-run 6: 0.00086307525634766 seconds per 10000
-run 7: 0.00091195106506348 seconds per 10000
-run 8: 0.00090289115905762 seconds per 10000
-run 9: 0.0010550022125244 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.00089924335479736 | 0.00082111358642578 | 0.0010550022125244
-```
-
-### pimple
-```
-run 0: 0.068608999252319 seconds per 10000
-run 1: 0.069400072097778 seconds per 10000
-run 2: 0.069861173629761 seconds per 10000
-run 3: 0.069924831390381 seconds per 10000
-run 4: 0.068903923034668 seconds per 10000
-run 5: 0.068886041641235 seconds per 10000
-run 6: 0.070554971694946 seconds per 10000
-run 7: 0.069137096405029 seconds per 10000
-run 8: 0.068809986114502 seconds per 10000
-run 9: 0.068916082382202 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.069300317764282 | 0.068608999252319 | 0.070554971694946
-
-INCLUDING STARTUP TIME
-run 0: 0.069963932037354 seconds per 10000
-run 1: 0.069726943969727 seconds per 10000
-run 2: 0.070570945739746 seconds per 10000
-run 3: 0.070442914962769 seconds per 10000
-run 4: 0.070512056350708 seconds per 10000
-run 5: 0.069967985153198 seconds per 10000
-run 6: 0.070091009140015 seconds per 10000
-run 7: 0.069249868392944 seconds per 10000
-run 8: 0.070295095443726 seconds per 10000
-run 9: 0.071099996566772 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.070192074775696 | 0.069249868392944 | 0.071099996566772
-```
-
-### quickly(configured)
-```
-run 0: 0.0038189888000488 seconds per 10000
-run 1: 0.0037040710449219 seconds per 10000
-run 2: 0.003695011138916 seconds per 10000
-run 3: 0.003727912902832 seconds per 10000
-run 4: 0.0037329196929932 seconds per 10000
-run 5: 0.0037479400634766 seconds per 10000
-run 6: 0.0037682056427002 seconds per 10000
-run 7: 0.0037868022918701 seconds per 10000
-run 8: 0.0037589073181152 seconds per 10000
-run 9: 0.0038309097290039 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0037571668624878 | 0.003695011138916 | 0.0038309097290039
-
-INCLUDING STARTUP TIME
-run 0: 0.0038731098175049 seconds per 10000
-run 1: 0.0039019584655762 seconds per 10000
-run 2: 0.0038809776306152 seconds per 10000
-run 3: 0.0038571357727051 seconds per 10000
-run 4: 0.0038650035858154 seconds per 10000
-run 5: 0.003817081451416 seconds per 10000
-run 6: 0.003864049911499 seconds per 10000
-run 7: 0.0040390491485596 seconds per 10000
-run 8: 0.0038690567016602 seconds per 10000
-run 9: 0.0038290023803711 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0038796424865723 | 0.003817081451416 | 0.0040390491485596
-```
-
-### quickly(reflection)
-```
-run 0: 0.0039231777191162 seconds per 10000
-run 1: 0.0037879943847656 seconds per 10000
-run 2: 0.0037579536437988 seconds per 10000
-run 3: 0.0037879943847656 seconds per 10000
-run 4: 0.0037298202514648 seconds per 10000
-run 5: 0.0037670135498047 seconds per 10000
-run 6: 0.0037541389465332 seconds per 10000
-run 7: 0.003774881362915 seconds per 10000
-run 8: 0.0037858486175537 seconds per 10000
-run 9: 0.0038859844207764 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0037954807281494 | 0.0037298202514648 | 0.0039231777191162
-
-INCLUDING STARTUP TIME
-run 0: 0.0040030479431152 seconds per 10000
-run 1: 0.00394606590271 seconds per 10000
-run 2: 0.0039010047912598 seconds per 10000
-run 3: 0.0038449764251709 seconds per 10000
-run 4: 0.0038301944732666 seconds per 10000
-run 5: 0.0038249492645264 seconds per 10000
-run 6: 0.0039138793945312 seconds per 10000
-run 7: 0.0039479732513428 seconds per 10000
-run 8: 0.0038211345672607 seconds per 10000
-run 9: 0.003870964050293 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0038904190063477 | 0.0038211345672607 | 0.0040030479431152
-```
-
-### symfony(compiled)
-```
-run 0: 0.0020990371704102 seconds per 10000
-run 1: 0.0022299289703369 seconds per 10000
-run 2: 0.0021970272064209 seconds per 10000
-run 3: 0.0021979808807373 seconds per 10000
-run 4: 0.002202033996582 seconds per 10000
-run 5: 0.0021958351135254 seconds per 10000
-run 6: 0.0021758079528809 seconds per 10000
-run 7: 0.0022149085998535 seconds per 10000
-run 8: 0.0021638870239258 seconds per 10000
-run 9: 0.002316951751709 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0021993398666382 | 0.0020990371704102 | 0.002316951751709
-
-INCLUDING STARTUP TIME
-run 0: 0.0027351379394531 seconds per 10000
-run 1: 0.0026202201843262 seconds per 10000
-run 2: 0.0025970935821533 seconds per 10000
-run 3: 0.0026111602783203 seconds per 10000
-run 4: 0.0025930404663086 seconds per 10000
-run 5: 0.0026321411132812 seconds per 10000
-run 6: 0.0026171207427979 seconds per 10000
-run 7: 0.0026309490203857 seconds per 10000
-run 8: 0.0027880668640137 seconds per 10000
-run 9: 0.0026400089263916 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0026464939117432 | 0.0025930404663086 | 0.0027880668640137
-```
-
-### symfony(uncompiled)
-```
-run 0: 0.0020020008087158 seconds per 10000
-run 1: 0.0020551681518555 seconds per 10000
-run 2: 0.0020439624786377 seconds per 10000
-run 3: 0.0019938945770264 seconds per 10000
-run 4: 0.0020170211791992 seconds per 10000
-run 5: 0.0020148754119873 seconds per 10000
-run 6: 0.0020020008087158 seconds per 10000
-run 7: 0.0020520687103271 seconds per 10000
-run 8: 0.0020439624786377 seconds per 10000
-run 9: 0.002047061920166 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0020272016525269 | 0.0019938945770264 | 0.0020551681518555
-
-INCLUDING STARTUP TIME
-run 0: 0.0020620822906494 seconds per 10000
-run 1: 0.002094030380249 seconds per 10000
-run 2: 0.0020980834960938 seconds per 10000
-run 3: 0.0020830631256104 seconds per 10000
-run 4: 0.0020458698272705 seconds per 10000
-run 5: 0.0020501613616943 seconds per 10000
-run 6: 0.0020549297332764 seconds per 10000
-run 7: 0.0020639896392822 seconds per 10000
-run 8: 0.0020480155944824 seconds per 10000
-run 9: 0.0020380020141602 seconds per 10000
-
-AVERAGE | MINIMUM | MAXIMUM
-0.0020638227462769 | 0.0020380020141602 | 0.0020980834960938
-```
-
