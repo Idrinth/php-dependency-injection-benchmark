@@ -1,6 +1,6 @@
 import glob
+import json
 import os
-import re
 
 import matplotlib.pyplot as plt
 
@@ -13,28 +13,21 @@ def format_name(name: str) -> str:
 
 
 containers = sorted(
-    os.path.splitext(os.path.basename(f))[0] for f in glob.glob("*.txt")
+    os.path.splitext(os.path.basename(f))[0] for f in glob.glob("*.json")
 )
 if not containers:
     raise RuntimeError("No benchmark result files found")
 display_names = [format_name(c) for c in containers]
 
 def extract_averages(filename):
-    values = []
-    pattern = re.compile(r"^[0-9.]+ \| [0-9.]+ \| [0-9.]+$")
     with open(filename) as f:
-        for line in f:
-            line = line.strip()
-            if pattern.match(line):
-                values.append(float(line.split('|')[0]))
-    if len(values) < 2:
-        raise ValueError(f"Expected two average lines in {filename}")
-    return values[0], values[1]
+        data = json.load(f)
+    return data["z26"]["average"], data["z26_startup"]["average"]
 
 without_startup = []
 with_startup = []
 for container in containers:
-    wos, ws = extract_averages(f"{container}.txt")
+    wos, ws = extract_averages(f"{container}.json")
     without_startup.append(wos)
     with_startup.append(ws)
 

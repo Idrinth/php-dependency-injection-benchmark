@@ -34,12 +34,12 @@ jobs:
           docker build -t di-benchmark-${{ matrix.container }} \
             -f containers/${{ matrix.container }}/Dockerfile .
           docker run --rm di-benchmark-${{ matrix.container }} 2>&1 \
-            | tee ${{ matrix.container }}.txt
+            | tee ${{ matrix.container }}.json
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.container }}
-          path: ${{ matrix.container }}.txt
+          path: ${{ matrix.container }}.json
 
   aggregate:
     if: github.actor != 'github-actions[bot]'
@@ -56,7 +56,7 @@ jobs:
         run: |
           set -euo pipefail
           readarray -t dirs < <(
-            ls *.txt | sed 's/\.txt$//' | sort
+            ls *.json | sed 's/\.json$//' | sort
           )
           summary=""
           for dir in "${dirs[@]}"; do
@@ -64,10 +64,9 @@ jobs:
             if [[ "$dir" == *.* ]]; then
               display_dir="${dir%%.*}(${dir#*.})"
             fi
-            line=$(tail -n 1 "$dir.txt")
-            avg=$(echo "$line" | awk -F'|' '{print $1}' | tr -d ' ')
-            min=$(echo "$line" | awk -F'|' '{print $2}' | tr -d ' ')
-            max=$(echo "$line" | awk -F'|' '{print $3}' | tr -d ' ')
+            avg=$(jq -r '.z26_startup.average' "$dir.json")
+            min=$(jq -r '.z26_startup.min' "$dir.json")
+            max=$(jq -r '.z26_startup.max' "$dir.json")
             summary+="| $display_dir | $avg | $min | $max |\n"
           done
           {
@@ -100,8 +99,8 @@ jobs:
                 display_dir="${dir%%.*}(${dir#*.})"
               fi
               echo "### $display_dir"
-              echo '```'
-              cat "$dir.txt"
+              echo '```json'
+              cat "$dir.json"
               echo '```'
               echo
             done
@@ -114,7 +113,7 @@ jobs:
         run: |
           set -euo pipefail
           readarray -t dirs < <(
-            ls *.txt | sed 's/\.txt$//' | sort
+            ls *.json | sed 's/\.json$//' | sort
           )
           php_version=$(php -v | head -n1 | awk '{print $2}')
           date=$(date -u +%Y-%m-%d)
@@ -131,10 +130,9 @@ jobs:
             done
             echo "results:"
             for dir in "${dirs[@]}"; do
-              line=$(tail -n 1 "$dir.txt")
-              avg=$(echo "$line" | awk -F'|' '{print $1}' | tr -d ' ')
-              min=$(echo "$line" | awk -F'|' '{print $2}' | tr -d ' ')
-              max=$(echo "$line" | awk -F'|' '{print $3}' | tr -d ' ')
+              avg=$(jq -r '.z26_startup.average' "$dir.json")
+              min=$(jq -r '.z26_startup.min' "$dir.json")
+              max=$(jq -r '.z26_startup.max' "$dir.json")
               echo "  $dir:"
               echo "    average: $avg"
               echo "    minimum: $min"
