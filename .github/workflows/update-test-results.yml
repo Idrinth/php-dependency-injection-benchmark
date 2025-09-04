@@ -68,6 +68,17 @@ jobs:
           - f06_startup
           - z26
           - z26_startup
+        run:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
     steps:
       - uses: actions/checkout@v5
       - name: Download image
@@ -81,12 +92,12 @@ jobs:
         run: |
           docker run --rm di-benchmark-${{ matrix.container }} \
             php benchmark.php ${{ matrix.test }} 2>&1 \
-            | tee ${{ matrix.container }}-${{ matrix.test }}.json
+            | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.container }}-${{ matrix.test }}
-          path: ${{ matrix.container }}-${{ matrix.test }}.json
+          name: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+          path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
   aggregate:
     if: github.actor != 'github-actions[bot]'
@@ -102,10 +113,24 @@ jobs:
       - name: Merge test results
         run: |
           set -euo pipefail
-          readarray -t containers < <(ls *-*.json | cut -d'-' -f1 | sort -u)
+          readarray -t containers < <(ls *-*-*.json | cut -d'-' -f1 | sort -u)
           for container in "${containers[@]}"; do
-            jq -s 'add' "${container}"-*.json > "${container}.json"
-            rm "${container}"-*.json
+            readarray -t tests < <(ls "${container}"-*-*.json | cut -d'-' -f2 | sort -u)
+            for test in "${tests[@]}"; do
+              jq -s --arg test "$test" '
+                {
+                  ($test): {
+                    class: .[0][$test].class,
+                    include_startup: .[0][$test].include_startup,
+                    runs: [.[].[$test].runs[]],
+                    average: ([.[].[$test].runs[]] | add / length),
+                    min: ([.[].[$test].runs[]] | min),
+                    max: ([.[].[$test].runs[]] | max)
+                  }
+                }
+              ' "${container}-${test}-"*.json
+            done | jq -s 'add' > "${container}.json"
+            rm "${container}"-*-*.json
           done
       - name: Generate graphs
         run: php generate_graphs.php
