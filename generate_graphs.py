@@ -4,11 +4,20 @@ import re
 
 import matplotlib.pyplot as plt
 
+
+def format_name(name: str) -> str:
+    if "." in name:
+        first, rest = name.split(".", 1)
+        return f"{first}({rest})"
+    return name
+
+
 containers = sorted(
     os.path.splitext(os.path.basename(f))[0] for f in glob.glob("*.txt")
 )
 if not containers:
     raise RuntimeError("No benchmark result files found")
+display_names = [format_name(c) for c in containers]
 
 def extract_averages(filename):
     values = []
@@ -29,12 +38,13 @@ for container in containers:
     without_startup.append(wos)
     with_startup.append(ws)
 
+
 def create_bar_chart(values, title, filename):
     plt.figure()
-    plt.bar(containers, values)
-    plt.ylabel('Seconds per 10000')
+    plt.bar(display_names, values)
+    plt.ylabel("Seconds per 10000")
     plt.title(title)
-    plt.yscale('log')
+    plt.yscale("log")
     plt.tight_layout()
     plt.savefig(filename)
 
