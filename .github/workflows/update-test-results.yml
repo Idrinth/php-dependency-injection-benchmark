@@ -8,6 +8,9 @@ name: Update test results
   push:
     branches:
       - the-one
+    paths:
+      - '**/*.php'
+      - '**/*.json'
 
 permissions:
   contents: write
