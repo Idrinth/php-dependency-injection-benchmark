@@ -13,8 +13,37 @@ permissions:
   contents: write
 
 jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        container:
+          - laravel
+          - nette-di
+          - php-di
+          - pimple
+          - quickly.configured
+          - quickly.reflection
+          - symfony.compiled
+          - symfony.uncompiled
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build container
+        run: |
+          docker build -t di-benchmark-${{ matrix.container }} \
+            -f containers/${{ matrix.container }}/Dockerfile .
+          docker save di-benchmark-${{ matrix.container }} \
+            -o di-benchmark-${{ matrix.container }}.tar
+      - name: Upload image
+        uses: actions/upload-artifact@v4
+        with:
+          name: di-benchmark-${{ matrix.container }}
+          path: di-benchmark-${{ matrix.container }}.tar
+
   benchmark:
     if: github.actor != 'github-actions[bot]'
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,10 +63,15 @@ jobs:
           - z26_startup
     steps:
       - uses: actions/checkout@v5
-      - name: Build and run benchmarks
+      - name: Download image
+        uses: actions/download-artifact@v4
+        with:
+          name: di-benchmark-${{ matrix.container }}
+          path: .
+      - name: Load image
+        run: docker load -i di-benchmark-${{ matrix.container }}.tar
+      - name: Run benchmarks
         run: |
-          docker build -t di-benchmark-${{ matrix.container }} \
-            -f containers/${{ matrix.container }}/Dockerfile .
           docker run --rm di-benchmark-${{ matrix.container }} \
             php benchmark.php ${{ matrix.test }} 2>&1 \
             | tee ${{ matrix.container }}-${{ matrix.test }}.json
