@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 def format_name(name: str) -> str:
     if "." in name:
         first, rest = name.split(".", 1)
-        return f"{first}({rest})"
+        return f"{first}\n({rest})"
     return name
 
 
