@@ -7,9 +7,7 @@ require_once __DIR__.'/classes-26.php';
 $iterations = 10000;
 $runs = 10;
 
-function runBenchmark(string $class, int $iterations, int $runs, bool $includeStartup): void {
-    $label = $includeStartup ? 'including startup time' : 'without startup time';
-    echo "=== Benchmark {$class} {$label} ===\n";
+function runBenchmark(string $class, int $iterations, int $runs, bool $includeStartup): array {
     $times = [];
 
     if (!$includeStartup) {
@@ -25,13 +23,17 @@ function runBenchmark(string $class, int $iterations, int $runs, bool $includeSt
             $object = $adapter->get($class);
             unset($object);
         }
-        $time = microtime(true) - $start;
-        $times[] = $time;
-        echo "run $j: $time seconds per $iterations\n";
+        $times[] = microtime(true) - $start;
     }
 
-    echo "\nAVERAGE | MINIMUM | MAXIMUM\n";
-    echo (array_sum($times)/count($times)) . " | " . min($times) . " | " . max($times) . "\n\n";
+    return [
+        'class' => $class,
+        'include_startup' => $includeStartup,
+        'runs' => $times,
+        'average' => array_sum($times) / count($times),
+        'min' => min($times),
+        'max' => max($times),
+    ];
 }
 
 $tests = [
@@ -42,17 +44,20 @@ $tests = [
 ];
 
 $selected = $argv[1] ?? null;
+$results = [];
 
 if ($selected === null) {
-    foreach ($tests as [$class, $startup]) {
-        runBenchmark($class, $iterations, $runs, $startup);
+    foreach ($tests as $name => [$class, $startup]) {
+        $results[$name] = runBenchmark($class, $iterations, $runs, $startup);
     }
 } elseif (isset($tests[$selected])) {
     [$class, $startup] = $tests[$selected];
-    runBenchmark($class, $iterations, $runs, $startup);
+    $results[$selected] = runBenchmark($class, $iterations, $runs, $startup);
 } else {
     $available = implode(', ', array_keys($tests));
-    echo "Unknown test '{$selected}'. Available tests: {$available}\n";
+    echo json_encode(['error' => "Unknown test '{$selected}'. Available tests: {$available}"]) . PHP_EOL;
     exit(1);
 }
+
+echo json_encode($results, JSON_PRETTY_PRINT) . PHP_EOL;
 
