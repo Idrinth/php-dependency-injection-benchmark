@@ -242,13 +242,13 @@ jobs:
                   pattern: 'result-*-*-*'
                   merge-multiple: true
             - name: Merge test results
-              run: php merge_json.php
+              run: php tools/merge_json.php
             - name: Generate graphs
-              run: php generate_graphs.php
+              run: php tools/generate_graphs.php
             - name: Generate run summary
-              run: php generate_run_summary.php
+              run: php tools/generate_run_summary.php
             - name: Generate README
-              run: php generate_readme.php
+              run: php tools/generate_readme.php
             - name: Commit results
               run: |
                   git config --global user.name 'github-actions[bot]'
