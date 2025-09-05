@@ -184,7 +184,6 @@ jobs:
         if: github.actor != 'github-actions[bot]'
         needs:
             - benchmark-medium-06
-            - benchmark-medium-26
         runs-on: ubuntu-latest
         strategy:
             matrix:
