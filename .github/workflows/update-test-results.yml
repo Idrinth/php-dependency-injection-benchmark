@@ -26,14 +26,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laravel
+                    - laravel.unconfigured
+                    - laravel.singletons
                     - nette-di
                     - php-di
                     - pimple
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - symfony.uncompiled
         steps:
             - uses: actions/checkout@v5
             - name: Build container
