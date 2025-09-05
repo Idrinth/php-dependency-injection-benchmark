@@ -8,10 +8,12 @@ function merge_json_files(array $files): array {
         $contents = file_get_contents($file);
         $data = json_decode($contents, true);
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new RuntimeException("Error decoding {$file}: " . json_last_error_msg());
+            fwrite(STDERR, "Warning: Error decoding {$file}: " . json_last_error_msg() . "\n");
+            continue;
         }
         if (!is_array($data)) {
-            throw new RuntimeException("JSON in {$file} does not decode to array");
+            fwrite(STDERR, "Warning: JSON in {$file} does not decode to array\n");
+            continue;
         }
         foreach ($data as $test => $result) {
             if (!isset($merged[$test])) {
@@ -19,7 +21,8 @@ function merge_json_files(array $files): array {
                 continue;
             }
             if (!isset($result['runs']) || !is_array($result['runs'])) {
-                throw new RuntimeException("Missing runs array for {$test} in {$file}");
+                fwrite(STDERR, "Warning: Missing runs array for {$test} in {$file}\n");
+                continue;
             }
             $merged[$test]['runs'] = array_merge($merged[$test]['runs'], $result['runs']);
         }
