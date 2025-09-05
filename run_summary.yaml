@@ -1,9 +1,19 @@
-php_version: "8.4.12"
+php_version: "8.3.6"
 dependency_versions:
   aura-di:
     aura/di: "^5.0"
-  laravel:
+  auryn:
+    rdlowrey/auryn: "^1.4"
+  dice:
+    level-2/dice: "^4.0"
+  laminas-servicemanager:
+    laminas/laminas-servicemanager: "^3.21"
+  laravel.singletons:
     illuminate/container: "^12.28"
+  laravel.unconfigured:
+    illuminate/container: "^12.28"
+  league-container:
+    league/container: "^5.1"
   nette-di:
     nette/di: "^3.2"
   php-di:
@@ -16,48 +26,329 @@ dependency_versions:
     idrinth/quickly: "dev-master"
   symfony.compiled:
     symfony/dependency-injection: "^7.0"
-  symfony.uncompiled:
-    symfony/dependency-injection: "^7.0"
-  dice:
-    level-2/dice: "^4.0"
 results:
   aura-di:
-    average: 0.0021727323532104493
-    minimum: 0.0019011497497558594
-    maximum: 0.002602100372314453
-  laravel:
-    average: 0.62267036437988
-    minimum: 0.61787581443787
-    maximum: 0.62684988975525
-  nette-di:
-    average: 0.0030275821685791
-    minimum: 0.0029439926147461
-    maximum: 0.0031428337097168
-  php-di:
-    average: 0.00089924335479736
-    minimum: 0.00082111358642578
-    maximum: 0.0010550022125244
-  pimple:
-    average: 0.070192074775696
-    minimum: 0.069249868392944
-    maximum: 0.071099996566772
-  quickly.configured:
-    average: 0.0038796424865723
-    minimum: 0.003817081451416
-    maximum: 0.0040390491485596
-  quickly.reflection:
-    average: 0.0038904190063477
-    minimum: 0.0038211345672607
-    maximum: 0.0040030479431152
-  symfony.compiled:
-    average: 0.0026464939117432
-    minimum: 0.0025930404663086
-    maximum: 0.0027880668640137
-  symfony.uncompiled:
-    average: 0.0020638227462769
-    minimum: 0.0020380020141602
-    maximum: 0.0020980834960938
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  auryn:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
   dice:
-    average: 0
-    minimum: 0
-    maximum: 0
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  laminas-servicemanager:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  laravel.singletons:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  laravel.unconfigured:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  league-container:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  nette-di:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  php-di:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  pimple:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  quickly.configured:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  quickly.reflection:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  symfony.compiled:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
