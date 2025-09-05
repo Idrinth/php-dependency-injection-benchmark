@@ -133,7 +133,7 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+          name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
           path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
   aggregate:
@@ -145,7 +145,7 @@ jobs:
       - name: Download results
         uses: actions/download-artifact@v4
         with:
-          pattern: '*'
+          pattern: 'result-*-*-*'
           merge-multiple: true
       - name: Merge test results
         run: |
