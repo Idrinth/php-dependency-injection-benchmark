@@ -6,7 +6,17 @@ $files = glob('*.json');
 sort($files);
 $dirs = array_map(fn($f) => pathinfo($f, PATHINFO_FILENAME), $files);
 
-$phpVersion = PHP_VERSION;
+// determine PHP version from container Dockerfiles
+$phpVersion = 'unknown';
+$dockerFiles = glob('containers/*/Dockerfile');
+sort($dockerFiles);
+foreach ($dockerFiles as $dockerFile) {
+    $firstLine = trim(file($dockerFile)[0] ?? '');
+    if (preg_match('/FROM\s+php:([^\s]+)/i', $firstLine, $matches)) {
+        $phpVersion = str_replace('-cli', '', $matches[1]);
+        break;
+    }
+}
 $date = (new DateTime('now', new DateTimeZone('UTC')))->format('Y-m-d');
 
 $depVersions = [];

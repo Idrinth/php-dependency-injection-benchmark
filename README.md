@@ -2,7 +2,7 @@
 
 This repository benchmarks different dependency injection containers.
 
-Tested with PHP 8.3.6.
+Tested with PHP 8.4.
 
 ## Dependency Versions
 

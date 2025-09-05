@@ -1,4 +1,4 @@
-php_version: "8.3.6"
+php_version: "8.4"
 dependency_versions:
   aura-di:
     aura/di: "^5.0"
