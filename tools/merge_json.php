@@ -1,4 +1,7 @@
 <?php
+
+chdir(__DIR__ . '/..');
+
 function merge_json_files(array $files): array {
     $merged = [];
     foreach ($files as $file) {

@@ -1,4 +1,7 @@
 <?php
+
+chdir(__DIR__ . '/..');
+
 function format_name(string $name): string {
     if (strpos($name, '.') !== false) {
         [$first, $rest] = explode('.', $name, 2);

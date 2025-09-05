@@ -1,4 +1,7 @@
 <?php
+
+chdir(__DIR__ . '/..');
+
 function parse_simple_yaml(string $filename): array {
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $data = [];
