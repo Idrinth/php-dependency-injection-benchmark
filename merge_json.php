@@ -39,14 +39,42 @@ function merge_json_files(array $files): array {
     return $merged;
 }
 
-if ($argc < 3) {
-    fwrite(STDERR, "Usage: php merge_json.php output.json input1.json [input2.json ...]\n");
-    exit(1);
+if ($argc > 2) {
+    $output = $argv[1];
+    $inputs = array_slice($argv, 2);
+    $merged = merge_json_files($inputs);
+    file_put_contents($output, json_encode($merged, JSON_PRETTY_PRINT));
+    return;
 }
 
-$output = $argv[1];
-$inputs = array_slice($argv, 2);
+$runFiles = glob('*-*-*.json');
+if (!$runFiles) {
+    return;
+}
 
-$merged = merge_json_files($inputs);
-file_put_contents($output, json_encode($merged, JSON_PRETTY_PRINT));
+$containers = [];
+foreach ($runFiles as $file) {
+    if (!preg_match('/^(.+)-([^-]+)-[^-]+\.json$/', $file, $matches)) {
+        continue;
+    }
+    $container = $matches[1];
+    $test = $matches[2];
+    $containers[$container][$test][] = $file;
+}
+
+foreach ($containers as $container => $tests) {
+    foreach ($tests as $test => $files) {
+        $merged = merge_json_files($files);
+        file_put_contents("{$container}-{$test}.json", json_encode($merged, JSON_PRETTY_PRINT));
+        foreach ($files as $f) {
+            unlink($f);
+        }
+    }
+    $testFiles = glob("{$container}-*.json");
+    $mergedContainer = merge_json_files($testFiles);
+    file_put_contents("{$container}.json", json_encode($mergedContainer, JSON_PRETTY_PRINT));
+    foreach ($testFiles as $f) {
+        unlink($f);
+    }
+}
 

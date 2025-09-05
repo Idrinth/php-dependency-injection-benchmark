@@ -242,18 +242,7 @@ jobs:
                   pattern: 'result-*-*-*'
                   merge-multiple: true
             - name: Merge test results
-              run: |
-                  set -euo pipefail
-                  readarray -t containers < <(ls *-*-*.json | sed 's/-[^-]*-[^-]*\.json$//' | sort -u)
-                  for container in "${containers[@]}"; do
-                      readarray -t tests < <(ls "${container}"-*-*.json | sed -E "s/^${container}-([^-]+)-[^-]+\.json$/\1/" | sort -u)
-                      for test in "${tests[@]}"; do
-                          php merge_json.php "${container}-${test}.json" "${container}-${test}-"*.json
-                          rm "${container}-${test}-"*.json
-                      done
-                      php merge_json.php "${container}.json" "${container}-"*.json
-                      rm "${container}-"*.json
-                  done
+              run: php merge_json.php
             - name: Generate graphs
               run: php generate_graphs.php
             - name: Generate run summary
