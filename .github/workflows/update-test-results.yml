@@ -2,212 +2,211 @@
 name: Update test results
 
 'on':
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 1 * *'
-  push:
-    branches:
-      - the-one
-    paths:
-      - '**/*.php'
-      - '**/*.json'
+    workflow_dispatch:
+    schedule:
+        - cron: '0 0 1 * *'
+    push:
+        branches:
+            - the-one
+        paths:
+            - '**/*.php'
+            - '**/*.json'
 
 permissions:
-  contents: write
+    contents: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  build:
-    if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        container:
-          - laravel
-          - nette-di
-          - php-di
-          - pimple
-          - quickly.configured
-          - quickly.reflection
-          - symfony.compiled
-          - symfony.uncompiled
-    steps:
-      - uses: actions/checkout@v5
-      - name: Build container
-        run: |
-          docker build -t di-benchmark-${{ matrix.container }} \
-            -f containers/${{ matrix.container }}/Dockerfile .
-          docker save di-benchmark-${{ matrix.container }} \
-            -o di-benchmark-${{ matrix.container }}.tar
-      - name: Upload image
-        uses: actions/upload-artifact@v4
-        with:
-          name: di-benchmark-${{ matrix.container }}
-          path: di-benchmark-${{ matrix.container }}.tar
+    build:
+        if: github.actor != 'github-actions[bot]'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laravel
+                    - nette-di
+                    - php-di
+                    - pimple
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - symfony.uncompiled
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
 
-  benchmark:
-    if: github.actor != 'github-actions[bot]'
-    needs: build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test:
-          - f06
-          - f06_startup
-          - z26
-          - z26_startup
-        include:
-          - container: laravel
-            run: 1
-          - container: laravel
-            run: 2
-          - container: laravel
-            run: 3
-          - container: laravel
-            run: 4
-          - container: laravel
-            run: 5
-          - container: laravel
-            run: 6
-          - container: laravel
-            run: 7
-          - container: laravel
-            run: 8
-          - container: laravel
-            run: 9
-          - container: laravel
-            run: 10
-          - container: pimple
-            run: 1
-          - container: pimple
-            run: 2
-          - container: pimple
-            run: 3
-          - container: pimple
-            run: 4
-          - container: pimple
-            run: 5
-          - container: pimple
-            run: 6
-          - container: pimple
-            run: 7
-          - container: pimple
-            run: 8
-          - container: pimple
-            run: 9
-          - container: pimple
-            run: 10
-          - container: nette-di
-            run: 1
-          - container: php-di
-            run: 1
-          - container: quickly.configured
-            run: 1
-          - container: quickly.reflection
-            run: 1
-          - container: symfony.compiled
-            run: 1
-          - container: symfony.uncompiled
-            run: 1
-    steps:
-      - uses: actions/checkout@v5
-      - name: Download image
-        uses: actions/download-artifact@v4
-        with:
-          name: di-benchmark-${{ matrix.container }}
-          path: .
-      - name: Load image
-        run: docker load -i di-benchmark-${{ matrix.container }}.tar
-      - name: Run benchmarks
-        run: |
-          runs=10
-          if [ "${{ matrix.container }}" = "laravel" ] || [ "${{ matrix.container }}" = "pimple" ]; then
-              runs=1
-          fi
-          docker run --rm di-benchmark-${{ matrix.container }} \
-            php benchmark.php ${{ matrix.test }} $runs 2>&1 \
-            | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-      - name: Upload results
-        uses: actions/upload-artifact@v4
-        with:
-          name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-          path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+    benchmark-ten:
+        if: github.actor != 'github-actions[bot]'
+        needs: build
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - nette-di
+                    - php-di
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - symfony.uncompiled
+                test:
+                    - f06
+                    - f06_startup
+                    - z26
+                    - z26_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1 \
+                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
-  aggregate:
-    if: github.actor != 'github-actions[bot]'
-    needs: benchmark
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - name: Download results
-        uses: actions/download-artifact@v4
-        with:
-          pattern: 'result-*-*-*'
-          merge-multiple: true
-      - name: Merge test results
-        run: |
-          set -euo pipefail
-          readarray -t containers < <(ls *-*-*.json | cut -d'-' -f1 | sort -u)
-          for container in "${containers[@]}"; do
-            readarray -t tests < <(ls "${container}"-*-*.json | cut -d'-' -f2 | sort -u)
-            for test in "${tests[@]}"; do
-              php merge_json.php "${container}-${test}.json" "${container}-${test}-"*.json
-              rm "${container}-${test}-"*.json
-            done
-            php merge_json.php "${container}.json" "${container}-"*.json
-            rm "${container}-"*.json
-          done
-      - name: Generate graphs
-        run: php generate_graphs.php
-      - name: Generate run summary
-        run: |
-          set -euo pipefail
-          readarray -t dirs < <(
-            ls *.json | sed 's/\.json$//' | sort
-          )
-          php_version=$(php -v | head -n1 | awk '{print $2}')
-          date=$(date -u +%Y-%m-%d)
-          mkdir -p archive
-          {
-            echo "php_version: \"${php_version}\""
-            echo "dependency_versions:"
-            for dir in "${dirs[@]}"; do
-              comp_file="containers/$dir/composer.json"
-              package=$(jq -r '.require | to_entries[0].key' "$comp_file")
-              version=$(jq -r '.require | to_entries[0].value' "$comp_file")
-              echo "  $dir:"
-              echo "    $package: \"$version\""
-            done
-            echo "results:"
-            for dir in "${dirs[@]}"; do
-              avg=$(jq -r '.z26_startup.average' "$dir.json")
-              min=$(jq -r '.z26_startup.min' "$dir.json")
-              max=$(jq -r '.z26_startup.max' "$dir.json")
-              echo "  $dir:"
-              echo "    average: $avg"
-              echo "    minimum: $min"
-              echo "    maximum: $max"
-            done
-          } | tee run_summary.yaml
-          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
-            cp run_summary.yaml "archive/$date.yaml"
-          fi
-      - name: Generate README
-        run: php generate_readme.php
-      - name: Commit results
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email \
-            'github-actions[bot]@users.noreply.github.com'
-          git add README.md speed_comparison_without_startup.png \
-            speed_comparison_with_startup.png run_summary.yaml
-          if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
-            git add archive
-          fi
-          git commit -m "Update test results" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    benchmark-one:
+        if: github.actor != 'github-actions[bot]'
+        needs: build
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laravel
+                    - pimple
+                test:
+                    - f06
+                    - f06_startup
+                    - z26
+                    - z26_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1 \
+                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    aggregate:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-ten
+            - benchmark-one
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download results
+              uses: actions/download-artifact@v4
+              with:
+                  pattern: 'result-*-*-*'
+                  merge-multiple: true
+            - name: Merge test results
+              run: |
+                  set -euo pipefail
+                  readarray -t containers < <(ls *-*-*.json | cut -d'-' -f1 | sort -u)
+                  for container in "${containers[@]}"; do
+                      readarray -t tests < <(ls "${container}"-*-*.json | cut -d'-' -f2 | sort -u)
+                      for test in "${tests[@]}"; do
+                          php merge_json.php "${container}-${test}.json" "${container}-${test}-"*.json
+                          rm "${container}-${test}-"*.json
+                      done
+                      php merge_json.php "${container}.json" "${container}-"*.json
+                      rm "${container}-"*.json
+                  done
+            - name: Generate graphs
+              run: php generate_graphs.php
+            - name: Generate run summary
+              run: |
+                  set -euo pipefail
+                  readarray -t dirs < <(
+                      ls *.json | sed 's/\.json$//' | sort
+                  )
+                  php_version=$(php -v | head -n1 | awk '{print $2}')
+                  date=$(date -u +%Y-%m-%d)
+                  mkdir -p archive
+                  {
+                      echo "php_version: \"${php_version}\""
+                      echo "dependency_versions:"
+                      for dir in "${dirs[@]}"; do
+                          comp_file="containers/$dir/composer.json"
+                          package=$(jq -r '.require | to_entries[0].key' "$comp_file")
+                          version=$(jq -r '.require | to_entries[0].value' "$comp_file")
+                          echo "  $dir:"
+                          echo "    $package: \"$version\""
+                      done
+                      echo "results:"
+                      for dir in "${dirs[@]}"; do
+                          avg=$(jq -r '.z26_startup.average' "$dir.json")
+                          min=$(jq -r '.z26_startup.min' "$dir.json")
+                          max=$(jq -r '.z26_startup.max' "$dir.json")
+                          echo "  $dir:"
+                          echo "    average: $avg"
+                          echo "    minimum: $min"
+                          echo "    maximum: $max"
+                      done
+                  } | tee run_summary.yaml
+                  if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+                      cp run_summary.yaml "archive/$date.yaml"
+                  fi
+            - name: Generate README
+              run: php generate_readme.php
+            - name: Commit results
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email \
+                      'github-actions[bot]@users.noreply.github.com'
+                  git add README.md speed_comparison_without_startup.png \
+                      speed_comparison_with_startup.png run_summary.yaml
+                  if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+                      git add archive
+                  fi
+                  git commit -m "Update test results" || echo "No changes to commit"
+                  git push
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
