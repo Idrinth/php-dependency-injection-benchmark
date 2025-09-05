@@ -68,25 +68,34 @@ if ($depVersions) {
     }
 }
 $results = $data['results'] ?? [];
-if ($results) {
-    $lines[] = '## Summary';
+$tests = [
+    'f06' => ['title' => 'f06', 'image' => 'speed_comparison_without_startup06.png'],
+    'f06_startup' => ['title' => 'f06 startup', 'image' => 'speed_comparison_with_startup06.png'],
+    'p16' => ['title' => 'p16', 'image' => 'speed_comparison_without_startup16.png'],
+    'p16_startup' => ['title' => 'p16 startup', 'image' => 'speed_comparison_with_startup16.png'],
+    'z26' => ['title' => 'z26', 'image' => 'speed_comparison_without_startup26.png'],
+    'z26_startup' => ['title' => 'z26 startup', 'image' => 'speed_comparison_with_startup26.png'],
+];
+foreach ($tests as $testKey => $info) {
+    $lines[] = '## ' . $info['title'];
     $lines[] = '';
     $lines[] = '| Container | Average | Minimum | Maximum |';
     $lines[] = '| --- | --- | --- | --- |';
     foreach ($results as $container => $stats) {
-        $lines[] = sprintf('| %s | %s | %s | %s |',
+        if (!isset($stats[$testKey])) {
+            continue;
+        }
+        $t = $stats[$testKey];
+        $lines[] = sprintf(
+            '| %s | %s | %s | %s |',
             format_name($container),
-            $stats['average'],
-            $stats['minimum'],
-            $stats['maximum']
+            $t['average'],
+            $t['minimum'],
+            $t['maximum']
         );
     }
     $lines[] = '';
-}
-foreach (['06', '16', '26'] as $num) {
-    $lines[] = "![Speed comparison without startup time](speed_comparison_without_startup$num.png)";
-    $lines[] = '';
-    $lines[] = "![Speed comparison with startup time](speed_comparison_with_startup$num.png)";
+    $lines[] = '![' . $info['title'] . '](' . $info['image'] . ')';
     $lines[] = '';
 }
 file_put_contents('README.md', implode("\n", $lines));
