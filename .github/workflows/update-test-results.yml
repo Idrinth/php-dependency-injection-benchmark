@@ -34,6 +34,12 @@ jobs:
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
+                    - aura-di
+                    - auryn
+                    - dice
+                    - laminas-servicemanager
+                    - league-container
+                    - phalcon
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -48,7 +54,7 @@ jobs:
                   name: di-benchmark-${{ matrix.container }}
                   path: di-benchmark-${{ matrix.container }}.tar
 
-    benchmark-ten:
+    benchmark-normal:
         if: github.actor != 'github-actions[bot]'
         needs: build
         runs-on: ubuntu-latest
@@ -88,14 +94,13 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
-    benchmark-one:
+    benchmark-slow:
         if: github.actor != 'github-actions[bot]'
         needs: build
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 container:
-                    - laravel.unconfigured
                     - pimple
                 test:
                     - f06
@@ -132,12 +137,58 @@ jobs:
               with:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+    benchmark-extremely-slow:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-normal
+            - benchmark-slow
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laravel.unconfigured
+                test:
+                    - f06
+                    - f06_startup
+                    - z26
+                    - z26_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1 \
+                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
     aggregate:
         if: github.actor != 'github-actions[bot]'
         needs:
-            - benchmark-ten
-            - benchmark-one
+            - benchmark-normal
+            - benchmark-slow
+            - benchmark-extremely-slow
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v5
