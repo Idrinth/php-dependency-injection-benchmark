@@ -17,15 +17,24 @@ $displayNames = array_map('format_name', $containers);
 
 function extract_averages(string $filename): array {
     $data = json_decode(file_get_contents($filename), true);
-    return [$data['z26']['average'], $data['z26_startup']['average']];
+    return [
+        $data['f06']['average'] ?? null,
+        $data['f06_startup']['average'] ?? null,
+        $data['z26']['average'] ?? null,
+        $data['z26_startup']['average'] ?? null,
+    ];
 }
 
-$withoutStartup = [];
-$withStartup = [];
+$withoutStartup06 = [];
+$withStartup06 = [];
+$withoutStartup26 = [];
+$withStartup26 = [];
 foreach ($containers as $container) {
-    [$wos, $ws] = extract_averages("$container.json");
-    $withoutStartup[] = $wos;
-    $withStartup[] = $ws;
+    [$wos26, $ws26, $wos06, $ws06] = extract_averages("$container.json");
+    $withoutStartup06[] = $wos06;
+    $withStartup06[] = $ws06;
+    $withoutStartup26[] = $wos26;
+    $withStartup26[] = $ws26;
 }
 
 function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
@@ -46,12 +55,15 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     imagefill($img, 0, 0, $white);
 
     imagestring($img, 5, max(0, ($width - 7 * strlen($title)) / 2), 5, $title, $black);
-    imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10000', $black);
+    imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10,000', $black);
 
     $logs = array_map(fn($v) => log($v, 10), $values);
     $maxLog = max($logs);
     for ($i = 0; $i < $count; $i++) {
         $logVal = $logs[$i];
+        if ($logVal === null) {
+            continue;
+        }
         $barHeight = ($maxLog > 0) ? ($logVal / $maxLog) * $plotHeight : 0;
         $x1 = $leftMargin + $spacing + $i * ($barWidth + $spacing);
         $y1 = $topMargin + $plotHeight - $barHeight;
@@ -71,5 +83,7 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     imagedestroy($img);
 }
 
-create_bar_chart($withoutStartup, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup.png', $displayNames);
-create_bar_chart($withStartup, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup.png', $displayNames);
+create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup06.png', $displayNames);
+create_bar_chart($withStartup06, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup06.png', $displayNames);
+create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup26.png', $displayNames);
+create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup26.png', $displayNames);

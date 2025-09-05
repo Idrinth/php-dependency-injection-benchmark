@@ -68,7 +68,6 @@ jobs:
                     - symfony.compiled
                     - laravel.singletons
                     - aura-di
-                    - auryn
                     - dice
                     - laminas-servicemanager
                     - league-container
@@ -100,17 +99,53 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
-    benchmark-slow:
+    benchmark-slow-06:
         if: github.actor != 'github-actions[bot]'
-        needs: build
+        needs:
+            - benchmark-normal
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 container:
                     - pimple
+                    - auryn
                 test:
                     - f06
                     - f06_startup
+                run:
+                    - 1
+                    - 2
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 5 2>&1 \
+                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-slow-26:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-normal
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - pimple
+                    - auryn
+                test:
                     - z26
                     - z26_startup
                 run:
@@ -143,11 +178,11 @@ jobs:
               with:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-    benchmark-extremely-slow:
+    benchmark-extremely-slow-06:
         if: github.actor != 'github-actions[bot]'
         needs:
-            - benchmark-normal
-            - benchmark-slow
+            - benchmark-slow-06
+            - benchmark-slow-26
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -156,8 +191,6 @@ jobs:
                 test:
                     - f06
                     - f06_startup
-                    - z26
-                    - z26_startup
                 run:
                     - 1
                     - 2
@@ -193,8 +226,9 @@ jobs:
         if: github.actor != 'github-actions[bot]'
         needs:
             - benchmark-normal
-            - benchmark-slow
-            - benchmark-extremely-slow
+            - benchmark-slow-06
+            - benchmark-slow-26
+            - benchmark-extremely-slow-06
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v5
