@@ -54,31 +54,64 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        container:
-          - laravel
-          - nette-di
-          - php-di
-          - pimple
-          - quickly.configured
-          - quickly.reflection
-          - symfony.compiled
-          - symfony.uncompiled
         test:
           - f06
           - f06_startup
           - z26
           - z26_startup
-        run:
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          - 9
-          - 10
+        include:
+          - container: laravel
+            run: 1
+          - container: laravel
+            run: 2
+          - container: laravel
+            run: 3
+          - container: laravel
+            run: 4
+          - container: laravel
+            run: 5
+          - container: laravel
+            run: 6
+          - container: laravel
+            run: 7
+          - container: laravel
+            run: 8
+          - container: laravel
+            run: 9
+          - container: laravel
+            run: 10
+          - container: pimple
+            run: 1
+          - container: pimple
+            run: 2
+          - container: pimple
+            run: 3
+          - container: pimple
+            run: 4
+          - container: pimple
+            run: 5
+          - container: pimple
+            run: 6
+          - container: pimple
+            run: 7
+          - container: pimple
+            run: 8
+          - container: pimple
+            run: 9
+          - container: pimple
+            run: 10
+          - container: nette-di
+            run: 1
+          - container: php-di
+            run: 1
+          - container: quickly.configured
+            run: 1
+          - container: quickly.reflection
+            run: 1
+          - container: symfony.compiled
+            run: 1
+          - container: symfony.uncompiled
+            run: 1
     steps:
       - uses: actions/checkout@v5
       - name: Download image
@@ -90,8 +123,12 @@ jobs:
         run: docker load -i di-benchmark-${{ matrix.container }}.tar
       - name: Run benchmarks
         run: |
+          runs=10
+          if [ "${{ matrix.container }}" = "laravel" ] || [ "${{ matrix.container }}" = "pimple" ]; then
+              runs=1
+          fi
           docker run --rm di-benchmark-${{ matrix.container }} \
-            php benchmark.php ${{ matrix.test }} 2>&1 \
+            php benchmark.php ${{ matrix.test }} $runs 2>&1 \
             | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
       - name: Upload results
         uses: actions/upload-artifact@v4
