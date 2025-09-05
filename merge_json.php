@@ -2,6 +2,9 @@
 function merge_json_files(array $files): array {
     $merged = [];
     foreach ($files as $file) {
+        if (!file_exists($file)) {
+            continue;
+        }
         $contents = file_get_contents($file);
         $data = json_decode($contents, true);
         if (json_last_error() !== JSON_ERROR_NONE) {
