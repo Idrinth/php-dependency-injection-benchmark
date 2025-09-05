@@ -71,7 +71,7 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v5
               with:
                   name: di-benchmark-${{ matrix.container }}
                   path: .
@@ -116,7 +116,7 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v5
               with:
                   name: di-benchmark-${{ matrix.container }}
                   path: .
@@ -142,7 +142,7 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download results
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v5
               with:
                   pattern: 'result-*-*-*'
                   merge-multiple: true
