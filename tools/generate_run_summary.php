@@ -1,4 +1,7 @@
 <?php
+
+chdir(__DIR__ . '/..');
+
 $files = glob('*.json');
 sort($files);
 $dirs = array_map(fn($f) => pathinfo($f, PATHINFO_FILENAME), $files);
