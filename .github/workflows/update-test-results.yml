@@ -89,9 +89,9 @@ jobs:
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
               run: |
-                  docker run --rm di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 10 2>&1 \
-                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
@@ -128,9 +128,9 @@ jobs:
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
               run: |
-                  docker run --rm di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 5 2>&1 \
-                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 5 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
@@ -175,9 +175,9 @@ jobs:
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
               run: |
-                  docker run --rm di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 1 2>&1 \
-                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
@@ -217,9 +217,9 @@ jobs:
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
               run: |
-                  docker run --rm di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 1 2>&1 \
-                      | tee ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
