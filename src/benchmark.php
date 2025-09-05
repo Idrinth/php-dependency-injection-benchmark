@@ -25,7 +25,10 @@ function runBenchmark(string $class, int $iterations, int $runs, bool $includeSt
             unset($object);
         }
         $times[] = microtime(true) - $start;
+        fwrite(STDERR, '.');
     }
+
+    fwrite(STDERR, ' ' . $j . '/' . $runs . PHP_EOL);
 
     return [
         'class' => $class,
@@ -51,10 +54,12 @@ $results = [];
 
 if ($selected === null) {
     foreach ($tests as $name => [$class, $startup]) {
+        fwrite(STDERR, 'Running ' . $name . ': ');
         $results[$name] = runBenchmark($class, $iterations, $runs, $startup);
     }
 } elseif (isset($tests[$selected])) {
     [$class, $startup] = $tests[$selected];
+    fwrite(STDERR, 'Running ' . $selected . ': ');
     $results[$selected] = runBenchmark($class, $iterations, $runs, $startup);
 } else {
     $available = implode(', ', array_keys($tests));
