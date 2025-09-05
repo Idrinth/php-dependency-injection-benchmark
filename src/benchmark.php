@@ -67,5 +67,11 @@ if ($selected === null) {
     exit(1);
 }
 
-echo json_encode($results, JSON_PRETTY_PRINT) . PHP_EOL;
+$outputDir = '/out';
+if (!is_dir($outputDir)) {
+    mkdir($outputDir, 0777, true);
+}
+$file = $outputDir . '/results.json';
+file_put_contents($file, json_encode($results, JSON_PRETTY_PRINT) . PHP_EOL);
+fwrite(STDERR, 'Results written to ' . $file . PHP_EOL);
 

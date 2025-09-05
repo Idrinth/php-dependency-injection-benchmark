@@ -1,6 +1,7 @@
 FROM php:8.4-cli
 
 WORKDIR /app
+RUN mkdir /out
 COPY containers/quickly.reflection/* ./
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git unzip \
