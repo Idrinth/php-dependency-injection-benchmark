@@ -75,6 +75,8 @@ jobs:
                     - f06_startup
                     - z26
                     - z26_startup
+                    - p16
+                    - p16_startup
                 run:
                     - 1
         steps:
@@ -135,7 +137,7 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
-    benchmark-medium-26:
+    benchmark-medium-16:
         if: github.actor != 'github-actions[bot]'
         needs:
             - benchmark-fast
@@ -148,8 +150,8 @@ jobs:
                     - dice
                     - league-container
                 test:
-                    - z26
-                    - z26_startup
+                    - p16
+                    - p16_startup
                 run:
                     - 1
                     - 2
@@ -228,7 +230,7 @@ jobs:
         needs:
             - benchmark-fast
             - benchmark-medium-06
-            - benchmark-medium-26
+            - benchmark-medium-16
             - benchmark-slow-06
         runs-on: ubuntu-latest
         steps:
@@ -274,13 +276,16 @@ jobs:
                       done
                       echo "results:"
                       for dir in "${dirs[@]}"; do
-                          avg=$(jq -r '.z26_startup.average' "$dir.json")
-                          min=$(jq -r '.z26_startup.min' "$dir.json")
-                          max=$(jq -r '.z26_startup.max' "$dir.json")
                           echo "  $dir:"
-                          echo "    average: $avg"
-                          echo "    minimum: $min"
-                          echo "    maximum: $max"
+                          for test in f06 f06_startup p16 p16_startup z26 z26_startup; do
+                              avg=$(jq -r ".${test}.average // 0" "$dir.json")
+                              min=$(jq -r ".${test}.min // 0" "$dir.json")
+                              max=$(jq -r ".${test}.max // 0" "$dir.json")
+                              echo "    ${test}:"
+                              echo "      average: $avg"
+                              echo "      minimum: $min"
+                              echo "      maximum: $max"
+                          done
                       done
                   } | tee run_summary.yaml
                   if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
