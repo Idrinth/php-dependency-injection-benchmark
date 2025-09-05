@@ -60,7 +60,7 @@ jobs:
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - symfony.uncompiled
+                    - laravel.singletons
                 test:
                     - f06
                     - f06_startup
@@ -95,7 +95,7 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laravel
+                    - laravel.unconfigured
                     - pimple
                 test:
                     - f06

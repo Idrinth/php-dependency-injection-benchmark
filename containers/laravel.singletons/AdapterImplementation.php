@@ -1,13 +1,12 @@
 <?php
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
+use Illuminate\Container\Container;
 
 class AdapterImplementation {
-    private ContainerBuilder $container;
+    private Container $container;
     public function __construct() {
-        $c = new ContainerBuilder();
-        foreach ([
+        $this->container = new Container();
+        foreach([
             A06::class,
             B06::class,
             C06::class,
@@ -41,11 +40,10 @@ class AdapterImplementation {
             Y26::class,
             Z26::class,
         ] as $service) {
-            $c->register($service, $service)->setPublic(true)->setAutowired(true);
+            $this->container->singleton($service);
         }
-        $this->container = $c;
     }
     public function get(string $class): object {
-        return $this->container->get($class);
+        return $this->container->make($class);
     }
 }
