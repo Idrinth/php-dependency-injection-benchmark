@@ -63,6 +63,14 @@ Tested with PHP 8.3.6.
 | quickly(reflection) |  |  |  |
 | symfony(compiled) |  |  |  |
 
-![Speed comparison without startup time](speed_comparison_without_startup.png)
+![Speed comparison without startup time](speed_comparison_without_startup06.png)
 
-![Speed comparison with startup time](speed_comparison_with_startup.png)
+![Speed comparison with startup time](speed_comparison_with_startup06.png)
+
+![Speed comparison without startup time](speed_comparison_without_startup16.png)
+
+![Speed comparison with startup time](speed_comparison_with_startup16.png)
+
+![Speed comparison without startup time](speed_comparison_without_startup26.png)
+
+![Speed comparison with startup time](speed_comparison_with_startup26.png)
