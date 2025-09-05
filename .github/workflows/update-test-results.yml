@@ -244,9 +244,9 @@ jobs:
             - name: Merge test results
               run: |
                   set -euo pipefail
-                  readarray -t containers < <(ls *-*-*.json | cut -d'-' -f1 | sort -u)
+                  readarray -t containers < <(ls *-*-*.json | sed 's/-[^-]*-[^-]*\.json$//' | sort -u)
                   for container in "${containers[@]}"; do
-                      readarray -t tests < <(ls "${container}"-*-*.json | cut -d'-' -f2 | sort -u)
+                      readarray -t tests < <(ls "${container}"-*-*.json | sed -E "s/^${container}-([^-]+)-[^-]+\.json$/\1/" | sort -u)
                       for test in "${tests[@]}"; do
                           php merge_json.php "${container}-${test}.json" "${container}-${test}-"*.json
                           rm "${container}-${test}-"*.json
@@ -257,41 +257,7 @@ jobs:
             - name: Generate graphs
               run: php generate_graphs.php
             - name: Generate run summary
-              run: |
-                  set -euo pipefail
-                  readarray -t dirs < <(
-                      ls *.json | sed 's/\.json$//' | sort
-                  )
-                  php_version=$(php -v | head -n1 | awk '{print $2}')
-                  date=$(date -u +%Y-%m-%d)
-                  mkdir -p archive
-                  {
-                      echo "php_version: \"${php_version}\""
-                      echo "dependency_versions:"
-                      for dir in "${dirs[@]}"; do
-                          comp_file="containers/$dir/composer.json"
-                          package=$(jq -r '.require | to_entries[0].key' "$comp_file")
-                          version=$(jq -r '.require | to_entries[0].value' "$comp_file")
-                          echo "  $dir:"
-                          echo "    $package: \"$version\""
-                      done
-                      echo "results:"
-                      for dir in "${dirs[@]}"; do
-                          echo "  $dir:"
-                          for test in f06 f06_startup p16 p16_startup z26 z26_startup; do
-                              avg=$(jq -r ".${test}.average // 0" "$dir.json")
-                              min=$(jq -r ".${test}.min // 0" "$dir.json")
-                              max=$(jq -r ".${test}.max // 0" "$dir.json")
-                              echo "    ${test}:"
-                              echo "      average: $avg"
-                              echo "      minimum: $min"
-                              echo "      maximum: $max"
-                          done
-                      done
-                  } | tee run_summary.yaml
-                  if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
-                      cp run_summary.yaml "archive/$date.yaml"
-                  fi
+              run: php generate_run_summary.pho
             - name: Generate README
               run: php generate_readme.php
             - name: Commit results
