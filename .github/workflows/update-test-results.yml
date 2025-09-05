@@ -68,7 +68,6 @@ jobs:
                     - symfony.compiled
                     - laravel.singletons
                     - aura-di
-                    - dice
                     - laminas-servicemanager
                     - league-container
                     #- phalcon
@@ -109,6 +108,7 @@ jobs:
                 container:
                     - pimple
                     - auryn
+                    - dice
                 test:
                     - f06
                     - f06_startup
@@ -145,6 +145,7 @@ jobs:
                 container:
                     - pimple
                     - auryn
+                    - dice
                 test:
                     - z26
                     - z26_startup
