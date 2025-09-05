@@ -63,7 +63,10 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     $blue = imagecolorallocate($img, 70, 130, 180);
     imagefill($img, 0, 0, $white);
 
-    imagestring($img, 5, max(0, ($width - 7 * strlen($title)) / 2), 5, $title, $black);
+    $titleFont = 5;
+    $fontWidth = imagefontwidth($titleFont);
+    $titleWidth = $fontWidth * strlen($title);
+    imagestring($img, $titleFont, max(0, ($width - $titleWidth) / 2), 5, $title, $black);
     imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10,000', $black);
 
     $validLogs = array_filter($values, fn($v) => $v !== null);
