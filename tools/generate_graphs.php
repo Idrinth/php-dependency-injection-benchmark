@@ -53,7 +53,7 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     $leftMargin = 60;
     $bottomMargin = 60;
     $topMargin = 40;
-    $plotHeight = 300;
+    $plotHeight = 600;
     $width = $leftMargin + $count * ($barWidth + $spacing) + $spacing;
     $height = $topMargin + $plotHeight + $bottomMargin;
 
@@ -66,13 +66,15 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     imagestring($img, 5, max(0, ($width - 7 * strlen($title)) / 2), 5, $title, $black);
     imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10,000', $black);
 
-    $logs = array_map(fn($v) => $v !== null && $v > 0 ? log($v, 10) : null, $values);
-    $validLogs = array_filter($logs, fn($v) => $v !== null);
+    $validLogs = array_filter($values, fn($v) => $v !== null);
     $maxLog = $validLogs ? max($validLogs) : 0;
     for ($i = 0; $i < $count; $i++) {
-        $logVal = $logs[$i];
+        $logVal = $values[$i];
         if ($logVal === null || $maxLog <= 0) {
             continue;
+        }
+        if ($logVal < 0) {
+            $logVal = -1 * $logVal;
         }
         $barHeight = ($logVal / $maxLog) * $plotHeight;
         $x1 = $leftMargin + $spacing + $i * ($barWidth + $spacing);

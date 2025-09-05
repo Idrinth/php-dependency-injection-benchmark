@@ -83,8 +83,10 @@ if ($results) {
     }
     $lines[] = '';
 }
-$lines[] = '![Speed comparison without startup time](speed_comparison_without_startup.png)';
-$lines[] = '';
-$lines[] = '![Speed comparison with startup time](speed_comparison_with_startup.png)';
-$lines[] = '';
+foreach (['06', '16', '26'] as $num) {
+    $lines[] = "![Speed comparison without startup time](speed_comparison_without_startup$num.png)";
+    $lines[] = '';
+    $lines[] = "![Speed comparison with startup time](speed_comparison_with_startup$num.png)";
+    $lines[] = '';
+}
 file_put_contents('README.md', implode("\n", $lines));
