@@ -31,7 +31,7 @@ foreach ($containers as $container) {
 function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
     $count = count($values);
     $barWidth = 40;
-    $spacing = 20;
+    $spacing = 70;
     $leftMargin = 60;
     $bottomMargin = 60;
     $topMargin = 40;
