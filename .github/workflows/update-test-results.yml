@@ -154,20 +154,11 @@ jobs:
           for container in "${containers[@]}"; do
             readarray -t tests < <(ls "${container}"-*-*.json | cut -d'-' -f2 | sort -u)
             for test in "${tests[@]}"; do
-              jq -s --arg test "$test" '
-                {
-                  ($test): {
-                    class: .[0][$test].class,
-                    include_startup: .[0][$test].include_startup,
-                    runs: [.[].[$test].runs[]],
-                    average: ([.[].[$test].runs[]] | add / length),
-                    min: ([.[].[$test].runs[]] | min),
-                    max: ([.[].[$test].runs[]] | max)
-                  }
-                }
-              ' "${container}-${test}-"*.json
-            done | jq -s 'add' > "${container}.json"
-            rm "${container}"-*-*.json
+              php merge_json.php "${container}-${test}.json" "${container}-${test}-"*.json
+              rm "${container}-${test}-"*.json
+            done
+            php merge_json.php "${container}.json" "${container}-"*.json
+            rm "${container}-"*.json
           done
       - name: Generate graphs
         run: php generate_graphs.php
