@@ -8,6 +8,7 @@ class AdapterImplementation {
         $builder = new ContainerBuilder();
         $c = $builder->newInstance(ContainerBuilder::AUTO_RESOLVE);
         $c->set(F06::class, $c->lazyNew(F06::class));
+        $c->set(P16::class, $c->lazyNew(P16::class));
         $c->set(Z26::class, $c->lazyNew(Z26::class));
         $this->container = $c;
     }

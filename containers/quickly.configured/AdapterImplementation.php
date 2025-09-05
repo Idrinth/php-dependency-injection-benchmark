@@ -29,6 +29,69 @@ class AdapterImplementation {
                 new ClassObject(A06::class),
             ],
             A06::class => [],
+            P16::class => [
+                new ClassObject(O16::class),
+                new ClassObject(N16::class),
+                new ClassObject(M16::class),
+            ],
+            O16::class => [
+                new ClassObject(N16::class),
+                new ClassObject(M16::class),
+            ],
+            N16::class => [
+                new ClassObject(M16::class),
+                new ClassObject(L16::class),
+                new ClassObject(K16::class),
+            ],
+            M16::class => [
+                new ClassObject(L16::class),
+                new ClassObject(K16::class),
+            ],
+            L16::class => [
+                new ClassObject(K16::class),
+            ],
+            K16::class => [
+                new ClassObject(J16::class),
+                new ClassObject(I16::class),
+                new ClassObject(H16::class),
+            ],
+            J16::class => [
+                new ClassObject(I16::class),
+                new ClassObject(H16::class),
+            ],
+            I16::class => [
+                new ClassObject(H16::class),
+                new ClassObject(G16::class),
+                new ClassObject(F16::class),
+            ],
+            H16::class => [
+                new ClassObject(G16::class),
+                new ClassObject(F16::class),
+            ],
+            G16::class => [
+                new ClassObject(F16::class),
+            ],
+            F16::class => [
+                new ClassObject(E16::class),
+                new ClassObject(D16::class),
+                new ClassObject(B16::class),
+            ],
+            E16::class => [
+                new ClassObject(D16::class),
+                new ClassObject(C16::class),
+            ],
+            D16::class => [
+                new ClassObject(C16::class),
+                new ClassObject(B16::class),
+                new ClassObject(A16::class),
+            ],
+            C16::class => [
+                new ClassObject(B16::class),
+            ],
+            B16::class => [
+                new ClassObject(A16::class),
+            ],
+            A16::class => [],
             Z26::class => [
                 new ClassObject(Y26::class),
                 new ClassObject(X26::class),
