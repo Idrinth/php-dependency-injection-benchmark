@@ -29,46 +29,46 @@ dependency_versions:
 results:
   aura-di:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0028085231781006
+      minimum: 0.0027420520782471
+      maximum: 0.0030820369720459
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0017583847045898
+      minimum: 0.0015890598297119
+      maximum: 0.003093957901001
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0019219160079956
+      minimum: 0.0015349388122559
+      maximum: 0.0052521228790283
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0052855014801025
+      minimum: 0.0050690174102783
+      maximum: 0.0065529346466064
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.33657476902008
+      minimum: 0.0015249252319336
+      maximum: 3.3518400192261
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 3.422691488266
+      minimum: 3.3694829940796
+      maximum: 3.4553239345551
   auryn:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.40660607814789
+      minimum: 0.40287709236145
+      maximum: 0.41200709342957
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.40584285259247
+      minimum: 0.39889717102051
+      maximum: 0.41594004631042
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 56.996904325485
+      minimum: 55.877856016159
+      maximum: 58.668166160583
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 56.760576915741
+      minimum: 55.963360071182
+      maximum: 57.882459878922
     z26:
       average: 0
       minimum: 0
@@ -79,21 +79,21 @@ results:
       maximum: 0
   dice:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.071053314208984
+      minimum: 0.069582939147949
+      maximum: 0.075897932052612
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.07156400680542
+      minimum: 0.070703029632568
+      maximum: 0.072922945022583
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 10.042876672745
+      minimum: 9.9155538082123
+      maximum: 10.300910949707
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 10.081092596054
+      minimum: 9.9660379886627
+      maximum: 10.391905069351
     z26:
       average: 0
       minimum: 0
@@ -104,46 +104,46 @@ results:
       maximum: 0
   laminas-servicemanager:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00077555179595947
+      minimum: 0.00075411796569824
+      maximum: 0.00081896781921387
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00088968276977539
+      minimum: 0.0007939338684082
+      maximum: 0.0016429424285889
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00077111721038818
+      minimum: 0.00074410438537598
+      maximum: 0.00082015991210938
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00097298622131348
+      minimum: 0.0008399486541748
+      maximum: 0.0017738342285156
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.000795578956604
+      minimum: 0.00077080726623535
+      maximum: 0.00087404251098633
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00095458030700684
+      minimum: 0.00081300735473633
+      maximum: 0.0017518997192383
   laravel.singletons:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0036037683486938
+      minimum: 0.0034329891204834
+      maximum: 0.0044529438018799
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038020849227905
+      minimum: 0.0034480094909668
+      maximum: 0.0049619674682617
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0043191194534302
+      minimum: 0.0036849975585938
+      maximum: 0.0067620277404785
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0049098253250122
+      minimum: 0.004716157913208
+      maximum: 0.0055429935455322
     z26:
       average: 0
       minimum: 0
@@ -154,13 +154,13 @@ results:
       maximum: 0
   laravel.unconfigured:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.63219199180603
+      minimum: 0.61719298362732
+      maximum: 0.65355014801025
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.6380842924118
+      minimum: 0.62428712844849
+      maximum: 0.66230797767639
     p16:
       average: 0
       minimum: 0
@@ -179,21 +179,21 @@ results:
       maximum: 0
   league-container:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.66432712078094
+      minimum: 0.66107511520386
+      maximum: 0.66888499259949
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.66008040904999
+      minimum: 0.65578103065491
+      maximum: 0.66844916343689
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 94.670758199692
+      minimum: 94.237408876419
+      maximum: 95.47412109375
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 94.616815257072
+      minimum: 93.926671028137
+      maximum: 95.326696872711
     z26:
       average: 0
       minimum: 0
@@ -204,71 +204,71 @@ results:
       maximum: 0
   nette-di:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0034096479415894
+      minimum: 0.0033469200134277
+      maximum: 0.0035431385040283
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0054706811904907
+      minimum: 0.0033838748931885
+      maximum: 0.023789882659912
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0035904169082642
+      minimum: 0.0034589767456055
+      maximum: 0.0040161609649658
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.005548357963562
+      minimum: 0.0034468173980713
+      maximum: 0.024060964584351
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0033249139785767
+      minimum: 0.0032980442047119
+      maximum: 0.003385066986084
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0066025257110596
+      minimum: 0.0032908916473389
+      maximum: 0.036036968231201
   php-di:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00083928108215332
+      minimum: 0.00077700614929199
+      maximum: 0.0012528896331787
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0011204242706299
+      minimum: 0.00085806846618652
+      maximum: 0.0033431053161621
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00084066390991211
+      minimum: 0.00078201293945312
+      maximum: 0.0012252330780029
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.001142406463623
+      minimum: 0.00085806846618652
+      maximum: 0.0034301280975342
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00098810195922852
+      minimum: 0.00081396102905273
+      maximum: 0.002032995223999
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0012276887893677
+      minimum: 0.00095987319946289
+      maximum: 0.0035078525543213
   pimple:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.073415207862854
+      minimum: 0.070864915847778
+      maximum: 0.081172943115234
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.070657467842102
+      minimum: 0.070104122161865
+      maximum: 0.07354211807251
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 10.042813754082
+      minimum: 9.9113700389862
+      maximum: 10.218075037003
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 9.9797587633133
+      minimum: 9.7654991149902
+      maximum: 10.184823989868
     z26:
       average: 0
       minimum: 0
@@ -279,76 +279,76 @@ results:
       maximum: 0
   quickly.configured:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038156270980835
+      minimum: 0.0037388801574707
+      maximum: 0.0040891170501709
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0065507173538208
+      minimum: 0.0038418769836426
+      maximum: 0.0086579322814941
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038964033126831
+      minimum: 0.0038650035858154
+      maximum: 0.0039830207824707
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0045932054519653
+      minimum: 0.0044889450073242
+      maximum: 0.0052320957183838
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038417100906372
+      minimum: 0.0037870407104492
+      maximum: 0.0039668083190918
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0046015501022339
+      minimum: 0.0043890476226807
+      maximum: 0.0051960945129395
   quickly.reflection:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038866996765137
+      minimum: 0.0038208961486816
+      maximum: 0.0041680335998535
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0039863348007202
+      minimum: 0.0038881301879883
+      maximum: 0.0045590400695801
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.00395667552948
+      minimum: 0.0038042068481445
+      maximum: 0.0047369003295898
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0039551258087158
+      minimum: 0.0038549900054932
+      maximum: 0.0045630931854248
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0038587331771851
+      minimum: 0.0038008689880371
+      maximum: 0.0040810108184814
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.004108190536499
+      minimum: 0.0039839744567871
+      maximum: 0.0047190189361572
   symfony.compiled:
     f06:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0022206544876099
+      minimum: 0.002065896987915
+      maximum: 0.0027878284454346
     f06_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0071131944656372
+      minimum: 0.0057861804962158
+      maximum: 0.018503904342651
     p16:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0024455308914185
+      minimum: 0.0021789073944092
+      maximum: 0.0038740634918213
     p16_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0071733951568604
+      minimum: 0.0058050155639648
+      maximum: 0.01838207244873
     z26:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0021718978881836
+      minimum: 0.0021529197692871
+      maximum: 0.0022430419921875
     z26_startup:
-      average: 0
-      minimum: 0
-      maximum: 0
+      average: 0.0072084426879883
+      minimum: 0.0058801174163818
+      maximum: 0.018515110015869
