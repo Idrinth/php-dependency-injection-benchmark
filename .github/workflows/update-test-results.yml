@@ -39,7 +39,7 @@ jobs:
                     - dice
                     - laminas-servicemanager
                     - league-container
-                    - phalcon
+                    #- phalcon
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -67,6 +67,12 @@ jobs:
                     - quickly.reflection
                     - symfony.compiled
                     - laravel.singletons
+                    - aura-di
+                    - auryn
+                    - dice
+                    - laminas-servicemanager
+                    - league-container
+                    #- phalcon
                 test:
                     - f06
                     - f06_startup
