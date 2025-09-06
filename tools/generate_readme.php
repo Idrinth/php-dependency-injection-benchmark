@@ -95,6 +95,9 @@ foreach ($tests as $testKey => $info) {
             continue;
         }
         $t = $stats[$testKey];
+        if ($t['average'] == 0 && $t['minimum'] == 0 && $t['maximum'] == 0) {
+            continue;
+        }
         $version = '';
         if (isset($depVersions[$container])) {
             $version = reset($depVersions[$container]);

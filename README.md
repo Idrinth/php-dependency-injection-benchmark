@@ -26,7 +26,7 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 3ms 260ns | 3ms 34ns | 4ms 131ns |
 | symfony(compiled) | ^7.0 | 2ms 556ns | 2ms 946ns | 4ms 824ns |
 
-![f06](images/speed_comparison_without_startup06.jpg)
+![f06](speed_comparison_without_startup06.jpg)
 
 ## f06 startup
 
@@ -46,84 +46,70 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 4ms 313ns | 3ms 994ns | 5ms 139ns |
 | symfony(compiled) | ^7.0 | 7ms 9ns | 5ms 80ns | 18ms 973ns |
 
-![f06 startup](images/speed_comparison_with_startup06.jpg)
+![f06 startup](speed_comparison_with_startup06.jpg)
 
 ## p16
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 1ms 601ns | 1ms 972ns | 5ms 46ns |
-| auryn | ^1.4 | 56s 920ms 72ns | 56s 62ms 998ns | 57s 731ms 930ns |
-| dice | ^4.0 | 10s 58ms 983ns | 9s 887ms 827ns | 10s 231ms 972ns |
-| laminas-servicemanager | ^3.21 | 516ns | 906ns | 67ns |
-| laravel(singletons) | ^12.28 | 3ms 74ns | 3ms 943ns | 3ms 963ns |
-| laravel(unconfigured) | ^12.28 | 0ns | 0ns | 0ns |
-| league-container | ^5.1 | 94s 554ms 284ns | 92s 884ms 926ns | 95s 842ms 819ns |
-| nette-di | ^3.2 | 3ms 643ns | 3ms 969ns | 3ms 124ns |
-| php-di | ^7.0 | 269ns | 132ns | 1ms 922ns |
-| pimple | ^3.5 | 9s 965ms 140ns | 9s 590ms 149ns | 10s 140ms 48ns |
-| quickly(configured) | dev-master | 3ms 12ns | 3ms 982ns | 3ms 198ns |
-| quickly(reflection) | dev-master | 3ms 203ns | 3ms 40ns | 4ms 916ns |
-| symfony(compiled) | ^7.0 | 2ms 128ns | 2ms 14ns | 2ms 96ns |
+| aura-di | ^5.0 | 0.001935601234436 | 0.0015239715576172 | 0.0053360462188721 |
+| auryn | ^1.4 | 56.920225071907 | 56.062252998352 | 57.731900930405 |
+| dice | ^4.0 | 10.058168983459 | 9.8878288269043 | 10.231369972229 |
+| laminas-servicemanager | ^3.21 | 0.00076651573181152 | 0.00073790550231934 | 0.00082206726074219 |
+| laravel(singletons) | ^12.28 | 0.0037410736083984 | 0.0036449432373047 | 0.0038349628448486 |
+| league-container | ^5.1 | 94.554370284081 | 92.884249925613 | 95.842878818512 |
+| nette-di | ^3.2 | 0.0034586429595947 | 0.00341796875 | 0.0034971237182617 |
+| php-di | ^7.0 | 0.00091826915740967 | 0.00076413154602051 | 0.00124192237854 |
+| pimple | ^3.5 | 9.9657631397247 | 9.5901031494141 | 10.140274047852 |
+| quickly(configured) | dev-master | 0.0038540124893188 | 0.0038139820098877 | 0.0039381980895996 |
+| quickly(reflection) | dev-master | 0.0038012027740479 | 0.0037510395050049 | 0.0040109157562256 |
+| symfony(compiled) | ^7.0 | 0.0022711277008057 | 0.0021870136260986 | 0.002669095993042 |
 
-![p16](images/speed_comparison_without_startup16.jpg)
+![p16](speed_comparison_without_startup16.jpg)
 
 ## p16 startup
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 5ms 109ns | 5ms 967ns | 6ms 59ns |
-| auryn | ^1.4 | 56s 921ms 734ns | 56s 350ms 901ns | 57s 453ms 15ns |
-| dice | ^4.0 | 10s 63ms 418ns | 9s 920ms 98ns | 10s 177ms 944ns |
-| laminas-servicemanager | ^3.21 | 119ns | 81ns | 1ms 123ns |
-| laravel(singletons) | ^12.28 | 4ms 823ns | 4ms 899ns | 5ms 918ns |
-| laravel(unconfigured) | ^12.28 | 0ns | 0ns | 0ns |
-| league-container | ^5.1 | 94s 636ms 43ns | 93s 666ms 902ns | 95s 411ms 172ns |
-| nette-di | ^3.2 | 5ms 613ns | 3ms 843ns | 23ms 11ns |
-| php-di | ^7.0 | 1ms 216ns | 63ns | 3ms 187ns |
-| pimple | ^3.5 | 10s 26ms 382ns | 9s 865ms 48ns | 10s 520ms 842ns |
-| quickly(configured) | dev-master | 3ms 894ns | 3ms 883ns | 4ms 817ns |
-| quickly(reflection) | dev-master | 3ms 201ns | 3ms 904ns | 4ms 909ns |
-| symfony(compiled) | ^7.0 | 7ms 339ns | 5ms 59ns | 18ms 109ns |
+| aura-di | ^5.0 | 0.0053651094436646 | 0.0051369667053223 | 0.0067150592803955 |
+| auryn | ^1.4 | 56.921222734451 | 56.350102901459 | 57.453171014786 |
+| dice | ^4.0 | 10.063756418228 | 9.9208590984344 | 10.177135944366 |
+| laminas-servicemanager | ^3.21 | 0.00093011856079102 | 0.00083208084106445 | 0.0017061233520508 |
+| laravel(singletons) | ^12.28 | 0.0048728227615356 | 0.0047008991241455 | 0.00506591796875 |
+| league-container | ^5.1 | 94.63632004261 | 93.666184902191 | 95.411398172379 |
+| nette-di | ^3.2 | 0.0055256128311157 | 0.0034308433532715 | 0.023674011230469 |
+| php-di | ^7.0 | 0.0011602163314819 | 0.00088906288146973 | 0.0034031867980957 |
+| pimple | ^3.5 | 10.026159381866 | 9.8651690483093 | 10.520985841751 |
+| quickly(configured) | dev-master | 0.0039068937301636 | 0.0038108825683594 | 0.004429817199707 |
+| quickly(reflection) | dev-master | 0.0039932012557983 | 0.0038619041442871 | 0.0046029090881348 |
+| symfony(compiled) | ^7.0 | 0.007149338722229 | 0.0057320594787598 | 0.01869010925293 |
 
-![p16 startup](images/speed_comparison_with_startup16.jpg)
+![p16 startup](speed_comparison_with_startup16.jpg)
 
 ## z26
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 343ms 736ns | 1ms 985ns | 3s 425ms 970ns |
-| auryn | ^1.4 | 0ns | 0ns | 0ns |
-| dice | ^4.0 | 0ns | 0ns | 0ns |
-| laminas-servicemanager | ^3.21 | 298ns | 839ns | 949ns |
-| laravel(singletons) | ^12.28 | 0ns | 0ns | 0ns |
-| laravel(unconfigured) | ^12.28 | 0ns | 0ns | 0ns |
-| league-container | ^5.1 | 0ns | 0ns | 0ns |
-| nette-di | ^3.2 | 3ms 709ns | 3ms 51ns | 3ms 0ns |
-| php-di | ^7.0 | 595ns | 972ns | 1ms 11ns |
-| pimple | ^3.5 | 0ns | 0ns | 0ns |
-| quickly(configured) | dev-master | 3ms 602ns | 3ms 48ns | 3ms 131ns |
-| quickly(reflection) | dev-master | 3ms 581ns | 3ms 16ns | 4ms 58ns |
-| symfony(compiled) | ^7.0 | 2ms 569ns | 2ms 38ns | 2ms 796ns |
+| aura-di | ^5.0 | 0.3439067363739 | 0.0015339851379395 | 3.4251179695129 |
+| laminas-servicemanager | ^3.21 | 0.00076429843902588 | 0.00072383880615234 | 0.0008399486541748 |
+| nette-di | ^3.2 | 0.0033317089080811 | 0.003303050994873 | 0.003371000289917 |
+| php-di | ^7.0 | 0.00084259510040283 | 0.00075197219848633 | 0.0013070106506348 |
+| quickly(configured) | dev-master | 0.0038496017456055 | 0.0037920475006104 | 0.0039241313934326 |
+| quickly(reflection) | dev-master | 0.0039045810699463 | 0.0038390159606934 | 0.0041160583496094 |
+| symfony(compiled) | ^7.0 | 0.0021575689315796 | 0.0021350383758545 | 0.0022017955780029 |
 
-![z26](images/speed_comparison_without_startup26.jpg)
+![z26](speed_comparison_without_startup26.jpg)
 
 ## z26 startup
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 3s 395ms 80ns | 3s 354ms 969ns | 3s 424ms 832ns |
-| auryn | ^1.4 | 0ns | 0ns | 0ns |
-| dice | ^4.0 | 0ns | 0ns | 0ns |
-| laminas-servicemanager | ^3.21 | 619ns | 154ns | 1ms 231ns |
-| laravel(singletons) | ^12.28 | 0ns | 0ns | 0ns |
-| laravel(unconfigured) | ^12.28 | 0ns | 0ns | 0ns |
-| league-container | ^5.1 | 0ns | 0ns | 0ns |
-| nette-di | ^3.2 | 5ms 286ns | 3ms 922ns | 23ms 964ns |
-| php-di | ^7.0 | 1ms 198ns | 985ns | 3ms 226ns |
-| pimple | ^3.5 | 0ns | 0ns | 0ns |
-| quickly(configured) | dev-master | 3ms 695ns | 3ms 196ns | 4ms 134ns |
-| quickly(reflection) | dev-master | 4ms 717ns | 4ms 8ns | 4ms 985ns |
-| symfony(compiled) | ^7.0 | 7ms 726ns | 5ms 88ns | 18ms 31ns |
+| aura-di | ^5.0 | 3.3955820798874 | 3.3548929691315 | 3.4243848323822 |
+| laminas-servicemanager | ^3.21 | 0.00096561908721924 | 0.00085115432739258 | 0.0017502307891846 |
+| nette-di | ^3.2 | 0.0055302858352661 | 0.0034189224243164 | 0.023849964141846 |
+| php-di | ^7.0 | 0.001199197769165 | 0.00093698501586914 | 0.0033972263336182 |
+| quickly(configured) | dev-master | 0.0039886951446533 | 0.0038661956787109 | 0.0045931339263916 |
+| quickly(reflection) | dev-master | 0.0041807174682617 | 0.0040090084075928 | 0.0049049854278564 |
+| symfony(compiled) | ^7.0 | 0.0072067260742188 | 0.0057880878448486 | 0.01891303062439 |
 
-![z26 startup](images/speed_comparison_with_startup26.jpg)
+![z26 startup](speed_comparison_with_startup26.jpg)
