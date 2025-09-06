@@ -69,12 +69,12 @@ if ($depVersions) {
 }
 $results = $data['results'] ?? [];
 $tests = [
-    'f06' => ['title' => 'f06', 'image' => 'speed_comparison_without_startup06.png'],
-    'f06_startup' => ['title' => 'f06 startup', 'image' => 'speed_comparison_with_startup06.png'],
-    'p16' => ['title' => 'p16', 'image' => 'speed_comparison_without_startup16.png'],
-    'p16_startup' => ['title' => 'p16 startup', 'image' => 'speed_comparison_with_startup16.png'],
-    'z26' => ['title' => 'z26', 'image' => 'speed_comparison_without_startup26.png'],
-    'z26_startup' => ['title' => 'z26 startup', 'image' => 'speed_comparison_with_startup26.png'],
+    'f06' => ['title' => 'f06', 'image' => 'speed_comparison_without_startup06.jpg'],
+    'f06_startup' => ['title' => 'f06 startup', 'image' => 'speed_comparison_with_startup06.jpg'],
+    'p16' => ['title' => 'p16', 'image' => 'speed_comparison_without_startup16.jpg'],
+    'p16_startup' => ['title' => 'p16 startup', 'image' => 'speed_comparison_with_startup16.jpg'],
+    'z26' => ['title' => 'z26', 'image' => 'speed_comparison_without_startup26.jpg'],
+    'z26_startup' => ['title' => 'z26 startup', 'image' => 'speed_comparison_with_startup26.jpg'],
 ];
 foreach ($tests as $testKey => $info) {
     $lines[] = '## ' . $info['title'];
