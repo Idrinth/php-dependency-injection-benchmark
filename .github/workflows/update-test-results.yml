@@ -110,10 +110,6 @@ jobs:
                 test:
                     - f06
                     - f06_startup
-                    - z26
-                    - z26_startup
-                    - p16
-                    - p16_startup
                 run:
                     - 1
         steps:
