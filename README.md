@@ -26,7 +26,7 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 0.0038612604141235 | 0.0037820339202881 | 0.0040991306304932 |
 | symfony(compiled) | ^7.0 | 0.0026045560836792 | 0.0021369457244873 | 0.0040488243103027 |
 
-![f06](images/speed_comparison_without_startup06.jpg)
+![f06](speed_comparison_without_startup06.jpg)
 
 ## f06 startup
 
@@ -46,7 +46,7 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 0.0044793128967285 | 0.0039629936218262 | 0.0059311389923096 |
 | symfony(compiled) | ^7.0 | 0.0071170091629028 | 0.0057470798492432 | 0.018764972686768 |
 
-![f06 startup](images/speed_comparison_with_startup06.jpg)
+![f06 startup](speed_comparison_with_startup06.jpg)
 
 ## p16
 
@@ -57,7 +57,6 @@ This repository benchmarks different dependency injection containers.
 | dice | ^4.0 | 10.058168983459 | 9.8878288269043 | 10.231369972229 |
 | laminas-servicemanager | ^3.21 | 0.00076651573181152 | 0.00073790550231934 | 0.00082206726074219 |
 | laravel(singletons) | ^12.28 | 0.0037410736083984 | 0.0036449432373047 | 0.0038349628448486 |
-| laravel(unconfigured) | ^12.28 | 0 | 0 | 0 |
 | league-container | ^5.1 | 94.554370284081 | 92.884249925613 | 95.842878818512 |
 | nette-di | ^3.2 | 0.0034586429595947 | 0.00341796875 | 0.0034971237182617 |
 | php-di | ^7.0 | 0.00091826915740967 | 0.00076413154602051 | 0.00124192237854 |
@@ -66,7 +65,7 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 0.0038012027740479 | 0.0037510395050049 | 0.0040109157562256 |
 | symfony(compiled) | ^7.0 | 0.0022711277008057 | 0.0021870136260986 | 0.002669095993042 |
 
-![p16](images/speed_comparison_without_startup16.jpg)
+![p16](speed_comparison_without_startup16.jpg)
 
 ## p16 startup
 
@@ -77,7 +76,6 @@ This repository benchmarks different dependency injection containers.
 | dice | ^4.0 | 10.063756418228 | 9.9208590984344 | 10.177135944366 |
 | laminas-servicemanager | ^3.21 | 0.00093011856079102 | 0.00083208084106445 | 0.0017061233520508 |
 | laravel(singletons) | ^12.28 | 0.0048728227615356 | 0.0047008991241455 | 0.00506591796875 |
-| laravel(unconfigured) | ^12.28 | 0 | 0 | 0 |
 | league-container | ^5.1 | 94.63632004261 | 93.666184902191 | 95.411398172379 |
 | nette-di | ^3.2 | 0.0055256128311157 | 0.0034308433532715 | 0.023674011230469 |
 | php-di | ^7.0 | 0.0011602163314819 | 0.00088906288146973 | 0.0034031867980957 |
@@ -86,44 +84,32 @@ This repository benchmarks different dependency injection containers.
 | quickly(reflection) | dev-master | 0.0039932012557983 | 0.0038619041442871 | 0.0046029090881348 |
 | symfony(compiled) | ^7.0 | 0.007149338722229 | 0.0057320594787598 | 0.01869010925293 |
 
-![p16 startup](images/speed_comparison_with_startup16.jpg)
+![p16 startup](speed_comparison_with_startup16.jpg)
 
 ## z26
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 0.3439067363739 | 0.0015339851379395 | 3.4251179695129 |
-| auryn | ^1.4 | 0 | 0 | 0 |
-| dice | ^4.0 | 0 | 0 | 0 |
 | laminas-servicemanager | ^3.21 | 0.00076429843902588 | 0.00072383880615234 | 0.0008399486541748 |
-| laravel(singletons) | ^12.28 | 0 | 0 | 0 |
-| laravel(unconfigured) | ^12.28 | 0 | 0 | 0 |
-| league-container | ^5.1 | 0 | 0 | 0 |
 | nette-di | ^3.2 | 0.0033317089080811 | 0.003303050994873 | 0.003371000289917 |
 | php-di | ^7.0 | 0.00084259510040283 | 0.00075197219848633 | 0.0013070106506348 |
-| pimple | ^3.5 | 0 | 0 | 0 |
 | quickly(configured) | dev-master | 0.0038496017456055 | 0.0037920475006104 | 0.0039241313934326 |
 | quickly(reflection) | dev-master | 0.0039045810699463 | 0.0038390159606934 | 0.0041160583496094 |
 | symfony(compiled) | ^7.0 | 0.0021575689315796 | 0.0021350383758545 | 0.0022017955780029 |
 
-![z26](images/speed_comparison_without_startup26.jpg)
+![z26](speed_comparison_without_startup26.jpg)
 
 ## z26 startup
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 3.3955820798874 | 3.3548929691315 | 3.4243848323822 |
-| auryn | ^1.4 | 0 | 0 | 0 |
-| dice | ^4.0 | 0 | 0 | 0 |
 | laminas-servicemanager | ^3.21 | 0.00096561908721924 | 0.00085115432739258 | 0.0017502307891846 |
-| laravel(singletons) | ^12.28 | 0 | 0 | 0 |
-| laravel(unconfigured) | ^12.28 | 0 | 0 | 0 |
-| league-container | ^5.1 | 0 | 0 | 0 |
 | nette-di | ^3.2 | 0.0055302858352661 | 0.0034189224243164 | 0.023849964141846 |
 | php-di | ^7.0 | 0.001199197769165 | 0.00093698501586914 | 0.0033972263336182 |
-| pimple | ^3.5 | 0 | 0 | 0 |
 | quickly(configured) | dev-master | 0.0039886951446533 | 0.0038661956787109 | 0.0045931339263916 |
 | quickly(reflection) | dev-master | 0.0041807174682617 | 0.0040090084075928 | 0.0049049854278564 |
 | symfony(compiled) | ^7.0 | 0.0072067260742188 | 0.0057880878448486 | 0.01891303062439 |
 
-![z26 startup](images/speed_comparison_with_startup26.jpg)
+![z26 startup](speed_comparison_with_startup26.jpg)
