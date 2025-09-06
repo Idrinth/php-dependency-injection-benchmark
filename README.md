@@ -10,6 +10,8 @@ This repository benchmarks different dependency injection containers.
 
 ## f06
 
+Small dependency graph including 6 classes total (excluding container startup time)
+
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 1ms 592ns | 1ms 960ns | 1ms 927ns |
@@ -29,6 +31,8 @@ This repository benchmarks different dependency injection containers.
 ![f06](images/speed_comparison_without_startup06.jpg)
 
 ## f06 startup
+
+Small dependency graph including 6 classes total (includes container startup time)
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -50,6 +54,8 @@ This repository benchmarks different dependency injection containers.
 
 ## p16
 
+Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
+
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 1ms 601ns | 1ms 972ns | 5ms 46ns |
@@ -69,6 +75,8 @@ This repository benchmarks different dependency injection containers.
 ![p16](images/speed_comparison_without_startup16.jpg)
 
 ## p16 startup
+
+Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -90,6 +98,8 @@ This repository benchmarks different dependency injection containers.
 
 ## z26
 
+Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
+
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 343ms 736ns | 1ms 985ns | 3s 425ms 970ns |
@@ -109,6 +119,8 @@ This repository benchmarks different dependency injection containers.
 ![z26](images/speed_comparison_without_startup26.jpg)
 
 ## z26 startup
+
+Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
