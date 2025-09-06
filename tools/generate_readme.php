@@ -51,21 +51,14 @@ $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
 $lines[] = 'This repository benchmarks different dependency injection containers.';
 $lines[] = '';
-if (!empty($data['php_version'])) {
-    $lines[] = 'Tested with PHP ' . $data['php_version'] . '.';
-    $lines[] = '';
-}
 $depVersions = $data['dependency_versions'] ?? [];
-if ($depVersions) {
-    $lines[] = '## Dependency Versions';
+if (!empty($data['php_version'])) {
+    $lines[] = '## Environment';
     $lines[] = '';
-    foreach ($depVersions as $container => $deps) {
-        $lines[] = '- **' . format_name($container) . '**';
-        foreach ($deps as $dep => $version) {
-            $lines[] = '  - `' . $dep . '`: `' . $version . '`';
-        }
-        $lines[] = '';
-    }
+    $lines[] = '| Component | Version |';
+    $lines[] = '| --- | --- |';
+    $lines[] = '| PHP | ' . $data['php_version'] . ' |';
+    $lines[] = '';
 }
 $results = $data['results'] ?? [];
 $tests = [
@@ -79,16 +72,21 @@ $tests = [
 foreach ($tests as $testKey => $info) {
     $lines[] = '## ' . $info['title'];
     $lines[] = '';
-    $lines[] = '| Container | Average | Minimum | Maximum |';
-    $lines[] = '| --- | --- | --- | --- |';
+    $lines[] = '| Container | Version | Average | Minimum | Maximum |';
+    $lines[] = '| --- | --- | --- | --- | --- |';
     foreach ($results as $container => $stats) {
         if (!isset($stats[$testKey])) {
             continue;
         }
         $t = $stats[$testKey];
+        $version = '';
+        if (isset($depVersions[$container])) {
+            $version = reset($depVersions[$container]);
+        }
         $lines[] = sprintf(
-            '| %s | %s | %s | %s |',
+            '| %s | %s | %s | %s | %s |',
             format_name($container),
+            $version,
             $t['average'],
             $t['minimum'],
             $t['maximum']
