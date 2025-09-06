@@ -10,25 +10,41 @@ function format_name(string $name): string {
     return $name;
 }
 
-$files = glob('*.json');
-if (!$files) {
-    throw new RuntimeException('No benchmark result files found');
+function parse_run_summary(string $filename): array {
+    $lines = file($filename);
+    $containers = [];
+    $values = [];
+    $inResults = false;
+    $currentContainer = null;
+    $currentMetric = null;
+    foreach ($lines as $line) {
+        if (!$inResults) {
+            if (preg_match('/^results:/', $line)) {
+                $inResults = true;
+            }
+            continue;
+        }
+        if (preg_match('/^\s{2}([a-z0-9\.\-]+):\s*$/i', $line, $m)) {
+            $currentContainer = $m[1];
+            $containers[] = $currentContainer;
+            continue;
+        }
+        if (preg_match('/^\s{4}([a-z0-9_]+):\s*$/i', $line, $m)) {
+            $currentMetric = $m[1];
+            continue;
+        }
+        if (preg_match('/^\s{6}average:\s*([0-9\.]+)/i', $line, $m)) {
+            $values[$currentContainer][$currentMetric] = (float) $m[1];
+        }
+    }
+    return [$containers, $values];
 }
-sort($files);
-$containers = array_map(fn($f) => pathinfo($f, PATHINFO_FILENAME), $files);
-$displayNames = array_map('format_name', $containers);
 
-function extract_averages(string $filename): array {
-    $data = json_decode(file_get_contents($filename), true);
-    return [
-        'f06' => $data['f06']['average'] ?? null,
-        'f06_startup' => $data['f06_startup']['average'] ?? null,
-        'z26' => $data['z26']['average'] ?? null,
-        'z26_startup' => $data['z26_startup']['average'] ?? null,
-        'p16' => $data['p16']['average'] ?? null,
-        'p16_startup' => $data['p16_startup']['average'] ?? null,
-    ];
+[$containers, $summary] = parse_run_summary('run_summary.yaml');
+if (!$containers) {
+    throw new RuntimeException('No benchmark data found in run_summary.yaml');
 }
+$displayNames = array_map('format_name', $containers);
 
 function nice_number(float $value): float {
     $exponent = floor(log10($value));
@@ -52,13 +68,13 @@ $withStartup26 = [];
 $withoutStartup16 = [];
 $withStartup16 = [];
 foreach ($containers as $container) {
-    $values = extract_averages("$container.json");
-    $withoutStartup06[] = $values['f06'];
-    $withStartup06[] = $values['f06_startup'];
-    $withoutStartup26[] = $values['z26'];
-    $withStartup26[] = $values['z26_startup'];
-    $withoutStartup16[] = $values['p16'];
-    $withStartup16[] = $values['p16_startup'];
+    $values = $summary[$container] ?? [];
+    $withoutStartup06[] = $values['f06'] ?? null;
+    $withStartup06[] = $values['f06_startup'] ?? null;
+    $withoutStartup26[] = $values['z26'] ?? null;
+    $withStartup26[] = $values['z26_startup'] ?? null;
+    $withoutStartup16[] = $values['p16'] ?? null;
+    $withStartup16[] = $values['p16_startup'] ?? null;
 }
 
 function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
@@ -81,7 +97,7 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     $titleFont = 5;
     $fontWidth = imagefontwidth($titleFont);
     $titleWidth = $fontWidth * strlen($title);
-    imagestring($img, $titleFont, max(0, ($width - $titleWidth) / 2), 5, $title, $black);
+    imagestring($img, $titleFont, (int) max(0, ($width - $titleWidth) / 2), 5, $title, $black);
     imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10,000', $black);
 
     $validLogs = array_filter($values, fn($v) => $v !== null);
@@ -102,23 +118,23 @@ function create_bar_chart(array $values, string $title, string $filename, array 
             $logVal = -1 * $logVal;
         }
         $barHeight = ($logVal / $maxTick) * $plotHeight;
-        $x1 = $leftMargin + $spacing + $i * ($barWidth + $spacing);
-        $y1 = $topMargin + $plotHeight - $barHeight;
+        $x1 = (int) ($leftMargin + $spacing + $i * ($barWidth + $spacing));
+        $y1 = (int) ($topMargin + $plotHeight - $barHeight);
         $x2 = $x1 + $barWidth;
         $y2 = $topMargin + $plotHeight;
         imagefilledrectangle($img, $x1, $y1, $x2, $y2, $blue);
         $percentage = ($logVal / $maxLog) * 100;
         $percentageText = sprintf('%.1f%%', $percentage);
         $percentageWidth = imagefontwidth(2) * strlen($percentageText);
-        $percentageX = $x1 + ($barWidth - $percentageWidth) / 2;
-        $percentageY = $y1 - imagefontheight(2) - 2;
+        $percentageX = (int) ($x1 + ($barWidth - $percentageWidth) / 2);
+        $percentageY = (int) ($y1 - imagefontheight(2) - 2);
         imagestring($img, 2, $percentageX, $percentageY, $percentageText, $black);
         $labelLines = explode("\n", $labels[$i]);
         $labelY = $topMargin + $plotHeight + 5;
         foreach ($labelLines as $line) {
             $textWidth = imagefontwidth(2) * strlen($line);
-            $textX = $x1 + ($barWidth - $textWidth) / 2;
-            imagestring($img, 2, $textX, $labelY, $line, $black);
+            $textX = (int) ($x1 + ($barWidth - $textWidth) / 2);
+            imagestring($img, 2, $textX, (int) $labelY, $line, $black);
             $labelY += imagefontheight(2) + 2;
         }
     }
@@ -128,11 +144,11 @@ function create_bar_chart(array $values, string $title, string $filename, array 
 
     if ($tickStep > 0) {
         for ($tick = 0; $tick <= $maxTick; $tick += $tickStep) {
-            $y = $topMargin + $plotHeight - ($tick / $maxTick) * $plotHeight;
+            $y = (int) ($topMargin + $plotHeight - ($tick / $maxTick) * $plotHeight);
             imageline($img, $leftMargin - 5, $y, $leftMargin, $y, $black);
             $label = rtrim(rtrim(sprintf('%.2f', $tick), '0'), '.');
             $textWidth = imagefontwidth(2) * strlen($label);
-            imagestring($img, 2, $leftMargin - $textWidth - 10, $y - imagefontheight(2) / 2, $label, $black);
+            imagestring($img, 2, $leftMargin - $textWidth - 10, (int) ($y - imagefontheight(2) / 2), $label, $black);
         }
     }
 
@@ -140,9 +156,13 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     imagedestroy($img);
 }
 
-create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup06.jpg', $displayNames);
-create_bar_chart($withStartup06, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup06.jpg', $displayNames);
-create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup16.jpg', $displayNames);
-create_bar_chart($withStartup16, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup16.jpg', $displayNames);
-create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup26.jpg', $displayNames);
-create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup26.jpg', $displayNames);
+if (!is_dir('images')) {
+    mkdir('images');
+}
+
+create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup06.jpg', $displayNames);
+create_bar_chart($withStartup06, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup06.jpg', $displayNames);
+create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup16.jpg', $displayNames);
+create_bar_chart($withStartup16, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup16.jpg', $displayNames);
+create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup26.jpg', $displayNames);
+create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup26.jpg', $displayNames);
