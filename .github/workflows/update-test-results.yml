@@ -369,7 +369,7 @@ jobs:
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email \
                       'github-actions[bot]@users.noreply.github.com'
-                  git add README.md speed_comparison_*.jpg run_summary.yaml
+                  git add README.md images/speed_comparison_*.jpg run_summary.yaml
                   if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
                       git add archive
                   fi
