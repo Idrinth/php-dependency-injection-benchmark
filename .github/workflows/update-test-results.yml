@@ -57,7 +57,6 @@ jobs:
                     - auryn
                     - dice
                     - league-container
-                    - aura-di
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -78,6 +77,7 @@ jobs:
             matrix:
                 container:
                     - laravel.unconfigured
+                    - aura-di
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -225,7 +225,6 @@ jobs:
                     - auryn
                     - dice
                     - league-container
-                    - aura-di
                 test:
                     - f06
                     - f06_startup
@@ -308,6 +307,7 @@ jobs:
             matrix:
                 container:
                     - laravel.unconfigured
+                    - aura-di
                 test:
                     - f06
                     - f06_startup
