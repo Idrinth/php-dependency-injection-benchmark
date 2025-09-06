@@ -30,6 +30,21 @@ function extract_averages(string $filename): array {
     ];
 }
 
+function nice_number(float $value): float {
+    $exponent = floor(log10($value));
+    $fraction = $value / pow(10, $exponent);
+    if ($fraction <= 1) {
+        $niceFraction = 1;
+    } elseif ($fraction <= 2) {
+        $niceFraction = 2;
+    } elseif ($fraction <= 5) {
+        $niceFraction = 5;
+    } else {
+        $niceFraction = 10;
+    }
+    return $niceFraction * pow(10, $exponent);
+}
+
 $withoutStartup06 = [];
 $withStartup06 = [];
 $withoutStartup26 = [];
@@ -71,15 +86,22 @@ function create_bar_chart(array $values, string $title, string $filename, array 
 
     $validLogs = array_filter($values, fn($v) => $v !== null);
     $maxLog = $validLogs ? max($validLogs) : 0;
+    $tickStep = 0;
+    $maxTick = $maxLog;
+    if ($maxLog > 0) {
+        $tickStep = nice_number($maxLog / 5);
+        $maxTick = ceil($maxLog / $tickStep) * $tickStep;
+    }
+
     for ($i = 0; $i < $count; $i++) {
         $logVal = $values[$i];
-        if ($logVal === null || $maxLog <= 0) {
+        if ($logVal === null || $maxTick <= 0) {
             continue;
         }
         if ($logVal < 0) {
             $logVal = -1 * $logVal;
         }
-        $barHeight = ($logVal / $maxLog) * $plotHeight;
+        $barHeight = ($logVal / $maxTick) * $plotHeight;
         $x1 = $leftMargin + $spacing + $i * ($barWidth + $spacing);
         $y1 = $topMargin + $plotHeight - $barHeight;
         $x2 = $x1 + $barWidth;
@@ -94,6 +116,20 @@ function create_bar_chart(array $values, string $title, string $filename, array 
             $labelY += imagefontheight(2) + 2;
         }
     }
+
+    imageline($img, $leftMargin, $topMargin, $leftMargin, $topMargin + $plotHeight, $black);
+    imageline($img, $leftMargin, $topMargin + $plotHeight, $width - $spacing, $topMargin + $plotHeight, $black);
+
+    if ($tickStep > 0) {
+        for ($tick = 0; $tick <= $maxTick; $tick += $tickStep) {
+            $y = $topMargin + $plotHeight - ($tick / $maxTick) * $plotHeight;
+            imageline($img, $leftMargin - 5, $y, $leftMargin, $y, $black);
+            $label = rtrim(rtrim(sprintf('%.2f', $tick), '0'), '.');
+            $textWidth = imagefontwidth(2) * strlen($label);
+            imagestring($img, 2, $leftMargin - $textWidth - 10, $y - imagefontheight(2) / 2, $label, $black);
+        }
+    }
+
     imagepng($img, $filename);
     imagedestroy($img);
 }
