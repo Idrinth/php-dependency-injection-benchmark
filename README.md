@@ -14,21 +14,21 @@ Small dependency graph including 6 classes total (excluding container startup ti
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 1ms 592ns | 1ms 960ns | 1ms 927ns |
-| auryn | ^1.4 | 406ms 943ns | 402ms 56ns | 413ms 7ns |
-| dice | ^4.0 | 71ms 0ns | 70ms 994ns | 72ms 26ns |
-| laminas-servicemanager | ^3.21 | 486ns | 972ns | 802ns |
-| laravel(singletons) | ^12.28 | 3ms 897ns | 3ms 936ns | 3ms 32ns |
-| laravel(unconfigured) | ^12.28 | 632ms 890ns | 625ms 960ns | 643ms 69ns |
-| league-container | ^5.1 | 663ms 997ns | 658ms 47ns | 667ms 33ns |
-| nette-di | ^3.2 | 3ms 110ns | 3ms 84ns | 3ms 999ns |
-| php-di | ^7.0 | 854ns | 855ns | 1ms 914ns |
-| pimple | ^3.5 | 72ms 664ns | 69ms 783ns | 76ms 881ns |
-| quickly(configured) | dev-master | 3ms 71ns | 3ms 1ns | 4ms 91ns |
-| quickly(reflection) | dev-master | 3ms 260ns | 3ms 34ns | 4ms 131ns |
-| symfony(compiled) | ^7.0 | 2ms 556ns | 2ms 946ns | 4ms 824ns |
+| aura-di | ^5.0 | 1ms 999ns | 1ms 47ns | 1ms 173ns |
+| auryn | ^1.4 | 403ms 495ns | 399ms 796ns | 407ms 998ns |
+| dice | ^4.0 | 71ms 136ns | 70ms 960ns | 72ms 65ns |
+| laminas-servicemanager | ^3.21 | 193ns | 5ns | 813ns |
+| laravel(singletons) | ^12.28 | 3ms 667ns | 3ms 30ns | 3ms 130ns |
+| laravel(unconfigured) | ^12.28 | 636ms 143ns | 628ms 28ns | 648ms 907ns |
+| league-container | ^5.1 | 664ms 445ns | 655ms 919ns | 671ms 880ns |
+| nette-di | ^3.2 | 3ms 12ns | 3ms 919ns | 3ms 946ns |
+| php-di | ^7.0 | 1ms 351ns | 1ms 804ns | 1ms 60ns |
+| pimple | ^3.5 | 72ms 920ns | 70ms 63ns | 84ms 836ns |
+| quickly(configured) | dev-master | 3ms 749ns | 3ms 32ns | 3ms 42ns |
+| quickly(reflection) | dev-master | 3ms 994ns | 3ms 182ns | 4ms 942ns |
+| symfony(compiled) | ^7.0 | 2ms 227ns | 2ms 953ns | 2ms 972ns |
 
-![f06](speed_comparison_without_startup06.jpg)
+![f06](images/speed_comparison_without_startup06.jpg)
 
 ## f06 startup
 
@@ -36,21 +36,21 @@ Small dependency graph including 6 classes total (includes container startup tim
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 1ms 912ns | 1ms 975ns | 3ms 162ns |
-| auryn | ^1.4 | 409ms 956ns | 404ms 988ns | 415ms 58ns |
-| dice | ^4.0 | 71ms 960ns | 70ms 970ns | 73ms 994ns |
-| laminas-servicemanager | ^3.21 | 544ns | 165ns | 1ms 850ns |
-| laravel(singletons) | ^12.28 | 3ms 831ns | 3ms 61ns | 4ms 172ns |
-| laravel(unconfigured) | ^12.28 | 636ms 378ns | 624ms 971ns | 662ms 115ns |
-| league-container | ^5.1 | 659ms 402ns | 656ms 940ns | 662ms 40ns |
-| nette-di | ^3.2 | 5ms 414ns | 3ms 26ns | 25ms 820ns |
-| php-di | ^7.0 | 1ms 892ns | 43ns | 3ms 940ns |
-| pimple | ^3.5 | 72ms 494ns | 70ms 872ns | 74ms 42ns |
-| quickly(configured) | dev-master | 3ms 372ns | 3ms 809ns | 4ms 967ns |
-| quickly(reflection) | dev-master | 4ms 313ns | 3ms 994ns | 5ms 139ns |
-| symfony(compiled) | ^7.0 | 7ms 9ns | 5ms 80ns | 18ms 973ns |
+| aura-di | ^5.0 | 1ms 839ns | 1ms 20ns | 3ms 766ns |
+| auryn | ^1.4 | 403ms 898ns | 399ms 942ns | 414ms 920ns |
+| dice | ^4.0 | 71ms 715ns | 69ms 958ns | 71ms 180ns |
+| laminas-servicemanager | ^3.21 | 516ns | 99ns | 1ms 996ns |
+| laravel(singletons) | ^12.28 | 3ms 882ns | 3ms 900ns | 6ms 904ns |
+| laravel(unconfigured) | ^12.28 | 626ms 17ns | 587ms 52ns | 638ms 36ns |
+| league-container | ^5.1 | 661ms 296ns | 655ms 56ns | 670ms 985ns |
+| nette-di | ^3.2 | 6ms 688ns | 3ms 183ns | 29ms 878ns |
+| php-di | ^7.0 | 1ms 603ns | 2ns | 3ms 966ns |
+| pimple | ^3.5 | 71ms 488ns | 69ms 947ns | 73ms 83ns |
+| quickly(configured) | dev-master | 4ms 754ns | 3ms 982ns | 5ms 852ns |
+| quickly(reflection) | dev-master | 3ms 282ns | 3ms 23ns | 4ms 964ns |
+| symfony(compiled) | ^7.0 | 7ms 807ns | 5ms 867ns | 18ms 131ns |
 
-![f06 startup](speed_comparison_with_startup06.jpg)
+![f06 startup](images/speed_comparison_with_startup06.jpg)
 
 ## p16
 
@@ -58,20 +58,19 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 0.001935601234436 | 0.0015239715576172 | 0.0053360462188721 |
-| auryn | ^1.4 | 56.920225071907 | 56.062252998352 | 57.731900930405 |
-| dice | ^4.0 | 10.058168983459 | 9.8878288269043 | 10.231369972229 |
-| laminas-servicemanager | ^3.21 | 0.00076651573181152 | 0.00073790550231934 | 0.00082206726074219 |
-| laravel(singletons) | ^12.28 | 0.0037410736083984 | 0.0036449432373047 | 0.0038349628448486 |
-| league-container | ^5.1 | 94.554370284081 | 92.884249925613 | 95.842878818512 |
-| nette-di | ^3.2 | 0.0034586429595947 | 0.00341796875 | 0.0034971237182617 |
-| php-di | ^7.0 | 0.00091826915740967 | 0.00076413154602051 | 0.00124192237854 |
-| pimple | ^3.5 | 9.9657631397247 | 9.5901031494141 | 10.140274047852 |
-| quickly(configured) | dev-master | 0.0038540124893188 | 0.0038139820098877 | 0.0039381980895996 |
-| quickly(reflection) | dev-master | 0.0038012027740479 | 0.0037510395050049 | 0.0040109157562256 |
-| symfony(compiled) | ^7.0 | 0.0022711277008057 | 0.0021870136260986 | 0.002669095993042 |
+| auryn | ^1.4 | 57s 30ms 311ns | 56s 188ms 961ns | 58s 444ms 102ns |
+| dice | ^4.0 | 10s 5ms 341ns | 9s 902ms 917ns | 10s 122ms 827ns |
+| laminas-servicemanager | ^3.21 | 934ns | 953ns | 128ns |
+| laravel(singletons) | ^12.28 | 3ms 345ns | 3ms 3ns | 3ms 193ns |
+| league-container | ^5.1 | 94s 663ms 136ns | 94s 0ms 952ns | 95s 480ms 926ns |
+| nette-di | ^3.2 | 3ms 346ns | 3ms 978ns | 5ms 903ns |
+| php-di | ^7.0 | 615ns | 946ns | 1ms 134ns |
+| pimple | ^3.5 | 10s 46ms 729ns | 9s 870ms 886ns | 10s 392ms 102ns |
+| quickly(configured) | dev-master | 3ms 228ns | 3ms 106ns | 3ms 863ns |
+| quickly(reflection) | dev-master | 3ms 806ns | 3ms 22ns | 4ms 951ns |
+| symfony(compiled) | ^7.0 | 2ms 562ns | 2ms 904ns | 2ms 14ns |
 
-![p16](speed_comparison_without_startup16.jpg)
+![p16](images/speed_comparison_without_startup16.jpg)
 
 ## p16 startup
 
@@ -79,20 +78,19 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 0.0053651094436646 | 0.0051369667053223 | 0.0067150592803955 |
-| auryn | ^1.4 | 56.921222734451 | 56.350102901459 | 57.453171014786 |
-| dice | ^4.0 | 10.063756418228 | 9.9208590984344 | 10.177135944366 |
-| laminas-servicemanager | ^3.21 | 0.00093011856079102 | 0.00083208084106445 | 0.0017061233520508 |
-| laravel(singletons) | ^12.28 | 0.0048728227615356 | 0.0047008991241455 | 0.00506591796875 |
-| league-container | ^5.1 | 94.63632004261 | 93.666184902191 | 95.411398172379 |
-| nette-di | ^3.2 | 0.0055256128311157 | 0.0034308433532715 | 0.023674011230469 |
-| php-di | ^7.0 | 0.0011602163314819 | 0.00088906288146973 | 0.0034031867980957 |
-| pimple | ^3.5 | 10.026159381866 | 9.8651690483093 | 10.520985841751 |
-| quickly(configured) | dev-master | 0.0039068937301636 | 0.0038108825683594 | 0.004429817199707 |
-| quickly(reflection) | dev-master | 0.0039932012557983 | 0.0038619041442871 | 0.0046029090881348 |
-| symfony(compiled) | ^7.0 | 0.007149338722229 | 0.0057320594787598 | 0.01869010925293 |
+| auryn | ^1.4 | 56s 521ms 934ns | 55s 994ms 925ns | 57s 433ms 905ns |
+| dice | ^4.0 | 9s 973ms 203ns | 9s 563ms 971ns | 10s 157ms 955ns |
+| laminas-servicemanager | ^3.21 | 734ns | 848ns | 1ms 832ns |
+| laravel(singletons) | ^12.28 | 3ms 28ns | 3ms 892ns | 4ms 995ns |
+| league-container | ^5.1 | 94s 372ms 312ns | 93s 901ms 907ns | 94s 966ms 1ns |
+| nette-di | ^3.2 | 5ms 303ns | 3ms 939ns | 23ms 40ns |
+| php-di | ^7.0 | 1ms 277ns | 104ns | 5ms 818ns |
+| pimple | ^3.5 | 10s 72ms 73ns | 9s 928ms 209ns | 10s 391ms 92ns |
+| quickly(configured) | dev-master | 4ms 570ns | 3ms 155ns | 5ms 993ns |
+| quickly(reflection) | dev-master | 4ms 571ns | 4ms 108ns | 5ms 21ns |
+| symfony(compiled) | ^7.0 | 7ms 787ns | 5ms 145ns | 25ms 133ns |
 
-![p16 startup](speed_comparison_with_startup16.jpg)
+![p16 startup](images/speed_comparison_with_startup16.jpg)
 
 ## z26
 
@@ -100,15 +98,15 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 0.3439067363739 | 0.0015339851379395 | 3.4251179695129 |
-| laminas-servicemanager | ^3.21 | 0.00076429843902588 | 0.00072383880615234 | 0.0008399486541748 |
-| nette-di | ^3.2 | 0.0033317089080811 | 0.003303050994873 | 0.003371000289917 |
-| php-di | ^7.0 | 0.00084259510040283 | 0.00075197219848633 | 0.0013070106506348 |
-| quickly(configured) | dev-master | 0.0038496017456055 | 0.0037920475006104 | 0.0039241313934326 |
-| quickly(reflection) | dev-master | 0.0039045810699463 | 0.0038390159606934 | 0.0041160583496094 |
-| symfony(compiled) | ^7.0 | 0.0021575689315796 | 0.0021350383758545 | 0.0022017955780029 |
+| laminas-servicemanager | ^3.21 | 87ns | 925ns | 901ns |
+| laravel(singletons) | ^12.28 | 3ms 920ns | 3ms 17ns | 3ms 112ns |
+| nette-di | ^3.2 | 3ms 53ns | 3ms 948ns | 3ms 906ns |
+| php-di | ^7.0 | 582ns | 185ns | 1ms 910ns |
+| quickly(configured) | dev-master | 3ms 234ns | 3ms 84ns | 4ms 2ns |
+| quickly(reflection) | dev-master | 3ms 109ns | 3ms 99ns | 4ms 11ns |
+| symfony(compiled) | ^7.0 | 2ms 687ns | 2ms 970ns | 2ms 871ns |
 
-![z26](speed_comparison_without_startup26.jpg)
+![z26](images/speed_comparison_without_startup26.jpg)
 
 ## z26 startup
 
@@ -116,12 +114,12 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 3.3955820798874 | 3.3548929691315 | 3.4243848323822 |
-| laminas-servicemanager | ^3.21 | 0.00096561908721924 | 0.00085115432739258 | 0.0017502307891846 |
-| nette-di | ^3.2 | 0.0055302858352661 | 0.0034189224243164 | 0.023849964141846 |
-| php-di | ^7.0 | 0.001199197769165 | 0.00093698501586914 | 0.0033972263336182 |
-| quickly(configured) | dev-master | 0.0039886951446533 | 0.0038661956787109 | 0.0045931339263916 |
-| quickly(reflection) | dev-master | 0.0041807174682617 | 0.0040090084075928 | 0.0049049854278564 |
-| symfony(compiled) | ^7.0 | 0.0072067260742188 | 0.0057880878448486 | 0.01891303062439 |
+| laminas-servicemanager | ^3.21 | 88ns | 876ns | 1ms 13ns |
+| laravel(singletons) | ^12.28 | 3ms 673ns | 3ms 3ns | 4ms 100ns |
+| nette-di | ^3.2 | 5ms 588ns | 3ms 896ns | 23ms 17ns |
+| php-di | ^7.0 | 1ms 385ns | 997ns | 3ms 973ns |
+| quickly(configured) | dev-master | 3ms 911ns | 3ms 76ns | 4ms 42ns |
+| quickly(reflection) | dev-master | 3ms 539ns | 3ms 77ns | 4ms 9ns |
+| symfony(compiled) | ^7.0 | 7ms 432ns | 5ms 14ns | 18ms 91ns |
 
-![z26 startup](speed_comparison_with_startup26.jpg)
+![z26 startup](images/speed_comparison_with_startup26.jpg)
