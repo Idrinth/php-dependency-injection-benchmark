@@ -63,7 +63,7 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0038612604141235 | 0.0037820339202881 | 0.0040991306304932 |
 | symfony(compiled) | 0.0026045560836792 | 0.0021369457244873 | 0.0040488243103027 |
 
-![f06](speed_comparison_without_startup06.png)
+![f06](speed_comparison_without_startup06.jpg)
 
 ## f06 startup
 
@@ -83,7 +83,7 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0044793128967285 | 0.0039629936218262 | 0.0059311389923096 |
 | symfony(compiled) | 0.0071170091629028 | 0.0057470798492432 | 0.018764972686768 |
 
-![f06 startup](speed_comparison_with_startup06.png)
+![f06 startup](speed_comparison_with_startup06.jpg)
 
 ## p16
 
@@ -103,7 +103,7 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0038012027740479 | 0.0037510395050049 | 0.0040109157562256 |
 | symfony(compiled) | 0.0022711277008057 | 0.0021870136260986 | 0.002669095993042 |
 
-![p16](speed_comparison_without_startup16.png)
+![p16](speed_comparison_without_startup16.jpg)
 
 ## p16 startup
 
@@ -123,7 +123,7 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0039932012557983 | 0.0038619041442871 | 0.0046029090881348 |
 | symfony(compiled) | 0.007149338722229 | 0.0057320594787598 | 0.01869010925293 |
 
-![p16 startup](speed_comparison_with_startup16.png)
+![p16 startup](speed_comparison_with_startup16.jpg)
 
 ## z26
 
@@ -143,7 +143,7 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0039045810699463 | 0.0038390159606934 | 0.0041160583496094 |
 | symfony(compiled) | 0.0021575689315796 | 0.0021350383758545 | 0.0022017955780029 |
 
-![z26](speed_comparison_without_startup26.png)
+![z26](speed_comparison_without_startup26.jpg)
 
 ## z26 startup
 
@@ -163,4 +163,4 @@ Tested with PHP 8.4.
 | quickly(reflection) | 0.0041807174682617 | 0.0040090084075928 | 0.0049049854278564 |
 | symfony(compiled) | 0.0072067260742188 | 0.0057880878448486 | 0.01891303062439 |
 
-![z26 startup](speed_comparison_with_startup26.png)
+![z26 startup](speed_comparison_with_startup26.jpg)
