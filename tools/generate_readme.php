@@ -78,15 +78,43 @@ if (!empty($data['php_version'])) {
 }
 $results = $data['results'] ?? [];
 $tests = [
-    'f06' => ['title' => 'f06', 'image' => 'images/speed_comparison_without_startup06.jpg'],
-    'f06_startup' => ['title' => 'f06 startup', 'image' => 'images/speed_comparison_with_startup06.jpg'],
-    'p16' => ['title' => 'p16', 'image' => 'images/speed_comparison_without_startup16.jpg'],
-    'p16_startup' => ['title' => 'p16 startup', 'image' => 'images/speed_comparison_with_startup16.jpg'],
-    'z26' => ['title' => 'z26', 'image' => 'images/speed_comparison_without_startup26.jpg'],
-    'z26_startup' => ['title' => 'z26 startup', 'image' => 'images/speed_comparison_with_startup26.jpg'],
+    'f06' => [
+        'title' => 'f06',
+        'image' => 'images/speed_comparison_without_startup06.jpg',
+        'description' => 'Small dependency graph including 6 classes total (excluding container startup time)'
+    ],
+    'f06_startup' => [
+        'title' => 'f06 startup',
+        'image' => 'images/speed_comparison_with_startup06.jpg',
+        'description' => 'Small dependency graph including 6 classes total (includes container startup time)'
+    ],
+    'p16' => [
+        'title' => 'p16',
+        'image' => 'images/speed_comparison_without_startup16.jpg',
+        'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)'
+    ],
+    'p16_startup' => [
+        'title' => 'p16 startup',
+        'image' => 'images/speed_comparison_with_startup16.jpg',
+        'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)'
+    ],
+    'z26' => [
+        'title' => 'z26',
+        'image' => 'images/speed_comparison_without_startup26.jpg',
+        'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)'
+    ],
+    'z26_startup' => [
+        'title' => 'z26 startup',
+        'image' => 'images/speed_comparison_with_startup26.jpg',
+        'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)'
+    ],
 ];
 foreach ($tests as $testKey => $info) {
     $lines[] = '## ' . $info['title'];
+    if (!empty($info['description'])) {
+        $lines[] = '';
+        $lines[] = $info['description'];
+    }
     $lines[] = '';
     $lines[] = '| Container | Version | Average | Minimum | Maximum |';
     $lines[] = '| --- | --- | --- | --- | --- |';
