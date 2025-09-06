@@ -20,25 +20,19 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    build:
+    build-fast:
         if: github.actor != 'github-actions[bot]'
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 container:
-                    - laravel.unconfigured
-                    - laravel.singletons
                     - nette-di
                     - php-di
-                    - pimple
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - aura-di
-                    - auryn
-                    - dice
                     - laminas-servicemanager
-                    - league-container
+                    - laravel.singletons
                     #- phalcon
         steps:
             - uses: actions/checkout@v5
@@ -53,10 +47,54 @@ jobs:
               with:
                   name: di-benchmark-${{ matrix.container }}
                   path: di-benchmark-${{ matrix.container }}.tar
-
-    benchmark-fast:
+    build-medium:
         if: github.actor != 'github-actions[bot]'
-        needs: build
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - pimple
+                    - auryn
+                    - dice
+                    - league-container
+                    - aura-di
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
+    build-slow:
+        if: github.actor != 'github-actions[bot]'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laravel.unconfigured
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
+
+    benchmark-fast-06:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -66,8 +104,8 @@ jobs:
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - aura-di
                     - laminas-servicemanager
+                    - laravel.singletons
                     #- phalcon
                 test:
                     - f06
@@ -98,10 +136,91 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
+    benchmark-fast-16:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - nette-di
+                    - php-di
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - laminas-servicemanager
+                    - laravel.singletons
+                    #- phalcon
+                test:
+                    - p16
+                    - p16_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-fast-26:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - nette-di
+                    - php-di
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - laminas-servicemanager
+                    - laravel.singletons
+                    #- phalcon
+                test:
+                    - z26
+                    - z26_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
     benchmark-medium-06:
         if: github.actor != 'github-actions[bot]'
         needs:
-            - benchmark-fast
+            - build-medium
+            - benchmark-fast-06
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -110,7 +229,7 @@ jobs:
                     - auryn
                     - dice
                     - league-container
-                    - laravel.singletons
+                    - aura-di
                 test:
                     - f06
                     - f06_startup
@@ -140,7 +259,8 @@ jobs:
     benchmark-medium-16:
         if: github.actor != 'github-actions[bot]'
         needs:
-            - benchmark-fast
+            - benchmark-fast-16
+            - build-medium
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -149,7 +269,6 @@ jobs:
                     - auryn
                     - dice
                     - league-container
-                    - laravel.singletons
                 test:
                     - p16
                     - p16_startup
@@ -187,6 +306,7 @@ jobs:
         if: github.actor != 'github-actions[bot]'
         needs:
             - benchmark-medium-06
+            - build-slow
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -229,8 +349,7 @@ jobs:
     aggregate:
         if: github.actor != 'github-actions[bot]'
         needs:
-            - benchmark-fast
-            - benchmark-medium-06
+            - benchmark-fast-26
             - benchmark-medium-16
             - benchmark-slow-06
         runs-on: ubuntu-latest
