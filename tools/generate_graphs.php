@@ -85,6 +85,12 @@ function create_bar_chart(array $values, string $title, string $filename, array 
         $x2 = $x1 + $barWidth;
         $y2 = $topMargin + $plotHeight;
         imagefilledrectangle($img, $x1, $y1, $x2, $y2, $blue);
+        $percentage = ($logVal / $maxLog) * 100;
+        $percentageText = sprintf('%.1f%%', $percentage);
+        $percentageWidth = imagefontwidth(2) * strlen($percentageText);
+        $percentageX = $x1 + ($barWidth - $percentageWidth) / 2;
+        $percentageY = $y1 - imagefontheight(2) - 2;
+        imagestring($img, 2, $percentageX, $percentageY, $percentageText, $black);
         $labelLines = explode("\n", $labels[$i]);
         $labelY = $topMargin + $plotHeight + 5;
         foreach ($labelLines as $line) {
