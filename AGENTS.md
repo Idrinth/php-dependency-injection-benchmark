@@ -5,6 +5,7 @@ This repository contains PHP benchmark code. These instructions help maintain co
 ## General Guidelines
 - Use four spaces for indentation.
 - Ensure files end with a newline.
+- Do not commit binary files such as images; generate them as needed outside of version control.
 
 ## Testing
 - When modifying PHP source files, run `php -l` on each changed file to verify syntax.
