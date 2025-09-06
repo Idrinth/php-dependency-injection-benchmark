@@ -44,6 +44,22 @@ function format_name(string $name): string {
     return $name;
 }
 
+function format_time(float $seconds): string {
+    $totalNs = (int) round($seconds * 1000000000);
+    $s = intdiv($totalNs, 1000000000);
+    $ms = intdiv($totalNs % 1000000000, 1000000);
+    $ns = $totalNs % 1000;
+    $parts = [];
+    if ($s > 0) {
+        $parts[] = $s . 's';
+    }
+    if ($ms > 0 || $s > 0) {
+        $parts[] = $ms . 'ms';
+    }
+    $parts[] = $ns . 'ns';
+    return implode(' ', $parts);
+}
+
 $data = parse_simple_yaml('run_summary.yaml');
 
 $lines = [];
@@ -62,12 +78,12 @@ if (!empty($data['php_version'])) {
 }
 $results = $data['results'] ?? [];
 $tests = [
-    'f06' => ['title' => 'f06', 'image' => 'speed_comparison_without_startup06.jpg'],
-    'f06_startup' => ['title' => 'f06 startup', 'image' => 'speed_comparison_with_startup06.jpg'],
-    'p16' => ['title' => 'p16', 'image' => 'speed_comparison_without_startup16.jpg'],
-    'p16_startup' => ['title' => 'p16 startup', 'image' => 'speed_comparison_with_startup16.jpg'],
-    'z26' => ['title' => 'z26', 'image' => 'speed_comparison_without_startup26.jpg'],
-    'z26_startup' => ['title' => 'z26 startup', 'image' => 'speed_comparison_with_startup26.jpg'],
+    'f06' => ['title' => 'f06', 'image' => 'images/speed_comparison_without_startup06.jpg'],
+    'f06_startup' => ['title' => 'f06 startup', 'image' => 'images/speed_comparison_with_startup06.jpg'],
+    'p16' => ['title' => 'p16', 'image' => 'images/speed_comparison_without_startup16.jpg'],
+    'p16_startup' => ['title' => 'p16 startup', 'image' => 'images/speed_comparison_with_startup16.jpg'],
+    'z26' => ['title' => 'z26', 'image' => 'images/speed_comparison_without_startup26.jpg'],
+    'z26_startup' => ['title' => 'z26 startup', 'image' => 'images/speed_comparison_with_startup26.jpg'],
 ];
 foreach ($tests as $testKey => $info) {
     $lines[] = '## ' . $info['title'];
@@ -90,9 +106,9 @@ foreach ($tests as $testKey => $info) {
             '| %s | %s | %s | %s | %s |',
             format_name($container),
             $version,
-            $t['average'],
-            $t['minimum'],
-            $t['maximum']
+            format_time($t['average']),
+            format_time($t['minimum']),
+            format_time($t['maximum'])
         );
     }
     $lines[] = '';

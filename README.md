@@ -12,19 +12,19 @@ This repository benchmarks different dependency injection containers.
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 0.0016305923461914 | 0.0015859603881836 | 0.0017719268798828 |
-| auryn | ^1.4 | 0.40692794322968 | 0.40299105644226 | 0.41338300704956 |
-| dice | ^4.0 | 0.07127799987793 | 0.070219993591309 | 0.072386026382446 |
-| laminas-servicemanager | ^3.21 | 0.00077948570251465 | 0.00075197219848633 | 0.00080180168151855 |
-| laravel(singletons) | ^12.28 | 0.0034878969192505 | 0.0034289360046387 | 0.0037100315093994 |
-| laravel(unconfigured) | ^12.28 | 0.63280189037323 | 0.62518095970154 | 0.64366006851196 |
-| league-container | ^5.1 | 0.66316499710083 | 0.65804004669189 | 0.66712403297424 |
-| nette-di | ^3.2 | 0.0033111095428467 | 0.0032920837402344 | 0.0033349990844727 |
-| php-di | ^7.0 | 0.00085785388946533 | 0.00080585479736328 | 0.0012009143829346 |
-| pimple | ^3.5 | 0.072943663597107 | 0.069853782653809 | 0.076562881469727 |
-| quickly(configured) | dev-master | 0.0038620710372925 | 0.0037930011749268 | 0.0041050910949707 |
-| quickly(reflection) | dev-master | 0.0038612604141235 | 0.0037820339202881 | 0.0040991306304932 |
-| symfony(compiled) | ^7.0 | 0.0026045560836792 | 0.0021369457244873 | 0.0040488243103027 |
+| aura-di | ^5.0 | 1ms 592ns | 1ms 960ns | 1ms 927ns |
+| auryn | ^1.4 | 406ms 943ns | 402ms 56ns | 413ms 7ns |
+| dice | ^4.0 | 71ms 0ns | 70ms 994ns | 72ms 26ns |
+| laminas-servicemanager | ^3.21 | 486ns | 972ns | 802ns |
+| laravel(singletons) | ^12.28 | 3ms 897ns | 3ms 936ns | 3ms 32ns |
+| laravel(unconfigured) | ^12.28 | 632ms 890ns | 625ms 960ns | 643ms 69ns |
+| league-container | ^5.1 | 663ms 997ns | 658ms 47ns | 667ms 33ns |
+| nette-di | ^3.2 | 3ms 110ns | 3ms 84ns | 3ms 999ns |
+| php-di | ^7.0 | 854ns | 855ns | 1ms 914ns |
+| pimple | ^3.5 | 72ms 664ns | 69ms 783ns | 76ms 881ns |
+| quickly(configured) | dev-master | 3ms 71ns | 3ms 1ns | 4ms 91ns |
+| quickly(reflection) | dev-master | 3ms 260ns | 3ms 34ns | 4ms 131ns |
+| symfony(compiled) | ^7.0 | 2ms 556ns | 2ms 946ns | 4ms 824ns |
 
 ![f06](speed_comparison_without_startup06.jpg)
 
@@ -32,19 +32,19 @@ This repository benchmarks different dependency injection containers.
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| aura-di | ^5.0 | 0.0017959117889404 | 0.0016319751739502 | 0.0030691623687744 |
-| auryn | ^1.4 | 0.40985195636749 | 0.40469598770142 | 0.41510605812073 |
-| dice | ^4.0 | 0.071985960006714 | 0.070518970489502 | 0.07380199432373 |
-| laminas-servicemanager | ^3.21 | 0.00089254379272461 | 0.00078916549682617 | 0.0016448497772217 |
-| laravel(singletons) | ^12.28 | 0.0037378311157227 | 0.0034160614013672 | 0.0049371719360352 |
-| laravel(unconfigured) | ^12.28 | 0.63635637760162 | 0.6245219707489 | 0.66244411468506 |
-| league-container | ^5.1 | 0.6596184015274 | 0.65683794021606 | 0.66277503967285 |
-| nette-di | ^3.2 | 0.0055724143981934 | 0.0033550262451172 | 0.025077819824219 |
-| php-di | ^7.0 | 0.0012018918991089 | 0.00087404251098633 | 0.0033619403839111 |
-| pimple | ^3.5 | 0.07223949432373 | 0.070937871932983 | 0.074434041976929 |
-| quickly(configured) | dev-master | 0.003908371925354 | 0.0037918090820312 | 0.004539966583252 |
-| quickly(reflection) | dev-master | 0.0044793128967285 | 0.0039629936218262 | 0.0059311389923096 |
-| symfony(compiled) | ^7.0 | 0.0071170091629028 | 0.0057470798492432 | 0.018764972686768 |
+| aura-di | ^5.0 | 1ms 912ns | 1ms 975ns | 3ms 162ns |
+| auryn | ^1.4 | 409ms 956ns | 404ms 988ns | 415ms 58ns |
+| dice | ^4.0 | 71ms 960ns | 70ms 970ns | 73ms 994ns |
+| laminas-servicemanager | ^3.21 | 544ns | 165ns | 1ms 850ns |
+| laravel(singletons) | ^12.28 | 3ms 831ns | 3ms 61ns | 4ms 172ns |
+| laravel(unconfigured) | ^12.28 | 636ms 378ns | 624ms 971ns | 662ms 115ns |
+| league-container | ^5.1 | 659ms 402ns | 656ms 940ns | 662ms 40ns |
+| nette-di | ^3.2 | 5ms 414ns | 3ms 26ns | 25ms 820ns |
+| php-di | ^7.0 | 1ms 892ns | 43ns | 3ms 940ns |
+| pimple | ^3.5 | 72ms 494ns | 70ms 872ns | 74ms 42ns |
+| quickly(configured) | dev-master | 3ms 372ns | 3ms 809ns | 4ms 967ns |
+| quickly(reflection) | dev-master | 4ms 313ns | 3ms 994ns | 5ms 139ns |
+| symfony(compiled) | ^7.0 | 7ms 9ns | 5ms 80ns | 18ms 973ns |
 
 ![f06 startup](speed_comparison_with_startup06.jpg)
 
