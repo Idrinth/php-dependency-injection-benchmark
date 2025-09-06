@@ -21,14 +21,14 @@ function parse_simple_yaml(string $filename): array {
             array_pop($indentStack);
             array_pop($refStack);
         }
-        if ($valuePart === '' || $valuePart === null) {
+        if ($valuePart === '') {
             $refStack[count($refStack)-1][$key] = [];
             $refStack[] = &$refStack[count($refStack)-1][$key];
             $indentStack[] = $indent + 2;
         } else {
             $value = trim($valuePart, "'\"");
             if (is_numeric($value)) {
-                $value = strpos($value, '.') !== false ? (float)$value : (int)$value;
+                $value = str_contains($value, '.') ? (float)$value : (int)$value;
             }
             $refStack[count($refStack)-1][$key] = $value;
         }
@@ -37,7 +37,7 @@ function parse_simple_yaml(string $filename): array {
 }
 
 function format_name(string $name): string {
-    if (strpos($name, '.') !== false) {
+    if (str_contains($name, '.')) {
         [$first, $rest] = explode('.', $name, 2);
         return $first . '(' . $rest . ')';
     }
@@ -45,19 +45,30 @@ function format_name(string $name): string {
 }
 
 function format_time(float $seconds): string {
-    $totalNs = (int) round($seconds * 1000000000);
-    $s = intdiv($totalNs, 1000000000);
-    $ms = intdiv($totalNs % 1000000000, 1000000);
-    $ns = $totalNs % 1000;
+    if ($seconds === 0.0) {
+        return '-';
+    }
+    $s = floor($seconds);
+    $ms = floor(($seconds * 1000) % 1000);
+    $us = floor(($seconds * 1000000) % 1000);
+    $ns = floor(($seconds * 1000000000) % 1000);
     $parts = [];
     if ($s > 0) {
         $parts[] = $s . 's';
     }
-    if ($ms > 0 || $s > 0) {
+    if ($ms > 0) {
         $parts[] = $ms . 'ms';
     }
-    $parts[] = $ns . 'ns';
-    return implode(' ', $parts);
+    if ($us > 0) {
+        $parts[] = $us . 'µs';
+    }
+    if ($ns > 0) {
+        $parts[] = $ns . 'ns';
+    }
+    if (count($parts) > 0) {
+        return implode(', ', $parts);
+    }
+    return '-';
 }
 
 $data = parse_simple_yaml('run_summary.yaml');
