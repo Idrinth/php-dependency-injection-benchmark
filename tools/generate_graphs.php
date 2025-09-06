@@ -140,6 +140,3 @@ create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time', 'sp
 create_bar_chart($withStartup16, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup16.png', $displayNames);
 create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'speed_comparison_without_startup26.png', $displayNames);
 create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'speed_comparison_with_startup26.png', $displayNames);
-
-copy('speed_comparison_without_startup16.png', 'speed_comparison_without_startup.png');
-copy('speed_comparison_with_startup16.png', 'speed_comparison_with_startup.png');
