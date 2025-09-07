@@ -194,4 +194,6 @@ foreach ($tests as $testKey => $info) {
     $lines[] = '![' . $info['title'] . '](' . $info['image'] . ')';
     $lines[] = '';
 }
+$lines[] = 'Contributions welcome.';
+$lines[] = '';
 file_put_contents('README.md', implode("\n", $lines));
