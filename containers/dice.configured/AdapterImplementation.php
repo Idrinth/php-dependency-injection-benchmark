@@ -1,7 +1,6 @@
 <?php
 
 use Dice\Dice;
-use Dice\Instance;
 
 class AdapterImplementation {
     private Dice $container;
@@ -60,7 +59,7 @@ class AdapterImplementation {
         foreach ($definitions as $class => $deps) {
             $this->container->addRule(
                 $class,
-                ['constructParams' => array_map(fn($d) => new Instance($d), $deps)]
+                ['shared' => true,'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps)]
             );
         }
     }
