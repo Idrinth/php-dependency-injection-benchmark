@@ -10,6 +10,17 @@ The "quickly" container is maintained by the same author as this benchmark, and 
 | --- | --- |
 | PHP | 8.4 |
 
+## Running individual benchmarks
+
+Build the container and execute a benchmark using focker (replace with docker if needed):
+
+```sh
+focker build -t di-benchmark-php-di -f containers/php-di/Dockerfile .
+focker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
+```
+
+The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.
+
 ## f06
 
 Small dependency graph including 6 classes total (excluding container startup time)
