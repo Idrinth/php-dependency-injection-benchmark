@@ -34,6 +34,9 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                     #- phalcon
         steps:
             - uses: actions/checkout@v5
@@ -55,7 +58,7 @@ jobs:
             matrix:
                 container:
                     - pimple
-                    - dice
+                    - dice.unconfigured
                     - league-container
         steps:
             - uses: actions/checkout@v5
@@ -108,6 +111,9 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                     #- phalcon
                 test:
                     - f06
@@ -149,6 +155,9 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                     #- phalcon
                 test:
                     - p16
@@ -190,6 +199,9 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                     #- phalcon
                 test:
                     - z26
@@ -226,7 +238,7 @@ jobs:
             matrix:
                 container:
                     - pimple
-                    - dice
+                    - dice.unconfigured
                     - league-container
                 test:
                     - f06
@@ -264,7 +276,7 @@ jobs:
             matrix:
                 container:
                     - pimple
-                    - dice
+                    - dice.unconfigured
                     - league-container
                 test:
                     - p16
