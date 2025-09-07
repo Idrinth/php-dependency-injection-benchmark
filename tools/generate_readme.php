@@ -80,6 +80,17 @@ $lines[] = 'This repository benchmarks different dependency injection containers
 $lines[] = '';
 $lines[] = 'The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.';
 $lines[] = '';
+$lines[] = '## Test Files';
+$lines[] = '';
+$lines[] = 'The benchmark defines three dependency graphs used for testing.';
+$lines[] = '';
+$lines[] = '- `src/classes-06.php` (`f06`): 6 classes.';
+$lines[] = '- `src/classes-16.php` (`p16`): 16 classes.';
+$lines[] = '- `src/classes-26.php` (`z26`): 26 classes.';
+$lines[] = '';
+$lines[] = 'Each file contains all required classes and avoids autoloading so that container performance measurements exclude file-loading overhead.';
+$lines[] = 'Each test is executed with and without container startup time to measure resolution speed and initialization cost.';
+$lines[] = '';
 $depVersions = $data['dependency_versions'] ?? [];
 if (!empty($data['php_version'])) {
     $lines[] = '## Environment';
