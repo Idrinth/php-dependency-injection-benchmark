@@ -2,6 +2,8 @@
 
 This repository benchmarks different dependency injection containers.
 
+The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.
+
 ## Environment
 
 | Component | Version |
