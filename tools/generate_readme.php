@@ -78,6 +78,8 @@ $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
 $lines[] = 'This repository benchmarks different dependency injection containers.';
 $lines[] = '';
+$lines[] = 'The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.';
+$lines[] = '';
 $depVersions = $data['dependency_versions'] ?? [];
 if (!empty($data['php_version'])) {
     $lines[] = '## Environment';
