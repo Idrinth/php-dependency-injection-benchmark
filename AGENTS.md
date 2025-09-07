@@ -22,6 +22,7 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - Generate `run_summary.yaml` with `php tools/generate_run_summary.php`.
 - Create JPG graphs from the consolidated results via `php tools/generate_graphs.php`.
 - Regenerate the `README.md` using `php tools/generate_readme.php`.
+- Ensure any changes to `README.md` are also applied in `tools/generate_readme.php`.
 
 ## Tool Scripts
 - `tools/merge_json.php`: combines individual run JSON files and computes summary statistics.
