@@ -2,6 +2,7 @@
 
 use Idrinth\Quickly\DependencyInjection\Container as QuicklyContainer;
 use Idrinth\Quickly\DependencyInjection\Definitions\ClassObject;
+use Psr\Container\ContainerInterface;
 
 class AdapterImplementation {
     private QuicklyContainer $container;

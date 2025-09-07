@@ -1,6 +1,7 @@
 <?php
 
 use Idrinth\Quickly\DependencyInjection\Container as QuicklyContainer;
+use Psr\Container\ContainerInterface;
 
 class AdapterImplementation {
     private QuicklyContainer $container;
