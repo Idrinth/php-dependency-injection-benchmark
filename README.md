@@ -4,6 +4,8 @@ This repository benchmarks different dependency injection containers.
 
 The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.
 
+To reduce favoritism, results are averaged over many runs and, where possible, multiple configurations of each container are benchmarked.
+
 ## Test Files
 
 The benchmark defines three dependency graphs used for testing.
