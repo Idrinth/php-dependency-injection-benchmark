@@ -37,7 +37,7 @@ jobs:
                     - laravel.cached
                     - league.predefined
                     - dice.configured
-                    #- phalcon
+                    - phalcon.shared
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -60,6 +60,7 @@ jobs:
                     - pimple
                     - dice.unconfigured
                     - league-container
+                    - phalcon.transient
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -114,7 +115,7 @@ jobs:
                     - laravel.cached
                     - league.predefined
                     - dice.configured
-                    #- phalcon
+                    - phalcon.shared
                 test:
                     - f06
                     - f06_startup
@@ -158,7 +159,7 @@ jobs:
                     - laravel.cached
                     - league.predefined
                     - dice.configured
-                    #- phalcon
+                    - phalcon.shared
                 test:
                     - p16
                     - p16_startup
@@ -202,7 +203,7 @@ jobs:
                     - laravel.cached
                     - league.predefined
                     - dice.configured
-                    #- phalcon
+                    - phalcon.shared
                 test:
                     - z26
                     - z26_startup
@@ -240,6 +241,7 @@ jobs:
                     - pimple
                     - dice.unconfigured
                     - league-container
+                    - phalcon.transient
                 test:
                     - f06
                     - f06_startup
@@ -278,6 +280,7 @@ jobs:
                     - pimple
                     - dice.unconfigured
                     - league-container
+                    - phalcon.transient
                 test:
                     - p16
                     - p16_startup

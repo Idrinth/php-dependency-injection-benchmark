@@ -2,13 +2,15 @@ FROM php:8.4-cli
 
 WORKDIR /app
 RUN mkdir /out
-COPY containers/phalcon/* ./
-RUN apt-get update \
+COPY containers/phalcon.transient/* ./
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions \
+    && apt-get update \
     && apt-get install -y --no-install-recommends git unzip \
     && rm -rf /var/lib/apt/lists/* \
-    && pecl install psr \
+    && install-php-extensions psr phalcon \
     && docker-php-ext-enable psr \
-    && pecl install phalcon \
     && docker-php-ext-enable phalcon \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --no-interaction --no-progress
