@@ -1,18 +1,20 @@
 # PHP Dependency Injection Benchmark
 
+Run from 2025-09-07
+
 Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
 Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.
 
 This repository benchmarks different dependency injection containers.
 
-The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.
+**The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.**
 
-To reduce favoritism, results are averaged over many runs and, where possible, multiple configurations of each container are benchmarked.
+To reduce favoritism, results are averaged over multiple runs and, where possible, multiple configurations of each container are benchmarked.
 
 Detailed benchmark data, including environment details and dependency versions, is available in [`run_summary.yaml`](run_summary.yaml).
-Raw outputs for each run are archived under the [`archive`](archive) directory with date-based subdirectories.
+Raw outputs for each monthly run are archived under the [`archive`](archive) directory with date-based subdirectories.
 
-## Test Files
+## 📂 Test Files
 
 The benchmark defines three dependency graphs used for testing.
 
@@ -20,18 +22,20 @@ The benchmark defines three dependency graphs used for testing.
 - `src/classes-16.php` (`p16`): 16 classes.
 - `src/classes-26.php` (`z26`): 26 classes.
 
-The class names (`f06`, `p16`, `z26`) follow a letter plus total class count to avoid overlap.
+The class names (`f06`, `p16`, `z26`) follow a group-unique letter plus total class count in the group to avoid overlap.
 
 Each file contains all required classes and avoids autoloading so that container performance measurements exclude file-loading overhead.
 Each test is executed with and without container startup time to measure resolution speed and initialization cost.
 
-## Environment
+## 🌍 Environment
 
 | Component | Version |
 | --- | --- |
 | PHP | 8.4 |
+| Docker | * |
+| OS | ubuntu latest |
 
-## Running individual benchmarks
+## 🚀 Running individual benchmarks
 
 Build the container and execute a benchmark using docker:
 
@@ -42,7 +46,7 @@ docker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
 
 The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.
 
-## f06
+## 📊 f06
 
 Small dependency graph including 6 classes total (excluding container startup time)
 
@@ -68,9 +72,9 @@ Small dependency graph including 6 classes total (excluding container startup ti
 | quickly(reflection) | dev-master | 1ms, 371µs, 312ns | 1ms, 318µs, 931ns | 1ms, 544µs, 952ns |
 | symfony(compiled) | ^7.0 | 2ms, 158µs, 665ns | 2ms, 143µs, 144ns | 2ms, 186µs, 775ns |
 
-![f06](images/speed_comparison_without_startup06.jpg)
+![📊 f06](images/speed_comparison_without_startup06.jpg)
 
-## f06 startup
+## 🚀 f06 startup
 
 Small dependency graph including 6 classes total (includes container startup time)
 
@@ -96,9 +100,9 @@ Small dependency graph including 6 classes total (includes container startup tim
 | quickly(reflection) | dev-master | 1ms, 433µs, 396ns | 1ms, 338µs, 958ns | 2ms, 166µs, 986ns |
 | symfony(compiled) | ^7.0 | 7ms, 707µs, 929ns | 5ms, 865µs, 97ns | 22ms, 22µs, 8ns |
 
-![f06 startup](images/speed_comparison_with_startup06.jpg)
+![🚀 f06 startup](images/speed_comparison_with_startup06.jpg)
 
-## p16
+## 📊 p16
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
 
@@ -121,9 +125,9 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | quickly(reflection) | dev-master | 1ms, 354µs, 479ns | 1ms, 323µs, 938ns | 1ms, 484µs, 870ns |
 | symfony(compiled) | ^7.0 | 3ms, 882µs, 646ns | 3ms, 974ns | 4ms, 5µs, 908ns |
 
-![p16](images/speed_comparison_without_startup16.jpg)
+![📊 p16](images/speed_comparison_without_startup16.jpg)
 
-## p16 startup
+## 🚀 p16 startup
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
 
@@ -146,9 +150,9 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | quickly(reflection) | dev-master | 1ms, 485µs, 919ns | 1ms, 384µs, 19ns | 2ms, 186µs, 59ns |
 | symfony(compiled) | ^7.0 | 7ms, 374µs, 811ns | 5ms, 786µs, 895ns | 18ms, 609µs, 46ns |
 
-![p16 startup](images/speed_comparison_with_startup16.jpg)
+![🚀 p16 startup](images/speed_comparison_with_startup16.jpg)
 
-## z26
+## 📊 z26
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
 
@@ -164,9 +168,9 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | quickly(reflection) | dev-master | 1ms, 357µs, 102ns | 1ms, 319µs, 885ns | 1ms, 574µs, 993ns |
 | symfony(compiled) | ^7.0 | 2ms, 173µs, 89ns | 2ms, 147µs, 912ns | 2ms, 220µs, 869ns |
 
-![z26](images/speed_comparison_without_startup26.jpg)
+![📊 z26](images/speed_comparison_without_startup26.jpg)
 
-## z26 startup
+## 🚀 z26 startup
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
 
@@ -182,6 +186,6 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | quickly(reflection) | dev-master | 1ms, 605µs, 963ns | 1ms, 487µs, 16ns | 2ms, 325µs, 773ns |
 | symfony(compiled) | ^7.0 | 7ms, 360µs, 100ns | 5ms, 780µs, 935ns | 20ms, 483µs, 970ns |
 
-![z26 startup](images/speed_comparison_with_startup26.jpg)
+![🚀 z26 startup](images/speed_comparison_with_startup26.jpg)
 
 Questions, issues, and new containers are welcome!
