@@ -1,13 +1,13 @@
 # PHP Dependency Injection Benchmark
 
-Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
-Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.
-
 This repository benchmarks different dependency injection containers.
 
 The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.
 
 To reduce favoritism, results are averaged over many runs and, where possible, multiple configurations of each container are benchmarked.
+
+Detailed benchmark data, including environment details and dependency versions, is available in [`run_summary.yaml`](run_summary.yaml).
+Raw outputs for each run are archived under the [`archive`](archive) directory with date-based subdirectories.
 
 ## Test Files
 
@@ -182,5 +182,3 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | symfony(compiled) | ^7.0 | 7ms, 238µs, 817ns | 5ms, 857µs, 944ns | 18ms, 877µs, 29ns |
 
 ![z26 startup](images/speed_comparison_with_startup26.jpg)
-
-Contributions are welcome! Feel free to open an issue or pull request.
