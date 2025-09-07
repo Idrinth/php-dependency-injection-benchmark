@@ -22,6 +22,8 @@ Each test is executed with and without container startup time to measure resolut
 | Component | Version |
 | --- | --- |
 | PHP | 8.4 |
+| Docker | 24 (GitHub Actions) |
+| OS | Ubuntu 22.04 (github runner ubuntu-latest) |
 
 ## Running individual benchmarks
 

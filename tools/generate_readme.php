@@ -94,12 +94,24 @@ $lines[] = 'Each file contains all required classes and avoids autoloading so th
 $lines[] = 'Each test is executed with and without container startup time to measure resolution speed and initialization cost.';
 $lines[] = '';
 $depVersions = $data['dependency_versions'] ?? [];
+$envRows = [];
 if (!empty($data['php_version'])) {
+    $envRows[] = '| PHP | ' . $data['php_version'] . ' |';
+}
+if (!empty($data['docker_version'])) {
+    $envRows[] = '| Docker | ' . $data['docker_version'] . ' |';
+}
+if (!empty($data['os'])) {
+    $envRows[] = '| OS | ' . $data['os'] . ' |';
+}
+if (!empty($envRows)) {
     $lines[] = '## Environment';
     $lines[] = '';
     $lines[] = '| Component | Version |';
     $lines[] = '| --- | --- |';
-    $lines[] = '| PHP | ' . $data['php_version'] . ' |';
+    foreach ($envRows as $row) {
+        $lines[] = $row;
+    }
     $lines[] = '';
 }
 $lines[] = '## Running individual benchmarks';
