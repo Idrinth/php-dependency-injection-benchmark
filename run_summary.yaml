@@ -4,7 +4,7 @@ dependency_versions:
     aura/di: "^5.0"
   auryn:
     rdlowrey/auryn: "^1.4"
-  dice:
+  dice.unconfigured:
     level-2/dice: "^4.0"
   laminas-servicemanager:
     laminas/laminas-servicemanager: "^3.21"
@@ -79,7 +79,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  dice:
+  dice.unconfigured:
     f06:
       average: 0.070780086517334
       minimum: 0.070032119750977
