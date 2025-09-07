@@ -182,3 +182,5 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | symfony(compiled) | ^7.0 | 7ms, 238µs, 817ns | 5ms, 857µs, 944ns | 18ms, 877µs, 29ns |
 
 ![z26 startup](images/speed_comparison_with_startup26.jpg)
+
+Questions, issues, and new containers are welcome!
