@@ -90,7 +90,7 @@ $lines[] = '';
 $lines[] = 'Detailed benchmark data, including environment details and dependency versions, is available in [`run_summary.yaml`](run_summary.yaml).';
 $lines[] = 'Raw outputs for each monthly run are archived under the [`archive`](archive) directory with date-based subdirectories.';
 $lines[] = '';
-$lines[] = '## Test Files';
+$lines[] = '## 📂 Test Files';
 $lines[] = '';
 $lines[] = 'The benchmark defines three dependency graphs used for testing.';
 $lines[] = '';
@@ -108,7 +108,7 @@ $envRows = [];
 $envRows[] = '| PHP | ' . $data['php_version'] . ' |';
 $envRows[] = '| Docker | ' . ($data['docker_version'] ?? '*') . ' |';
 $envRows[] = '| OS | ' . ($data['os'] ?? 'ubuntu latest') . ' |';
-$lines[] = '## Environment';
+$lines[] = '## 🌍 Environment';
 $lines[] = '';
 $lines[] = '| Component | Version |';
 $lines[] = '| --- | --- |';
@@ -116,7 +116,7 @@ foreach ($envRows as $row) {
     $lines[] = $row;
 }
 $lines[] = '';
-$lines[] = '## Running individual benchmarks';
+$lines[] = '## 🚀 Running individual benchmarks';
 $lines[] = '';
 $lines[] = 'Build the container and execute a benchmark using docker:';
 $lines[] = '';
@@ -130,32 +130,32 @@ $lines[] = '';
 $results = $data['results'] ?? [];
 $tests = [
     'f06' => [
-        'title' => 'f06',
+        'title' => '📊 f06',
         'image' => 'images/speed_comparison_without_startup06.jpg',
         'description' => 'Small dependency graph including 6 classes total (excluding container startup time)'
     ],
     'f06_startup' => [
-        'title' => 'f06 startup',
+        'title' => '🚀 f06 startup',
         'image' => 'images/speed_comparison_with_startup06.jpg',
         'description' => 'Small dependency graph including 6 classes total (includes container startup time)'
     ],
     'p16' => [
-        'title' => 'p16',
+        'title' => '📊 p16',
         'image' => 'images/speed_comparison_without_startup16.jpg',
         'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)'
     ],
     'p16_startup' => [
-        'title' => 'p16 startup',
+        'title' => '🚀 p16 startup',
         'image' => 'images/speed_comparison_with_startup16.jpg',
         'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)'
     ],
     'z26' => [
-        'title' => 'z26',
+        'title' => '📊 z26',
         'image' => 'images/speed_comparison_without_startup26.jpg',
         'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)'
     ],
     'z26_startup' => [
-        'title' => 'z26 startup',
+        'title' => '🚀 z26 startup',
         'image' => 'images/speed_comparison_with_startup26.jpg',
         'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)'
     ],
