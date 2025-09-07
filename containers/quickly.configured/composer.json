@@ -1,5 +1,12 @@
 {
     "require": {
         "idrinth/quickly": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "classes-06.php",
+            "classes-16.php",
+            "classes-26.php"
+        ]
     }
 }
