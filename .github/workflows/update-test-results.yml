@@ -34,9 +34,6 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
-                    - laravel.cached
-                    - league.predefined
-                    - dice.configured
                     - phalcon.shared
         steps:
             - uses: actions/checkout@v5
@@ -61,6 +58,9 @@ jobs:
                     - dice.unconfigured
                     - league-container
                     - phalcon.transient
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -112,9 +112,6 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
-                    - laravel.cached
-                    - league.predefined
-                    - dice.configured
                     - phalcon.shared
                 test:
                     - f06
@@ -156,9 +153,6 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
-                    - laravel.cached
-                    - league.predefined
-                    - dice.configured
                     - phalcon.shared
                 test:
                     - p16
@@ -200,9 +194,6 @@ jobs:
                     - symfony.compiled
                     - laminas-servicemanager
                     - laravel.singletons
-                    - laravel.cached
-                    - league.predefined
-                    - dice.configured
                     - phalcon.shared
                 test:
                     - z26
@@ -242,6 +233,9 @@ jobs:
                     - dice.unconfigured
                     - league-container
                     - phalcon.transient
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                 test:
                     - f06
                     - f06_startup
@@ -281,6 +275,9 @@ jobs:
                     - dice.unconfigured
                     - league-container
                     - phalcon.transient
+                    - laravel.cached
+                    - league.predefined
+                    - dice.configured
                 test:
                     - p16
                     - p16_startup
