@@ -35,4 +35,8 @@ updates:
   - package-ecosystem: "composer"
     directory: "/containers/quickly.configured"
     schedule:
-      interval: "weekly"
+        interval: "weekly"
+  - package-ecosystem: "composer"
+    directory: "/containers/quickly.compiled"
+    schedule:
+        interval: "weekly"

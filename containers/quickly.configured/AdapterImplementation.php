@@ -6,7 +6,7 @@ use Idrinth\Quickly\DependencyInjection\Definitions\ClassObject;
 class AdapterImplementation {
     private QuicklyContainer $container;
     public function __construct() {
-        $this->container = new QuicklyContainer(['DI_USE_CONFIG_VALIDATION' => 'false'], constructors: [
+        $this->container = new QuicklyContainer([], constructors: [
             F06::class => [
                 new ClassObject(E06::class),
                 new ClassObject(D06::class),

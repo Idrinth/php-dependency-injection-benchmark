@@ -28,6 +28,7 @@ jobs:
                 container:
                     - nette-di
                     - php-di
+                    - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
@@ -101,6 +102,7 @@ jobs:
                 container:
                     - nette-di
                     - php-di
+                    - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
@@ -141,6 +143,7 @@ jobs:
                 container:
                     - nette-di
                     - php-di
+                    - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
@@ -181,6 +184,7 @@ jobs:
                 container:
                     - nette-di
                     - php-di
+                    - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
