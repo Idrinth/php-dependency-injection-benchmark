@@ -30,11 +30,11 @@ Each test is executed with and without container startup time to measure resolut
 
 ## Running individual benchmarks
 
-Build the container and execute a benchmark using focker (replace with docker if needed):
+Build the container and execute a benchmark using docker:
 
 ```sh
-focker build -t di-benchmark-php-di -f containers/php-di/Dockerfile .
-focker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
+docker build -t di-benchmark-php-di -f containers/php-di/Dockerfile .
+docker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
 ```
 
 The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.

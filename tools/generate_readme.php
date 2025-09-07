@@ -116,11 +116,11 @@ if (!empty($envRows)) {
 }
 $lines[] = '## Running individual benchmarks';
 $lines[] = '';
-$lines[] = 'Build the container and execute a benchmark using focker (replace with docker if needed):';
+$lines[] = 'Build the container and execute a benchmark using docker:';
 $lines[] = '';
 $lines[] = '```sh';
-$lines[] = 'focker build -t di-benchmark-php-di -f containers/php-di/Dockerfile .';
-$lines[] = 'focker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1';
+$lines[] = 'docker build -t di-benchmark-php-di -f containers/php-di/Dockerfile .';
+$lines[] = 'docker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1';
 $lines[] = '```';
 $lines[] = '';
 $lines[] = 'The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.';
