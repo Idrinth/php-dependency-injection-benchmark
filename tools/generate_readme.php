@@ -76,17 +76,19 @@ $data = parse_simple_yaml('run_summary.yaml');
 $lines = [];
 $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
+$lines[] = 'Run from ' . date('Y-m-d');
+$lines[] = '';
 $lines[] = 'Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.';
 $lines[] = 'Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.';
 $lines[] = '';
 $lines[] = 'This repository benchmarks different dependency injection containers.';
 $lines[] = '';
-$lines[] = 'The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.';
+$lines[] = '**The "quickly" container is maintained by the same author as this benchmark, and the results may be unconsciously biased.**';
 $lines[] = '';
-$lines[] = 'To reduce favoritism, results are averaged over many runs and, where possible, multiple configurations of each container are benchmarked.';
+$lines[] = 'To reduce favoritism, results are averaged over multiple runs and, where possible, multiple configurations of each container are benchmarked.';
 $lines[] = '';
 $lines[] = 'Detailed benchmark data, including environment details and dependency versions, is available in [`run_summary.yaml`](run_summary.yaml).';
-$lines[] = 'Raw outputs for each run are archived under the [`archive`](archive) directory with date-based subdirectories.';
+$lines[] = 'Raw outputs for each monthly run are archived under the [`archive`](archive) directory with date-based subdirectories.';
 $lines[] = '';
 $lines[] = '## Test Files';
 $lines[] = '';
@@ -96,32 +98,24 @@ $lines[] = '- `src/classes-06.php` (`f06`): 6 classes.';
 $lines[] = '- `src/classes-16.php` (`p16`): 16 classes.';
 $lines[] = '- `src/classes-26.php` (`z26`): 26 classes.';
 $lines[] = '';
-$lines[] = 'The class names (`f06`, `p16`, `z26`) follow a letter plus total class count to avoid overlap.';
+$lines[] = 'The class names (`f06`, `p16`, `z26`) follow a group-unique letter plus total class count in the group to avoid overlap.';
 $lines[] = '';
 $lines[] = 'Each file contains all required classes and avoids autoloading so that container performance measurements exclude file-loading overhead.';
 $lines[] = 'Each test is executed with and without container startup time to measure resolution speed and initialization cost.';
 $lines[] = '';
 $depVersions = $data['dependency_versions'] ?? [];
 $envRows = [];
-if (!empty($data['php_version'])) {
-    $envRows[] = '| PHP | ' . $data['php_version'] . ' |';
+$envRows[] = '| PHP | ' . $data['php_version'] . ' |';
+$envRows[] = '| Docker | ' . ($data['docker_version'] ?? '*') . ' |';
+$envRows[] = '| OS | ' . ($data['os'] ?? 'ubuntu latest') . ' |';
+$lines[] = '## Environment';
+$lines[] = '';
+$lines[] = '| Component | Version |';
+$lines[] = '| --- | --- |';
+foreach ($envRows as $row) {
+    $lines[] = $row;
 }
-if (!empty($data['docker_version'])) {
-    $envRows[] = '| Docker | ' . $data['docker_version'] . ' |';
-}
-if (!empty($data['os'])) {
-    $envRows[] = '| OS | ' . $data['os'] . ' |';
-}
-if (!empty($envRows)) {
-    $lines[] = '## Environment';
-    $lines[] = '';
-    $lines[] = '| Component | Version |';
-    $lines[] = '| --- | --- |';
-    foreach ($envRows as $row) {
-        $lines[] = $row;
-    }
-    $lines[] = '';
-}
+$lines[] = '';
 $lines[] = '## Running individual benchmarks';
 $lines[] = '';
 $lines[] = 'Build the container and execute a benchmark using docker:';
