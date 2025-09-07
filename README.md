@@ -12,6 +12,8 @@ The benchmark defines three dependency graphs used for testing.
 - `src/classes-16.php` (`p16`): 16 classes.
 - `src/classes-26.php` (`z26`): 26 classes.
 
+The class names (`f06`, `p16`, `z26`) follow a letter plus total class count to avoid overlap.
+
 Each file contains all required classes and avoids autoloading so that container performance measurements exclude file-loading overhead.
 Each test is executed with and without container startup time to measure resolution speed and initialization cost.
 
