@@ -48,10 +48,10 @@ function format_time(float $seconds): string {
     if ($seconds === 0.0) {
         return '-';
     }
-    $s = floor($seconds);
-    $ms = floor(($seconds * 1000) % 1000);
-    $us = floor(($seconds * 1000000) % 1000);
-    $ns = floor(($seconds * 1000000000) % 1000);
+    $s = (int) floor($seconds);
+    $ms = ((int) floor($seconds * 1000)) % 1000;
+    $us = ((int) floor($seconds * 1000000)) % 1000;
+    $ns = ((int) floor($seconds * 1000000000)) % 1000;
     $parts = [];
     if ($s > 0) {
         $parts[] = $s . 's';
