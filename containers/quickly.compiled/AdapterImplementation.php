@@ -7,7 +7,7 @@ require __DIR__ . '/.quickly/Container.php';
 class AdapterImplementation {
     private QuicklyContainer $container;
     public function __construct() {
-        $this->container = new QuicklyContainer(new class implements ContainerInterface {
+        $this->container = new QuicklyContainer([], new class implements ContainerInterface {
             public function has(string $name): bool {
                 return false;
             }

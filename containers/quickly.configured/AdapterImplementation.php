@@ -6,7 +6,14 @@ use Idrinth\Quickly\DependencyInjection\Definitions\ClassObject;
 class AdapterImplementation {
     private QuicklyContainer $container;
     public function __construct() {
-        $this->container = new QuicklyContainer([], constructors: [
+        $this->container = new QuicklyContainer([], new class implements ContainerInterface {
+            public function has(string $name): bool {
+                return false;
+            }
+            public function get(string $name): object {
+                throw new BadMethodCallException("Not implemented");
+            }
+        }, constructors: [
             F06::class => [
                 new ClassObject(E06::class),
                 new ClassObject(D06::class),
