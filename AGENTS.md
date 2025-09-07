@@ -7,6 +7,12 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - Ensure files end with a newline.
 - Do not commit binary files such as images; generate them as needed outside of version control.
 
+## Folder Naming
+- Use lowercase letters with hyphens to separate words.
+- Store source code under `src`, tooling in `tools`, and generated media in `images`.
+- Archive benchmark outputs in `archive/YYYY-MM-DD` directories to maintain chronological order.
+- Avoid spaces, camelCase, or underscores in directory names.
+
 ## Testing
 - When modifying PHP source files, run `php -l` on each changed file to verify syntax.
 - No other automated tests are required.
