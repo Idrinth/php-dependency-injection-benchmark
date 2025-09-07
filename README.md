@@ -18,7 +18,7 @@ Small dependency graph including 6 classes total (excluding container startup ti
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 1ms, 931µs, 691ns | 1ms, 729µs, 965ns | 3ms, 113µs, 985ns |
 | auryn | ^1.4 | 411ms, 792µs, 969ns | 402ms, 759µs, 75ns | 419ms, 886µs, 112ns |
-| dice | ^4.0 | 70ms, 780µs, 86ns | 70ms, 32µs, 119ns | 72ms, 811µs, 126ns |
+| dice(unconfigured) | ^4.0 | 70ms, 780µs, 86ns | 70ms, 32µs, 119ns | 72ms, 811µs, 126ns |
 | laminas-servicemanager | ^3.21 | 809µs, 97ns | 745µs, 58ns | 1ms, 167µs, 58ns |
 | laravel(singletons) | ^12.28 | 3ms, 750µs, 586ns | 3ms, 386µs, 974ns | 5ms, 868µs, 911ns |
 | laravel(unconfigured) | ^12.28 | 631ms, 187µs, 81ns | 620ms, 640µs, 993ns | 640ms, 774µs, 965ns |
@@ -41,7 +41,7 @@ Small dependency graph including 6 classes total (includes container startup tim
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 3ms, 94µs, 124ns | 3ms, 45µs, 797ns | 3ms, 155µs, 946ns |
 | auryn | ^1.4 | 409ms, 663µs, 81ns | 403ms, 403µs, 43ns | 423ms, 283µs, 100ns |
-| dice | ^4.0 | 71ms, 358µs, 680ns | 70ms, 588µs, 111ns | 72ms, 736µs, 978ns |
+| dice(unconfigured) | ^4.0 | 71ms, 358µs, 680ns | 70ms, 588µs, 111ns | 72ms, 736µs, 978ns |
 | laminas-servicemanager | ^3.21 | 868µs, 535ns | 766µs, 992ns | 1ms, 646µs, 41ns |
 | laravel(singletons) | ^12.28 | 3ms, 680µs, 968ns | 3ms, 485µs, 202ns | 4ms, 959µs, 821ns |
 | laravel(unconfigured) | ^12.28 | 628ms, 980µs, 255ns | 623ms, 903µs, 36ns | 632ms, 767µs, 915ns |
@@ -62,7 +62,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| dice | ^4.0 | 10s, 55ms, 988µs, 144ns | 9s, 859ms, 770µs, 774ns | 10s, 238ms, 904µs, 953ns |
+| dice(unconfigured) | ^4.0 | 10s, 55ms, 988µs, 144ns | 9s, 859ms, 770µs, 774ns | 10s, 238ms, 904µs, 953ns |
 | laminas-servicemanager | ^3.21 | 777µs, 316ns | 742µs, 912ns | 832µs, 80ns |
 | laravel(singletons) | ^12.28 | 3ms, 659µs, 224ns | 3ms, 380µs, 60ns | 5ms, 136µs, 966ns |
 | league-container | ^5.1 | 94s, 753ms, 268µs, 74ns | 93s, 985ms, 346µs, 78ns | 96s, 620ms, 261µs, 907ns |
@@ -82,7 +82,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| dice | ^4.0 | 10s, 31ms, 120µs, 896ns | 9s, 890ms, 293µs, 836ns | 10s, 134ms, 934µs, 902ns |
+| dice(unconfigured) | ^4.0 | 10s, 31ms, 120µs, 896ns | 9s, 890ms, 293µs, 836ns | 10s, 134ms, 934µs, 902ns |
 | laminas-servicemanager | ^3.21 | 922µs, 107ns | 764µs, 131ns | 1ms, 709µs, 938ns |
 | laravel(singletons) | ^12.28 | 3ms, 655µs, 195ns | 3ms, 402µs, 948ns | 5ms, 367µs, 40ns |
 | league-container | ^5.1 | 94s, 323ms, 582µs, 887ns | 91s, 578ms, 308µs, 105ns | 95s, 376ms, 930µs, 952ns |
