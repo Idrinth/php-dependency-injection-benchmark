@@ -9,6 +9,7 @@ class AdapterImplementation {
         $config = require __DIR__ . '/.quickly/generated.php';
         $this->container = new QuicklyContainer(
             [],
+            [],
             new class implements ContainerInterface {
                 public function has(string $name): bool {
                     return false;
