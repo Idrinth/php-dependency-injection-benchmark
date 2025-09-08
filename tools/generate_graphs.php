@@ -79,13 +79,15 @@ foreach ($containers as $container) {
 
 function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
     $count = count($values);
-    $barWidth = 40;
-    $spacing = 70;
-    $leftMargin = 60;
-    $bottomMargin = 60;
+    $barHeight = 40;
+    $spacing = 20;
+    $leftMargin = 200;
+    $rightMargin = 60;
     $topMargin = 40;
-    $plotHeight = 600;
-    $width = $leftMargin + $count * ($barWidth + $spacing) + $spacing;
+    $bottomMargin = 60;
+    $plotWidth = 800;
+    $plotHeight = $count * ($barHeight + $spacing) + $spacing;
+    $width = $leftMargin + $plotWidth + $rightMargin;
     $height = $topMargin + $plotHeight + $bottomMargin;
 
     $img = imagecreatetruecolor($width, $height);
@@ -98,7 +100,16 @@ function create_bar_chart(array $values, string $title, string $filename, array 
     $fontWidth = imagefontwidth($titleFont);
     $titleWidth = $fontWidth * strlen($title);
     imagestring($img, $titleFont, (int) max(0, ($width - $titleWidth) / 2), 5, $title, $black);
-    imagestringup($img, 3, 15, $height - $bottomMargin - 10, 'Seconds per 10,000', $black);
+    $axisLabel = 'Seconds per 10,000';
+    $axisLabelWidth = imagefontwidth(3) * strlen($axisLabel);
+    imagestring(
+        $img,
+        3,
+        (int) max(0, $leftMargin + ($plotWidth - $axisLabelWidth) / 2),
+        $height - $bottomMargin + 20,
+        $axisLabel,
+        $black
+    );
 
     $validLogs = array_filter($values, fn($v) => $v !== null);
     $maxLog = $validLogs ? max($validLogs) : 0;
@@ -117,38 +128,38 @@ function create_bar_chart(array $values, string $title, string $filename, array 
         if ($logVal < 0) {
             $logVal = -1 * $logVal;
         }
-        $barHeight = ($logVal / $maxTick) * $plotHeight;
-        $x1 = (int) ($leftMargin + $spacing + $i * ($barWidth + $spacing));
-        $y1 = (int) ($topMargin + $plotHeight - $barHeight);
-        $x2 = $x1 + $barWidth;
-        $y2 = $topMargin + $plotHeight;
+        $barWidthVal = ($logVal / $maxTick) * $plotWidth;
+        $y1 = (int) ($topMargin + $spacing + $i * ($barHeight + $spacing));
+        $y2 = $y1 + $barHeight;
+        $x1 = $leftMargin;
+        $x2 = (int) ($x1 + $barWidthVal);
         imagefilledrectangle($img, $x1, $y1, $x2, $y2, $blue);
         $percentage = ($logVal / $maxLog) * 100;
         $percentageText = sprintf('%.1f%%', $percentage);
-        $percentageWidth = imagefontwidth(2) * strlen($percentageText);
-        $percentageX = (int) ($x1 + ($barWidth - $percentageWidth) / 2);
-        $percentageY = (int) ($y1 - imagefontheight(2) - 2);
+        $percentageY = (int) ($y1 + ($barHeight - imagefontheight(2)) / 2);
+        $percentageX = $x2 + 5;
         imagestring($img, 2, $percentageX, $percentageY, $percentageText, $black);
         $labelLines = explode("\n", $labels[$i]);
-        $labelY = $topMargin + $plotHeight + 5;
+        $totalLabelHeight = count($labelLines) * (imagefontheight(2) + 2) - 2;
+        $labelY = (int) ($y1 + ($barHeight - $totalLabelHeight) / 2);
         foreach ($labelLines as $line) {
             $textWidth = imagefontwidth(2) * strlen($line);
-            $textX = (int) ($x1 + ($barWidth - $textWidth) / 2);
-            imagestring($img, 2, $textX, (int) $labelY, $line, $black);
+            $textX = $leftMargin - $textWidth - 10;
+            imagestring($img, 2, (int) $textX, $labelY, $line, $black);
             $labelY += imagefontheight(2) + 2;
         }
     }
 
     imageline($img, $leftMargin, $topMargin, $leftMargin, $topMargin + $plotHeight, $black);
-    imageline($img, $leftMargin, $topMargin + $plotHeight, $width - $spacing, $topMargin + $plotHeight, $black);
+    imageline($img, $leftMargin, $topMargin + $plotHeight, $leftMargin + $plotWidth, $topMargin + $plotHeight, $black);
 
     if ($tickStep > 0) {
         for ($tick = 0; $tick <= $maxTick; $tick += $tickStep) {
-            $y = (int) ($topMargin + $plotHeight - ($tick / $maxTick) * $plotHeight);
-            imageline($img, $leftMargin - 5, $y, $leftMargin, $y, $black);
+            $x = (int) ($leftMargin + ($tick / $maxTick) * $plotWidth);
+            imageline($img, $x, $topMargin + $plotHeight, $x, $topMargin + $plotHeight + 5, $black);
             $label = rtrim(rtrim(sprintf('%.2f', $tick), '0'), '.');
             $textWidth = imagefontwidth(2) * strlen($label);
-            imagestring($img, 2, $leftMargin - $textWidth - 10, (int) ($y - imagefontheight(2) / 2), $label, $black);
+            imagestring($img, 2, (int) ($x - $textWidth / 2), $topMargin + $plotHeight + 10, $label, $black);
         }
     }
 
