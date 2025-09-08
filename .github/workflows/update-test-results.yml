@@ -55,9 +55,7 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - pimple
+                    []
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -78,11 +76,14 @@ jobs:
             matrix:
                 container:
                     - auryn
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
                     - phalcon.transient
+                    - pimple
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -232,9 +233,7 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - pimple
+                    []
                 test:
                     - f06
                     - f06_startup
@@ -270,9 +269,7 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - pimple
+                    []
                 test:
                     - p16
                     - p16_startup
@@ -316,11 +313,14 @@ jobs:
             matrix:
                 container:
                     - auryn
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
                     - phalcon.transient
+                    - pimple
                 test:
                     - f06
                     - f06_startup
