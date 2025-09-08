@@ -73,8 +73,14 @@ function format_time(float $seconds): string {
 
 $data = parse_simple_yaml('run_summary.yaml');
 
+$phpBadge = '![PHP Version](https://img.shields.io/badge/PHP-' . rawurlencode($data['php_version']) . '-blue?logo=php)';
+$dockerBadge = '![Docker Version](https://img.shields.io/badge/Docker-' . rawurlencode($data['docker_version'] ?? '*') . '-lightgrey?logo=docker)';
+$osBadge = '![OS](https://img.shields.io/badge/OS-' . rawurlencode($data['os'] ?? 'ubuntu latest') . '-blue?logo=ubuntu)';
+
 $lines = [];
 $lines[] = '# PHP Dependency Injection Benchmark';
+$lines[] = '';
+$lines[] = $phpBadge . ' ' . $dockerBadge . ' ' . $osBadge;
 $lines[] = '';
 $lines[] = 'Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.';
 $lines[] = 'Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.';
@@ -102,18 +108,6 @@ $lines[] = 'Each file contains all required classes and avoids autoloading so th
 $lines[] = 'Each test is executed with and without container startup time to measure resolution speed and initialization cost.';
 $lines[] = '';
 $depVersions = $data['dependency_versions'] ?? [];
-$envRows = [];
-$envRows[] = '| PHP | ' . $data['php_version'] . ' |';
-$envRows[] = '| Docker | ' . ($data['docker_version'] ?? '*') . ' |';
-$envRows[] = '| OS | ' . ($data['os'] ?? 'ubuntu latest') . ' |';
-$lines[] = '## 🌍 Environment';
-$lines[] = '';
-$lines[] = '| Component | Version |';
-$lines[] = '| --- | --- |';
-foreach ($envRows as $row) {
-    $lines[] = $row;
-}
-$lines[] = '';
 $lines[] = '## 🚀 Running individual benchmarks';
 $lines[] = '';
 $lines[] = 'Build the container and execute a benchmark using docker:';

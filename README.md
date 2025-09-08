@@ -1,5 +1,7 @@
 # PHP Dependency Injection Benchmark
 
+![PHP Version](https://img.shields.io/badge/PHP-8.4-blue?logo=php) ![Docker Version](https://img.shields.io/badge/Docker-%2A-lightgrey?logo=docker) ![OS](https://img.shields.io/badge/OS-ubuntu%20latest-blue?logo=ubuntu)
+
 Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
 Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.
 
@@ -24,14 +26,6 @@ The class names (`f06`, `p16`, `z26`) follow a group-unique letter plus total cl
 
 Each file contains all required classes and avoids autoloading so that container performance measurements exclude file-loading overhead.
 Each test is executed with and without container startup time to measure resolution speed and initialization cost.
-
-## 🌍 Environment
-
-| Component | Version |
-| --- | --- |
-| PHP | 8.4 |
-| Docker | * |
-| OS | ubuntu latest |
 
 ## 🚀 Running individual benchmarks
 
