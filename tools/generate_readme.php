@@ -82,6 +82,8 @@ $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
 $lines[] = $phpBadge . ' ' . $dockerBadge . ' ' . $osBadge;
 $lines[] = '';
+$lines[] = '![PHP Dependency Injection Benchmark](images/php-dependency-injection-benchmark.jpg)';
+$lines[] = '';
 $lines[] = 'Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.';
 $lines[] = 'Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.';
 $lines[] = '';
@@ -254,6 +256,9 @@ foreach ($tests as $testKey => $info) {
     $lines[] = '';
     $lines[] = '![' . $info['title'] . '](' . $info['image'] . ')';
     $lines[] = '';
+    $lines[] = '<details>';
+    $lines[] = '<summary>View results</summary>';
+    $lines[] = '';
     $lines[] = '| Container | Version | Average | Minimum | Maximum |';
     $lines[] = '| --- | --- | --- | --- | --- |';
     foreach ($results as $container => $stats) {
@@ -277,6 +282,8 @@ foreach ($tests as $testKey => $info) {
             format_time($t['maximum'])
         );
     }
+    $lines[] = '';
+    $lines[] = '</details>';
     $lines[] = '';
 }
 $lines[] = 'Questions, issues, and new containers are welcome!';
