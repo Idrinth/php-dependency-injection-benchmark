@@ -26,6 +26,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - aura-di
                     - nette-di
                     - php-di
                     - quickly.compiled
@@ -56,10 +57,6 @@ jobs:
                 container:
                     - pimple
                     - dice.unconfigured
-                    - league-container
-                    - phalcon.transient
-                    - laravel.cached
-                    - league.predefined
                     - dice.configured
         steps:
             - uses: actions/checkout@v5
@@ -81,8 +78,11 @@ jobs:
             matrix:
                 container:
                     - laravel.unconfigured
-                    - aura-di
                     - auryn
+                    - phalcon.transient
+                    - laravel.cached
+                    - league-container
+                    - league.predefined
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -104,6 +104,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - aura-di
                     - nette-di
                     - php-di
                     - quickly.compiled
@@ -145,6 +146,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - aura-di
                     - nette-di
                     - php-di
                     - quickly.compiled
@@ -186,6 +188,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - aura-di
                     - nette-di
                     - php-di
                     - quickly.compiled
@@ -231,10 +234,6 @@ jobs:
                 container:
                     - pimple
                     - dice.unconfigured
-                    - league-container
-                    - phalcon.transient
-                    - laravel.cached
-                    - league.predefined
                     - dice.configured
                 test:
                     - f06
@@ -273,10 +272,6 @@ jobs:
                 container:
                     - pimple
                     - dice.unconfigured
-                    - league-container
-                    - phalcon.transient
-                    - laravel.cached
-                    - league.predefined
                     - dice.configured
                 test:
                     - p16
@@ -321,8 +316,11 @@ jobs:
             matrix:
                 container:
                     - laravel.unconfigured
-                    - aura-di
                     - auryn
+                    - phalcon.transient
+                    - laravel.cached
+                    - league-container
+                    - league.predefined
                 test:
                     - f06
                     - f06_startup
