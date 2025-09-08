@@ -33,8 +33,12 @@ function parse_run_summary(string $filename): array {
 }
 
 function replace_container_list(string $workflow, string $job, array $containers): string {
-    $pattern = '/(^    ' . preg_quote($job, '/') . ":\n[\s\S]*?container:\n)(?: {20}- .*?\n)+/m";
-    $replacement = "$1" . implode('', array_map(fn($c) => "                    - $c\n", $containers));
+    $pattern = '/(^    ' . preg_quote($job, '/') . ":\n[\s\S]*?container:\n)(?: {20}- .*?\n| {20}\[\]\n)+/m";
+    if ($containers === []) {
+        $replacement = "$1                    []\n";
+    } else {
+        $replacement = "$1" . implode('', array_map(fn($c) => "                    - $c\n", $containers));
+    }
     return preg_replace($pattern, $replacement, $workflow);
 }
 
@@ -44,14 +48,32 @@ $fast = [];
 $medium = [];
 $slow = [];
 
+$fastThresholds = ['f06' => 0.01, 'p16' => 0.05, 'z26' => 0.5];
+$mediumThresholds = ['f06' => 0.1, 'p16' => 0.5, 'z26' => 5];
+
 foreach ($containers as $container) {
-    $time = $summary[$container]['f06'] ?? null;
-    if ($time === null) {
+    $category = 'fast';
+    $hasMetric = false;
+    foreach (['f06', 'p16', 'z26'] as $metric) {
+        $value = $summary[$container][$metric] ?? null;
+        if ($value !== null && $value > 0) {
+            $hasMetric = true;
+            if ($value >= $mediumThresholds[$metric]) {
+                $category = 'slow';
+                break;
+            }
+            if ($value >= $fastThresholds[$metric] && $category === 'fast') {
+                $category = 'medium';
+            }
+        }
+    }
+    if (!$hasMetric) {
+        $slow[] = $container;
         continue;
     }
-    if ($time < 0.01) {
+    if ($category === 'fast') {
         $fast[] = $container;
-    } elseif ($time <= 0.1) {
+    } elseif ($category === 'medium') {
         $medium[] = $container;
     } else {
         $slow[] = $container;
