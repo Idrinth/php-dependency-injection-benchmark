@@ -1,5 +1,7 @@
 # PHP Dependency Injection Benchmark
 
+![PHP Dependency Injection Benchmark](images/php-dependency-injection-benchmark.jpg)
+
 Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
 Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.
 
