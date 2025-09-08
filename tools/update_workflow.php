@@ -48,32 +48,39 @@ $fast = [];
 $medium = [];
 $slow = [];
 
-$fastThresholds = ['f06' => 0.01, 'p16' => 0.05, 'z26' => 0.5];
-$mediumThresholds = ['f06' => 0.1, 'p16' => 0.5, 'z26' => 5];
+$metrics = ['f06', 'p16', 'z26'];
+$scores = [];
 
 foreach ($containers as $container) {
-    $category = 'fast';
-    $hasMetric = false;
-    foreach (['f06', 'p16', 'z26'] as $metric) {
+    $maxValue = null;
+    foreach ($metrics as $metric) {
         $value = $summary[$container][$metric] ?? null;
         if ($value !== null && $value > 0) {
-            $hasMetric = true;
-            if ($value >= $mediumThresholds[$metric]) {
-                $category = 'slow';
-                break;
-            }
-            if ($value >= $fastThresholds[$metric] && $category === 'fast') {
-                $category = 'medium';
-            }
+            $maxValue = $maxValue === null ? $value : max($maxValue, $value);
         }
     }
-    if (!$hasMetric) {
+    if ($maxValue === null) {
         $slow[] = $container;
+    } else {
+        $scores[$container] = $maxValue;
+    }
+}
+
+$sortedScores = $scores;
+asort($sortedScores);
+$values = array_values($sortedScores);
+$count = count($values);
+$fastThreshold = $values[(int) floor($count / 3)] ?? 0;
+$mediumThreshold = $values[(int) floor(2 * $count / 3)] ?? 0;
+
+foreach ($containers as $container) {
+    $score = $scores[$container] ?? null;
+    if ($score === null) {
         continue;
     }
-    if ($category === 'fast') {
+    if ($score <= $fastThreshold) {
         $fast[] = $container;
-    } elseif ($category === 'medium') {
+    } elseif ($score <= $mediumThreshold) {
         $medium[] = $container;
     } else {
         $slow[] = $container;
