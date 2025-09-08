@@ -127,22 +127,95 @@ $lines[] = '```';
 $lines[] = '';
 $lines[] = 'The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.';
 $lines[] = '';
+$containerTable = [
+    'aura-di' => [
+        'name' => 'Aura.Di',
+        'url' => 'https://github.com/auraphp/Aura.Di',
+        'features' => 'Configurable DI container with lazy loading and service factories',
+    ],
+    'php-di' => [
+        'name' => 'PHP-DI',
+        'url' => 'https://github.com/PHP-DI/PHP-DI',
+        'features' => 'Autowiring, annotations, and compiled container support',
+    ],
+    'pimple' => [
+        'name' => 'Pimple',
+        'url' => 'https://github.com/silexphp/Pimple',
+        'features' => 'Lightweight closure-based container',
+    ],
+    'symfony' => [
+        'name' => 'Symfony DI',
+        'url' => 'https://github.com/symfony/dependency-injection',
+        'features' => 'Feature-rich container with configuration and compilation',
+    ],
+    'laravel' => [
+        'name' => 'Laravel Container',
+        'url' => 'https://github.com/laravel/framework',
+        'features' => 'Framework-integrated container with automatic resolution and binding',
+    ],
+    'nette-di' => [
+        'name' => 'Nette DI',
+        'url' => 'https://github.com/nette/di',
+        'features' => 'High-performance compiled container',
+    ],
+    'auryn' => [
+        'name' => 'Auryn',
+        'url' => 'https://github.com/rdlowrey/auryn',
+        'features' => 'Auryn is a dependency injector for bootstrapping object-oriented PHP applications.',
+    ],
+    'dice' => [
+        'name' => 'Dice',
+        'url' => 'https://github.com/Level-2/Dice',
+        'features' => 'A minimalist dependency injection container for PHP.',
+    ],
+    'laminas-servicemanager' => [
+        'name' => 'Laminas ServiceManager',
+        'url' => 'https://github.com/laminas/laminas-servicemanager',
+        'features' => 'Factory-driven dependency injection container',
+    ],
+    'league' => [
+        'name' => 'League Container',
+        'url' => 'https://github.com/thephpleague/container',
+        'features' => 'A fast and intuitive dependency injection container.',
+    ],
+    'phalcon' => [
+        'name' => 'Phalcon',
+        'url' => 'https://github.com/phalcon/cphalcon',
+        'features' => '',
+    ],
+    'quickly' => [
+        'name' => 'Quickly',
+        'url' => 'https://github.com/Idrinth/quickly',
+        'features' => 'A fast dependency injection container featuring build time resolution.',
+    ],
+];
+$detected = trim(`find containers -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sed -E 's|\..*||; s|-container$||' | sort -u`);
+if ($detected !== '') {
+    foreach (explode("\n", $detected) as $c) {
+        if (!isset($containerTable[$c])) {
+            $containerTable[$c] = [
+                'name' => ucwords(str_replace('-', ' ', $c)),
+                'url' => '',
+                'features' => '',
+            ];
+        }
+    }
+}
 $lines[] = '## 🧩 Containers';
 $lines[] = '';
 $lines[] = '| Container | Features |';
 $lines[] = '| --- | --- |';
-$lines[] = '| [Aura.Di](https://github.com/auraphp/Aura.Di) | Configurable DI container with lazy loading and service factories |';
-$lines[] = '| [PHP-DI](https://github.com/PHP-DI/PHP-DI) | Autowiring, annotations, and compiled container support |';
-$lines[] = '| [Pimple](https://github.com/silexphp/Pimple) | Lightweight closure-based container |';
-$lines[] = '| [Symfony DI](https://github.com/symfony/dependency-injection) | Feature-rich container with configuration and compilation |';
-$lines[] = '| [Laravel Container](https://github.com/laravel/framework) | Framework-integrated container with automatic resolution and binding |';
-$lines[] = '| [Nette DI](https://github.com/nette/di) | High-performance compiled container |';
-$lines[] = '| [Auryn](https://github.com/rdlowrey/auryn) | Auryn is a dependency injector for bootstrapping object-oriented PHP applications. |';
-$lines[] = '| [Dice](https://github.com/Level-2/Dice) | A minimalist dependency injection container for PHP. |';
-$lines[] = '| [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |';
-$lines[] = '| [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |';
-$lines[] = '| [Phalcon](https://github.com/phalcon/cphalcon) | |';
-$lines[] = '| [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |';
+foreach ($containerTable as $info) {
+    $name = $info['name'];
+    if ($info['url'] !== '') {
+        $name = '[' . $name . '](' . $info['url'] . ')';
+    }
+    if ($info['features'] === '') {
+        $lines[] = '| ' . $name . ' | |';
+    } else {
+        $lines[] = '| ' . $name . ' | ' . $info['features'] . ' |';
+    }
+}
 $lines[] = '';
 $results = $data['results'] ?? [];
 $tests = [
