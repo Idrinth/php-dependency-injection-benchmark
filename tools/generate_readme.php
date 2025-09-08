@@ -76,8 +76,6 @@ $data = parse_simple_yaml('run_summary.yaml');
 $lines = [];
 $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
-$lines[] = 'Run from ' . date('Y-m-d');
-$lines[] = '';
 $lines[] = 'Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.';
 $lines[] = 'Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.';
 $lines[] = '';
@@ -127,6 +125,10 @@ $lines[] = '```';
 $lines[] = '';
 $lines[] = 'The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.';
 $lines[] = '';
+$lines[] = '## Latest Results';
+$lines[] = '';
+$lines[] = 'Run from ' . date('Y-m-d');
+$lines[] = '';
 $results = $data['results'] ?? [];
 $tests = [
     'f06' => [
@@ -161,7 +163,7 @@ $tests = [
     ],
 ];
 foreach ($tests as $testKey => $info) {
-    $lines[] = '## ' . $info['title'];
+    $lines[] = '### ' . $info['title'];
     if (!empty($info['description'])) {
         $lines[] = '';
         $lines[] = $info['description'];
