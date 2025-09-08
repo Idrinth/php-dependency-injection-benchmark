@@ -1,7 +1,5 @@
 # PHP Dependency Injection Benchmark
 
-Run from 2025-09-07
-
 Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
 Testing these containers verifies that they resolve dependencies correctly and perform efficiently, which is vital for application reliability.
 
@@ -46,7 +44,28 @@ docker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
 
 The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.
 
-## 📊 f06
+## 🧩 Containers
+
+| Container | Features |
+| --- | --- |
+| [Aura.Di](https://github.com/auraphp/Aura.Di) | Configurable DI container with lazy loading and service factories |
+| [PHP-DI](https://github.com/PHP-DI/PHP-DI) | Autowiring, annotations, and compiled container support |
+| [Pimple](https://github.com/silexphp/Pimple) | Lightweight closure-based container |
+| [Symfony DI](https://github.com/symfony/dependency-injection) | Feature-rich container with configuration and compilation |
+| [Laravel Container](https://github.com/laravel/framework) | Framework-integrated container with automatic resolution and binding |
+| [Nette DI](https://github.com/nette/di) | High-performance compiled container |
+| [Auryn](https://github.com/rdlowrey/auryn) | Auryn is a dependency injector for bootstrapping object-oriented PHP applications. |
+| [Dice](https://github.com/Level-2/Dice) | A minimalist dependency injection container for PHP. |
+| [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |
+| [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
+| [Phalcon](https://github.com/phalcon/cphalcon) | |
+| [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
+
+## Latest Results
+
+Run from 2025-09-07
+
+### 📊 f06
 
 Small dependency graph including 6 classes total (excluding container startup time)
 
@@ -74,7 +93,7 @@ Small dependency graph including 6 classes total (excluding container startup ti
 
 ![📊 f06](images/speed_comparison_without_startup06.jpg)
 
-## 🚀 f06 startup
+### 🚀 f06 startup
 
 Small dependency graph including 6 classes total (includes container startup time)
 
@@ -102,7 +121,7 @@ Small dependency graph including 6 classes total (includes container startup tim
 
 ![🚀 f06 startup](images/speed_comparison_with_startup06.jpg)
 
-## 📊 p16
+### 📊 p16
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
 
@@ -127,7 +146,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 ![📊 p16](images/speed_comparison_without_startup16.jpg)
 
-## 🚀 p16 startup
+### 🚀 p16 startup
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
 
@@ -152,7 +171,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 ![🚀 p16 startup](images/speed_comparison_with_startup16.jpg)
 
-## 📊 z26
+### 📊 z26
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
 
@@ -170,7 +189,7 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 ![📊 z26](images/speed_comparison_without_startup26.jpg)
 
-## 🚀 z26 startup
+### 🚀 z26 startup
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
 
