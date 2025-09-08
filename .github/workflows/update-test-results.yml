@@ -27,15 +27,15 @@ jobs:
             matrix:
                 container:
                     - aura-di
+                    - laminas-servicemanager
+                    - laravel.singletons
                     - nette-di
+                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - phalcon.shared
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -55,9 +55,9 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - pimple
-                    - dice.unconfigured
                     - dice.configured
+                    - dice.unconfigured
+                    - pimple
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -77,12 +77,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laravel.unconfigured
                     - auryn
-                    - phalcon.transient
                     - laravel.cached
+                    - laravel.unconfigured
                     - league-container
                     - league.predefined
+                    - phalcon.transient
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -105,15 +105,15 @@ jobs:
             matrix:
                 container:
                     - aura-di
+                    - laminas-servicemanager
+                    - laravel.singletons
                     - nette-di
+                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - phalcon.shared
                 test:
                     - f06
                     - f06_startup
@@ -147,15 +147,15 @@ jobs:
             matrix:
                 container:
                     - aura-di
+                    - laminas-servicemanager
+                    - laravel.singletons
                     - nette-di
+                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - phalcon.shared
                 test:
                     - p16
                     - p16_startup
@@ -189,15 +189,15 @@ jobs:
             matrix:
                 container:
                     - aura-di
+                    - laminas-servicemanager
+                    - laravel.singletons
                     - nette-di
+                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - phalcon.shared
                 test:
                     - z26
                     - z26_startup
@@ -232,9 +232,9 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - pimple
-                    - dice.unconfigured
                     - dice.configured
+                    - dice.unconfigured
+                    - pimple
                 test:
                     - f06
                     - f06_startup
@@ -270,9 +270,9 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - pimple
-                    - dice.unconfigured
                     - dice.configured
+                    - dice.unconfigured
+                    - pimple
                 test:
                     - p16
                     - p16_startup
@@ -315,12 +315,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laravel.unconfigured
                     - auryn
-                    - phalcon.transient
                     - laravel.cached
+                    - laravel.unconfigured
                     - league-container
                     - league.predefined
+                    - phalcon.transient
                 test:
                     - f06
                     - f06_startup
@@ -377,12 +377,14 @@ jobs:
               run: php tools/generate_run_summary.php
             - name: Generate README
               run: php tools/generate_readme.php
+            - name: Update workflow
+              run: php tools/update_workflow.php
             - name: Commit results
               run: |
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email \
                       'github-actions[bot]@users.noreply.github.com'
-                  git add README.md images/speed_comparison_*.jpg run_summary.yaml
+                  git add README.md images/speed_comparison_*.jpg run_summary.yaml .github/workflows/update-test-results.yml
                   if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
                       git add archive
                   fi
