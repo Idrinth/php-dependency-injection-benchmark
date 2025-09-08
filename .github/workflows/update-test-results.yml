@@ -26,11 +26,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
                     - laminas-servicemanager
-                    - laravel.singletons
                     - nette-di
-                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -55,7 +52,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    []
+                    - aura-di
+                    - auryn
+                    - laravel.cached
+                    - laravel.singletons
+                    - phalcon.shared
+                    - phalcon.transient
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -75,14 +77,11 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn
                     - dice.configured
                     - dice.unconfigured
-                    - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - phalcon.transient
                     - pimple
         steps:
             - uses: actions/checkout@v5
@@ -105,11 +104,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
                     - laminas-servicemanager
-                    - laravel.singletons
                     - nette-di
-                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -147,11 +143,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
                     - laminas-servicemanager
-                    - laravel.singletons
                     - nette-di
-                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -189,11 +182,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
                     - laminas-servicemanager
-                    - laravel.singletons
                     - nette-di
-                    - phalcon.shared
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -233,7 +223,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    []
+                    - aura-di
+                    - auryn
+                    - laravel.cached
+                    - laravel.singletons
+                    - phalcon.shared
+                    - phalcon.transient
                 test:
                     - f06
                     - f06_startup
@@ -269,7 +264,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    []
+                    - aura-di
+                    - auryn
+                    - laravel.cached
+                    - laravel.singletons
+                    - phalcon.shared
+                    - phalcon.transient
                 test:
                     - p16
                     - p16_startup
@@ -312,14 +312,11 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn
                     - dice.configured
                     - dice.unconfigured
-                    - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - phalcon.transient
                     - pimple
                 test:
                     - f06
