@@ -182,6 +182,11 @@ $containerTable = [
         'url' => 'https://github.com/Idrinth/quickly',
         'features' => 'A fast dependency injection container featuring build time resolution.',
     ],
+    'ray-di' => [
+        'name' => 'Ray.Di',
+        'url' => 'https://github.com/ray-di/Ray.Di',
+        'features' => 'DI and AOP framework for PHP inspired by Google Guice',
+    ],
 ];
 $detected = trim(`find containers -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sed -E 's|\..*||; s|-container$||' | sort -u`);
 if ($detected !== '') {

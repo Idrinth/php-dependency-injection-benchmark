@@ -56,6 +56,7 @@ The build step prepares the image for the chosen container, and the run command 
 | [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
 | [Phalcon](https://github.com/phalcon/cphalcon) | |
 | [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
+| [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
 ## Latest Results
 
 Run from 2025-09-08
