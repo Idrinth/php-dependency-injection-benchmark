@@ -1,0 +1,7 @@
+{
+    "require": {
+        "ray/di": "^2.16",
+        "ray/compiler": "^1.11",
+        "nikic/php-parser": "^5.0"
+    }
+}
