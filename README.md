@@ -70,6 +70,9 @@ Small dependency graph including 6 classes total (excluding container startup ti
 
 ![📊 f06](images/speed_comparison_without_startup06.jpg)
 
+<details>
+<summary>View results</summary>
+
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | aura-di | ^5.0 | 2ms, 831µs, 935ns | 2ms, 763µs, 986ns | 3ms, 165µs, 960ns |
@@ -92,11 +95,16 @@ Small dependency graph including 6 classes total (excluding container startup ti
 | quickly(reflection) | dev-master | 1ms, 332µs, 807ns | 1ms, 308µs, 202ns | 1ms, 464µs, 843ns |
 | symfony(compiled) | ^7.0 | 2ms, 209µs, 115ns | 2ms, 131µs, 938ns | 2ms, 637µs, 863ns |
 
+</details>
+
 ### 🚀 f06 startup
 
 Small dependency graph including 6 classes total (includes container startup time)
 
 ![🚀 f06 startup](images/speed_comparison_with_startup06.jpg)
+
+<details>
+<summary>View results</summary>
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -120,11 +128,16 @@ Small dependency graph including 6 classes total (includes container startup tim
 | quickly(reflection) | dev-master | 1ms, 447µs, 796ns | 1ms, 356µs, 840ns | 2ms, 146µs, 959ns |
 | symfony(compiled) | ^7.0 | 7ms, 54µs, 138ns | 5ms, 768µs, 60ns | 18ms, 298µs, 149ns |
 
+</details>
+
 ### 📊 p16
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
 
 ![📊 p16](images/speed_comparison_without_startup16.jpg)
+
+<details>
+<summary>View results</summary>
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -142,11 +155,16 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | quickly(reflection) | dev-master | 1ms, 401µs, 400ns | 1ms, 353µs, 25ns | 1ms, 523µs, 17ns |
 | symfony(compiled) | ^7.0 | 2ms, 201µs, 104ns | 2ms, 139µs, 91ns | 2ms, 238µs, 988ns |
 
+</details>
+
 ### 🚀 p16 startup
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
 
 ![🚀 p16 startup](images/speed_comparison_with_startup16.jpg)
+
+<details>
+<summary>View results</summary>
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -164,11 +182,16 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | quickly(reflection) | dev-master | 1ms, 495µs, 885ns | 1ms, 390µs, 933ns | 2ms, 238µs, 35ns |
 | symfony(compiled) | ^7.0 | 7ms, 38µs, 760ns | 5ms, 733µs, 966ns | 18ms, 207µs, 73ns |
 
+</details>
+
 ### 📊 z26
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
 
 ![📊 z26](images/speed_comparison_without_startup26.jpg)
+
+<details>
+<summary>View results</summary>
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -183,11 +206,16 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | quickly(reflection) | dev-master | 1ms, 353µs, 478ns | 1ms, 316µs, 70ns | 1ms, 545µs, 906ns |
 | symfony(compiled) | ^7.0 | 2ms, 214µs, 884ns | 2ms, 124µs, 71ns | 2ms, 427µs, 101ns |
 
+</details>
+
 ### 🚀 z26 startup
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
 
 ![🚀 z26 startup](images/speed_comparison_with_startup26.jpg)
+
+<details>
+<summary>View results</summary>
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -201,5 +229,7 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | quickly(configured) | dev-master | 1ms, 785µs, 659ns | 1ms, 671µs, 75ns | 2ms, 477µs, 884ns |
 | quickly(reflection) | dev-master | 1ms, 567µs, 482ns | 1ms, 466µs, 989ns | 2ms, 315µs, 44ns |
 | symfony(compiled) | ^7.0 | 7ms, 218µs, 408ns | 5ms, 878µs, 925ns | 18ms, 435µs, 1ns |
+
+</details>
 
 Questions, issues, and new containers are welcome!

@@ -260,6 +260,9 @@ foreach ($tests as $testKey => $info) {
     $lines[] = '';
     $lines[] = '![' . $info['title'] . '](' . $info['image'] . ')';
     $lines[] = '';
+    $lines[] = '<details>';
+    $lines[] = '<summary>View results</summary>';
+    $lines[] = '';
     $lines[] = '| Container | Version | Average | Minimum | Maximum |';
     $lines[] = '| --- | --- | --- | --- | --- |';
     foreach ($results as $container => $stats) {
@@ -283,6 +286,8 @@ foreach ($tests as $testKey => $info) {
             format_time($t['maximum'])
         );
     }
+    $lines[] = '';
+    $lines[] = '</details>';
     $lines[] = '';
 }
 $lines[] = 'Questions, issues, and new containers are welcome!';
