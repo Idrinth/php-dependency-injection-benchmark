@@ -80,8 +80,8 @@ Small dependency graph including 6 classes total (excluding container startup ti
 | laravel(cached) | ^12.28 | 403ms, 41µs, 696ns | 394ms, 968µs, 32ns | 408ms, 710µs, 2ns |
 | laravel(singletons) | ^12.28 | 3ms, 623µs, 104ns | 3ms, 376µs, 7ns | 4ms, 498µs, 958ns |
 | laravel(unconfigured) | ^12.28 | 638ms, 846µs, 254ns | 629ms, 991µs, 54ns | 652ms, 682µs, 65ns |
-| league-container | ^5.1 | 665ms, 731µs, 453ns | 654ms, 332µs, 160ns | 688ms, 935µs, 41ns |
 | league(predefined) | ^5.1 | 874ms, 875µs, 450ns | 845ms, 336µs, 198ns | 920ms, 344µs, 114ns |
+| league(unconfigured) | ^5.1 | 665ms, 731µs, 453ns | 654ms, 332µs, 160ns | 688ms, 935µs, 41ns |
 | nette-di | ^3.2 | 3ms, 451µs, 704ns | 3ms, 383µs, 159ns | 3ms, 775µs, 119ns |
 | phalcon(shared) | ^5 | 4ms, 55µs, 380ns | 4ms, 12µs, 107ns | 4ms, 179µs, 954ns |
 | phalcon(transient) | ^5 | 256ms, 161µs, 379ns | 251ms, 438µs, 140ns | 270ms, 360µs, 946ns |
@@ -108,8 +108,8 @@ Small dependency graph including 6 classes total (includes container startup tim
 | laravel(cached) | ^12.28 | 408ms, 42µs, 836ns | 398ms, 905µs, 992ns | 433ms, 55µs, 877ns |
 | laravel(singletons) | ^12.28 | 3ms, 851µs, 532ns | 3ms, 463µs, 983ns | 5ms, 86µs, 183ns |
 | laravel(unconfigured) | ^12.28 | 633ms, 539µs, 676ns | 624ms, 237µs, 60ns | 644ms, 958µs, 19ns |
-| league-container | ^5.1 | 671ms, 528µs, 959ns | 660ms, 229µs, 921ns | 683ms, 24µs, 883ns |
 | league(predefined) | ^5.1 | 869ms, 817µs, 447ns | 852ms, 964µs, 878ns | 905ms, 21µs, 190ns |
+| league(unconfigured) | ^5.1 | 671ms, 528µs, 959ns | 660ms, 229µs, 921ns | 683ms, 24µs, 883ns |
 | nette-di | ^3.2 | 5ms, 651µs, 116ns | 3ms, 453µs, 969ns | 25ms, 44µs, 202ns |
 | phalcon(shared) | ^5 | 4ms, 3µs, 596ns | 3ms, 954µs, 172ns | 4ms, 106µs, 998ns |
 | phalcon(transient) | ^5 | 255ms, 172µs, 896ns | 248ms, 217µs, 105ns | 259ms, 768µs, 962ns |

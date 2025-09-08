@@ -16,9 +16,9 @@ dependency_versions:
     illuminate/container: "^12.28"
   laravel.unconfigured:
     illuminate/container: "^12.28"
-  league-container:
-    league/container: "^5.1"
   league.predefined:
+    league/container: "^5.1"
+  league.unconfigured:
     league/container: "^5.1"
   nette-di:
     nette/di: "^3.2"
@@ -239,15 +239,15 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  league-container:
+  league.predefined:
     f06:
-      average: 0.66573145389557
-      minimum: 0.65433216094971
-      maximum: 0.68893504142761
+      average: 0.87487545013428
+      minimum: 0.84533619880676
+      maximum: 0.92034411430359
     f06_startup:
-      average: 0.67152895927429
-      minimum: 0.66022992134094
-      maximum: 0.68302488327026
+      average: 0.86981744766235
+      minimum: 0.85296487808228
+      maximum: 0.90502119064331
     p16:
       average: 0
       minimum: 0
@@ -264,15 +264,15 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  league.predefined:
+  league.unconfigured:
     f06:
-      average: 0.87487545013428
-      minimum: 0.84533619880676
-      maximum: 0.92034411430359
+      average: 0.66573145389557
+      minimum: 0.65433216094971
+      maximum: 0.68893504142761
     f06_startup:
-      average: 0.86981744766235
-      minimum: 0.85296487808228
-      maximum: 0.90502119064331
+      average: 0.67152895927429
+      minimum: 0.66022992134094
+      maximum: 0.68302488327026
     p16:
       average: 0
       minimum: 0

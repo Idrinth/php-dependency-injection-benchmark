@@ -80,8 +80,8 @@ jobs:
                     - auryn
                     - laravel.cached
                     - laravel.unconfigured
-                    - league-container
                     - league.predefined
+                    - league.unconfigured
                     - phalcon.transient
         steps:
             - uses: actions/checkout@v5
@@ -318,8 +318,8 @@ jobs:
                     - auryn
                     - laravel.cached
                     - laravel.unconfigured
-                    - league-container
                     - league.predefined
+                    - league.unconfigured
                     - phalcon.transient
                 test:
                     - f06
