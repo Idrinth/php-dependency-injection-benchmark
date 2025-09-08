@@ -125,6 +125,7 @@ function create_bar_chart(array $values, string $title, string $filename, array 
         if ($logVal === null || $maxTick <= 0) {
             continue;
         }
+        $originalVal = $logVal;
         if ($logVal < 0) {
             $logVal = -1 * $logVal;
         }
@@ -134,8 +135,12 @@ function create_bar_chart(array $values, string $title, string $filename, array 
         $x1 = $leftMargin;
         $x2 = (int) ($x1 + $barWidthVal);
         imagefilledrectangle($img, $x1, $y1, $x2, $y2, $blue);
-        $percentage = ($logVal / $maxLog) * 100;
-        $percentageText = sprintf('%.1f%%', $percentage);
+        if ($originalVal <= 0) {
+            $percentageText = 'skipped due to performance';
+        } else {
+            $percentage = ($logVal / $maxLog) * 100;
+            $percentageText = sprintf('%.1f%%', $percentage);
+        }
         $percentageY = (int) ($y1 + ($barHeight - imagefontheight(2)) / 2);
         $percentageX = $x2 + 5;
         imagestring($img, 2, $percentageX, $percentageY, $percentageText, $black);
