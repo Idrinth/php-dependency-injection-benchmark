@@ -54,11 +54,11 @@ The build step prepares the image for the chosen container, and the run command 
 | [Dice](https://github.com/Level-2/Dice) | A minimalist dependency injection container for PHP. |
 | [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |
 | [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
-| [Phalcon](https://github.com/phalcon/cphalcon) | |
+| [Phalcon](https://github.com/phalcon/cphalcon) | A PHP extension built for performance |
 | [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies without a container |
 | [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
 | [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
-| Zen | |
+| [Zen](https://github.com/woohoolabs/zen) | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
 Run from 2025-09-09
