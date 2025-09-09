@@ -11,6 +11,7 @@ name: Update test results
         paths:
             - '**/*.php'
             - '**/*.json'
+            - '.github/workflows/update-test-results.yml'
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -25,12 +26,12 @@ jobs:
                 container:
                     - laminas-servicemanager
                     - nette-di
-                    - php-baseline
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
+                    - zen.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -51,12 +52,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.singletons
                     - phalcon.shared
-                    - phalcon.transient
-                    - ray-di.compiled
+                    - php-baseline
+                    - pimple
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -76,13 +77,13 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
+                    - auryn
+                    - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - pimple
-                    - zen.unconfigured
+                    - phalcon.transient
+                    - ray-di.compiled
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -106,12 +107,12 @@ jobs:
                 container:
                     - laminas-servicemanager
                     - nette-di
-                    - php-baseline
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
+                    - zen.unconfigured
                 test:
                     - f06
                     - f06_startup
@@ -146,12 +147,12 @@ jobs:
                 container:
                     - laminas-servicemanager
                     - nette-di
-                    - php-baseline
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
+                    - zen.unconfigured
                 test:
                     - p16
                     - p16_startup
@@ -186,12 +187,12 @@ jobs:
                 container:
                     - laminas-servicemanager
                     - nette-di
-                    - php-baseline
                     - php-di
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
                     - symfony.compiled
+                    - zen.unconfigured
                 test:
                     - z26
                     - z26_startup
@@ -227,12 +228,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.singletons
                     - phalcon.shared
-                    - phalcon.transient
-                    - ray-di.compiled
+                    - php-baseline
+                    - pimple
                 test:
                     - f06
                     - f06_startup
@@ -269,11 +270,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.singletons
                     - phalcon.shared
-                    - phalcon.transient
+                    - php-baseline
+                    - pimple
                 test:
                     - p16
                     - p16_startup
@@ -316,13 +318,13 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
+                    - auryn
+                    - laravel.cached
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - pimple
-                    - zen.unconfigured
+                    - phalcon.transient
+                    - ray-di.compiled
                 test:
                     - f06
                     - f06_startup
