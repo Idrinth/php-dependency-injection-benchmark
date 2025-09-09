@@ -51,4 +51,12 @@ class ContainerConfig extends AbstractContainerConfig {
             ClassEntryPoint::create(Z26::class),
         ];
     }
+
+    protected function getDefinitionHints(): array {
+        return [];
+    }
+
+    protected function getWildcardHints(): array {
+        return [];
+    }
 }
