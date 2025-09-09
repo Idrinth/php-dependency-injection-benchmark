@@ -86,6 +86,7 @@ jobs:
                     - league.predefined
                     - league.unconfigured
                     - pimple
+                    - zen.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -325,6 +326,7 @@ jobs:
                     - league.predefined
                     - league.unconfigured
                     - pimple
+                    - zen.unconfigured
                 test:
                     - f06
                     - f06_startup
