@@ -55,12 +55,13 @@ The build step prepares the image for the chosen container, and the run command 
 | [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |
 | [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
 | [Phalcon](https://github.com/phalcon/cphalcon) | |
+| [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies without a container |
 | [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
 | [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
 | Zen | |
 ## Latest Results
 
-Run from 2025-09-08
+Run from 2025-09-09
 
 ### 📊 f06
 
