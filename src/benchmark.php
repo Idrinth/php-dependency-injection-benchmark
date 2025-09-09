@@ -4,6 +4,9 @@ require_once __DIR__.'/AdapterImplementation.php';
 require_once __DIR__.'/classes-06.php';
 require_once __DIR__.'/classes-16.php';
 require_once __DIR__.'/classes-26.php';
+require_once __DIR__.'/interfaces-06.php';
+require_once __DIR__.'/interfaces-16.php';
+require_once __DIR__.'/interfaces-26.php';
 
 $iterations = 10000;
 $runs = (int)($argv[2] ?? 10);
@@ -43,10 +46,16 @@ function runBenchmark(string $class, int $iterations, int $runs, bool $includeSt
 $tests = [
     'f06' => [F06::class, false],
     'f06_startup' => [F06::class, true],
+    'fin06' => [FIn06::class, false],
+    'fin06_startup' => [FIn06::class, true],
     'p16' => [P16::class, false],
     'p16_startup' => [P16::class, true],
+    'pin16' => [PIn16::class, false],
+    'pin16_startup' => [PIn16::class, true],
     'z26' => [Z26::class, false],
     'z26_startup' => [Z26::class, true],
+    'zin26' => [ZIn26::class, false],
+    'zin26_startup' => [ZIn26::class, true],
 ];
 
 $selected = $argv[1] ?? null;
