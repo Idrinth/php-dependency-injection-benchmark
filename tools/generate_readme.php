@@ -175,7 +175,7 @@ $containerTable = [
     'phalcon' => [
         'name' => 'Phalcon',
         'url' => 'https://github.com/phalcon/cphalcon',
-        'features' => '',
+        'features' => 'A PHP extension built for performance',
     ],
     'php-baseline' => [
         'name' => 'PHP (baseline)',
@@ -191,6 +191,11 @@ $containerTable = [
         'name' => 'Ray.Di',
         'url' => 'https://github.com/ray-di/Ray.Di',
         'features' => 'DI and AOP framework for PHP inspired by Google Guice',
+    ],
+    'zen' => [
+        'name' => 'Zen',
+        'url' => 'https://github.com/woohoolabs/zen',
+        'features' => 'Woohoo Labs. Zen DI Container and preload file generator',
     ],
 ];
 $detected = trim(`find containers -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sed -E 's|\..*||; s|-container$||' | sort -u`);
