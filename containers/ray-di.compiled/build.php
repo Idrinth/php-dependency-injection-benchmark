@@ -6,11 +6,6 @@ use Ray\Di\AbstractModule;
 require __DIR__ . '/vendor/autoload.php';
 
 $srcDir = __DIR__;
-if (is_dir(__DIR__ . '/src')) {
-    $srcDir = __DIR__ . '/src';
-} elseif (is_dir(__DIR__ . '/../../src')) {
-    $srcDir = __DIR__ . '/../../src';
-}
 require $srcDir . '/classes-06.php';
 require $srcDir . '/classes-16.php';
 require $srcDir . '/classes-26.php';
