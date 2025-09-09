@@ -177,6 +177,11 @@ $containerTable = [
         'url' => 'https://github.com/phalcon/cphalcon',
         'features' => '',
     ],
+    'php-baseline' => [
+        'name' => 'PHP (baseline)',
+        'url' => 'https://www.php.net/',
+        'features' => 'Manual instantiation of dependencies without a container',
+    ],
     'quickly' => [
         'name' => 'Quickly',
         'url' => 'https://github.com/Idrinth/quickly',
