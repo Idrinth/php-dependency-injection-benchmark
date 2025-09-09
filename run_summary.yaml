@@ -38,6 +38,8 @@ dependency_versions:
     idrinth/quickly: "dev-master"
   ray-di.compiled:
     ray/di: "^2.16"
+  ray-di.unconfigured:
+    ray/di: "^2.16"
   symfony.compiled:
     symfony/dependency-injection: "^7.0"
   zen.unconfigured:
@@ -527,6 +529,31 @@ results:
       average: 3.5613807916641
       minimum: 3.5199749469757
       maximum: 3.6054480075836
+    p16:
+      average: 0
+      minimum: 0
+      maximum: 0
+    p16_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26:
+      average: 0
+      minimum: 0
+      maximum: 0
+    z26_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
+  ray-di.unconfigured:
+    f06:
+      average: 0
+      minimum: 0
+      maximum: 0
+    f06_startup:
+      average: 0
+      minimum: 0
+      maximum: 0
     p16:
       average: 0
       minimum: 0

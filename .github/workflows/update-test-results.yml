@@ -84,6 +84,7 @@ jobs:
                     - league.unconfigured
                     - phalcon.transient
                     - ray-di.compiled
+                    - ray-di.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -325,6 +326,7 @@ jobs:
                     - league.unconfigured
                     - phalcon.transient
                     - ray-di.compiled
+                    - ray-di.unconfigured
                 test:
                     - f06
                     - f06_startup
