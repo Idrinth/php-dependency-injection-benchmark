@@ -12,11 +12,6 @@ name: Update test results
             - '**/*.php'
             - '**/*.json'
 
-permissions:
-    contents: write
-    actions: write
-    workflows: write
-
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
@@ -356,6 +351,7 @@ jobs:
 
     aggregate:
         if: github.actor != 'github-actions[bot]'
+        permissions: write-all
         needs:
             - benchmark-fast-26
             - benchmark-medium-16
