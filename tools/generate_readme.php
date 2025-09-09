@@ -121,6 +121,8 @@ $lines[] = '```';
 $lines[] = '';
 $lines[] = 'The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.';
 $lines[] = '';
+$lines[] = 'Some containers perform extra work during the image build; for example, `ray-di.compiled` precompiles its dependencies automatically.';
+$lines[] = '';
 $containerTable = [
     'aura-di' => [
         'name' => 'Aura.Di',
@@ -304,3 +306,4 @@ foreach ($tests as $testKey => $info) {
 $lines[] = 'Questions, issues, and new containers are welcome!';
 $lines[] = '';
 file_put_contents('README.md', implode("\n", $lines));
+

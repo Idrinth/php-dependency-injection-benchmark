@@ -40,6 +40,8 @@ docker run --rm -v "$PWD:/out" di-benchmark-php-di php benchmark.php f06 1
 
 The build step prepares the image for the chosen container, and the run command executes a single run of the specified test (for example, `f06`). The resulting `results.json` file will be written to the current directory.
 
+Some containers perform extra work during the image build; for example, `ray-di.compiled` precompiles its dependencies automatically.
+
 ## 🧩 Containers
 
 | Container | Features |
