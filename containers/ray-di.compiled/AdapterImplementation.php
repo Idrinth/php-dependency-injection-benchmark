@@ -71,10 +71,13 @@ class AdapterImplementation {
             }
         };
         $dir = __DIR__ . '/compiled';
-        (new Compiler())->compile($module, $dir);
+        if (!is_dir($dir)) {
+            (new Compiler())->compile($module, $dir);
+        }
         $this->injector = new CompiledInjector($dir);
     }
     public function get(string $class): object {
         return $this->injector->getInstance($class);
     }
 }
+
