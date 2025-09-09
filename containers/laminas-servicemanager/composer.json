@@ -1,5 +1,5 @@
 {
     "require": {
-        "laminas/laminas-servicemanager": "^3.21"
+        "laminas/laminas-servicemanager": "^4.4"
     }
 }
