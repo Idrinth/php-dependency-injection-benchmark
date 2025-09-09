@@ -139,7 +139,7 @@ function create_bar_chart(array $values, string $title, string $filename, array 
             $percentageText = 'skipped due to performance';
         } else {
             $percentage = ($logVal / $maxLog) * 100;
-            $percentageText = sprintf('%.1f%%', $percentage);
+            $percentageText = sprintf('%.2f%%', $percentage);
         }
         $percentageY = (int) ($y1 + ($barHeight - imagefontheight(2)) / 2);
         $percentageX = $x2 + 5;
