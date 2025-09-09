@@ -12,10 +12,6 @@ name: Update test results
             - '**/*.php'
             - '**/*.json'
 
-permissions:
-    contents: write
-    actions: write
-
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
@@ -367,6 +363,7 @@ jobs:
             - benchmark-fast-26
             - benchmark-medium-16
             - benchmark-slow-06
+        permissions: write-all
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v5
