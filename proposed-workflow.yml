@@ -11,6 +11,7 @@ name: Update test results
         paths:
             - '**/*.php'
             - '**/*.json'
+            - '.github/workflows/update-test-results.yml'
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -51,12 +52,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - dice.configured
-                    - dice.unconfigured
+                    - auryn
+                    - laravel.cached
                     - laravel.singletons
                     - phalcon.shared
+                    - phalcon.transient
                     - php-baseline
-                    - pimple
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -76,12 +77,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn
-                    - laravel.cached
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - phalcon.transient
+                    - pimple
                     - ray-di.compiled
         steps:
             - uses: actions/checkout@v5
@@ -227,12 +228,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - dice.configured
-                    - dice.unconfigured
+                    - auryn
+                    - laravel.cached
                     - laravel.singletons
                     - phalcon.shared
+                    - phalcon.transient
                     - php-baseline
-                    - pimple
                 test:
                     - f06
                     - f06_startup
@@ -269,12 +270,12 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - dice.configured
-                    - dice.unconfigured
+                    - auryn
+                    - laravel.cached
                     - laravel.singletons
                     - phalcon.shared
+                    - phalcon.transient
                     - php-baseline
-                    - pimple
                 test:
                     - p16
                     - p16_startup
@@ -317,12 +318,12 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn
-                    - laravel.cached
+                    - dice.configured
+                    - dice.unconfigured
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - phalcon.transient
+                    - pimple
                     - ray-di.compiled
                 test:
                     - f06
