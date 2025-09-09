@@ -1,42 +1,99 @@
+---
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/php-di"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/laravel.singletons"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/laravel.unconfigured"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/symfony.compiled"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/nette-di"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/pimple"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/quickly.reflection"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/quickly.configured"
-    schedule:
-        interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/containers/quickly.compiled"
-    schedule:
-        interval: "weekly"
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/aura-di"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/auryn"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/dice.configured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/dice.unconfigured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/laminas-servicemanager"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/laravel.cached"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/laravel.singletons"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/laravel.unconfigured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/league.predefined"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/league.unconfigured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/nette-di"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/phalcon.shared"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/phalcon.transient"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/php-baseline"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/php-di"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/pimple"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/quickly.compiled"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/quickly.configured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/quickly.reflection"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/ray-di.compiled"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/ray-di.unconfigured"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/symfony.compiled"
+      schedule:
+          interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/zen.unconfigured"
+      schedule:
+          interval: "weekly"
