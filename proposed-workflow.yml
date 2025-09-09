@@ -25,8 +25,9 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - laravel.singletons
+                    - nette-di
                     - php-di
+                    - pimple.singletons
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
@@ -52,13 +53,13 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - laravel.unconfigured
                     - phalcon.shared
-                    - phalcon.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - pimple.factories
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -78,14 +79,13 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - laravel.unconfigured
+                    - auryn
+                    - laravel.cached
                     - league.predefined
                     - league.unconfigured
-                    - pimple.factories
-                    - pimple.singletons
+                    - phalcon.transient
                     - ray-di.compiled
+                    - ray-di.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -108,8 +108,9 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - laravel.singletons
+                    - nette-di
                     - php-di
+                    - pimple.singletons
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
@@ -148,8 +149,9 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - laravel.singletons
+                    - nette-di
                     - php-di
+                    - pimple.singletons
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
@@ -188,8 +190,9 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - laravel.singletons
+                    - nette-di
                     - php-di
+                    - pimple.singletons
                     - quickly.compiled
                     - quickly.configured
                     - quickly.reflection
@@ -230,13 +233,13 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - laravel.unconfigured
                     - phalcon.shared
-                    - phalcon.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - pimple.factories
                 test:
                     - f06
                     - f06_startup
@@ -273,13 +276,13 @@ jobs:
             matrix:
                 container:
                     - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - laravel.unconfigured
                     - phalcon.shared
-                    - phalcon.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - pimple.factories
                 test:
                     - p16
                     - p16_startup
@@ -322,14 +325,13 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - laravel.unconfigured
+                    - auryn
+                    - laravel.cached
                     - league.predefined
                     - league.unconfigured
-                    - pimple.factories
-                    - pimple.singletons
+                    - phalcon.transient
                     - ray-di.compiled
+                    - ray-di.unconfigured
                 test:
                     - f06
                     - f06_startup
