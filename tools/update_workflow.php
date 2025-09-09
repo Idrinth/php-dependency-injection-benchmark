@@ -102,4 +102,4 @@ $workflow = replace_container_list($workflow, 'benchmark-medium-16', $medium);
 $workflow = replace_container_list($workflow, 'build-slow', $slow);
 $workflow = replace_container_list($workflow, 'benchmark-slow-06', $slow);
 
-file_put_contents($workflowFile, $workflow);
+file_put_contents('proposed-workflow.yml', $workflow);
