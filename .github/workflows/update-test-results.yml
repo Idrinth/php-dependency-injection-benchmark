@@ -59,6 +59,7 @@ jobs:
                     - laravel.singletons
                     - phalcon.shared
                     - phalcon.transient
+                    - ray-di.compiled
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -230,6 +231,7 @@ jobs:
                     - laravel.singletons
                     - phalcon.shared
                     - phalcon.transient
+                    - ray-di.compiled
                 test:
                     - f06
                     - f06_startup
