@@ -59,7 +59,7 @@ Some containers perform extra work during the image build; for example, `ray-di.
 | [Phalcon](https://github.com/phalcon/cphalcon) | A PHP extension built for performance |
 | [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies without a container |
 | [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
-| [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
+| [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice. Requires explicit bindings or an auto-bind module to prevent `Untargeted` errors |
 | [Zen](https://github.com/woohoolabs/zen) | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
