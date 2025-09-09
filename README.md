@@ -91,7 +91,7 @@ Small dependency graph including 6 classes total (excluding container startup ti
 | phalcon(transient) | ^5 | 256ms, 680µs, 727ns | 250ms, 420µs, 93ns | 265ms, 318µs, 155ns |
 | php-baseline |  | 3ms, 845µs, 47ns | 3ms, 778µs, 934ns | 4ms, 31µs, 896ns |
 | php-di | ^7.0 | 841µs, 116ns | 785µs, 112ns | 1ms, 214µs, 981ns |
-| pimple | ^3.5 | 71ms, 270µs, 275ns | 69ms, 542µs, 884ns | 73ms, 448µs, 181ns |
+| pimple(factories) | ^3.5 | 71ms, 270µs, 275ns | 69ms, 542µs, 884ns | 73ms, 448µs, 181ns |
 | quickly(compiled) | dev-master | 1ms, 173µs, 639ns | 1ms, 135µs, 110ns | 1ms, 326µs, 799ns |
 | quickly(configured) | dev-master | 1ms, 348µs, 42ns | 1ms, 325µs, 130ns | 1ms, 384µs, 19ns |
 | quickly(reflection) | dev-master | 1ms, 345µs, 586ns | 1ms, 297µs, 950ns | 1ms, 451µs, 969ns |
@@ -128,7 +128,7 @@ Small dependency graph including 6 classes total (includes container startup tim
 | phalcon(transient) | ^5 | 256ms, 627µs, 154ns | 249ms, 722µs, 957ns | 271ms, 414µs, 41ns |
 | php-baseline |  | 3ms, 871µs, 369ns | 3ms, 801µs, 822ns | 4ms, 31µs, 896ns |
 | php-di | ^7.0 | 1ms, 127µs, 862ns | 855µs, 922ns | 3ms, 356µs, 933ns |
-| pimple | ^3.5 | 70ms, 484µs, 471ns | 69ms, 177µs, 865ns | 71ms, 895µs, 122ns |
+| pimple(factories) | ^3.5 | 70ms, 484µs, 471ns | 69ms, 177µs, 865ns | 71ms, 895µs, 122ns |
 | quickly(compiled) | dev-master | 832µs, 796ns | 761µs, 32ns | 1ms, 38µs, 74ns |
 | quickly(configured) | dev-master | 2ms, 78µs, 676ns | 1ms, 668µs, 930ns | 2ms, 595µs, 186ns |
 | quickly(reflection) | dev-master | 1ms, 502µs, 418ns | 1ms, 374µs, 6ns | 2ms, 354µs, 860ns |
@@ -159,7 +159,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | phalcon(shared) | ^5 | 4ms, 113µs, 54ns | 3ms, 980µs, 159ns | 4ms, 326µs, 820ns |
 | php-baseline |  | 10ms, 221µs, 481ns | 9ms, 726µs, 47ns | 10ms, 809µs, 898ns |
 | php-di | ^7.0 | 1ms, 81µs, 871ns | 822µs, 782ns | 2ms, 417µs, 87ns |
-| pimple | ^3.5 | 10s, 73ms, 959µs, 612ns | 9s, 921ms, 453µs, 952ns | 10s, 206ms, 98µs, 79ns |
+| pimple(factories) | ^3.5 | 10s, 73ms, 959µs, 612ns | 9s, 921ms, 453µs, 952ns | 10s, 206ms, 98µs, 79ns |
 | quickly(compiled) | dev-master | 829µs, 768ns | 808µs | 891µs, 923ns |
 | quickly(configured) | dev-master | 1ms, 320µs, 242ns | 1ms, 272µs, 916ns | 1ms, 358µs, 32ns |
 | quickly(reflection) | dev-master | 1ms, 342µs, 678ns | 1ms, 293µs, 897ns | 1ms, 477µs, 3ns |
@@ -188,7 +188,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 | phalcon(shared) | ^5 | 4ms, 450µs, 702ns | 4ms, 89µs, 117ns | 5ms, 939µs, 6ns |
 | php-baseline |  | 11ms, 743µs, 927ns | 9ms, 676µs, 933ns | 17ms, 85µs, 75ns |
 | php-di | ^7.0 | 1ms, 819µs, 181ns | 1ms, 435µs, 995ns | 5ms, 84µs, 37ns |
-| pimple | ^3.5 | 10s, 38ms, 891µs, 839ns | 9s, 844ms, 232µs, 82ns | 10s, 160ms, 304µs, 69ns |
+| pimple(factories) | ^3.5 | 10s, 38ms, 891µs, 839ns | 9s, 844ms, 232µs, 82ns | 10s, 160ms, 304µs, 69ns |
 | quickly(compiled) | dev-master | 799µs, 441ns | 790µs, 119ns | 813µs, 7ns |
 | quickly(configured) | dev-master | 1ms, 786µs, 994ns | 1ms, 688µs, 957ns | 2ms, 454µs, 996ns |
 | quickly(reflection) | dev-master | 1ms, 502µs, 442ns | 1ms, 381µs, 158ns | 2ms, 274µs, 990ns |

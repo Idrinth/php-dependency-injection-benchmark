@@ -28,7 +28,9 @@ dependency_versions:
     ext-phalcon: "^5"
   php-di:
     php-di/php-di: "^7.0"
-  pimple:
+  pimple.factories:
+    pimple/pimple: "^3.5"
+  pimple.singletons:
     pimple/pimple: "^3.5"
   quickly.compiled:
     idrinth/quickly: "dev-master"
@@ -420,7 +422,7 @@ results:
       average: 0.0019527912139893
       minimum: 0.0015308856964111
       maximum: 0.0055000782012939
-  pimple:
+  pimple.factories:
     f06:
       average: 0.071270275115967
       minimum: 0.06954288482666
