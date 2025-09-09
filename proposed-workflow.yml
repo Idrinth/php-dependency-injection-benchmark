@@ -1,0 +1,398 @@
+---
+name: Update test results
+
+'on':
+    workflow_dispatch:
+    schedule:
+        - cron: '0 0 1 * *'
+    push:
+        branches:
+            - the-one
+        paths:
+            - '**/*.php'
+            - '**/*.json'
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    build-fast:
+        if: github.actor != 'github-actions[bot]'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager
+                    - nette-di
+                    - php-di
+                    - quickly.compiled
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - zen.unconfigured
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
+    build-medium:
+        if: github.actor != 'github-actions[bot]'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - aura-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - phalcon.shared
+                    - php-baseline
+                    - pimple
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
+    build-slow:
+        if: github.actor != 'github-actions[bot]'
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - auryn
+                    - laravel.cached
+                    - laravel.unconfigured
+                    - league.predefined
+                    - league.unconfigured
+                    - phalcon.transient
+                    - ray-di.compiled
+        steps:
+            - uses: actions/checkout@v5
+            - name: Build container
+              run: |
+                  docker build -t di-benchmark-${{ matrix.container }} \
+                      -f containers/${{ matrix.container }}/Dockerfile .
+                  docker save di-benchmark-${{ matrix.container }} \
+                      -o di-benchmark-${{ matrix.container }}.tar
+            - name: Upload image
+              uses: actions/upload-artifact@v4
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: di-benchmark-${{ matrix.container }}.tar
+
+    benchmark-fast-06:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager
+                    - nette-di
+                    - php-di
+                    - quickly.compiled
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - zen.unconfigured
+                test:
+                    - f06
+                    - f06_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-fast-16:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager
+                    - nette-di
+                    - php-di
+                    - quickly.compiled
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - zen.unconfigured
+                test:
+                    - p16
+                    - p16_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-fast-26:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager
+                    - nette-di
+                    - php-di
+                    - quickly.compiled
+                    - quickly.configured
+                    - quickly.reflection
+                    - symfony.compiled
+                    - zen.unconfigured
+                test:
+                    - z26
+                    - z26_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-medium-06:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - build-medium
+            - benchmark-fast-06
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - aura-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - phalcon.shared
+                    - php-baseline
+                    - pimple
+                test:
+                    - f06
+                    - f06_startup
+                run:
+                    - 1
+                    - 2
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 5 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-medium-16:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-fast-16
+            - build-medium
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - aura-di
+                    - dice.configured
+                    - dice.unconfigured
+                    - laravel.singletons
+                    - phalcon.shared
+                    - php-baseline
+                    - pimple
+                test:
+                    - p16
+                    - p16_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+    benchmark-slow-06:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-medium-06
+            - build-slow
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - auryn
+                    - laravel.cached
+                    - laravel.unconfigured
+                    - league.predefined
+                    - league.unconfigured
+                    - phalcon.transient
+                    - ray-di.compiled
+                test:
+                    - f06
+                    - f06_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    aggregate:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-fast-26
+            - benchmark-medium-16
+            - benchmark-slow-06
+        permissions: write-all
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download results
+              uses: actions/download-artifact@v5
+              with:
+                  pattern: 'result-*-*-*'
+                  merge-multiple: true
+            - name: Merge test results
+              run: php tools/merge_json.php
+            - name: Generate graphs
+              run: php tools/generate_graphs.php
+            - name: Generate run summary
+              run: php tools/generate_run_summary.php
+            - name: Generate README
+              run: php tools/generate_readme.php
+            - name: Update workflow
+              run: php tools/update_workflow.php
+            - name: Commit results
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email \
+                      'github-actions[bot]@users.noreply.github.com'
+                  git add README.md images/speed_comparison_*.jpg run_summary.yaml proposed-workflow.yml
+                  if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+                      git add archive
+                  fi
+                  git commit -m "Update test results" || echo "No changes to commit"
+                  git push
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
