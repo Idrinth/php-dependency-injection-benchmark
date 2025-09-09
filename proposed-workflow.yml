@@ -83,7 +83,8 @@ jobs:
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - pimple
+                    - pimple.factories
+                    - pimple.singletons
                     - ray-di.compiled
         steps:
             - uses: actions/checkout@v5
@@ -326,7 +327,8 @@ jobs:
                     - laravel.unconfigured
                     - league.predefined
                     - league.unconfigured
-                    - pimple
+                    - pimple.factories
+                    - pimple.singletons
                     - ray-di.compiled
                 test:
                     - f06
