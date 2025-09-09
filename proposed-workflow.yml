@@ -25,7 +25,7 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - nette-di
+                    - laravel.singletons
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -54,10 +54,11 @@ jobs:
                     - aura-di
                     - auryn
                     - laravel.cached
-                    - laravel.singletons
+                    - nette-di
                     - phalcon.shared
                     - phalcon.transient
                     - php-baseline
+                    - ray-di.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -84,7 +85,6 @@ jobs:
                     - league.unconfigured
                     - pimple
                     - ray-di.compiled
-                    - ray-di.unconfigured
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -107,7 +107,7 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - nette-di
+                    - laravel.singletons
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -147,7 +147,7 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - nette-di
+                    - laravel.singletons
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -187,7 +187,7 @@ jobs:
             matrix:
                 container:
                     - laminas-servicemanager
-                    - nette-di
+                    - laravel.singletons
                     - php-di
                     - quickly.compiled
                     - quickly.configured
@@ -231,10 +231,11 @@ jobs:
                     - aura-di
                     - auryn
                     - laravel.cached
-                    - laravel.singletons
+                    - nette-di
                     - phalcon.shared
                     - phalcon.transient
                     - php-baseline
+                    - ray-di.unconfigured
                 test:
                     - f06
                     - f06_startup
@@ -273,10 +274,11 @@ jobs:
                     - aura-di
                     - auryn
                     - laravel.cached
-                    - laravel.singletons
+                    - nette-di
                     - phalcon.shared
                     - phalcon.transient
                     - php-baseline
+                    - ray-di.unconfigured
                 test:
                     - p16
                     - p16_startup
@@ -326,7 +328,6 @@ jobs:
                     - league.unconfigured
                     - pimple
                     - ray-di.compiled
-                    - ray-di.unconfigured
                 test:
                     - f06
                     - f06_startup
