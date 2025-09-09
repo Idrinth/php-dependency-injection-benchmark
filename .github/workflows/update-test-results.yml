@@ -387,7 +387,7 @@ jobs:
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email \
                       'github-actions[bot]@users.noreply.github.com'
-                  git add README.md images/speed_comparison_*.jpg run_summary.yaml .github/workflows/update-test-results.yml
+                  git add README.md images/speed_comparison_*.jpg run_summary.yaml proposed-workflow.yml
                   if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
                       git add archive
                   fi
