@@ -102,4 +102,13 @@ $workflow = replace_container_list($workflow, 'benchmark-medium-16', $medium);
 $workflow = replace_container_list($workflow, 'build-slow', $slow);
 $workflow = replace_container_list($workflow, 'benchmark-slow-06', $slow);
 
+if (strpos($workflow, "workflows: write\n") === false) {
+    $workflow = preg_replace(
+        "/(permissions:\n(?:    [a-z_-]+: [a-z_-]+\n)+)/",
+        "$1    workflows: write\n",
+        $workflow,
+        1
+    );
+}
+
 file_put_contents($workflowFile, $workflow);

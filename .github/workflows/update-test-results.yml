@@ -15,6 +15,7 @@ name: Update test results
 permissions:
     contents: write
     actions: write
+    workflows: write
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
