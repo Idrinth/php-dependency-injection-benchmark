@@ -7,6 +7,9 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/classes-06.php';
 require __DIR__ . '/classes-16.php';
 require __DIR__ . '/classes-26.php';
+require __DIR__ . '/interfaces-06.php';
+require __DIR__ . '/interfaces-16.php';
+require __DIR__ . '/interfaces-26.php';
 
 $container = new ContainerBuilder();
 foreach ([
@@ -60,6 +63,14 @@ foreach ([
     Z26::class,
 ] as $service) {
     $container->register($service, $service)->setPublic(true)->setAutowired(true);
+}
+$interfaceGroups = [['F', '06'], ['P', '16'], ['Z', '26']];
+foreach ($interfaceGroups as [$max, $suffix]) {
+    foreach (range('A', $max) as $letter) {
+        $interface = $letter . 'In' . $suffix;
+        $implementation = $letter . 'Im' . $suffix;
+        $container->register($interface, $implementation)->setPublic(true)->setAutowired(true);
+    }
 }
 $container->compile();
 

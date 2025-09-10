@@ -62,6 +62,23 @@ class AdapterImplementation {
                 ['shared' => true,'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps)]
             );
         }
+        $interfaces = [];
+        foreach ($definitions as $class => $deps) {
+            $iface = substr($class, 0, 1) . 'In' . substr($class, 1);
+            $impl = substr($class, 0, 1) . 'Im' . substr($class, 1);
+            $ifaceDeps = array_map(fn($d) => substr($d, 0, 1) . 'In' . substr($d, 1), $deps);
+            $interfaces[$iface] = [$impl, $ifaceDeps];
+        }
+        foreach ($interfaces as $iface => [$impl, $deps]) {
+            $this->container->addRule(
+                $iface,
+                [
+                    'shared' => true,
+                    'instanceOf' => $impl,
+                    'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps),
+                ]
+            );
+        }
     }
     public function get(string $class): object {
         return $this->container->create($class);

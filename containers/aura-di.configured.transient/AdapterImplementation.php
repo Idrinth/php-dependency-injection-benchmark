@@ -10,6 +10,13 @@ class AdapterImplementation {
         $c->set(F06::class, $c->lazyNew(F06::class));
         $c->set(P16::class, $c->lazyNew(P16::class));
         $c->set(Z26::class, $c->lazyNew(Z26::class));
+        foreach ([['F', '06'], ['P', '16'], ['Z', '26']] as [$max, $suffix]) {
+            foreach (range('A', $max) as $letter) {
+                $interface = $letter . 'In' . $suffix;
+                $implementation = $letter . 'Im' . $suffix;
+                $c->set($interface, $c->lazyNew($implementation));
+            }
+        }
         $this->container = $c;
     }
     public function get(string $class): object {
