@@ -57,13 +57,13 @@ Some containers perform extra work during the image build; for example, `ray-di.
 | [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |
 | [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
 | [Phalcon](https://github.com/phalcon/cphalcon) | A PHP extension built for performance |
-| [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies without a container |
+| [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies with simple caching |
 | [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
 | [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
 | [Zen](https://github.com/woohoolabs/zen) | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
-Run from 2025-09-09
+Run from 2025-09-10
 
 ### 📊 f06
 
