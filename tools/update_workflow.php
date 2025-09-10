@@ -47,6 +47,7 @@ function format_list(array $items, int $level): string {
 function build_job(string $name, array $containers): string {
     $yaml  = indent(1) . "$name:\n";
     $yaml .= indent(2) . "if: github.actor != 'github-actions[bot]'\n";
+    $yaml .= indent(2) . "needs: download-php-cli\n";
     $yaml .= indent(2) . "runs-on: ubuntu-latest\n";
     $yaml .= indent(2) . "strategy:\n";
     $yaml .= indent(3) . "matrix:\n";
@@ -54,15 +55,22 @@ function build_job(string $name, array $containers): string {
     $yaml .= format_list($containers, 5);
     $yaml .= indent(2) . "steps:\n";
     $yaml .= indent(3) . "- uses: actions/checkout@v5\n";
+    $yaml .= indent(3) . "- name: Download PHP CLI image\n";
+    $yaml .= indent(3) . "  uses: actions/download-artifact@v5\n";
+    $yaml .= indent(3) . "  with:\n";
+    $yaml .= indent(4) . "name: php-8.4-cli\n";
+    $yaml .= indent(4) . "path: .\n";
+    $yaml .= indent(3) . "- name: Load PHP CLI image\n";
+    $yaml .= indent(3) . "  run: docker load -i php-8.4-cli.tar\n";
     $yaml .= indent(3) . "- name: Build container\n";
-    $yaml .= indent(4) . "run: |\n";
-    $yaml .= indent(5) . 'docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .' . "\n";
-    $yaml .= indent(5) . 'docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar' . "\n";
+    $yaml .= indent(3) . "  run: |\n";
+    $yaml .= indent(4) . '  docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .' . "\n";
+    $yaml .= indent(4) . '  docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar' . "\n";
     $yaml .= indent(3) . "- name: Upload image\n";
-    $yaml .= indent(4) . "uses: actions/upload-artifact@v4\n";
-    $yaml .= indent(4) . "with:\n";
-    $yaml .= indent(5) . 'name: di-benchmark-${{ matrix.container }}' . "\n";
-    $yaml .= indent(5) . 'path: di-benchmark-${{ matrix.container }}.tar' . "\n";
+    $yaml .= indent(3) . "  uses: actions/upload-artifact@v4\n";
+    $yaml .= indent(3) . "  with:\n";
+    $yaml .= indent(4) . 'name: di-benchmark-${{ matrix.container }}' . "\n";
+    $yaml .= indent(4) . 'path: di-benchmark-${{ matrix.container }}.tar' . "\n";
     return $yaml;
 }
 
@@ -87,21 +95,21 @@ function benchmark_job(string $name, array $needs, array $containers, array $tes
     $yaml .= indent(2) . "steps:\n";
     $yaml .= indent(3) . "- uses: actions/checkout@v5\n";
     $yaml .= indent(3) . "- name: Download image\n";
-    $yaml .= indent(4) . "uses: actions/download-artifact@v5\n";
-    $yaml .= indent(4) . "with:\n";
-    $yaml .= indent(5) . 'name: di-benchmark-${{ matrix.container }}' . "\n";
-    $yaml .= indent(5) . "path: .\n";
+    $yaml .= indent(3) . "  uses: actions/download-artifact@v5\n";
+    $yaml .= indent(3) . "  with:\n";
+    $yaml .= indent(4) . 'name: di-benchmark-${{ matrix.container }}' . "\n";
+    $yaml .= indent(4) . "path: .\n";
     $yaml .= indent(3) . "- name: Load image\n";
-    $yaml .= indent(4) . 'run: docker load -i di-benchmark-${{ matrix.container }}.tar' . "\n";
+    $yaml .= indent(3) . '  run: docker load -i di-benchmark-${{ matrix.container }}.tar' . "\n";
     $yaml .= indent(3) . "- name: Run benchmarks\n";
-    $yaml .= indent(4) . "run: |\n";
-    $yaml .= indent(5) . 'docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} ' . $iterations . " 2>&1\n";
-    $yaml .= indent(5) . 'mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json' . "\n";
+    $yaml .= indent(3) . "  run: |\n";
+    $yaml .= indent(4) . '  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} ' . $iterations . " 2>&1\n";
+    $yaml .= indent(4) . '  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json' . "\n";
     $yaml .= indent(3) . "- name: Upload results\n";
-    $yaml .= indent(4) . "uses: actions/upload-artifact@v4\n";
-    $yaml .= indent(4) . "with:\n";
-    $yaml .= indent(5) . 'name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}' . "\n";
-    $yaml .= indent(5) . 'path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json' . "\n";
+    $yaml .= indent(3) . "  uses: actions/upload-artifact@v4\n";
+    $yaml .= indent(3) . "  with:\n";
+    $yaml .= indent(4) . 'name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}' . "\n";
+    $yaml .= indent(4) . 'path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json' . "\n";
     return $yaml;
 }
 
@@ -176,6 +184,18 @@ jobs:
 YAML;
 
     $yaml = $header;
+    $yaml .= indent(1) . "download-php-cli:\n";
+    $yaml .= indent(2) . "runs-on: ubuntu-latest\n";
+    $yaml .= indent(2) . "steps:\n";
+    $yaml .= indent(3) . "- name: Pull PHP CLI image\n";
+    $yaml .= indent(3) . "  run: docker pull php:8.4-cli\n";
+    $yaml .= indent(3) . "- name: Save PHP CLI image\n";
+    $yaml .= indent(3) . "  run: docker save php:8.4-cli -o php-8.4-cli.tar\n";
+    $yaml .= indent(3) . "- name: Upload PHP CLI image\n";
+    $yaml .= indent(3) . "  uses: actions/upload-artifact@v4\n";
+    $yaml .= indent(3) . "  with:\n";
+    $yaml .= indent(4) . "name: php-8.4-cli\n";
+    $yaml .= indent(4) . "path: php-8.4-cli.tar\n";
     $yaml .= build_job('build-fast', $fast);
     $yaml .= build_job('build-medium', $medium);
     $yaml .= build_job('build-slow', $slow);
