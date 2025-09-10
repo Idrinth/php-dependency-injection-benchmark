@@ -6,55 +6,55 @@ updates:
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/aura-di"
+      directory: "/containers/aura-di.configured.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/auryn"
+      directory: "/containers/auryn.reflection.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/dice.configured"
+      directory: "/containers/dice.configured.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/dice.unconfigured"
+      directory: "/containers/dice.reflection.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/laminas-servicemanager"
+      directory: "/containers/laminas-servicemanager.reflection.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/laravel.cached"
+      directory: "/containers/laravel.configured.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/laravel.singletons"
+      directory: "/containers/laravel.reflection.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/laravel.unconfigured"
+      directory: "/containers/laravel.reflection.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/league.predefined"
+      directory: "/containers/league.configured.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/league.unconfigured"
+      directory: "/containers/league.reflection.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/nette-di"
+      directory: "/containers/nette-di.compiled.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/phalcon.shared"
+      directory: "/containers/phalcon.configured.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/phalcon.transient"
+      directory: "/containers/phalcon.configured.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
@@ -62,38 +62,43 @@ updates:
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/php-di"
+      directory: "/containers/php-di.reflection.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/pimple"
+      directory: "/containers/pimple.configured.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/quickly.compiled"
+      directory: "/containers/pimple.configured.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/quickly.configured"
+      directory: "/containers/quickly.compiled.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/quickly.reflection"
+      directory: "/containers/quickly.configured.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/ray-di.compiled"
+      directory: "/containers/quickly.reflection.singleton"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/ray-di.unconfigured"
+      directory: "/containers/ray-di.compiled.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/symfony.compiled"
+      directory: "/containers/ray-di.reflection.transient"
       schedule:
           interval: "weekly"
     - package-ecosystem: "composer"
-      directory: "/containers/zen.unconfigured"
+      directory: "/containers/symfony.compiled.singleton"
       schedule:
           interval: "weekly"
+    - package-ecosystem: "composer"
+      directory: "/containers/zen.compiled.singleton"
+      schedule:
+          interval: "weekly"
+
