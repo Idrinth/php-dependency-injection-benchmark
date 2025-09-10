@@ -59,26 +59,20 @@ class AdapterImplementation
             A26::class => [],
         ];
         foreach ($definitions as $class => $deps) {
-            $this->container->addRule(
+            $this->container = $this->container->addRule(
                 $class,
-                ['shared' => true,'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps)]
+                ['shared' => true, 'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps)]
             );
-        }
-        $interfaces = [];
-        foreach ($definitions as $class => $deps) {
             $iface = substr($class, 0, 1) . 'In' . substr($class, 1);
             $impl = substr($class, 0, 1) . 'Im' . substr($class, 1);
             $ifaceDeps = array_map(fn($d) => substr($d, 0, 1) . 'In' . substr($d, 1), $deps);
-            $interfaces[$iface] = [$impl, $ifaceDeps];
-        }
-        foreach ($interfaces as $iface => [$impl, $deps]) {
-            $this->container->addRule(
+            $this->container = $this->container->addRule(
+                $impl,
+                ['shared' => true, 'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $ifaceDeps)]
+            );
+            $this->container = $this->container->addRule(
                 $iface,
-                [
-                    'shared' => true,
-                    'instanceOf' => $impl,
-                    'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps),
-                ]
+                ['shared' => true, 'instanceOf' => $impl]
             );
         }
     }
