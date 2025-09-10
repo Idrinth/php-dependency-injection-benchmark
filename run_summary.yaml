@@ -1,53 +1,53 @@
 php_version: "8.4"
 dependency_versions:
-  aura-di:
+  aura-di.configured.transient:
     aura/di: "^5.0"
-  auryn:
+  auryn.reflection.transient:
     rdlowrey/auryn: "^1.4"
-  dice.configured:
+  dice.configured.singleton:
     level-2/dice: "^4.0"
-  dice.unconfigured:
+  dice.reflection.transient:
     level-2/dice: "^4.0"
-  laminas-servicemanager:
+  laminas-servicemanager.reflection.singleton:
     laminas/laminas-servicemanager: "^4.4"
-  laravel.cached:
+  laravel.configured.transient:
     illuminate/container: "^12.28"
-  laravel.singletons:
+  laravel.reflection.singleton:
     illuminate/container: "^12.28"
-  laravel.unconfigured:
+  laravel.reflection.transient:
     illuminate/container: "^12.28"
-  league.predefined:
+  league.configured.transient:
     league/container: "^5.1"
-  league.unconfigured:
+  league.reflection.transient:
     league/container: "^5.1"
-  nette-di:
+  nette-di.compiled.singleton:
     nette/di: "^3.2"
-  phalcon.shared:
+  phalcon.configured.singleton:
     ext-phalcon: "^5"
-  phalcon.transient:
+  phalcon.configured.transient:
     ext-phalcon: "^5"
-  php-di:
+  php-di.reflection.singleton:
     php-di/php-di: "^7.0"
-  pimple.factories:
+  pimple.configured.transient:
     pimple/pimple: "^3.5"
-  pimple.singletons:
+  pimple.configured.singleton:
     pimple/pimple: "^3.5"
-  quickly.compiled:
+  quickly.compiled.singleton:
     idrinth/quickly: "dev-master"
-  quickly.configured:
+  quickly.configured.singleton:
     idrinth/quickly: "dev-master"
-  quickly.reflection:
+  quickly.reflection.singleton:
     idrinth/quickly: "dev-master"
-  ray-di.compiled:
+  ray-di.compiled.transient:
     ray/di: "^2.16"
-  ray-di.unconfigured:
+  ray-di.reflection.transient:
     ray/di: "^2.16"
-  symfony.compiled:
+  symfony.compiled.singleton:
     symfony/dependency-injection: "^7.0"
-  zen.unconfigured:
+  zen.compiled.singleton:
     woohoolabs/zen: "^3.1"
 results:
-  aura-di:
+  aura-di.configured.transient:
     f06:
       average: 0.0017958879470825
       minimum: 0.0015439987182617
@@ -72,7 +72,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  auryn:
+  auryn.reflection.transient:
     f06:
       average: 0.40972447395325
       minimum: 0.39952492713928
@@ -97,7 +97,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  dice.configured:
+  dice.configured.singleton:
     f06:
       average: 0.070570611953735
       minimum: 0.069297075271606
@@ -122,7 +122,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  dice.unconfigured:
+  dice.reflection.transient:
     f06:
       average: 0.070626664161682
       minimum: 0.069112062454224
@@ -147,7 +147,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  laminas-servicemanager:
+  laminas-servicemanager.reflection.singleton:
     f06:
       average: 0.00079305171966553
       minimum: 0.00076913833618164
@@ -172,7 +172,7 @@ results:
       average: 0.0011606693267822
       minimum: 0.00091409683227539
       maximum: 0.0021731853485107
-  laravel.cached:
+  laravel.configured.transient:
     f06:
       average: 0.40778625011444
       minimum: 0.40373802185059
@@ -197,7 +197,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  laravel.singletons:
+  laravel.reflection.singleton:
     f06:
       average: 0.0034828186035156
       minimum: 0.0034270286560059
@@ -222,7 +222,7 @@ results:
       average: 0.0037343978881836
       minimum: 0.0035641193389893
       maximum: 0.0047969818115234
-  laravel.unconfigured:
+  laravel.reflection.transient:
     f06:
       average: 0.63731982707977
       minimum: 0.62545800209045
@@ -247,7 +247,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  league.predefined:
+  league.configured.transient:
     f06:
       average: 0.86736469268799
       minimum: 0.85617589950562
@@ -272,7 +272,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  league.unconfigured:
+  league.reflection.transient:
     f06:
       average: 0.67063040733337
       minimum: 0.65516781806946
@@ -297,7 +297,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  nette-di:
+  nette-di.compiled.singleton:
     f06:
       average: 0.0033416986465454
       minimum: 0.0032329559326172
@@ -322,7 +322,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  phalcon.shared:
+  phalcon.configured.singleton:
     f06:
       average: 0.0040050983428955
       minimum: 0.0039491653442383
@@ -347,7 +347,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  phalcon.transient:
+  phalcon.configured.transient:
     f06:
       average: 0.25342392921448
       minimum: 0.24983501434326
@@ -397,7 +397,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  php-di:
+  php-di.reflection.singleton:
     f06:
       average: 0.00086104869842529
       minimum: 0.0007939338684082
@@ -422,7 +422,7 @@ results:
       average: 0.0015867233276367
       minimum: 0.00097298622131348
       maximum: 0.0035572052001953
-  pimple.factories:
+  pimple.configured.transient:
     f06:
       average: 0.070522308349609
       minimum: 0.068978071212769
@@ -447,7 +447,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  pimple.singletons:
+  pimple.configured.singleton:
     f06:
       average: 0.0012931108474731
       minimum: 0.0012249946594238
@@ -472,7 +472,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  quickly.compiled:
+  quickly.compiled.singleton:
     f06:
       average: 0.00080256462097168
       minimum: 0.00079202651977539
@@ -497,7 +497,7 @@ results:
       average: 0.0009918212890625
       minimum: 0.00084304809570312
       maximum: 0.0012180805206299
-  quickly.configured:
+  quickly.configured.singleton:
     f06:
       average: 0.0014048337936401
       minimum: 0.0013270378112793
@@ -522,7 +522,7 @@ results:
       average: 0.0017894983291626
       minimum: 0.0016798973083496
       maximum: 0.0025088787078857
-  quickly.reflection:
+  quickly.reflection.singleton:
     f06:
       average: 0.0013616561889648
       minimum: 0.001317024230957
@@ -547,7 +547,7 @@ results:
       average: 0.0017226219177246
       minimum: 0.0014991760253906
       maximum: 0.0024800300598145
-  ray-di.compiled:
+  ray-di.compiled.transient:
     f06:
       average: 3.5010115385056
       minimum: 3.418890953064
@@ -572,7 +572,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  ray-di.unconfigured:
+  ray-di.reflection.transient:
     f06:
       average: 0.34916930198669
       minimum: 0.34804391860962
@@ -597,7 +597,7 @@ results:
       average: 0
       minimum: 0
       maximum: 0
-  symfony.compiled:
+  symfony.compiled.singleton:
     f06:
       average: 0.00079760551452637
       minimum: 0.00078105926513672
@@ -622,7 +622,7 @@ results:
       average: 0.00078485012054443
       minimum: 0.00076508522033691
       maximum: 0.00082206726074219
-  zen.unconfigured:
+  zen.compiled.singleton:
     f06:
       average: 0.00086889266967773
       minimum: 0.00077104568481445
