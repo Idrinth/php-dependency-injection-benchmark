@@ -35,3 +35,24 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - Container Structure: Standard structure expected in `containers/[name]/` directories.
 - Adapter Interface: Requirements for the `AdapterImplementation` class and its `get()` method.
 - Docker Requirements: Standards for Dockerfiles (using `php:8.4-cli` base, proper composer installation).
+
+## Benchmark Test Types
+- **Test Categories**: `f06` (6 classes), `p16` (16 classes), `z26` (26 classes).
+- **Startup vs Runtime**: `sf06`, `sp16`, and `sz26` include container startup time, while `rf06`, `rp16`, and `rz26` measure runtime only.
+- **Interface Testing**: `fin06`, `pin16`, and `zin26` use interface-based definitions; other tests rely on class-based definitions.
+- **Performance Classification**: Containers are grouped into fast, medium, or slow categories to optimize CI execution.
+
+## Performance and CI Considerations
+- Runtime Limits: Exclude containers from larger test suites when a single run exceeds reasonable time limits or triggers repeated timeouts.
+- Workflow Optimization: GitHub Actions groups containers into fast, medium, and slow matrices to balance thorough coverage against CI duration.
+- Result Aggregation: Multiple runs per test are merged with `php tools/merge_json.php` to compute averaged results before generating reports.
+
+## Data Management
+- Version Tracking: document how dependency versions are extracted and recorded in `run_summary.yaml`.
+- Monthly Archival: detail the process for archiving results in `archive/YYYY-MM-DD` directories.
+- Result Validation: outline steps to ensure benchmark data integrity and handle edge cases such as timeouts and errors.
+
+## Development Standards
+- Bias Awareness: Special considerations for the "quickly" container (author conflict of interest)
+- Reproducibility: Ensuring consistent environments across different runs
+- Container Isolation: Each container should be completely independent
