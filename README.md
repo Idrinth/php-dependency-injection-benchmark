@@ -44,26 +44,26 @@ Some containers perform extra work during the image build; for example, `ray-di.
 
 ## 🧩 Containers
 
-| Container | Features |
-| --- | --- |
-| [Aura.Di](https://github.com/auraphp/Aura.Di) | Configurable DI container with lazy loading and service factories |
-| [PHP-DI](https://github.com/PHP-DI/PHP-DI) | Autowiring, annotations, and compiled container support |
-| [Pimple](https://github.com/silexphp/Pimple) | Lightweight closure-based container |
-| [Symfony DI](https://github.com/symfony/dependency-injection) | Feature-rich container with configuration and compilation |
-| [Laravel Container](https://github.com/laravel/framework) | Framework-integrated container with automatic resolution and binding |
-| [Nette DI](https://github.com/nette/di) | High-performance compiled container |
-| [Auryn](https://github.com/rdlowrey/auryn) | Auryn is a dependency injector for bootstrapping object-oriented PHP applications. |
-| [Dice](https://github.com/Level-2/Dice) | A minimalist dependency injection container for PHP. |
-| [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | Factory-driven dependency injection container |
-| [League Container](https://github.com/thephpleague/container) | A fast and intuitive dependency injection container. |
-| [Phalcon](https://github.com/phalcon/cphalcon) | A PHP extension built for performance |
-| [PHP (baseline)](https://www.php.net/) | Manual instantiation of dependencies without a container |
-| [Quickly](https://github.com/Idrinth/quickly) | A fast dependency injection container featuring build time resolution. |
-| [Ray.Di](https://github.com/ray-di/Ray.Di) | DI and AOP framework for PHP inspired by Google Guice |
-| [Zen](https://github.com/woohoolabs/zen) | Woohoo Labs. Zen DI Container and preload file generator |
+| Name+Link | Run combinations | Description |
+| --- | --- | --- |
+| [Aura.Di](https://github.com/auraphp/Aura.Di) | configured transient | Configurable DI container with lazy loading and service factories |
+| [PHP-DI](https://github.com/PHP-DI/PHP-DI) | reflection singleton | Autowiring, annotations, and compiled container support |
+| [Pimple](https://github.com/silexphp/Pimple) | configured singleton, configured transient | Lightweight closure-based container |
+| [Symfony DI](https://github.com/symfony/dependency-injection) | compiled singleton | Feature-rich container with configuration and compilation |
+| [Laravel Container](https://github.com/laravel/framework) | configured transient, reflection singleton, reflection transient | Framework-integrated container with automatic resolution and binding |
+| [Nette DI](https://github.com/nette/di) | compiled singleton | High-performance compiled container |
+| [Auryn](https://github.com/rdlowrey/auryn) | reflection transient | Auryn is a dependency injector for bootstrapping object-oriented PHP applications. |
+| [Dice](https://github.com/Level-2/Dice) | configured singleton, reflection transient | A minimalist dependency injection container for PHP. |
+| [Laminas ServiceManager](https://github.com/laminas/laminas-servicemanager) | reflection singleton | Factory-driven dependency injection container |
+| [League Container](https://github.com/thephpleague/container) | configured transient, reflection transient | A fast and intuitive dependency injection container. |
+| [Phalcon](https://github.com/phalcon/cphalcon) | configured singleton, configured transient | A PHP extension built for performance |
+| [PHP (baseline)](https://www.php.net/) |  | Manual instantiation of dependencies without a container |
+| [Quickly](https://github.com/Idrinth/quickly) | compiled singleton, configured singleton, reflection singleton | A fast dependency injection container featuring build time resolution. |
+| [Ray.Di](https://github.com/ray-di/Ray.Di) | compiled transient, reflection transient | DI and AOP framework for PHP inspired by Google Guice |
+| [Zen](https://github.com/woohoolabs/zen) | compiled singleton | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
-Run from 2025-09-09
+Run from 2025-09-10
 
 ### 📊 f06
 
