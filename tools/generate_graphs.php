@@ -63,18 +63,30 @@ function nice_number(float $value): float {
 
 $withoutStartup06 = [];
 $withStartup06 = [];
+$withoutStartup06Interfaces = [];
+$withStartup06Interfaces = [];
 $withoutStartup26 = [];
 $withStartup26 = [];
+$withoutStartup26Interfaces = [];
+$withStartup26Interfaces = [];
 $withoutStartup16 = [];
 $withStartup16 = [];
+$withoutStartup16Interfaces = [];
+$withStartup16Interfaces = [];
 foreach ($containers as $container) {
     $values = $summary[$container] ?? [];
     $withoutStartup06[] = $values['f06'] ?? null;
     $withStartup06[] = $values['f06_startup'] ?? null;
+    $withoutStartup06Interfaces[] = $values['fin06'] ?? null;
+    $withStartup06Interfaces[] = $values['fin06_startup'] ?? null;
     $withoutStartup26[] = $values['z26'] ?? null;
     $withStartup26[] = $values['z26_startup'] ?? null;
+    $withoutStartup26Interfaces[] = $values['zin26'] ?? null;
+    $withStartup26Interfaces[] = $values['zin26_startup'] ?? null;
     $withoutStartup16[] = $values['p16'] ?? null;
     $withStartup16[] = $values['p16_startup'] ?? null;
+    $withoutStartup16Interfaces[] = $values['pin16'] ?? null;
+    $withStartup16Interfaces[] = $values['pin16_startup'] ?? null;
 }
 
 function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
@@ -182,3 +194,39 @@ create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time', 'im
 create_bar_chart($withStartup16, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup16.jpg', $displayNames);
 create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup26.jpg', $displayNames);
 create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup26.jpg', $displayNames);
+create_bar_chart(
+    $withoutStartup06Interfaces,
+    'Interface Speed Comparison Without Startup Time',
+    'images/speed_comparison_interfaces_without_startup06.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup06Interfaces,
+    'Interface Speed Comparison With Startup Time',
+    'images/speed_comparison_interfaces_with_startup06.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withoutStartup16Interfaces,
+    'Interface Speed Comparison Without Startup Time',
+    'images/speed_comparison_interfaces_without_startup16.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup16Interfaces,
+    'Interface Speed Comparison With Startup Time',
+    'images/speed_comparison_interfaces_with_startup16.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withoutStartup26Interfaces,
+    'Interface Speed Comparison Without Startup Time',
+    'images/speed_comparison_interfaces_without_startup26.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup26Interfaces,
+    'Interface Speed Comparison With Startup Time',
+    'images/speed_comparison_interfaces_with_startup26.jpg',
+    $displayNames
+);

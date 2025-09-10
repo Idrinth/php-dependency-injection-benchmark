@@ -35,7 +35,20 @@ foreach ($dirs as $dir) {
     }
 }
 
-$tests = ['f06', 'f06_startup', 'p16', 'p16_startup', 'z26', 'z26_startup'];
+$tests = [
+    'f06',
+    'f06_startup',
+    'fin06',
+    'fin06_startup',
+    'p16',
+    'p16_startup',
+    'pin16',
+    'pin16_startup',
+    'z26',
+    'z26_startup',
+    'zin26',
+    'zin26_startup',
+];
 $results = [];
 foreach ($dirs as $dir) {
     $jsonFile = "{$dir}.json";
