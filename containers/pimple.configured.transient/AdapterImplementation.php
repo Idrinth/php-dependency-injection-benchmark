@@ -8,54 +8,75 @@ class AdapterImplementation
     public function __construct()
     {
         $c = new Container();
-        $c[A06::class] = $c->factory(fn() => new A06());
-        $c[B06::class] = $c->factory(fn($c) => new B06($c[A06::class]));
-        $c[C06::class] = $c->factory(fn($c) => new C06($c[B06::class]));
-        $c[D06::class] = $c->factory(fn($c) => new D06($c[C06::class], $c[B06::class], $c[A06::class]));
-        $c[E06::class] = $c->factory(fn($c) => new E06($c[D06::class], $c[C06::class], $c[B06::class]));
-        $c[F06::class] = $c->factory(fn($c) => new F06($c[E06::class], $c[D06::class], $c[B06::class]));
-        $c[A16::class] = $c->factory(fn() => new A16());
-        $c[B16::class] = $c->factory(fn($c) => new B16($c[A16::class]));
-        $c[C16::class] = $c->factory(fn($c) => new C16($c[B16::class]));
-        $c[D16::class] = $c->factory(fn($c) => new D16($c[C16::class], $c[B16::class], $c[A16::class]));
-        $c[E16::class] = $c->factory(fn($c) => new E16($c[D16::class], $c[C16::class]));
-        $c[F16::class] = $c->factory(fn($c) => new F16($c[E16::class], $c[D16::class], $c[B16::class]));
-        $c[G16::class] = $c->factory(fn($c) => new G16($c[F16::class]));
-        $c[H16::class] = $c->factory(fn($c) => new H16($c[G16::class], $c[F16::class]));
-        $c[I16::class] = $c->factory(fn($c) => new I16($c[H16::class], $c[G16::class], $c[F16::class]));
-        $c[J16::class] = $c->factory(fn($c) => new J16($c[I16::class], $c[H16::class]));
-        $c[K16::class] = $c->factory(fn($c) => new K16($c[J16::class], $c[I16::class], $c[H16::class]));
-        $c[L16::class] = $c->factory(fn($c) => new L16($c[K16::class]));
-        $c[M16::class] = $c->factory(fn($c) => new M16($c[L16::class], $c[K16::class]));
-        $c[N16::class] = $c->factory(fn($c) => new N16($c[M16::class], $c[L16::class], $c[K16::class]));
-        $c[O16::class] = $c->factory(fn($c) => new O16($c[N16::class], $c[M16::class]));
-        $c[P16::class] = $c->factory(fn($c) => new P16($c[O16::class], $c[N16::class], $c[M16::class]));
-        $c[A26::class] = $c->factory(fn() => new A26());
-        $c[B26::class] = $c->factory(fn($c) => new B26($c[A26::class]));
-        $c[C26::class] = $c->factory(fn($c) => new C26($c[B26::class]));
-        $c[D26::class] = $c->factory(fn($c) => new D26($c[C26::class], $c[B26::class], $c[A26::class]));
-        $c[E26::class] = $c->factory(fn($c) => new E26($c[D26::class], $c[C26::class]));
-        $c[F26::class] = $c->factory(fn($c) => new F26($c[E26::class], $c[D26::class], $c[B26::class]));
-        $c[G26::class] = $c->factory(fn($c) => new G26($c[F26::class]));
-        $c[H26::class] = $c->factory(fn($c) => new H26($c[G26::class], $c[F26::class]));
-        $c[I26::class] = $c->factory(fn($c) => new I26($c[H26::class], $c[G26::class], $c[F26::class]));
-        $c[J26::class] = $c->factory(fn($c) => new J26($c[I26::class], $c[H26::class], $c[G26::class], $c[F26::class]));
-        $c[K26::class] = $c->factory(fn($c) => new K26($c[J26::class], $c[I26::class], $c[H26::class], $c[G26::class], $c[F26::class]));
-        $c[L26::class] = $c->factory(fn($c) => new L26($c[K26::class], $c[J26::class], $c[I26::class], $c[H26::class], $c[G26::class]));
-        $c[M26::class] = $c->factory(fn($c) => new M26($c[L26::class], $c[K26::class], $c[J26::class], $c[I26::class], $c[H26::class]));
-        $c[N26::class] = $c->factory(fn($c) => new N26($c[M26::class], $c[L26::class]));
-        $c[O26::class] = $c->factory(fn($c) => new O26($c[N26::class], $c[M26::class], $c[L26::class]));
-        $c[P26::class] = $c->factory(fn($c) => new P26($c[O26::class], $c[N26::class], $c[M26::class], $c[L26::class]));
-        $c[Q26::class] = $c->factory(fn($c) => new Q26($c[P26::class], $c[O26::class], $c[N26::class], $c[M26::class], $c[L26::class]));
-        $c[R26::class] = $c->factory(fn($c) => new R26($c[Q26::class], $c[P26::class]));
-        $c[S26::class] = $c->factory(fn($c) => new S26($c[R26::class], $c[Q26::class], $c[P26::class]));
-        $c[T26::class] = $c->factory(fn($c) => new T26($c[S26::class], $c[R26::class], $c[Q26::class], $c[P26::class]));
-        $c[U26::class] = $c->factory(fn($c) => new U26($c[T26::class], $c[S26::class], $c[R26::class], $c[Q26::class], $c[P26::class]));
-        $c[V26::class] = $c->factory(fn($c) => new V26($c[U26::class]));
-        $c[W26::class] = $c->factory(fn($c) => new W26($c[V26::class], $c[U26::class]));
-        $c[X26::class] = $c->factory(fn($c) => new X26($c[W26::class], $c[V26::class], $c[U26::class]));
-        $c[Y26::class] = $c->factory(fn($c) => new Y26($c[X26::class], $c[W26::class], $c[V26::class], $c[U26::class]));
-        $c[Z26::class] = $c->factory(fn($c) => new Z26($c[Y26::class], $c[X26::class], $c[W26::class], $c[V26::class], $c[U26::class]));
+        $definitions = [
+            F06::class => [E06::class, D06::class, B06::class],
+            E06::class => [D06::class, C06::class, B06::class],
+            D06::class => [C06::class, B06::class, A06::class],
+            C06::class => [B06::class],
+            B06::class => [A06::class],
+            A06::class => [],
+            P16::class => [O16::class, N16::class, M16::class],
+            O16::class => [N16::class, M16::class],
+            N16::class => [M16::class, L16::class, K16::class],
+            M16::class => [L16::class, K16::class],
+            L16::class => [K16::class],
+            K16::class => [J16::class, I16::class, H16::class],
+            J16::class => [I16::class, H16::class],
+            I16::class => [H16::class, G16::class, F16::class],
+            H16::class => [G16::class, F16::class],
+            G16::class => [F16::class],
+            F16::class => [E16::class, D16::class, B16::class],
+            E16::class => [D16::class, C16::class],
+            D16::class => [C16::class, B16::class, A16::class],
+            C16::class => [B16::class],
+            B16::class => [A16::class],
+            A16::class => [],
+            Z26::class => [Y26::class, X26::class, W26::class, V26::class, U26::class],
+            Y26::class => [X26::class, W26::class, V26::class, U26::class],
+            X26::class => [W26::class, V26::class, U26::class],
+            W26::class => [V26::class, U26::class],
+            V26::class => [U26::class],
+            U26::class => [T26::class, S26::class, R26::class, Q26::class, P26::class],
+            T26::class => [S26::class, R26::class, Q26::class, P26::class],
+            S26::class => [R26::class, Q26::class, P26::class],
+            R26::class => [Q26::class, P26::class],
+            Q26::class => [P26::class, O26::class, N26::class, M26::class, L26::class],
+            P26::class => [O26::class, N26::class, M26::class, L26::class],
+            O26::class => [N26::class, M26::class, L26::class],
+            N26::class => [M26::class, L26::class],
+            M26::class => [L26::class, K26::class, J26::class, I26::class, H26::class],
+            L26::class => [K26::class, J26::class, I26::class, H26::class, G26::class],
+            K26::class => [J26::class, I26::class, H26::class, G26::class, F26::class],
+            J26::class => [I26::class, H26::class, G26::class, F26::class],
+            I26::class => [H26::class, G26::class, F26::class],
+            H26::class => [G26::class, F26::class],
+            G26::class => [F26::class],
+            F26::class => [E26::class, D26::class, B26::class],
+            E26::class => [D26::class, C26::class],
+            D26::class => [C26::class, B26::class, A26::class],
+            C26::class => [B26::class],
+            B26::class => [A26::class],
+            A26::class => [],
+        ];
+        foreach ($definitions as $class => $deps) {
+            $c[$class] = $c->factory(function ($c) use ($class, $deps) {
+                $args = [];
+                foreach ($deps as $dep) {
+                    $args[] = $c[$dep];
+                }
+                return new $class(...$args);
+            });
+            $iface = substr($class, 0, 1) . 'In' . substr($class, 1);
+            $impl = substr($class, 0, 1) . 'Im' . substr($class, 1);
+            $ifaceDeps = array_map(fn($d) => substr($d, 0, 1) . 'In' . substr($d, 1), $deps);
+            $c[$iface] = $c->factory(function ($c) use ($impl, $ifaceDeps) {
+                $args = [];
+                foreach ($ifaceDeps as $dep) {
+                    $args[] = $c[$dep];
+                }
+                return new $impl(...$args);
+            });
+        }
         $this->container = $c;
     }
     public function get(string $class): object
@@ -63,3 +84,4 @@ class AdapterImplementation
         return $this->container[$class];
     }
 }
+
