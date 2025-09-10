@@ -2,7 +2,7 @@ FROM php:8.4-cli
 
 WORKDIR /app
 RUN mkdir /out
-COPY containers/laminas-servicemanager/* ./
+COPY containers/laminas-servicemanager.reflection.singleton/* ./
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git unzip \
     && rm -rf /var/lib/apt/lists/* \

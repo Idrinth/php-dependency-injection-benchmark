@@ -2,7 +2,7 @@ FROM php:8.4-cli
 
 WORKDIR /app
 RUN mkdir /out
-COPY containers/laravel.cached/* ./
+COPY containers/laravel.configured.transient/* ./
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git unzip \
     && rm -rf /var/lib/apt/lists/* \

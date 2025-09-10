@@ -2,7 +2,7 @@ FROM php:8.4-cli
 
 WORKDIR /app
 RUN mkdir /out
-COPY containers/phalcon.shared/* ./
+COPY containers/phalcon.configured.singleton/* ./
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions \
