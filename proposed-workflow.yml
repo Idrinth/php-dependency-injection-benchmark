@@ -38,12 +38,12 @@ jobs:
             matrix:
                 container:
                     - php-baseline
+                    - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
         steps:
@@ -72,13 +72,13 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - dice.configured.singleton
-                    - dice.reflection.transient
+                    - laravel.configured.transient
                     - laravel.reflection.singleton
-                    - laravel.reflection.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - pimple.configured.transient
+                    - phalcon.configured.transient
+                    - quickly.reflection.singleton
+                    - ray-di.reflection.transient
         steps:
             - uses: actions/checkout@v5
             - name: Download PHP CLI image
@@ -105,12 +105,12 @@ jobs:
             matrix:
                 container:
                     - auryn.reflection.transient
-                    - laravel.configured.transient
+                    - dice.reflection.transient
+                    - laravel.reflection.transient
                     - league.configured.transient
                     - league.reflection.transient
-                    - phalcon.configured.transient
+                    - pimple.configured.transient
                     - ray-di.compiled.transient
-                    - ray-di.reflection.transient
         steps:
             - uses: actions/checkout@v5
             - name: Download PHP CLI image
@@ -137,12 +137,12 @@ jobs:
             matrix:
                 container:
                     - php-baseline
+                    - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -176,12 +176,12 @@ jobs:
             matrix:
                 container:
                     - php-baseline
+                    - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -215,12 +215,12 @@ jobs:
             matrix:
                 container:
                     - php-baseline
+                    - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -253,6 +253,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -288,6 +289,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -323,6 +325,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -361,13 +364,13 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - dice.configured.singleton
-                    - dice.reflection.transient
+                    - laravel.configured.transient
                     - laravel.reflection.singleton
-                    - laravel.reflection.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - pimple.configured.transient
+                    - phalcon.configured.transient
+                    - quickly.reflection.singleton
+                    - ray-di.reflection.transient
                 test:
                     - f06
                     - f06_startup
@@ -402,13 +405,13 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - dice.configured.singleton
-                    - dice.reflection.transient
+                    - laravel.configured.transient
                     - laravel.reflection.singleton
-                    - laravel.reflection.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - pimple.configured.transient
+                    - phalcon.configured.transient
+                    - quickly.reflection.singleton
+                    - ray-di.reflection.transient
                 test:
                     - p16
                     - p16_startup
@@ -451,10 +454,10 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - dice.configured.singleton
+                    - laravel.configured.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - pimple.configured.transient
+                    - phalcon.configured.transient
                 test:
                     - fin06
                     - fin06_startup
@@ -489,10 +492,10 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - dice.configured.singleton
+                    - laravel.configured.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - pimple.configured.transient
+                    - phalcon.configured.transient
                 test:
                     - pin16
                     - pin16_startup
@@ -535,12 +538,12 @@ jobs:
             matrix:
                 container:
                     - auryn.reflection.transient
-                    - laravel.configured.transient
+                    - dice.reflection.transient
+                    - laravel.reflection.transient
                     - league.configured.transient
                     - league.reflection.transient
-                    - phalcon.configured.transient
+                    - pimple.configured.transient
                     - ray-di.compiled.transient
-                    - ray-di.reflection.transient
                 test:
                     - f06
                     - f06_startup
@@ -582,9 +585,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laravel.configured.transient
                     - league.configured.transient
-                    - phalcon.configured.transient
+                    - pimple.configured.transient
                     - ray-di.compiled.transient
                 test:
                     - fin06
