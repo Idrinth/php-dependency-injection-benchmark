@@ -214,20 +214,39 @@ if ($detected !== '') {
         }
     }
 }
+$containerRuns = [];
+foreach (array_keys($data['results'] ?? []) as $containerName) {
+    $parts = explode('.', $containerName);
+    $base = array_shift($parts);
+    if (!isset($containerRuns[$base])) {
+        $containerRuns[$base] = [];
+    }
+    if (count($parts) >= 2) {
+        $combo = $parts[0] . ' ' . $parts[1];
+    } elseif (count($parts) === 1) {
+        $combo = $parts[0];
+    } else {
+        $combo = '';
+    }
+    if ($combo !== '' && !in_array($combo, $containerRuns[$base], true)) {
+        $containerRuns[$base][] = $combo;
+    }
+}
+foreach ($containerRuns as &$runs) {
+    sort($runs);
+}
+unset($runs);
 $lines[] = '## 🧩 Containers';
 $lines[] = '';
-$lines[] = '| Container | Features |';
-$lines[] = '| --- | --- |';
-foreach ($containerTable as $info) {
+$lines[] = '| Name+Link | Run combinations | Description |';
+$lines[] = '| --- | --- | --- |';
+foreach ($containerTable as $key => $info) {
     $name = $info['name'];
     if ($info['url'] !== '') {
         $name = '[' . $name . '](' . $info['url'] . ')';
     }
-    if ($info['features'] === '') {
-        $lines[] = '| ' . $name . ' | |';
-    } else {
-        $lines[] = '| ' . $name . ' | ' . $info['features'] . ' |';
-    }
+    $runText = isset($containerRuns[$key]) ? implode(', ', $containerRuns[$key]) : '';
+    $lines[] = '| ' . $name . ' | ' . $runText . ' | ' . $info['features'] . ' |';
 }
 $lines[] = '## Latest Results';
 $lines[] = '';
