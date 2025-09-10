@@ -37,11 +37,13 @@ function parse_simple_yaml(string $filename): array {
 }
 
 function format_name(string $name): string {
-    if (str_contains($name, '.')) {
-        [$first, $rest] = explode('.', $name, 2);
-        return $first . '(' . $rest . ')';
+    $parts = explode('.', $name);
+    $first = ucfirst(array_shift($parts));
+    if (empty($parts)) {
+        return $first;
     }
-    return $name;
+    $formatted = array_map(fn($p) => ucfirst($p), $parts);
+    return $first . '(' . implode(', ', $formatted) . ')';
 }
 
 function format_time(float $seconds): string {
