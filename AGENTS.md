@@ -29,3 +29,8 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - `tools/generate_run_summary.php`: builds `run_summary.yaml` and archives it on scheduled runs.
 - `tools/generate_graphs.php`: renders benchmark charts as JPG images.
 - `tools/generate_readme.php`: updates the project README based on the latest results.
+
+## Development Standards
+- Bias Awareness: Special considerations for the "quickly" container (author conflict of interest)
+- Reproducibility: Ensuring consistent environments across different runs
+- Container Isolation: Each container should be completely independent
