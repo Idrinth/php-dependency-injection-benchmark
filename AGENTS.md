@@ -30,6 +30,11 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - `tools/generate_graphs.php`: renders benchmark charts as JPG images.
 - `tools/generate_readme.php`: updates the project README based on the latest results.
 
+## Performance and CI Considerations
+- Runtime Limits: Exclude containers from larger test suites when a single run exceeds reasonable time limits or triggers repeated timeouts.
+- Workflow Optimization: GitHub Actions groups containers into fast, medium, and slow matrices to balance thorough coverage against CI duration.
+- Result Aggregation: Multiple runs per test are merged with `php tools/merge_json.php` to compute averaged results before generating reports.
+
 ## Data Management
 - Version Tracking: document how dependency versions are extracted and recorded in `run_summary.yaml`.
 - Monthly Archival: detail the process for archiving results in `archive/YYYY-MM-DD` directories.
