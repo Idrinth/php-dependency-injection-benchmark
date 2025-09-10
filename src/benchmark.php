@@ -1,17 +1,19 @@
 <?php
-require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/AdapterImplementation.php';
-require_once __DIR__.'/classes-06.php';
-require_once __DIR__.'/classes-16.php';
-require_once __DIR__.'/classes-26.php';
-require_once __DIR__.'/interfaces-06.php';
-require_once __DIR__.'/interfaces-16.php';
-require_once __DIR__.'/interfaces-26.php';
+
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/AdapterImplementation.php';
+require_once __DIR__ . '/classes-06.php';
+require_once __DIR__ . '/classes-16.php';
+require_once __DIR__ . '/classes-26.php';
+require_once __DIR__ . '/interfaces-06.php';
+require_once __DIR__ . '/interfaces-16.php';
+require_once __DIR__ . '/interfaces-26.php';
 
 $iterations = 10000;
 $runs = (int)($argv[2] ?? 10);
 
-function runBenchmark(string $class, int $iterations, int $runs, bool $includeStartup): array {
+function runBenchmark(string $class, int $iterations, int $runs, bool $includeStartup): array
+{
     $times = [];
 
     if (!$includeStartup) {
@@ -83,4 +85,3 @@ if (!is_dir($outputDir)) {
 $file = $outputDir . '/results.json';
 file_put_contents($file, json_encode($results, JSON_PRETTY_PRINT) . PHP_EOL);
 fwrite(STDERR, 'Results written to ' . $file . PHP_EOL);
-

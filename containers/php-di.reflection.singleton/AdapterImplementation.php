@@ -1,12 +1,15 @@
 <?php
 
 use DI\ContainerBuilder;
+
 use function DI\create;
 use function DI\get;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private \DI\Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $builder = new ContainerBuilder();
         $builder->addDefinitions([
             A06::class => create(),
@@ -18,7 +21,8 @@ class AdapterImplementation {
         ]);
         $this->container = $builder->build();
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }

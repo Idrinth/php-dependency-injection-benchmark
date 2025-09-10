@@ -1,9 +1,11 @@
 <?php
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private array $cache = [];
 
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         if (!isset($this->cache[$class])) {
             $this->cache[$class] = match ($class) {
                 F06::class => $this->createF06(),
@@ -16,7 +18,8 @@ class AdapterImplementation {
         return $this->cache[$class];
     }
 
-    private function createF06(): F06 {
+    private function createF06(): F06
+    {
         $a = new A06();
         $b = new B06($a);
         $c = new C06($b);
@@ -25,7 +28,8 @@ class AdapterImplementation {
         return new F06($e, $d, $b);
     }
 
-    private function createP16(): P16 {
+    private function createP16(): P16
+    {
         $a = new A16();
         $b = new B16($a);
         $c = new C16($b);
@@ -44,7 +48,8 @@ class AdapterImplementation {
         return new P16($o, $n, $m);
     }
 
-    private function createZ26(): Z26 {
+    private function createZ26(): Z26
+    {
         $a = new A26();
         $b = new B26($a);
         $c = new C26($b);

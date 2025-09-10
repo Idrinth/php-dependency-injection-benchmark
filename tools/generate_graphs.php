@@ -2,7 +2,8 @@
 
 chdir(__DIR__ . '/..');
 
-function format_name(string $name): string {
+function format_name(string $name): string
+{
     if (strpos($name, '.') !== false) {
         [$first, $rest] = explode('.', $name, 2);
         return $first . "\n(" . $rest . ")";
@@ -10,7 +11,8 @@ function format_name(string $name): string {
     return $name;
 }
 
-function parse_run_summary(string $filename): array {
+function parse_run_summary(string $filename): array
+{
     $lines = file($filename);
     $containers = [];
     $values = [];
@@ -46,7 +48,8 @@ if (!$containers) {
 }
 $displayNames = array_map('format_name', $containers);
 
-function nice_number(float $value): float {
+function nice_number(float $value): float
+{
     $exponent = floor(log10($value));
     $fraction = $value / pow(10, $exponent);
     if ($fraction <= 1) {
@@ -89,7 +92,8 @@ foreach ($containers as $container) {
     $withStartup16Interfaces[] = $values['pin16_startup'] ?? null;
 }
 
-function create_bar_chart(array $values, string $title, string $filename, array $labels): void {
+function create_bar_chart(array $values, string $title, string $filename, array $labels): void
+{
     $count = count($values);
     $barHeight = 40;
     $spacing = 20;

@@ -2,7 +2,8 @@
 
 chdir(__DIR__ . '/..');
 
-function parse_simple_yaml(string $filename): array {
+function parse_simple_yaml(string $filename): array
+{
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $data = [];
     $indentStack = [0];
@@ -22,21 +23,22 @@ function parse_simple_yaml(string $filename): array {
             array_pop($refStack);
         }
         if ($valuePart === '') {
-            $refStack[count($refStack)-1][$key] = [];
-            $refStack[] = &$refStack[count($refStack)-1][$key];
+            $refStack[count($refStack) - 1][$key] = [];
+            $refStack[] = &$refStack[count($refStack) - 1][$key];
             $indentStack[] = $indent + 2;
         } else {
             $value = trim($valuePart, "'\"");
             if (is_numeric($value)) {
                 $value = str_contains($value, '.') ? (float)$value : (int)$value;
             }
-            $refStack[count($refStack)-1][$key] = $value;
+            $refStack[count($refStack) - 1][$key] = $value;
         }
     }
     return $data;
 }
 
-function format_name(string $name): string {
+function format_name(string $name): string
+{
     $parts = explode('.', $name);
     $first = ucfirst(array_shift($parts));
     if (empty($parts)) {
@@ -46,7 +48,8 @@ function format_name(string $name): string {
     return $first . '(' . implode(', ', $formatted) . ')';
 }
 
-function format_time(float $seconds): string {
+function format_time(float $seconds): string
+{
     if ($seconds === 0.0) {
         return '-';
     }
@@ -327,4 +330,3 @@ foreach ($tests as $testKey => $info) {
 $lines[] = 'Questions, issues, and new containers are welcome!';
 $lines[] = '';
 file_put_contents('README.md', implode("\n", $lines));
-

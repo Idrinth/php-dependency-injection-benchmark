@@ -2,11 +2,14 @@
 
 use Illuminate\Container\Container;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new Container();
-        foreach([
+        foreach (
+            [
             A06::class,
             B06::class,
             C06::class,
@@ -55,11 +58,13 @@ class AdapterImplementation {
             X26::class,
             Y26::class,
             Z26::class,
-        ] as $service) {
+            ] as $service
+        ) {
             $this->container->singleton($service);
         }
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->make($class);
     }
 }

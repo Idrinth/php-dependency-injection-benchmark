@@ -2,12 +2,15 @@
 
 require __DIR__ . '/CompiledContainer.php';
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private CompiledContainer $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new CompiledContainer();
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }

@@ -3,9 +3,11 @@
 use Nette\DI\ContainerLoader;
 use Nette\DI\Compiler;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Nette\DI\Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $loader = new ContainerLoader(sys_get_temp_dir(), true);
         $class = $loader->load(function (Compiler $compiler) {
             $compiler->addConfig([
@@ -63,7 +65,8 @@ class AdapterImplementation {
         });
         $this->container = new $class();
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->getByType($class);
     }
 }

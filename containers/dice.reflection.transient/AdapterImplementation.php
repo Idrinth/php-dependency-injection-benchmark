@@ -2,12 +2,15 @@
 
 use Dice\Dice;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Dice $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new Dice();
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->create($class);
     }
 }

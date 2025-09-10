@@ -2,9 +2,11 @@
 
 use Phalcon\Di\Di;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Di $container;
-    public function __construct() {
+    public function __construct()
+    {
         $c = new Di();
         $c->set(A06::class, fn() => new A06());
         $c->set(B06::class, fn() => new B06($c->get(A06::class)));
@@ -56,7 +58,8 @@ class AdapterImplementation {
         $c->set(Z26::class, fn() => new Z26($c->get(Y26::class), $c->get(X26::class), $c->get(W26::class), $c->get(V26::class), $c->get(U26::class)));
         $this->container = $c;
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }

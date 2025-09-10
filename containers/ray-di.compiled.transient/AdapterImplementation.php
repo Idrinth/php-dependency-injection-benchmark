@@ -2,14 +2,16 @@
 
 use Ray\Compiler\CompiledInjector;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private CompiledInjector $injector;
-    public function __construct() {
+    public function __construct()
+    {
         $dir = __DIR__ . '/compiled';
         $this->injector = new CompiledInjector($dir);
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->injector->getInstance($class);
     }
 }
-

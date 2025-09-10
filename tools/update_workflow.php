@@ -2,7 +2,8 @@
 
 chdir(__DIR__ . '/..');
 
-function parse_run_summary(string $filename): array {
+function parse_run_summary(string $filename): array
+{
     $lines = file($filename);
     $containers = [];
     $values = [];

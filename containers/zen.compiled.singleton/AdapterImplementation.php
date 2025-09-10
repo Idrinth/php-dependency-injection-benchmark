@@ -9,42 +9,55 @@ use WoohooLabs\Zen\Config\FileBasedDefinition\FileBasedDefinitionConfigInterface
 use WoohooLabs\Zen\Config\Preload\PreloadConfig;
 use WoohooLabs\Zen\Config\Preload\PreloadConfigInterface;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private RuntimeContainer $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new RuntimeContainer(new CompilerConfig());
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }
 
-class CompilerConfig extends AbstractCompilerConfig {
-    public function getContainerNamespace(): string {
+class CompilerConfig extends AbstractCompilerConfig
+{
+    public function getContainerNamespace(): string
+    {
         return '';
     }
-    public function getContainerClassName(): string {
+    public function getContainerClassName(): string
+    {
         return 'GeneratedContainer';
     }
-    public function useConstructorInjection(): bool {
+    public function useConstructorInjection(): bool
+    {
         return true;
     }
-    public function usePropertyInjection(): bool {
+    public function usePropertyInjection(): bool
+    {
         return false;
     }
-    public function getPreloadConfig(): PreloadConfigInterface {
+    public function getPreloadConfig(): PreloadConfigInterface
+    {
         return PreloadConfig::disabled();
     }
-    public function getFileBasedDefinitionConfig(): FileBasedDefinitionConfigInterface {
+    public function getFileBasedDefinitionConfig(): FileBasedDefinitionConfigInterface
+    {
         return FileBasedDefinitionConfig::disabledGlobally();
     }
-    public function getContainerConfigs(): array {
+    public function getContainerConfigs(): array
+    {
         return [new ContainerConfig()];
     }
 }
 
-class ContainerConfig extends AbstractContainerConfig {
-    protected function getEntryPoints(): array {
+class ContainerConfig extends AbstractContainerConfig
+{
+    protected function getEntryPoints(): array
+    {
         return [
             ClassEntryPoint::create(F06::class),
             ClassEntryPoint::create(P16::class),
@@ -52,11 +65,13 @@ class ContainerConfig extends AbstractContainerConfig {
         ];
     }
 
-    protected function getDefinitionHints(): array {
+    protected function getDefinitionHints(): array
+    {
         return [];
     }
 
-    protected function getWildcardHints(): array {
+    protected function getWildcardHints(): array
+    {
         return [];
     }
 }

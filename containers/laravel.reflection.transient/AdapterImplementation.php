@@ -2,12 +2,15 @@
 
 use Illuminate\Container\Container;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new Container();
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->make($class);
     }
 }
