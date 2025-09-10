@@ -34,3 +34,8 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - Version Tracking: document how dependency versions are extracted and recorded in `run_summary.yaml`.
 - Monthly Archival: detail the process for archiving results in `archive/YYYY-MM-DD` directories.
 - Result Validation: outline steps to ensure benchmark data integrity and handle edge cases such as timeouts and errors.
+
+## Development Standards
+- Bias Awareness: Special considerations for the "quickly" container (author conflict of interest)
+- Reproducibility: Ensuring consistent environments across different runs
+- Container Isolation: Each container should be completely independent

@@ -2,6 +2,8 @@
 
 ![PHP Version](https://img.shields.io/badge/PHP-8.4-blue?logo=php) ![Docker Version](https://img.shields.io/badge/Docker-%2A-lightgrey?logo=docker) ![OS](https://img.shields.io/badge/OS-ubuntu%20latest-blue?logo=ubuntu)
 
+> Docker environment runs without network access and with limited CPU and memory resources.
+
 ![PHP Dependency Injection Benchmark](images/php-dependency-injection-benchmark.jpg)
 
 Dependency injection (DI) containers manage the creation and wiring of object dependencies, allowing applications to remain decoupled and easier to maintain.
