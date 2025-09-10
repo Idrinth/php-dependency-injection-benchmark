@@ -29,3 +29,9 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - `tools/generate_run_summary.php`: builds `run_summary.yaml` and archives it on scheduled runs.
 - `tools/generate_graphs.php`: renders benchmark charts as JPG images.
 - `tools/generate_readme.php`: updates the project README based on the latest results.
+
+## Container Management
+- Adding New Containers: Process for adding new DI containers, including required files (`Dockerfile`, `composer.json`, `AdapterImplementation.php`).
+- Container Structure: Standard structure expected in `containers/[name]/` directories.
+- Adapter Interface: Requirements for the `AdapterImplementation` class and its `get()` method.
+- Docker Requirements: Standards for Dockerfiles (using `php:8.4-cli` base, proper composer installation).
