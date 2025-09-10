@@ -9,6 +9,9 @@ $srcDir = __DIR__;
 require $srcDir . '/classes-06.php';
 require $srcDir . '/classes-16.php';
 require $srcDir . '/classes-26.php';
+require $srcDir . '/interfaces-06.php';
+require $srcDir . '/interfaces-16.php';
+require $srcDir . '/interfaces-26.php';
 
 $classes = [
     A06::class,
@@ -61,18 +64,33 @@ $classes = [
     Z26::class,
 ];
 
-$module = new class ($classes) extends AbstractModule {
+$interfaces = [];
+foreach ([['F', '06'], ['P', '16'], ['Z', '26']] as [$max, $suffix]) {
+    foreach (range('A', $max) as $letter) {
+        $iface = $letter . 'In' . $suffix;
+        $impl = $letter . 'Im' . $suffix;
+        $interfaces[$iface] = $impl;
+    }
+}
+
+$module = new class ($classes, $interfaces) extends AbstractModule {
     /** @var array<int, string> */
     private array $classes;
-    public function __construct(array $classes)
+    /** @var array<string, string> */
+    private array $interfaces;
+    public function __construct(array $classes, array $interfaces)
     {
         $this->classes = $classes;
+        $this->interfaces = $interfaces;
         parent::__construct();
     }
     protected function configure(): void
     {
         foreach ($this->classes as $class) {
             $this->bind($class);
+        }
+        foreach ($this->interfaces as $iface => $impl) {
+            $this->bind($iface)->to($impl);
         }
     }
 };
