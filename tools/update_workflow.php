@@ -103,7 +103,7 @@ function benchmark_job(string $name, array $needs, array $containers, array $tes
     $yaml .= indent(3) . '  run: docker load -i di-benchmark-${{ matrix.container }}.tar' . "\n";
     $yaml .= indent(3) . "- name: Run benchmarks\n";
     $yaml .= indent(3) . "  run: |\n";
-    $yaml .= indent(4) . '  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} ' . $iterations . " 2>&1\n";
+    $yaml .= indent(4) . '  docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} ' . $iterations . " 2>&1\n";
     $yaml .= indent(4) . '  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json' . "\n";
     $yaml .= indent(3) . "- name: Upload results\n";
     $yaml .= indent(3) . "  uses: actions/upload-artifact@v4\n";
