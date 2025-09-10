@@ -223,6 +223,129 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
+    benchmark-fast-in-06:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager.reflection.singleton
+                    - nette-di.compiled.singleton
+                    - php-di.reflection.singleton
+                    - pimple.configured.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
+                test:
+                    - fin06
+                    - fin06_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-fast-in-16:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager.reflection.singleton
+                    - nette-di.compiled.singleton
+                    - php-di.reflection.singleton
+                    - pimple.configured.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
+                test:
+                    - pin16
+                    - pin16_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-fast-in-26:
+        if: github.actor != 'github-actions[bot]'
+        needs: build-fast
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - laminas-servicemanager.reflection.singleton
+                    - nette-di.compiled.singleton
+                    - php-di.reflection.singleton
+                    - pimple.configured.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
+                test:
+                    - zin26
+                    - zin26_startup
+                run:
+                    - 1
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 10 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
     benchmark-medium-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -316,6 +439,100 @@ jobs:
               with:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+    benchmark-medium-in-06:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - build-medium
+            - benchmark-fast-in-06
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - aura-di.configured.transient
+                    - dice.configured.singleton
+                    - dice.reflection.transient
+                    - laravel.reflection.singleton
+                    - laravel.reflection.transient
+                    - phalcon.configured.singleton
+                    - php-baseline
+                    - pimple.configured.transient
+                test:
+                    - fin06
+                    - fin06_startup
+                run:
+                    - 1
+                    - 2
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 5 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
+    benchmark-medium-in-16:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-fast-in-16
+            - build-medium
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - aura-di.configured.transient
+                    - dice.configured.singleton
+                    - dice.reflection.transient
+                    - laravel.reflection.singleton
+                    - laravel.reflection.transient
+                    - phalcon.configured.singleton
+                    - php-baseline
+                    - pimple.configured.transient
+                test:
+                    - pin16
+                    - pin16_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
     benchmark-slow-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -366,12 +583,65 @@ jobs:
                   name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                   path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
 
+    benchmark-slow-in-06:
+        if: github.actor != 'github-actions[bot]'
+        needs:
+            - benchmark-medium-in-06
+            - build-slow
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                container:
+                    - auryn.reflection.transient
+                    - laravel.configured.transient
+                    - league.configured.transient
+                    - league.reflection.transient
+                    - phalcon.configured.transient
+                    - ray-di.compiled.transient
+                    - ray-di.reflection.transient
+                test:
+                    - fin06
+                    - fin06_startup
+                run:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+        steps:
+            - uses: actions/checkout@v5
+            - name: Download image
+              uses: actions/download-artifact@v5
+              with:
+                  name: di-benchmark-${{ matrix.container }}
+                  path: .
+            - name: Load image
+              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+            - name: Run benchmarks
+              run: |
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
+                      php benchmark.php ${{ matrix.test }} 1 2>&1
+                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+            - name: Upload results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+
     aggregate:
         if: github.actor != 'github-actions[bot]'
         needs:
             - benchmark-fast-26
+            - benchmark-fast-in-26
             - benchmark-medium-16
+            - benchmark-medium-in-16
             - benchmark-slow-06
+            - benchmark-slow-in-06
         permissions: write-all
         runs-on: ubuntu-latest
         steps:

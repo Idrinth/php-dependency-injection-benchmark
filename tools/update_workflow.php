@@ -94,12 +94,18 @@ $workflow = replace_container_list($workflow, 'build-fast', $fast);
 $workflow = replace_container_list($workflow, 'benchmark-fast-06', $fast);
 $workflow = replace_container_list($workflow, 'benchmark-fast-16', $fast);
 $workflow = replace_container_list($workflow, 'benchmark-fast-26', $fast);
+$workflow = replace_container_list($workflow, 'benchmark-fast-in-06', $fast);
+$workflow = replace_container_list($workflow, 'benchmark-fast-in-16', $fast);
+$workflow = replace_container_list($workflow, 'benchmark-fast-in-26', $fast);
 
 $workflow = replace_container_list($workflow, 'build-medium', $medium);
 $workflow = replace_container_list($workflow, 'benchmark-medium-06', $medium);
 $workflow = replace_container_list($workflow, 'benchmark-medium-16', $medium);
+$workflow = replace_container_list($workflow, 'benchmark-medium-in-06', $medium);
+$workflow = replace_container_list($workflow, 'benchmark-medium-in-16', $medium);
 
 $workflow = replace_container_list($workflow, 'build-slow', $slow);
 $workflow = replace_container_list($workflow, 'benchmark-slow-06', $slow);
+$workflow = replace_container_list($workflow, 'benchmark-slow-in-06', $slow);
 
 file_put_contents('proposed-workflow.yml', $workflow);
