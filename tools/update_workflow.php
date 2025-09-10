@@ -185,7 +185,7 @@ YAML;
     $slowInterfaces = array_values(array_filter($slow, fn($c) => str_contains($c, '.configured.') || str_contains($c, '.compiled.')));
 
     $benchmarks = [
-        ['benchmark-fast-06', ['build-fast'], $fast, ['f06', 'f06_startup'], range(1, 10), 1],
+        ['benchmark-fast-06', ['build-fast'], $fast, ['f06', 'f06_startup'], [1], 10],
         ['benchmark-fast-16', ['build-fast'], $fast, ['p16', 'p16_startup'], [1], 10],
         ['benchmark-fast-26', ['build-fast'], $fast, ['z26', 'z26_startup'], [1], 10],
         ['benchmark-fast-in-06', ['build-fast'], $fastInterfaces, ['fin06', 'fin06_startup'], [1], 10],

@@ -114,15 +114,6 @@ jobs:
                     - f06_startup
                 run:
                     - 1
-                    - 2
-                    - 3
-                    - 4
-                    - 5
-                    - 6
-                    - 7
-                    - 8
-                    - 9
-                    - 10
         steps:
             - uses: actions/checkout@v5
             - name: Download image
@@ -134,7 +125,7 @@ jobs:
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
               run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
               uses: actions/upload-artifact@v4
