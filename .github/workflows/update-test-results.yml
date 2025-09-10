@@ -28,8 +28,8 @@ jobs:
             - name: Upload PHP CLI image
               uses: actions/upload-artifact@v4
               with:
-                  name: php-8.4-cli
-                  path: php-8.4-cli.tar
+                name: php-8.4-cli
+                path: php-8.4-cli.tar
     build-fast:
         if: github.actor != 'github-actions[bot]'
         needs: download-php-cli
@@ -51,8 +51,8 @@ jobs:
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
-                  name: php-8.4-cli
-                  path: .
+                name: php-8.4-cli
+                path: .
             - name: Load PHP CLI image
               run: docker load -i php-8.4-cli.tar
             - name: Build container
@@ -62,8 +62,8 @@ jobs:
             - name: Upload image
               uses: actions/upload-artifact@v4
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
+                name: di-benchmark-${{ matrix.container }}
+                path: di-benchmark-${{ matrix.container }}.tar
     build-medium:
         if: github.actor != 'github-actions[bot]'
         needs: download-php-cli
@@ -84,8 +84,8 @@ jobs:
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
-                  name: php-8.4-cli
-                  path: .
+                name: php-8.4-cli
+                path: .
             - name: Load PHP CLI image
               run: docker load -i php-8.4-cli.tar
             - name: Build container
@@ -95,8 +95,8 @@ jobs:
             - name: Upload image
               uses: actions/upload-artifact@v4
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
+                name: di-benchmark-${{ matrix.container }}
+                path: di-benchmark-${{ matrix.container }}.tar
     build-slow:
         if: github.actor != 'github-actions[bot]'
         needs: download-php-cli
@@ -116,8 +116,8 @@ jobs:
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
-                  name: php-8.4-cli
-                  path: .
+                name: php-8.4-cli
+                path: .
             - name: Load PHP CLI image
               run: docker load -i php-8.4-cli.tar
             - name: Build container
@@ -127,8 +127,8 @@ jobs:
             - name: Upload image
               uses: actions/upload-artifact@v4
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
+                name: di-benchmark-${{ matrix.container }}
+                path: di-benchmark-${{ matrix.container }}.tar
     benchmark-fast-06:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -155,8 +155,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -166,8 +166,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-16:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -194,8 +194,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -205,8 +205,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-26:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -233,8 +233,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -244,8 +244,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-06:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -269,8 +269,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -280,8 +280,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-16:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -305,8 +305,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -316,8 +316,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-26:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -341,8 +341,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -352,8 +352,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -382,8 +382,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -393,8 +393,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-16:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -431,8 +431,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -442,8 +442,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-in-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -468,8 +468,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -479,8 +479,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-in-16:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -513,8 +513,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -524,8 +524,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-slow-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -561,8 +561,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -572,8 +572,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-slow-in-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -606,8 +606,8 @@ jobs:
             - name: Download image
               uses: actions/download-artifact@v5
               with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                name: di-benchmark-${{ matrix.container }}
+                path: .
             - name: Load image
               run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
@@ -617,8 +617,8 @@ jobs:
             - name: Upload results
               uses: actions/upload-artifact@v4
               with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     aggregate:
         if: github.actor != 'github-actions[bot]'
         needs:
