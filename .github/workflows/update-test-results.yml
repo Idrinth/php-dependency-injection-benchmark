@@ -24,14 +24,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - php-di
-                    - quickly.compiled
-                    - quickly.configured
-                    - quickly.reflection
-                    - symfony.compiled
-                    - zen.unconfigured
+                    - laminas-servicemanager.reflection.singleton
+                    - laravel.reflection.singleton
+                    - php-di.reflection.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -51,14 +51,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
-                    - phalcon.shared
-                    - phalcon.transient
+                    - aura-di.configured.transient
+                    - auryn.reflection.transient
+                    - laravel.configured.transient
+                    - nette-di.compiled.singleton
+                    - phalcon.configured.singleton
+                    - phalcon.configured.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - ray-di.reflection.transient
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -78,14 +78,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - laravel.unconfigured
-                    - league.predefined
-                    - league.unconfigured
-                    - pimple.factories
-                    - pimple.singletons
-                    - ray-di.compiled
+                    - dice.configured.singleton
+                    - dice.reflection.transient
+                    - laravel.reflection.transient
+                    - league.configured.transient
+                    - league.reflection.transient
+                    - pimple.configured.transient
+                    - pimple.configured.singleton
+                    - ray-di.compiled.transient
         steps:
             - uses: actions/checkout@v5
             - name: Build container
@@ -107,14 +107,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - php-di
-                    - quickly.compiled
-                    - quickly.configured
-                    - quickly.reflection
-                    - symfony.compiled
-                    - zen.unconfigured
+                    - laminas-servicemanager.reflection.singleton
+                    - laravel.reflection.singleton
+                    - php-di.reflection.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
                 test:
                     - f06
                     - f06_startup
@@ -147,14 +147,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - php-di
-                    - quickly.compiled
-                    - quickly.configured
-                    - quickly.reflection
-                    - symfony.compiled
-                    - zen.unconfigured
+                    - laminas-servicemanager.reflection.singleton
+                    - laravel.reflection.singleton
+                    - php-di.reflection.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
                 test:
                     - p16
                     - p16_startup
@@ -187,14 +187,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager
-                    - laravel.singletons
-                    - php-di
-                    - quickly.compiled
-                    - quickly.configured
-                    - quickly.reflection
-                    - symfony.compiled
-                    - zen.unconfigured
+                    - laminas-servicemanager.reflection.singleton
+                    - laravel.reflection.singleton
+                    - php-di.reflection.singleton
+                    - quickly.compiled.singleton
+                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
+                    - symfony.compiled.singleton
+                    - zen.compiled.singleton
                 test:
                     - z26
                     - z26_startup
@@ -229,14 +229,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
-                    - phalcon.shared
-                    - phalcon.transient
+                    - aura-di.configured.transient
+                    - auryn.reflection.transient
+                    - laravel.configured.transient
+                    - nette-di.compiled.singleton
+                    - phalcon.configured.singleton
+                    - phalcon.configured.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - ray-di.reflection.transient
                 test:
                     - f06
                     - f06_startup
@@ -272,14 +272,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - aura-di
-                    - auryn
-                    - laravel.cached
-                    - nette-di
-                    - phalcon.shared
-                    - phalcon.transient
+                    - aura-di.configured.transient
+                    - auryn.reflection.transient
+                    - laravel.configured.transient
+                    - nette-di.compiled.singleton
+                    - phalcon.configured.singleton
+                    - phalcon.configured.transient
                     - php-baseline
-                    - ray-di.unconfigured
+                    - ray-di.reflection.transient
                 test:
                     - p16
                     - p16_startup
@@ -322,14 +322,14 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - dice.configured
-                    - dice.unconfigured
-                    - laravel.unconfigured
-                    - league.predefined
-                    - league.unconfigured
-                    - pimple.factories
-                    - pimple.singletons
-                    - ray-di.compiled
+                    - dice.configured.singleton
+                    - dice.reflection.transient
+                    - laravel.reflection.transient
+                    - league.configured.transient
+                    - league.reflection.transient
+                    - pimple.configured.transient
+                    - pimple.configured.singleton
+                    - ray-di.compiled.transient
                 test:
                     - f06
                     - f06_startup
