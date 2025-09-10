@@ -226,13 +226,10 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager.reflection.singleton
                     - nette-di.compiled.singleton
-                    - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -265,13 +262,10 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager.reflection.singleton
                     - nette-di.compiled.singleton
-                    - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -304,13 +298,10 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - laminas-servicemanager.reflection.singleton
                     - nette-di.compiled.singleton
-                    - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -437,11 +428,7 @@ jobs:
                 container:
                     - aura-di.configured.transient
                     - dice.configured.singleton
-                    - dice.reflection.transient
-                    - laravel.reflection.singleton
-                    - laravel.reflection.transient
                     - phalcon.configured.singleton
-                    - php-baseline
                     - pimple.configured.transient
                 test:
                     - fin06
@@ -478,11 +465,7 @@ jobs:
                 container:
                     - aura-di.configured.transient
                     - dice.configured.singleton
-                    - dice.reflection.transient
-                    - laravel.reflection.singleton
-                    - laravel.reflection.transient
                     - phalcon.configured.singleton
-                    - php-baseline
                     - pimple.configured.transient
                 test:
                     - pin16
@@ -573,13 +556,10 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn.reflection.transient
                     - laravel.configured.transient
                     - league.configured.transient
-                    - league.reflection.transient
                     - phalcon.configured.transient
                     - ray-di.compiled.transient
-                    - ray-di.reflection.transient
                 test:
                     - fin06
                     - fin06_startup
