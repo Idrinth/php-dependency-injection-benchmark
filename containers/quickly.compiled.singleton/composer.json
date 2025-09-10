@@ -6,7 +6,10 @@
         "classmap": [
             "classes-06.php",
             "classes-16.php",
-            "classes-26.php"
+            "classes-26.php",
+            "interfaces-06.php",
+            "interfaces-16.php",
+            "interfaces-26.php"
         ]
     },
     "config": {
