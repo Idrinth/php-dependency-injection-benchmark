@@ -1,13 +1,19 @@
 <?php
 
 class AdapterImplementation {
+    private array $cache = [];
+
     public function get(string $class): object {
-        return match ($class) {
-            F06::class => $this->createF06(),
-            P16::class => $this->createP16(),
-            Z26::class => $this->createZ26(),
-            default => throw new InvalidArgumentException("Unknown class {$class}"),
-        };
+        if (!isset($this->cache[$class])) {
+            $this->cache[$class] = match ($class) {
+                F06::class => $this->createF06(),
+                P16::class => $this->createP16(),
+                Z26::class => $this->createZ26(),
+                default => throw new InvalidArgumentException("Unknown class {$class}"),
+            };
+        }
+
+        return $this->cache[$class];
     }
 
     private function createF06(): F06 {

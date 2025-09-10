@@ -184,7 +184,7 @@ $containerTable = [
     'php-baseline' => [
         'name' => 'PHP (baseline)',
         'url' => 'https://www.php.net/',
-        'features' => 'Manual instantiation of dependencies without a container',
+        'features' => 'Manual instantiation of dependencies with simple caching',
     ],
     'quickly' => [
         'name' => 'Quickly',
