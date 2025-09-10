@@ -141,6 +141,62 @@ Small dependency graph including 6 classes total (includes container startup tim
 
 </details>
 
+### 📊 fin06
+
+Small interface-based dependency graph including 6 interfaces total (excluding container startup time)
+
+![📊 fin06](images/speed_comparison_interfaces_without_startup06.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Aura-di(Configured, Transient) | ^5.0 | 1ms, 650µs, 190ns | 1ms, 499µs, 891ns | 1ms, 832µs, 962ns |
+| Dice(Configured, Singleton) | ^4.0 | 811µs, 791ns | 785µs, 827ns | 833µs, 34ns |
+| Laravel(Configured, Transient) | ^12.28 | 382ms, 285µs, 141ns | 374ms, 298µs, 95ns | 393ms, 617µs, 153ns |
+| League(Configured, Transient) | ^5.1 | 4s, 149ms, 762µs, 701ns | 4s, 124ms, 658µs, 107ns | 4s, 209ms, 136µs, 962ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 776µs, 764ns | 3ms, 636µs, 837ns | 4ms, 709µs, 959ns |
+| Phalcon(Configured, Singleton) | ^5 | 5ms, 53µs, 877ns | 3ms, 929µs, 853ns | 8ms, 33µs, 37ns |
+| Phalcon(Configured, Transient) | ^5 | 302ms, 226µs, 257ns | 292ms, 203µs, 903ns | 339ms, 649µs, 200ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 249µs, 146ns | 1ms, 230µs, 955ns | 1ms, 270µs, 55ns |
+| Pimple(Configured, Transient) | ^3.5 | 102ms, 47µs, 705ns | 100ms, 650µs, 72ns | 105ms, 656µs, 862ns |
+| Quickly(Compiled, Singleton) | dev-master | 800µs, 585ns | 784µs, 873ns | 819µs, 921ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 105µs, 854ns | 3ms, 872µs, 871ns | 5ms, 825µs, 996ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 545ms, 25µs, 753ns | 3s, 512ms, 832µs, 164ns | 3s, 611ms, 211µs, 61ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 832µs, 486ns | 756µs, 25ns | 998µs, 973ns |
+| Zen(Compiled, Singleton) | ^3.1 | 854µs, 468ns | 759µs, 124ns | 1ms, 507µs, 43ns |
+
+</details>
+
+### 🚀 fin06 startup
+
+Small interface-based dependency graph including 6 interfaces total (includes container startup time)
+
+![🚀 fin06 startup](images/speed_comparison_interfaces_with_startup06.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Aura-di(Configured, Transient) | ^5.0 | 2ms, 66µs, 636ns | 1ms, 664µs, 161ns | 3ms, 743µs, 886ns |
+| Dice(Configured, Singleton) | ^4.0 | 1ms, 932µs, 477ns | 1ms, 828µs, 908ns | 2ms, 270µs, 936ns |
+| Laravel(Configured, Transient) | ^12.28 | 384ms, 883µs, 236ns | 378ms, 614µs, 902ns | 390ms, 666µs, 7ns |
+| League(Configured, Transient) | ^5.1 | 4s, 144ms, 833µs, 588ns | 4s, 95ms, 2µs, 889ns | 4s, 189ms, 698µs, 934ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 750µs, 920ns | 3ms, 686µs, 904ns | 4ms, 151µs, 105ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 232µs, 835ns | 4ms, 91µs, 978ns | 4ms, 416µs, 942ns |
+| Phalcon(Configured, Transient) | ^5 | 295ms, 334µs, 815ns | 290ms, 383µs, 100ns | 299ms, 443µs, 960ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 349µs, 306ns | 1ms, 308µs, 917ns | 1ms, 611µs, 948ns |
+| Pimple(Configured, Transient) | ^3.5 | 102ms, 186µs, 870ns | 101ms, 137µs, 876ns | 104ms, 392µs, 51ns |
+| Quickly(Compiled, Singleton) | dev-master | 876µs, 307ns | 777µs, 6ns | 1ms, 161µs, 813ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 649µs, 710ns | 4ms, 435µs, 62ns | 5ms, 290µs, 985ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 534ms, 16µs, 418ns | 3s, 498ms, 913µs, 49ns | 3s, 608ms, 222µs, 7ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 824µs, 809ns | 808µs | 860µs, 929ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 44µs, 392ns | 800µs, 132ns | 3ms, 55µs, 95ns |
+
+</details>
+
 ### 📊 p16
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
@@ -203,6 +259,54 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 </details>
 
+### 📊 pin16
+
+Medium size interface-based dependency graph including 16 interfaces total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
+
+![📊 pin16](images/speed_comparison_interfaces_without_startup16.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Aura-di(Configured, Transient) | ^5.0 | 1ms, 844µs, 167ns | 1ms, 769µs, 65ns | 2ms, 366µs, 65ns |
+| Dice(Configured, Singleton) | ^4.0 | 954µs, 389ns | 831µs, 127ns | 1ms, 538µs, 991ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 724µs, 479ns | 3ms, 623µs, 8ns | 4ms, 111µs, 51ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 424µs, 881ns | 4ms, 9µs, 8ns | 6ms, 24µs, 837ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 259µs, 708ns | 1ms, 235µs, 8ns | 1ms, 282µs, 930ns |
+| Pimple(Configured, Transient) | ^3.5 | 14s, 264ms, 407µs, 110ns | 14s, 151ms, 217µs, 937ns | 14s, 351ms, 553µs, 201ns |
+| Quickly(Compiled, Singleton) | dev-master | 827µs, 741ns | 814µs, 914ns | 844µs, 955ns |
+| Quickly(Configured, Singleton) | dev-master | 3ms, 947µs, 377ns | 3ms, 823µs, 41ns | 4ms, 765µs, 987ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 766µs, 801ns | 741µs, 958ns | 818µs, 967ns |
+| Zen(Compiled, Singleton) | ^3.1 | 848µs, 293ns | 751µs, 18ns | 1ms, 551µs, 866ns |
+
+</details>
+
+### 🚀 pin16 startup
+
+Medium size interface-based dependency graph including 16 interfaces total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
+
+![🚀 pin16 startup](images/speed_comparison_interfaces_with_startup16.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Aura-di(Configured, Transient) | ^5.0 | 3ms, 962µs, 564ns | 3ms, 193µs, 855ns | 5ms, 657µs, 911ns |
+| Dice(Configured, Singleton) | ^4.0 | 2ms, 420µs, 616ns | 2ms, 210µs, 140ns | 3ms, 804µs, 922ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 797µs, 125ns | 3ms, 673µs, 76ns | 4ms, 99µs, 130ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 288µs, 339ns | 4ms, 100µs, 84ns | 4ms, 388µs, 93ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 363µs, 992ns | 1ms, 307µs, 10ns | 1ms, 634µs, 120ns |
+| Pimple(Configured, Transient) | ^3.5 | 14s, 163ms, 994µs, 693ns | 13s, 973ms, 475µs, 933ns | 14s, 623ms, 989µs, 820ns |
+| Quickly(Compiled, Singleton) | dev-master | 819µs, 396ns | 793µs, 933ns | 830µs, 173ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 794µs, 430ns | 4ms, 622µs, 936ns | 5ms, 429µs, 983ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 794µs, 76ns | 777µs, 959ns | 834µs, 941ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 126µs, 646ns | 888µs, 109ns | 3ms, 86µs, 90ns |
+
+</details>
+
 ### 📊 z26
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
@@ -246,6 +350,46 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 | Quickly(Reflection, Singleton) | dev-master | 1ms, 612µs, 877ns | 1ms, 492µs, 977ns | 2ms, 373µs, 933ns |
 | Symfony(Compiled, Singleton) | ^7.0 | 819µs, 706ns | 792µs, 26ns | 864µs, 28ns |
 | Zen(Compiled, Singleton) | ^3.1 | 1ms, 128µs, 77ns | 906µs, 944ns | 3ms, 37µs, 929ns |
+
+</details>
+
+### 📊 zin26
+
+Large interface-based dependency graph including a total of 26 interfaces. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
+
+![📊 zin26](images/speed_comparison_interfaces_without_startup26.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 696µs, 155ns | 3ms, 630µs, 876ns | 4ms, 128µs, 932ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 267µs, 194ns | 1ms, 247µs, 882ns | 1ms, 285µs, 76ns |
+| Quickly(Compiled, Singleton) | dev-master | 825µs, 977ns | 811µs, 815ns | 838µs, 41ns |
+| Quickly(Configured, Singleton) | dev-master | 3ms, 788µs, 781ns | 3ms, 726µs, 959ns | 3ms, 929µs, 853ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 770µs, 521ns | 755µs, 71ns | 796µs, 79ns |
+| Zen(Compiled, Singleton) | ^3.1 | 848µs, 603ns | 746µs, 11ns | 1ms, 590µs, 967ns |
+
+</details>
+
+### 🚀 zin26 startup
+
+Large interface-based dependency graph including a total of 26 interfaces. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
+
+![🚀 zin26 startup](images/speed_comparison_interfaces_with_startup26.jpg)
+
+<details>
+<summary>View results</summary>
+
+| Container | Version | Average | Minimum | Maximum |
+| --- | --- | --- | --- | --- |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 787µs, 88ns | 3ms, 710µs, 31ns | 4ms, 89µs, 832ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 406µs, 264ns | 1ms, 280µs, 69ns | 1ms, 627µs, 922ns |
+| Quickly(Compiled, Singleton) | dev-master | 819µs, 492ns | 802µs, 993ns | 850µs, 200ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 648µs, 113ns | 4ms, 539µs, 12ns | 5ms, 399µs, 942ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 779µs, 342ns | 754µs, 117ns | 798µs, 940ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 167µs, 464ns | 909µs, 805ns | 3ms, 100µs, 872ns |
 
 </details>
 
