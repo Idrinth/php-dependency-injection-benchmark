@@ -17,6 +17,7 @@ class AdapterImplementation
                 $interface = $letter . 'In' . $suffix;
                 $implementation = $letter . 'Im' . $suffix;
                 $c->set($interface, $c->lazyNew($implementation));
+                $c->types[$interface] = $c->lazyGet($interface);
             }
         }
         $this->container = $c;
