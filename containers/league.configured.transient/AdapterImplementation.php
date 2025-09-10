@@ -62,6 +62,19 @@ class AdapterImplementation {
                 $def->addArgument($dep);
             }
         }
+        $interfaces = [];
+        foreach ($definitions as $class => $deps) {
+            $iface = substr($class, 0, 1) . 'In' . substr($class, 1);
+            $impl = substr($class, 0, 1) . 'Im' . substr($class, 1);
+            $ifaceDeps = array_map(fn($d) => substr($d, 0, 1) . 'In' . substr($d, 1), $deps);
+            $interfaces[$iface] = [$impl, $ifaceDeps];
+        }
+        foreach ($interfaces as $iface => [$impl, $deps]) {
+            $def = $c->add($iface, $impl)->setShared(false);
+            foreach ($deps as $dep) {
+                $def->addArgument($dep);
+            }
+        }
         $this->container = $c;
     }
     public function get(string $class): object {
