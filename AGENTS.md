@@ -30,6 +30,12 @@ This repository contains PHP benchmark code. These instructions help maintain co
 - `tools/generate_graphs.php`: renders benchmark charts as JPG images.
 - `tools/generate_readme.php`: updates the project README based on the latest results.
 
+## Benchmark Test Types
+- **Test Categories**: `f06` (6 classes), `p16` (16 classes), `z26` (26 classes).
+- **Startup vs Runtime**: `sf06`, `sp16`, and `sz26` include container startup time, while `rf06`, `rp16`, and `rz26` measure runtime only.
+- **Interface Testing**: `fin06`, `pin16`, and `zin26` use interface-based definitions; other tests rely on class-based definitions.
+- **Performance Classification**: Containers are grouped into fast, medium, or slow categories to optimize CI execution.
+
 ## Performance and CI Considerations
 - Runtime Limits: Exclude containers from larger test suites when a single run exceeds reasonable time limits or triggers repeated timeouts.
 - Workflow Optimization: GitHub Actions groups containers into fast, medium, and slow matrices to balance thorough coverage against CI duration.
