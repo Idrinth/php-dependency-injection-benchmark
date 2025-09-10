@@ -3,9 +3,11 @@
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Injector $injector;
-    public function __construct() {
+    public function __construct()
+    {
         $classes = [
             A06::class,
             B06::class,
@@ -56,14 +58,16 @@ class AdapterImplementation {
             Y26::class,
             Z26::class,
         ];
-        $module = new class($classes) extends AbstractModule {
+        $module = new class ($classes) extends AbstractModule {
             /** @var array<int, string> */
             private array $classes;
-            public function __construct(array $classes) {
+            public function __construct(array $classes)
+            {
                 $this->classes = $classes;
                 parent::__construct();
             }
-            protected function configure(): void {
+            protected function configure(): void
+            {
                 foreach ($this->classes as $class) {
                     $this->bind($class);
                 }
@@ -71,8 +75,8 @@ class AdapterImplementation {
         };
         $this->injector = new Injector($module);
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->injector->getInstance($class);
     }
 }
-

@@ -2,9 +2,11 @@
 
 use Pimple\Container;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $c = new Container();
         $c[A06::class] = $c->factory(fn() => new A06());
         $c[B06::class] = $c->factory(fn($c) => new B06($c[A06::class]));
@@ -56,7 +58,8 @@ class AdapterImplementation {
         $c[Z26::class] = $c->factory(fn($c) => new Z26($c[Y26::class], $c[X26::class], $c[W26::class], $c[V26::class], $c[U26::class]));
         $this->container = $c;
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container[$class];
     }
 }

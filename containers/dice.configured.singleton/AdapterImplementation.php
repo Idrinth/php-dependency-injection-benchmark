@@ -2,9 +2,11 @@
 
 use Dice\Dice;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Dice $container;
-    public function __construct() {
+    public function __construct()
+    {
         $this->container = new Dice();
         $definitions = [
             F06::class => [E06::class, D06::class, B06::class],
@@ -80,7 +82,8 @@ class AdapterImplementation {
             );
         }
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->create($class);
     }
 }

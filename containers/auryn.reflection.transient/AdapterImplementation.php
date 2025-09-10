@@ -2,14 +2,17 @@
 
 use Auryn\Injector;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Injector $injector;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->injector = new Injector();
     }
 
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->injector->make($class);
     }
 }

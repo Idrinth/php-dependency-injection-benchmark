@@ -61,14 +61,16 @@ $classes = [
     Z26::class,
 ];
 
-$module = new class($classes) extends AbstractModule {
+$module = new class ($classes) extends AbstractModule {
     /** @var array<int, string> */
     private array $classes;
-    public function __construct(array $classes) {
+    public function __construct(array $classes)
+    {
         $this->classes = $classes;
         parent::__construct();
     }
-    protected function configure(): void {
+    protected function configure(): void
+    {
         foreach ($this->classes as $class) {
             $this->bind($class);
         }
@@ -77,4 +79,3 @@ $module = new class($classes) extends AbstractModule {
 
 $dir = __DIR__ . '/compiled';
 (new Compiler())->compile($module, $dir);
-

@@ -2,7 +2,8 @@
 
 chdir(__DIR__ . '/..');
 
-function parse_run_summary(string $filename): array {
+function parse_run_summary(string $filename): array
+{
     $lines = file($filename);
     $containers = [];
     $values = [];
@@ -32,7 +33,8 @@ function parse_run_summary(string $filename): array {
     return [$containers, $values];
 }
 
-function replace_container_list(string $workflow, string $job, array $containers): string {
+function replace_container_list(string $workflow, string $job, array $containers): string
+{
     $pattern = '/(^    ' . preg_quote($job, '/') . ":\n[\s\S]*?container:\n)(?: {20}- .*?\n| {20}\[\]\n)+/m";
     if ($containers === []) {
         $replacement = "$1                    []\n";

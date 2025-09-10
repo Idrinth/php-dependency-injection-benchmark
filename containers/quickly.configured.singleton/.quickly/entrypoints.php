@@ -8,4 +8,3 @@ return [
     Z26::class,
     ZIn26::class,
 ];
-

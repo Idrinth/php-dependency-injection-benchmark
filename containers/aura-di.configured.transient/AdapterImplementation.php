@@ -2,9 +2,11 @@
 
 use Aura\Di\ContainerBuilder;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private \Aura\Di\Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $builder = new ContainerBuilder();
         $c = $builder->newInstance(ContainerBuilder::AUTO_RESOLVE);
         $c->set(F06::class, $c->lazyNew(F06::class));
@@ -19,7 +21,8 @@ class AdapterImplementation {
         }
         $this->container = $c;
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }

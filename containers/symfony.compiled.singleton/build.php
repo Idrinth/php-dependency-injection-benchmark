@@ -12,7 +12,8 @@ require __DIR__ . '/interfaces-16.php';
 require __DIR__ . '/interfaces-26.php';
 
 $container = new ContainerBuilder();
-foreach ([
+foreach (
+    [
     A06::class,
     B06::class,
     C06::class,
@@ -61,7 +62,8 @@ foreach ([
     X26::class,
     Y26::class,
     Z26::class,
-] as $service) {
+    ] as $service
+) {
     $container->register($service, $service)->setPublic(true)->setAutowired(true);
 }
 $interfaceGroups = [['F', '06'], ['P', '16'], ['Z', '26']];

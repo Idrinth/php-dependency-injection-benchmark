@@ -2,9 +2,11 @@
 
 use League\Container\Container;
 
-class AdapterImplementation {
+class AdapterImplementation
+{
     private Container $container;
-    public function __construct() {
+    public function __construct()
+    {
         $c = new Container();
         $definitions = [
             F06::class => [E06::class, D06::class, B06::class],
@@ -77,7 +79,8 @@ class AdapterImplementation {
         }
         $this->container = $c;
     }
-    public function get(string $class): object {
+    public function get(string $class): object
+    {
         return $this->container->get($class);
     }
 }
