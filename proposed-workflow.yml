@@ -633,29 +633,29 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download results
-                uses: actions/download-artifact@v5
-                with:
-                    pattern: 'result-*-*-*'
-                    merge-multiple: true
+              uses: actions/download-artifact@v5
+              with:
+                pattern: 'result-*-*-*'
+                merge-multiple: true
             - name: Merge test results
-                run: php tools/merge_json.php
+              run: php tools/merge_json.php
             - name: Generate graphs
-                run: php tools/generate_graphs.php
+              run: php tools/generate_graphs.php
             - name: Generate run summary
-                run: php tools/generate_run_summary.php
+              run: php tools/generate_run_summary.php
             - name: Generate README
-                run: php tools/generate_readme.php
+              run: php tools/generate_readme.php
             - name: Update workflow
-                run: php tools/update_workflow.php
+              run: php tools/update_workflow.php
             - name: Commit results
-                run: |
-                    git config --global user.name 'github-actions[bot]'
-                    git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-                    git add README.md images/speed_comparison_*.jpg run_summary.yaml proposed-workflow.yml
-                    if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
-                        git add archive
-                    fi
-                    git commit -m "Update test results" || echo "No changes to commit"
-                    git push
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                git config --global user.name 'github-actions[bot]'
+                git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+                git add README.md images/speed_comparison_*.jpg run_summary.yaml proposed-workflow.yml
+                if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
+                    git add archive
+                fi
+                git commit -m "Update test results" || echo "No changes to commit"
+                git push
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
