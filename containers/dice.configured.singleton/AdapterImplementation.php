@@ -7,7 +7,6 @@ class AdapterImplementation
     private Dice $container;
     public function __construct()
     {
-        $this->container = new Dice();
         $definitions = [
             F06::class => [E06::class, D06::class, B06::class],
             E06::class => [D06::class, C06::class, B06::class],
@@ -58,23 +57,25 @@ class AdapterImplementation
             B26::class => [A26::class],
             A26::class => [],
         ];
+        $rules = [];
         foreach ($definitions as $class => $deps) {
-            $this->container = $this->container->addRule(
-                $class,
-                ['shared' => true, 'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps)]
-            );
+            $rules[$class] = [
+                'shared' => true,
+                'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $deps),
+            ];
             $iface = substr($class, 0, 1) . 'In' . substr($class, 1);
             $impl = substr($class, 0, 1) . 'Im' . substr($class, 1);
             $ifaceDeps = array_map(fn($d) => substr($d, 0, 1) . 'In' . substr($d, 1), $deps);
-            $this->container = $this->container->addRule(
-                $impl,
-                ['shared' => true, 'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $ifaceDeps)]
-            );
-            $this->container = $this->container->addRule(
-                $iface,
-                ['shared' => true, 'instanceOf' => $impl]
-            );
+            $rules[$impl] = [
+                'shared' => true,
+                'constructParams' => array_map(fn($d) => [Dice::INSTANCE => $d], $ifaceDeps),
+            ];
+            $rules[$iface] = [
+                'shared' => true,
+                'instanceOf' => $impl,
+            ];
         }
+        $this->container = (new Dice())->addRules($rules);
     }
     public function get(string $class): object
     {
