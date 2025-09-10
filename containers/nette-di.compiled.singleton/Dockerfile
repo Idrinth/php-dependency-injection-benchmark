@@ -9,4 +9,5 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --no-interaction --no-progress
 COPY src/*.php ./
+RUN php compile.php
 CMD ["php", "benchmark.php"]
