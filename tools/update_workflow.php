@@ -180,19 +180,23 @@ YAML;
     $yaml .= build_job('build-medium', $medium);
     $yaml .= build_job('build-slow', $slow);
 
+    $fastInterfaces = array_values(array_filter($fast, fn($c) => str_contains($c, '.configured.') || str_contains($c, '.compiled.')));
+    $mediumInterfaces = array_values(array_filter($medium, fn($c) => str_contains($c, '.configured.') || str_contains($c, '.compiled.')));
+    $slowInterfaces = array_values(array_filter($slow, fn($c) => str_contains($c, '.configured.') || str_contains($c, '.compiled.')));
+
     $benchmarks = [
         ['benchmark-fast-06', ['build-fast'], $fast, ['f06', 'f06_startup'], range(1, 10), 1],
         ['benchmark-fast-16', ['build-fast'], $fast, ['p16', 'p16_startup'], [1], 10],
         ['benchmark-fast-26', ['build-fast'], $fast, ['z26', 'z26_startup'], [1], 10],
-        ['benchmark-fast-in-06', ['build-fast'], $fast, ['fin06', 'fin06_startup'], [1], 10],
-        ['benchmark-fast-in-16', ['build-fast'], $fast, ['pin16', 'pin16_startup'], [1], 10],
-        ['benchmark-fast-in-26', ['build-fast'], $fast, ['zin26', 'zin26_startup'], [1], 10],
+        ['benchmark-fast-in-06', ['build-fast'], $fastInterfaces, ['fin06', 'fin06_startup'], [1], 10],
+        ['benchmark-fast-in-16', ['build-fast'], $fastInterfaces, ['pin16', 'pin16_startup'], [1], 10],
+        ['benchmark-fast-in-26', ['build-fast'], $fastInterfaces, ['zin26', 'zin26_startup'], [1], 10],
         ['benchmark-medium-06', ['build-medium', 'benchmark-fast-06'], $medium, ['f06', 'f06_startup'], [1, 2], 5],
         ['benchmark-medium-16', ['benchmark-fast-16', 'build-medium'], $medium, ['p16', 'p16_startup'], range(1, 10), 1],
-        ['benchmark-medium-in-06', ['build-medium', 'benchmark-fast-in-06'], $medium, ['fin06', 'fin06_startup'], [1, 2], 5],
-        ['benchmark-medium-in-16', ['benchmark-fast-in-16', 'build-medium'], $medium, ['pin16', 'pin16_startup'], range(1, 10), 1],
+        ['benchmark-medium-in-06', ['build-medium', 'benchmark-fast-in-06'], $mediumInterfaces, ['fin06', 'fin06_startup'], [1, 2], 5],
+        ['benchmark-medium-in-16', ['benchmark-fast-in-16', 'build-medium'], $mediumInterfaces, ['pin16', 'pin16_startup'], range(1, 10), 1],
         ['benchmark-slow-06', ['benchmark-medium-06', 'build-slow'], $slow, ['f06', 'f06_startup'], range(1, 10), 1],
-        ['benchmark-slow-in-06', ['benchmark-medium-in-06', 'build-slow'], $slow, ['fin06', 'fin06_startup'], range(1, 10), 1],
+        ['benchmark-slow-in-06', ['benchmark-medium-in-06', 'build-slow'], $slowInterfaces, ['fin06', 'fin06_startup'], range(1, 10), 1],
     ];
 
     foreach ($benchmarks as [$name, $needs, $containers, $tests, $runs, $iterations]) {
