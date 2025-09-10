@@ -36,16 +36,14 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Build container
-              run: |
-                  docker build -t di-benchmark-${{ matrix.container }} \
-                      -f containers/${{ matrix.container }}/Dockerfile .
-                  docker save di-benchmark-${{ matrix.container }} \
-                      -o di-benchmark-${{ matrix.container }}.tar
+                run: |
+                    docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
+                    docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
+                uses: actions/upload-artifact@v4
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: di-benchmark-${{ matrix.container }}.tar
     build-medium:
         if: github.actor != 'github-actions[bot]'
         runs-on: ubuntu-latest
@@ -63,16 +61,14 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Build container
-              run: |
-                  docker build -t di-benchmark-${{ matrix.container }} \
-                      -f containers/${{ matrix.container }}/Dockerfile .
-                  docker save di-benchmark-${{ matrix.container }} \
-                      -o di-benchmark-${{ matrix.container }}.tar
+                run: |
+                    docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
+                    docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
+                uses: actions/upload-artifact@v4
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: di-benchmark-${{ matrix.container }}.tar
     build-slow:
         if: github.actor != 'github-actions[bot]'
         runs-on: ubuntu-latest
@@ -89,17 +85,14 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Build container
-              run: |
-                  docker build -t di-benchmark-${{ matrix.container }} \
-                      -f containers/${{ matrix.container }}/Dockerfile .
-                  docker save di-benchmark-${{ matrix.container }} \
-                      -o di-benchmark-${{ matrix.container }}.tar
+                run: |
+                    docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
+                    docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: di-benchmark-${{ matrix.container }}.tar
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: di-benchmark-${{ matrix.container }}.tar
     benchmark-fast-06:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -121,26 +114,33 @@ jobs:
                     - f06_startup
                 run:
                     - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-16:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -165,23 +165,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-26:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -206,23 +204,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-06:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -247,23 +243,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-16:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -288,23 +282,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-fast-in-26:
         if: github.actor != 'github-actions[bot]'
         needs: build-fast
@@ -329,23 +321,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 10 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -372,23 +362,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 5 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 5 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-16:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -423,22 +411,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 1 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-in-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -465,23 +452,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 5 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 5 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-medium-in-16:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -516,23 +501,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 1 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-slow-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -566,23 +549,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \
-                      php benchmark.php ${{ matrix.test }} 1 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     benchmark-slow-in-06:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -616,23 +597,21 @@ jobs:
         steps:
             - uses: actions/checkout@v5
             - name: Download image
-              uses: actions/download-artifact@v5
-              with:
-                  name: di-benchmark-${{ matrix.container }}
-                  path: .
+                uses: actions/download-artifact@v5
+                with:
+                    name: di-benchmark-${{ matrix.container }}
+                    path: .
             - name: Load image
-              run: docker load -i di-benchmark-${{ matrix.container }}.tar
+                run: docker load -i di-benchmark-${{ matrix.container }}.tar
             - name: Run benchmarks
-              run: |
-                  docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} \\
-                      php benchmark.php ${{ matrix.test }} 1 2>&1
-                  mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
+                run: |
+                    docker run --rm -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
+                    mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
-              with:
-                  name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
-                  path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
-
+                uses: actions/upload-artifact@v4
+                with:
+                    name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
+                    path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
     aggregate:
         if: github.actor != 'github-actions[bot]'
         needs:
@@ -664,8 +643,7 @@ jobs:
             - name: Commit results
               run: |
                   git config --global user.name 'github-actions[bot]'
-                  git config --global user.email \
-                      'github-actions[bot]@users.noreply.github.com'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
                   git add README.md images/speed_comparison_*.jpg run_summary.yaml proposed-workflow.yml
                   if [ "$GITHUB_EVENT_NAME" = "schedule" ]; then
                       git add archive
