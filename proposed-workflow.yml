@@ -37,8 +37,8 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - php-baseline
                     - laminas-servicemanager.reflection.singleton
-                    - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
@@ -76,8 +76,8 @@ jobs:
                     - dice.reflection.transient
                     - laravel.reflection.singleton
                     - laravel.reflection.transient
+                    - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - php-baseline
                     - pimple.configured.transient
         steps:
             - uses: actions/checkout@v5
@@ -136,8 +136,8 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - php-baseline
                     - laminas-servicemanager.reflection.singleton
-                    - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
@@ -175,8 +175,8 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - php-baseline
                     - laminas-servicemanager.reflection.singleton
-                    - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
@@ -214,8 +214,8 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - php-baseline
                     - laminas-servicemanager.reflection.singleton
-                    - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
@@ -253,7 +253,6 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - nette-di.compiled.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -289,7 +288,6 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - nette-di.compiled.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -325,7 +323,6 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - nette-di.compiled.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
@@ -368,8 +365,8 @@ jobs:
                     - dice.reflection.transient
                     - laravel.reflection.singleton
                     - laravel.reflection.transient
+                    - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - php-baseline
                     - pimple.configured.transient
                 test:
                     - f06
@@ -409,8 +406,8 @@ jobs:
                     - dice.reflection.transient
                     - laravel.reflection.singleton
                     - laravel.reflection.transient
+                    - nette-di.compiled.singleton
                     - phalcon.configured.singleton
-                    - php-baseline
                     - pimple.configured.transient
                 test:
                     - p16
@@ -455,6 +452,7 @@ jobs:
                 container:
                     - aura-di.configured.transient
                     - dice.configured.singleton
+                    - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - pimple.configured.transient
                 test:
@@ -492,6 +490,7 @@ jobs:
                 container:
                     - aura-di.configured.transient
                     - dice.configured.singleton
+                    - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - pimple.configured.transient
                 test:

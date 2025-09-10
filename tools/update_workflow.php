@@ -238,6 +238,10 @@ $metrics = ['f06', 'p16', 'z26'];
 $scores = [];
 
 foreach ($containers as $container) {
+    if ($container === 'php-baseline') {
+        $fast[] = $container;
+        continue;
+    }
     $maxValue = null;
     foreach ($metrics as $metric) {
         $value = $summary[$container][$metric] ?? null;
@@ -260,6 +264,9 @@ $fastThreshold = $values[(int) floor($count / 3)] ?? 0;
 $mediumThreshold = $values[(int) floor(2 * $count / 3)] ?? 0;
 
 foreach ($containers as $container) {
+    if ($container === 'php-baseline') {
+        continue;
+    }
     $score = $scores[$container] ?? null;
     if ($score === null) {
         continue;
