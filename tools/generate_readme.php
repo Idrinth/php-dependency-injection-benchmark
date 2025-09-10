@@ -267,6 +267,16 @@ $tests = [
         'image' => 'images/speed_comparison_with_startup06.jpg',
         'description' => 'Small dependency graph including 6 classes total (includes container startup time)'
     ],
+    'fin06' => [
+        'title' => '📊 fin06',
+        'image' => 'images/speed_comparison_interfaces_without_startup06.jpg',
+        'description' => 'Small interface-based dependency graph including 6 interfaces total (excluding container startup time)'
+    ],
+    'fin06_startup' => [
+        'title' => '🚀 fin06 startup',
+        'image' => 'images/speed_comparison_interfaces_with_startup06.jpg',
+        'description' => 'Small interface-based dependency graph including 6 interfaces total (includes container startup time)'
+    ],
     'p16' => [
         'title' => '📊 p16',
         'image' => 'images/speed_comparison_without_startup16.jpg',
@@ -277,6 +287,16 @@ $tests = [
         'image' => 'images/speed_comparison_with_startup16.jpg',
         'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)'
     ],
+    'pin16' => [
+        'title' => '📊 pin16',
+        'image' => 'images/speed_comparison_interfaces_without_startup16.jpg',
+        'description' => 'Medium size interface-based dependency graph including 16 interfaces total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)'
+    ],
+    'pin16_startup' => [
+        'title' => '🚀 pin16 startup',
+        'image' => 'images/speed_comparison_interfaces_with_startup16.jpg',
+        'description' => 'Medium size interface-based dependency graph including 16 interfaces total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)'
+    ],
     'z26' => [
         'title' => '📊 z26',
         'image' => 'images/speed_comparison_without_startup26.jpg',
@@ -286,6 +306,16 @@ $tests = [
         'title' => '🚀 z26 startup',
         'image' => 'images/speed_comparison_with_startup26.jpg',
         'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)'
+    ],
+    'zin26' => [
+        'title' => '📊 zin26',
+        'image' => 'images/speed_comparison_interfaces_without_startup26.jpg',
+        'description' => 'Large interface-based dependency graph including a total of 26 interfaces. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)'
+    ],
+    'zin26_startup' => [
+        'title' => '🚀 zin26 startup',
+        'image' => 'images/speed_comparison_interfaces_with_startup26.jpg',
+        'description' => 'Large interface-based dependency graph including a total of 26 interfaces. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)'
     ],
 ];
 foreach ($tests as $testKey => $info) {
