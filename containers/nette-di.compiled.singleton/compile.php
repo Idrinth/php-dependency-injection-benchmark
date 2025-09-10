@@ -71,5 +71,5 @@ foreach ($definitions as $class => $deps) {
 }
 
 $compiler->addConfig(['services' => $services]);
-file_put_contents(__DIR__ . '/CompiledContainer.php', $compiler->compile());
+file_put_contents(__DIR__ . '/CompiledContainer.php', '<?php '.$compiler->compile());
 
