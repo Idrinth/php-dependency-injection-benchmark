@@ -12,7 +12,7 @@ function parse_run_summary(string $filename): array
     $currentMetric = null;
     foreach ($lines as $line) {
         if (!$inResults) {
-            if (preg_match('/^results:/', $line)) {
+            if (str_starts_with($line, 'results:')) {
                 $inResults = true;
             }
             continue;
