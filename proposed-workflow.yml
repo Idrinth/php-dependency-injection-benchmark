@@ -43,7 +43,7 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
         steps:
@@ -77,7 +77,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - quickly.reflection.singleton
+                    - quickly.configured.singleton
                     - ray-di.reflection.transient
         steps:
             - uses: actions/checkout@v5
@@ -142,7 +142,7 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -181,7 +181,7 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -220,7 +220,7 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -256,7 +256,6 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -292,7 +291,6 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -328,7 +326,6 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
                 test:
@@ -369,7 +366,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - quickly.reflection.singleton
+                    - quickly.configured.singleton
                     - ray-di.reflection.transient
                 test:
                     - f06
@@ -410,7 +407,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - quickly.reflection.singleton
+                    - quickly.configured.singleton
                     - ray-di.reflection.transient
                 test:
                     - p16
@@ -458,6 +455,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                 test:
                     - fin06
                     - fin06_startup
@@ -496,6 +494,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                 test:
                     - pin16
                     - pin16_startup
