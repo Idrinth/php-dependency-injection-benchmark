@@ -65,13 +65,13 @@ Some containers perform extra work during the image build; for example, `ray-di.
 | [Zen](https://github.com/woohoolabs/zen) | compiled singleton | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
-Run from 2025-09-10
+Run from 2025-09-11
 
 ### 📊 f06
 
 Small dependency graph including 6 classes total (excluding container startup time)
 
-![📊 f06](images/speed_comparison_without_startup06.jpg)
+![📊 f06](images/speed_comparison_without_startup_f06.jpg)
 
 <details>
 <summary>View results</summary>
@@ -109,7 +109,7 @@ Small dependency graph including 6 classes total (excluding container startup ti
 
 Small dependency graph including 6 classes total (includes container startup time)
 
-![🚀 f06 startup](images/speed_comparison_with_startup06.jpg)
+![🚀 f06 startup](images/speed_comparison_with_startup_f06.jpg)
 
 <details>
 <summary>View results</summary>
@@ -203,7 +203,7 @@ Small interface-based dependency graph including 6 interfaces total (includes co
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)
 
-![📊 p16](images/speed_comparison_without_startup16.jpg)
+![📊 p16](images/speed_comparison_without_startup_p16.jpg)
 
 <details>
 <summary>View results</summary>
@@ -234,7 +234,7 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)
 
-![🚀 p16 startup](images/speed_comparison_with_startup16.jpg)
+![🚀 p16 startup](images/speed_comparison_with_startup_p16.jpg)
 
 <details>
 <summary>View results</summary>
@@ -313,7 +313,7 @@ Medium size interface-based dependency graph including 16 interfaces total. Skip
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)
 
-![📊 z26](images/speed_comparison_without_startup26.jpg)
+![📊 z26](images/speed_comparison_without_startup_z26.jpg)
 
 <details>
 <summary>View results</summary>
@@ -336,7 +336,7 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)
 
-![🚀 z26 startup](images/speed_comparison_with_startup26.jpg)
+![🚀 z26 startup](images/speed_comparison_with_startup_z26.jpg)
 
 <details>
 <summary>View results</summary>
