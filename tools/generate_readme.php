@@ -261,12 +261,12 @@ $results = $data['results'] ?? [];
 $tests = [
     'f06' => [
         'title' => '📊 f06',
-        'image' => 'images/speed_comparison_without_startup06.jpg',
+        'image' => 'images/speed_comparison_without_startup_f06.jpg',
         'description' => 'Small dependency graph including 6 classes total (excluding container startup time)'
     ],
     'f06_startup' => [
         'title' => '🚀 f06 startup',
-        'image' => 'images/speed_comparison_with_startup06.jpg',
+        'image' => 'images/speed_comparison_with_startup_f06.jpg',
         'description' => 'Small dependency graph including 6 classes total (includes container startup time)'
     ],
     'fin06' => [
@@ -281,12 +281,12 @@ $tests = [
     ],
     'p16' => [
         'title' => '📊 p16',
-        'image' => 'images/speed_comparison_without_startup16.jpg',
+        'image' => 'images/speed_comparison_without_startup_p16.jpg',
         'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (excluding container startup time)'
     ],
     'p16_startup' => [
         'title' => '🚀 p16 startup',
-        'image' => 'images/speed_comparison_with_startup16.jpg',
+        'image' => 'images/speed_comparison_with_startup_p16.jpg',
         'description' => 'Medium size dependency graph including 16 classes total. Skipped for the slowest DI-Containers for runtime reasons. (includes container startup time)'
     ],
     'pin16' => [
@@ -301,12 +301,12 @@ $tests = [
     ],
     'z26' => [
         'title' => '📊 z26',
-        'image' => 'images/speed_comparison_without_startup26.jpg',
+        'image' => 'images/speed_comparison_without_startup_z26.jpg',
         'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (excluding container startup time)'
     ],
     'z26_startup' => [
         'title' => '🚀 z26 startup',
-        'image' => 'images/speed_comparison_with_startup26.jpg',
+        'image' => 'images/speed_comparison_with_startup_z26.jpg',
         'description' => 'Large dependency graph including a total of 26 classes. Skipped for all but the fastest DI-Containers for runtime reasons. (includes container startup time)'
     ],
     'zin26' => [

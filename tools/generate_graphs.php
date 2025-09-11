@@ -192,12 +192,42 @@ if (!is_dir('images')) {
     mkdir('images');
 }
 
-create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time (rf06)', 'images/speed_comparison_without_startup06.jpg', $displayNames);
-create_bar_chart($withStartup06, 'Speed Comparison With Startup Time (sf06)', 'images/speed_comparison_with_startup06.jpg', $displayNames);
-create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time (rp16)', 'images/speed_comparison_without_startup16.jpg', $displayNames);
-create_bar_chart($withStartup16, 'Speed Comparison With Startup Time (sp16)', 'images/speed_comparison_with_startup16.jpg', $displayNames);
-create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time (rz26)', 'images/speed_comparison_without_startup26.jpg', $displayNames);
-create_bar_chart($withStartup26, 'Speed Comparison With Startup Time (sz26)', 'images/speed_comparison_with_startup26.jpg', $displayNames);
+create_bar_chart(
+    $withoutStartup06,
+    'Speed Comparison Without Startup Time (f06)',
+    'images/speed_comparison_without_startup_f06.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup06,
+    'Speed Comparison With Startup Time (f06_startup)',
+    'images/speed_comparison_with_startup_f06.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withoutStartup16,
+    'Speed Comparison Without Startup Time (p16)',
+    'images/speed_comparison_without_startup_p16.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup16,
+    'Speed Comparison With Startup Time (p16_startup)',
+    'images/speed_comparison_with_startup_p16.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withoutStartup26,
+    'Speed Comparison Without Startup Time (z26)',
+    'images/speed_comparison_without_startup_z26.jpg',
+    $displayNames
+);
+create_bar_chart(
+    $withStartup26,
+    'Speed Comparison With Startup Time (z26_startup)',
+    'images/speed_comparison_with_startup_z26.jpg',
+    $displayNames
+);
 create_bar_chart(
     $withoutStartup06Interfaces,
     'Interface Speed Comparison Without Startup Time',
