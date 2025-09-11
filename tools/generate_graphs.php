@@ -192,12 +192,12 @@ if (!is_dir('images')) {
     mkdir('images');
 }
 
-create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup06.jpg', $displayNames);
-create_bar_chart($withStartup06, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup06.jpg', $displayNames);
-create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup16.jpg', $displayNames);
-create_bar_chart($withStartup16, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup16.jpg', $displayNames);
-create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time', 'images/speed_comparison_without_startup26.jpg', $displayNames);
-create_bar_chart($withStartup26, 'Speed Comparison With Startup Time', 'images/speed_comparison_with_startup26.jpg', $displayNames);
+create_bar_chart($withoutStartup06, 'Speed Comparison Without Startup Time (rf06)', 'images/speed_comparison_without_startup06.jpg', $displayNames);
+create_bar_chart($withStartup06, 'Speed Comparison With Startup Time (sf06)', 'images/speed_comparison_with_startup06.jpg', $displayNames);
+create_bar_chart($withoutStartup16, 'Speed Comparison Without Startup Time (rp16)', 'images/speed_comparison_without_startup16.jpg', $displayNames);
+create_bar_chart($withStartup16, 'Speed Comparison With Startup Time (sp16)', 'images/speed_comparison_with_startup16.jpg', $displayNames);
+create_bar_chart($withoutStartup26, 'Speed Comparison Without Startup Time (rz26)', 'images/speed_comparison_without_startup26.jpg', $displayNames);
+create_bar_chart($withStartup26, 'Speed Comparison With Startup Time (sz26)', 'images/speed_comparison_with_startup26.jpg', $displayNames);
 create_bar_chart(
     $withoutStartup06Interfaces,
     'Interface Speed Comparison Without Startup Time',
