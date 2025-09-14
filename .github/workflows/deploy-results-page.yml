@@ -1,0 +1,50 @@
+---
+name: Deploy results page
+
+'on':
+    workflow_dispatch:
+    push:
+        branches:
+            - the-one
+        paths:
+            - README.md
+            - images/**
+            - .github/workflows/deploy-results-page.yml
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: pages
+    cancel-in-progress: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+            - name: Build site
+              run: |
+                  mkdir -p public
+                  npx -y marked -o public/index.html README.md
+                  cp run_summary.yaml public/
+                  cp -r images public/
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: public
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
