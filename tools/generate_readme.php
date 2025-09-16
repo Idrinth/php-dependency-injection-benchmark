@@ -81,13 +81,15 @@ $data = parse_simple_yaml('run_summary.yaml');
 $phpBadge = '![PHP Version](https://img.shields.io/badge/PHP-' . rawurlencode($data['php_version']) . '-blue?logo=php)';
 $dockerBadge = '![Docker Version](https://img.shields.io/badge/Docker-' . rawurlencode($data['docker_version'] ?? '*') . '-lightgrey?logo=docker)';
 $osBadge = '![OS](https://img.shields.io/badge/OS-' . rawurlencode($data['os'] ?? 'ubuntu latest') . '-blue?logo=ubuntu)';
+$memoryBadge = '![Memory](https://img.shields.io/badge/Memory-500MB-blue)';
+$cpuBadge = '![CPU](https://img.shields.io/badge/CPU-1%20Core-blue)';
 
 $lines = [];
 $lines[] = '# PHP Dependency Injection Benchmark';
 $lines[] = '';
 $lines[] = $phpBadge . ' ' . $dockerBadge . ' ' . $osBadge;
 $lines[] = '';
-$lines[] = '> Docker environment runs without network access and with limited CPU and memory resources.';
+$lines[] = $memoryBadge . ' ' . $cpuBadge;
 $lines[] = '';
 $lines[] = '![PHP Dependency Injection Benchmark](images/php-dependency-injection-benchmark.jpg)';
 $lines[] = '';
