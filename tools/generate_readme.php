@@ -20,6 +20,14 @@ function parse_simple_yaml(string $filename): array
         $indent = strlen($matches[1]);
         $key = rtrim($matches[2]);
         $valuePart = isset($matches[3]) ? trim($matches[3]) : '';
+        $isQuoted = false;
+        if ($valuePart !== '') {
+            $firstChar = $valuePart[0];
+            $lastChar = $valuePart[strlen($valuePart) - 1];
+            if (($firstChar === "'" && $lastChar === "'") || ($firstChar === '"' && $lastChar === '"')) {
+                $isQuoted = true;
+            }
+        }
         while ($indent < end($indentStack)) {
             array_pop($indentStack);
             array_pop($refStack);
@@ -30,7 +38,7 @@ function parse_simple_yaml(string $filename): array
             $indentStack[] = $indent + 2;
         } else {
             $value = trim($valuePart, "'\"");
-            if (is_numeric($value)) {
+            if (!$isQuoted && is_numeric($value)) {
                 $value = str_contains($value, '.') ? (float)$value : (int)$value;
             }
             $refStack[count($refStack) - 1][$key] = $value;
