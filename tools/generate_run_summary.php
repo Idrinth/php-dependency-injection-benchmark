@@ -2,6 +2,34 @@
 
 chdir(__DIR__ . '/..');
 
+function clear_directory(string $directory): void
+{
+    if (!is_dir($directory)) {
+        return;
+    }
+
+    $items = scandir($directory);
+    if ($items === false) {
+        return;
+    }
+
+    foreach ($items as $item) {
+        if ($item === '.' || $item === '..') {
+            continue;
+        }
+
+        $path = $directory . DIRECTORY_SEPARATOR . $item;
+
+        if (is_dir($path)) {
+            clear_directory($path);
+            rmdir($path);
+            continue;
+        }
+
+        unlink($path);
+    }
+}
+
 $files = glob('*.json');
 sort($files);
 $dirs = array_map(fn($f) => pathinfo($f, PATHINFO_FILENAME), $files);
@@ -89,9 +117,21 @@ foreach ($results as $dir => $testsData) {
 }
 file_put_contents('run_summary.yaml', implode("\n", $lines) . "\n");
 
-if (getenv('GITHUB_EVENT_NAME') === 'schedule') {
-    if (!is_dir('archive')) {
-        mkdir('archive', 0777, true);
-    }
-    copy('run_summary.yaml', 'archive/' . $date . '.yaml');
+$archiveBase = 'archive';
+$archiveDir = $archiveBase . '/' . $date;
+
+if (!is_dir($archiveBase)) {
+    mkdir($archiveBase, 0777, true);
+}
+
+if (is_dir($archiveDir)) {
+    clear_directory($archiveDir);
+} else {
+    mkdir($archiveDir, 0777, true);
+}
+
+copy('run_summary.yaml', $archiveDir . '/run_summary.yaml');
+
+foreach ($files as $file) {
+    copy($file, $archiveDir . '/' . basename($file));
 }
