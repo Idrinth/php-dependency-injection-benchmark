@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 chdir(__DIR__ . '/..');
 
 function clear_directory(string $directory): void

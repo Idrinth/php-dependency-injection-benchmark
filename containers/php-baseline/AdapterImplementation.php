@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class AdapterImplementation
 {
     private array $cache = [];
