@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Ray\Compiler\Compiler;
 use Ray\Di\AbstractModule;
 

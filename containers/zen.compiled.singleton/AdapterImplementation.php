@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use WoohooLabs\Zen\RuntimeContainer;
 use WoohooLabs\Zen\Config\AbstractCompilerConfig;
 use WoohooLabs\Zen\Config\AbstractContainerConfig;

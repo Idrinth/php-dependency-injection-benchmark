@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     F06::class,
     FIn06::class,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Idrinth\Quickly\DependencyInjection\Container as QuicklyContainer;
 use Psr\Container\ContainerInterface;
 

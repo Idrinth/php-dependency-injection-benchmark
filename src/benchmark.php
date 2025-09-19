@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/AdapterImplementation.php';
 require_once __DIR__ . '/classes-06.php';

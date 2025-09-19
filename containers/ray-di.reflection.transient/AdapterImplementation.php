@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 chdir(__DIR__ . '/..');
 
 function format_name(string $name): string
