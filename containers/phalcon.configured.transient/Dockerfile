@@ -13,6 +13,6 @@ RUN chmod +x /usr/local/bin/install-php-extensions \
     && docker-php-ext-enable psr \
     && docker-php-ext-enable phalcon \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer install --no-interaction --no-progress
+    && composer install --no-interaction --no-progress --no-dev --prefer-dist --classmap-authoritative
 COPY src/*.php ./
 CMD ["php", "benchmark.php"]
