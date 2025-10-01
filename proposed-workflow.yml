@@ -72,7 +72,7 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - laravel.configured.transient
+                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
@@ -104,8 +104,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn.reflection.transient
                     - dice.reflection.transient
+                    - laravel.configured.transient
                     - laravel.reflection.transient
                     - league.configured.transient
                     - league.reflection.transient
@@ -361,7 +361,7 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - laravel.configured.transient
+                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
@@ -402,7 +402,7 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - laravel.configured.transient
+                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
@@ -451,7 +451,6 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - laravel.configured.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
@@ -490,7 +489,6 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - laravel.configured.transient
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
@@ -536,8 +534,8 @@ jobs:
         strategy:
             matrix:
                 container:
-                    - auryn.reflection.transient
                     - dice.reflection.transient
+                    - laravel.configured.transient
                     - laravel.reflection.transient
                     - league.configured.transient
                     - league.reflection.transient
@@ -584,6 +582,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - laravel.configured.transient
                     - league.configured.transient
                     - pimple.configured.transient
                     - ray-di.compiled.transient
