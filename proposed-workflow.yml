@@ -43,8 +43,9 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - zen.compiled.singleton
         steps:
             - uses: actions/checkout@v5
@@ -72,11 +73,11 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                     - quickly.reflection.singleton
                     - ray-di.reflection.transient
         steps:
@@ -104,6 +105,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - auryn.reflection.transient
                     - dice.reflection.transient
                     - laravel.configured.transient
                     - laravel.reflection.transient
@@ -142,8 +144,9 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - zen.compiled.singleton
                 test:
                     - f06
@@ -181,8 +184,9 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - zen.compiled.singleton
                 test:
                     - p16
@@ -220,8 +224,9 @@ jobs:
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - zen.compiled.singleton
                 test:
                     - z26
@@ -256,8 +261,8 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
                     - zen.compiled.singleton
                 test:
                     - fin06
@@ -292,8 +297,8 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
                     - zen.compiled.singleton
                 test:
                     - pin16
@@ -328,8 +333,8 @@ jobs:
                     - dice.configured.singleton
                     - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.configured.singleton
                     - symfony.compiled.singleton
+                    - yiisoft-di.configured.singleton
                     - zen.compiled.singleton
                 test:
                     - zin26
@@ -364,11 +369,11 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                     - quickly.reflection.singleton
                     - ray-di.reflection.transient
                 test:
@@ -405,11 +410,11 @@ jobs:
             matrix:
                 container:
                     - aura-di.configured.transient
-                    - auryn.reflection.transient
                     - laravel.reflection.singleton
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                     - quickly.reflection.singleton
                     - ray-di.reflection.transient
                 test:
@@ -457,6 +462,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                 test:
                     - fin06
                     - fin06_startup
@@ -494,6 +500,7 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
+                    - quickly.configured.singleton
                 test:
                     - pin16
                     - pin16_startup
@@ -535,6 +542,7 @@ jobs:
         strategy:
             matrix:
                 container:
+                    - auryn.reflection.transient
                     - dice.reflection.transient
                     - laravel.configured.transient
                     - laravel.reflection.transient
