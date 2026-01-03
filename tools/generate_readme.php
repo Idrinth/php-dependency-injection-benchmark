@@ -146,6 +146,11 @@ $containerTable = [
         'url' => 'https://github.com/auraphp/Aura.Di',
         'features' => 'Configurable DI container with lazy loading and service factories',
     ],
+    'yiisoft-di' => [
+        'name' => 'Yii3 DI',
+        'url' => 'https://github.com/yiisoft/di',
+        'features' => 'PSR-11 compatible DI container with definitions and auto-wiring',
+    ],
     'php-di' => [
         'name' => 'PHP-DI',
         'url' => 'https://github.com/PHP-DI/PHP-DI',
