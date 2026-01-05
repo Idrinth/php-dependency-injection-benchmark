@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yiisoft/di": "^1.4"
+    }
+}

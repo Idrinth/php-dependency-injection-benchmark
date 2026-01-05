@@ -137,10 +137,10 @@ function aggregate_job(): string {
                 merge-multiple: true
             - name: Merge test results
               run: php tools/merge_json.php
-            - name: Generate graphs
-              run: php tools/generate_graphs.php
             - name: Generate run summary
               run: php tools/generate_run_summary.php
+            - name: Generate graphs
+              run: php tools/generate_graphs.php
             - name: Generate README
               run: php tools/generate_readme.php
             - name: Update workflow

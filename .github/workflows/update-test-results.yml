@@ -41,6 +41,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - quickly.reflection.singleton
@@ -140,6 +142,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - quickly.reflection.singleton
@@ -179,6 +183,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - quickly.reflection.singleton
@@ -218,6 +224,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - php-di.reflection.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - quickly.reflection.singleton
@@ -255,6 +263,8 @@ jobs:
                 container:
                     - nette-di.compiled.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - symfony.compiled.singleton
@@ -291,6 +301,8 @@ jobs:
                 container:
                     - nette-di.compiled.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - symfony.compiled.singleton
@@ -327,6 +339,8 @@ jobs:
                 container:
                     - nette-di.compiled.singleton
                     - pimple.configured.singleton
+                    - yiisoft-di.configured.singleton
+                    - yiisoft-di.reflection.singleton
                     - quickly.compiled.singleton
                     - quickly.configured.singleton
                     - symfony.compiled.singleton
@@ -639,10 +653,10 @@ jobs:
                 merge-multiple: true
             - name: Merge test results
               run: php tools/merge_json.php
-            - name: Generate graphs
-              run: php tools/generate_graphs.php
             - name: Generate run summary
               run: php tools/generate_run_summary.php
+            - name: Generate graphs
+              run: php tools/generate_graphs.php
             - name: Generate README
               run: php tools/generate_readme.php
             - name: Update workflow
