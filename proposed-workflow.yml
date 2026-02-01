@@ -41,8 +41,8 @@ jobs:
                     - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
                     - yiisoft-di.reflection.singleton
@@ -77,8 +77,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - pimple.configured.singleton
                     - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - ray-di.reflection.transient
         steps:
             - uses: actions/checkout@v5
@@ -142,8 +142,8 @@ jobs:
                     - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
                     - yiisoft-di.reflection.singleton
@@ -182,8 +182,8 @@ jobs:
                     - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
                     - yiisoft-di.reflection.singleton
@@ -222,8 +222,8 @@ jobs:
                     - dice.configured.singleton
                     - laminas-servicemanager.reflection.singleton
                     - php-di.reflection.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
-                    - quickly.reflection.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
                     - yiisoft-di.reflection.singleton
@@ -259,6 +259,7 @@ jobs:
             matrix:
                 container:
                     - dice.configured.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
@@ -294,6 +295,7 @@ jobs:
             matrix:
                 container:
                     - dice.configured.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
@@ -329,6 +331,7 @@ jobs:
             matrix:
                 container:
                     - dice.configured.singleton
+                    - pimple.configured.singleton
                     - quickly.compiled.singleton
                     - symfony.compiled.singleton
                     - yiisoft-di.configured.singleton
@@ -370,8 +373,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - pimple.configured.singleton
                     - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - ray-di.reflection.transient
                 test:
                     - f06
@@ -411,8 +414,8 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - pimple.configured.singleton
                     - quickly.configured.singleton
+                    - quickly.reflection.singleton
                     - ray-di.reflection.transient
                 test:
                     - p16
@@ -459,7 +462,6 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - pimple.configured.singleton
                     - quickly.configured.singleton
                 test:
                     - fin06
@@ -498,7 +500,6 @@ jobs:
                     - nette-di.compiled.singleton
                     - phalcon.configured.singleton
                     - phalcon.configured.transient
-                    - pimple.configured.singleton
                     - quickly.configured.singleton
                 test:
                     - pin16
