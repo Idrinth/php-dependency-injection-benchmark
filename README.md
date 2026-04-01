@@ -64,7 +64,7 @@ Some containers perform extra work during the image build; for example, `ray-di.
 | [Zen](https://github.com/woohoolabs/zen) | compiled singleton | Woohoo Labs. Zen DI Container and preload file generator |
 ## Latest Results
 
-Run from 2026-03-01
+Run from 2026-04-01
 
 ### 📊 f06
 
@@ -77,32 +77,32 @@ Small dependency graph including 6 classes total (excluding container startup ti
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 1ms, 645µs, 803ns | 1ms, 592µs, 874ns | 1ms, 759µs, 52ns |
-| Auryn(Reflection, Transient) | ^1.4 | 395ms, 530µs, 271ns | 351ms, 737µs, 22ns | 417ms, 650µs, 938ns |
-| Dice(Configured, Singleton) | ^4.0 | 1ms, 73µs, 622ns | 764µs, 846ns | 1ms, 389µs, 980ns |
-| Dice(Reflection, Transient) | ^4.0 | 70ms, 229µs, 554ns | 69ms, 565µs, 773ns | 71ms, 453µs, 809ns |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 993µs, 895ns | 789µs, 165ns | 1ms, 307µs, 964ns |
-| Laravel(Configured, Transient) | ^12.28 | 407ms, 69µs, 516ns | 394ms, 210µs, 815ns | 451ms, 91µs, 51ns |
-| Laravel(Reflection, Singleton) | ^12.28 | 3ms, 132µs, 81ns | 2ms, 701µs, 44ns | 3ms, 826µs, 141ns |
-| Laravel(Reflection, Transient) | ^12.28 | 620ms, 991µs, 945ns | 613ms, 542µs, 795ns | 629ms, 142µs, 999ns |
-| League(Configured, Transient) | ^5.1 | 839ms, 579µs, 510ns | 825ms, 374µs, 841ns | 870ms, 883µs, 226ns |
-| League(Reflection, Transient) | ^5.1 | 662ms, 854µs, 123ns | 546ms, 252µs, 965ns | 736ms, 184µs, 835ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 74µs, 383ns | 2ms, 980µs, 947ns | 3ms, 395µs, 80ns |
-| Phalcon(Configured, Singleton) | ^5 | 3ms, 759µs, 169ns | 3ms, 381µs, 967ns | 4ms, 256µs, 963ns |
-| Phalcon(Configured, Transient) | ^5 | 290ms, 846µs, 395ns | 264ms, 647µs, 6ns | 305ms, 735µs, 826ns |
-| Php-baseline |  | 535µs, 917ns | 453µs, 948ns | 622µs, 34ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 886µs, 726ns | 831µs, 127ns | 1ms, 231µs, 193ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 261µs, 496ns | 1ms, 245µs, 21ns | 1ms, 278µs, 877ns |
-| Pimple(Configured, Transient) | ^3.5 | 100ms, 513µs, 982ns | 99ms, 124µs, 908ns | 107ms, 340µs, 97ns |
-| Quickly(Compiled, Singleton) | dev-master | 832µs, 796ns | 772µs, 953ns | 915µs, 50ns |
-| Quickly(Configured, Singleton) | dev-master | 1ms, 470µs, 17ns | 1ms, 328µs, 945ns | 2ms, 281µs, 188ns |
-| Quickly(Reflection, Singleton) | dev-master | 1ms, 361µs, 298ns | 1ms, 315µs, 116ns | 1ms, 474µs, 857ns |
-| Ray-di(Compiled, Transient) | ^2.16 | 3s, 912ms, 348µs, 675ns | 3s, 853ms, 437µs, 185ns | 3s, 995ms, 161µs, 56ns |
-| Ray-di(Reflection, Transient) | ^2.16 | 396ms, 129µs, 679ns | 383ms, 972µs, 167ns | 435ms, 926µs, 198ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 669µs, 2ns | 655µs, 174ns | 704µs, 50ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 860µs, 404ns | 807µs, 46ns | 1ms, 180µs, 887ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 882µs, 792ns | 807µs, 46ns | 1ms, 404µs, 47ns |
-| Zen(Compiled, Singleton) | ^3.1 | 882µs, 53ns | 780µs, 820ns | 1ms, 492µs, 23ns |
+| Aura-di(Configured, Transient) | ^5.0 | 1ms, 522µs, 302ns | 1ms, 360µs, 893ns | 1ms, 754µs, 999ns |
+| Auryn(Reflection, Transient) | ^1.4 | 402ms, 519µs, 965ns | 386ms, 587µs, 858ns | 418ms, 501µs, 853ns |
+| Dice(Configured, Singleton) | ^4.0 | 833µs, 225ns | 813µs, 961ns | 857µs, 114ns |
+| Dice(Reflection, Transient) | ^4.0 | 69ms, 656µs, 944ns | 68ms, 463µs, 87ns | 71ms, 335µs, 77ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 809µs, 383ns | 773µs, 906ns | 912µs, 904ns |
+| Laravel(Configured, Transient) | ^12.28 | 395ms, 978µs, 665ns | 350ms, 924µs, 968ns | 424ms, 548µs, 864ns |
+| Laravel(Reflection, Singleton) | ^12.28 | 3ms, 426µs, 146ns | 3ms, 343µs, 820ns | 3ms, 587µs, 961ns |
+| Laravel(Reflection, Transient) | ^12.28 | 582ms, 982µs, 993ns | 573ms, 483µs, 943ns | 604ms, 246µs, 139ns |
+| League(Configured, Transient) | ^5.1 | 1s, 136ms, 919µs, 403ns | 1s, 120ms, 108µs, 127ns | 1s, 163ms, 472µs, 890ns |
+| League(Reflection, Transient) | ^5.1 | 702ms, 122µs, 68ns | 673ms, 951µs, 864ns | 734ms, 27µs, 147ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 748µs, 725ns | 3ms, 488µs, 63ns | 7ms, 138µs, 967ns |
+| Phalcon(Configured, Singleton) | ^5 | 3ms, 961µs, 920ns | 3ms, 865µs, 3ns | 4ms, 78µs, 865ns |
+| Phalcon(Configured, Transient) | ^5 | 301ms, 199µs, 793ns | 294ms, 154µs, 882ns | 328ms, 372µs, 1ns |
+| Php-baseline |  | 598µs, 788ns | 564µs, 813ns | 623µs, 226ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 898µs, 122ns | 797µs, 33ns | 1ms, 350µs, 164ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 234µs, 388ns | 1ms, 206µs, 159ns | 1ms, 281µs, 976ns |
+| Pimple(Configured, Transient) | ^3.5 | 99ms, 92µs, 30ns | 98ms, 284µs, 6ns | 101ms, 267µs, 99ns |
+| Quickly(Compiled, Singleton) | dev-master | 764µs, 632ns | 738µs, 859ns | 866µs, 889ns |
+| Quickly(Configured, Singleton) | dev-master | 1ms, 378µs, 11ns | 1ms, 345µs, 872ns | 1ms, 433µs, 134ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 386µs, 451ns | 1ms, 343µs, 965ns | 1ms, 505µs, 136ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 408ms, 475µs, 589ns | 2s, 45ms, 56µs, 104ns | 3s, 591ms, 979µs, 980ns |
+| Ray-di(Reflection, Transient) | ^2.16 | 392ms, 403µs, 721ns | 384ms, 571µs, 75ns | 408ms, 864µs, 974ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 797µs, 700ns | 734µs, 806ns | 891µs, 208ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 837µs, 516ns | 787µs, 973ns | 1ms, 148µs, 939ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 987µs, 887ns | 782µs, 966ns | 1ms, 357µs, 78ns |
+| Zen(Compiled, Singleton) | ^3.1 | 842µs, 881ns | 759µs, 124ns | 1ms, 436µs, 948ns |
 
 </details>
 
@@ -117,32 +117,32 @@ Small dependency graph including 6 classes total (includes container startup tim
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 2ms, 239µs, 656ns | 1ms, 485µs, 824ns | 5ms, 161µs, 46ns |
-| Auryn(Reflection, Transient) | ^1.4 | 401ms, 342µs, 129ns | 355ms, 230µs, 93ns | 425ms, 137µs, 42ns |
-| Dice(Configured, Singleton) | ^4.0 | 1ms, 861µs, 882ns | 1ms, 721µs, 143ns | 2ms, 197µs, 27ns |
-| Dice(Reflection, Transient) | ^4.0 | 70ms, 418µs, 787ns | 69ms, 552µs, 183ns | 71ms, 424µs, 961ns |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 1ms, 506µs, 781ns | 1ms, 301µs, 50ns | 3ms, 120µs, 899ns |
-| Laravel(Configured, Transient) | ^12.28 | 393ms, 742µs, 489ns | 341ms, 587µs, 66ns | 424ms, 780µs, 130ns |
-| Laravel(Reflection, Singleton) | ^12.28 | 3ms, 451µs, 180ns | 2ms, 759µs, 933ns | 5ms, 34µs, 923ns |
-| Laravel(Reflection, Transient) | ^12.28 | 624ms, 31µs, 949ns | 618ms, 355µs, 989ns | 631ms, 613µs, 16ns |
-| League(Configured, Transient) | ^5.1 | 836ms, 392µs, 688ns | 825ms, 903µs, 892ns | 851ms, 835µs, 966ns |
-| League(Reflection, Transient) | ^5.1 | 653ms, 211µs, 760ns | 551ms, 676µs, 988ns | 677ms, 370µs, 71ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 538µs, 393ns | 3ms, 458µs, 23ns | 3ms, 988µs, 981ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 409µs, 885ns | 4ms, 253µs, 864ns | 4ms, 543µs, 66ns |
-| Phalcon(Configured, Transient) | ^5 | 293ms, 556µs, 308ns | 260ms, 564µs, 88ns | 307ms, 225µs, 942ns |
-| Php-baseline |  | 610µs, 494ns | 583µs, 171ns | 653µs, 982ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 927µs, 805ns | 719µs, 70ns | 2ms, 524µs, 137ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 342µs, 391ns | 1ms, 291µs, 990ns | 1ms, 570µs, 940ns |
-| Pimple(Configured, Transient) | ^3.5 | 102ms, 443µs, 289ns | 98ms, 836µs, 183ns | 110ms, 862µs, 970ns |
-| Quickly(Compiled, Singleton) | dev-master | 693µs, 583ns | 677µs, 824ns | 705µs, 957ns |
-| Quickly(Configured, Singleton) | dev-master | 2ms, 166µs, 986ns | 2ms, 37µs, 48ns | 3ms, 25µs, 54ns |
-| Quickly(Reflection, Singleton) | dev-master | 2ms, 408µs, 599ns | 1ms, 407µs, 861ns | 3ms, 776µs, 73ns |
-| Ray-di(Compiled, Transient) | ^2.16 | 3s, 703ms, 68µs, 852ns | 2s, 157ms, 604µs, 932ns | 3s, 916ms, 973µs, 829ns |
-| Ray-di(Reflection, Transient) | ^2.16 | 393ms, 494µs, 606ns | 344ms, 756µs, 841ns | 440ms, 625µs, 190ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 791µs, 931ns | 761µs, 32ns | 827µs, 74ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 901µs, 627ns | 724µs, 77ns | 2ms, 387µs, 46ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 757µs, 240ns | 1ms, 379µs, 13ns | 4ms, 651µs, 69ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 542µs, 305ns | 1ms, 204µs, 13ns | 4ms, 379µs, 34ns |
+| Aura-di(Configured, Transient) | ^5.0 | 2ms, 10µs, 583ns | 1ms, 688µs, 957ns | 3ms, 199µs, 815ns |
+| Auryn(Reflection, Transient) | ^1.4 | 414ms, 112µs, 901ns | 395ms, 937µs, 204ns | 457ms, 897µs, 901ns |
+| Dice(Configured, Singleton) | ^4.0 | 1ms, 728µs, 820ns | 1ms, 444µs, 816ns | 2ms, 183µs, 914ns |
+| Dice(Reflection, Transient) | ^4.0 | 74ms, 247µs, 741ns | 68ms, 966µs, 150ns | 96ms, 610µs, 69ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 932µs, 2ns | 792µs, 26ns | 1ms, 975µs, 59ns |
+| Laravel(Configured, Transient) | ^12.28 | 399ms, 784µs, 326ns | 344ms, 182µs, 968ns | 423ms, 365µs, 116ns |
+| Laravel(Reflection, Singleton) | ^12.28 | 3ms, 796µs, 243ns | 3ms, 448µs, 9ns | 4ms, 942µs, 893ns |
+| Laravel(Reflection, Transient) | ^12.28 | 577ms, 487µs, 63ns | 572ms, 893µs, 857ns | 581ms, 668µs, 853ns |
+| League(Configured, Transient) | ^5.1 | 1s, 92ms, 994µs, 761ns | 958ms, 193µs, 778ns | 1s, 228ms, 534µs, 936ns |
+| League(Reflection, Transient) | ^5.1 | 696ms, 326µs, 923ns | 600ms, 769µs, 42ns | 719ms, 569µs, 206ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 554µs, 272ns | 3ms, 464µs, 937ns | 3ms, 901µs, 4ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 74µs, 144ns | 4ms, 9µs, 962ns | 4ms, 131µs, 78ns |
+| Phalcon(Configured, Transient) | ^5 | 290ms, 976µs, 691ns | 273ms, 251µs, 56ns | 299ms, 309µs, 968ns |
+| Php-baseline |  | 603µs, 747ns | 584µs, 840ns | 627µs, 40ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 1ms, 246µs, 595ns | 886µs, 917ns | 3ms, 386µs, 20ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 335µs, 287ns | 1ms, 295µs, 89ns | 1ms, 535µs, 892ns |
+| Pimple(Configured, Transient) | ^3.5 | 101ms, 786µs, 375ns | 99ms, 756µs, 2ns | 108ms, 39µs, 855ns |
+| Quickly(Compiled, Singleton) | dev-master | 660µs, 777ns | 643µs, 968ns | 710µs, 964ns |
+| Quickly(Configured, Singleton) | dev-master | 2ms, 195µs, 620ns | 2ms, 77µs, 102ns | 2ms, 943µs, 38ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 493µs, 144ns | 1ms, 394µs, 987ns | 2ms, 247µs, 95ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 249ms, 969µs, 482ns | 2s, 35ms, 54µs, 922ns | 3s, 625ms, 958µs, 919ns |
+| Ray-di(Reflection, Transient) | ^2.16 | 394ms, 882µs, 130ns | 387ms, 900µs, 114ns | 406ms, 177µs, 43ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 779µs, 891ns | 736µs, 951ns | 812µs, 53ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 144µs, 671ns | 901µs, 937ns | 3ms, 10µs, 34ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 64µs, 896ns | 858µs, 68ns | 2ms, 815µs, 8ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 41µs, 7ns | 823µs, 974ns | 2ms, 837µs, 181ns |
 
 </details>
 
@@ -157,22 +157,22 @@ Small interface-based dependency graph including 6 interfaces total (excluding c
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 1ms, 521µs, 563ns | 1ms, 358µs, 32ns | 1ms, 733µs, 64ns |
-| Dice(Configured, Singleton) | ^4.0 | 1ms, 98µs, 847ns | 807µs, 46ns | 1ms, 462µs, 936ns |
-| Laravel(Configured, Transient) | ^12.28 | 383ms, 792µs, 304ns | 375ms, 541µs, 925ns | 401ms, 102µs, 66ns |
-| League(Configured, Transient) | ^5.1 | 4s, 117ms, 952µs, 394ns | 4s, 44ms, 304µs, 847ns | 4s, 148ms, 738µs, 145ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 918µs, 194ns | 3ms, 854µs, 990ns | 4ms, 263µs, 877ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 192µs, 376ns | 4ms, 64µs, 798ns | 4ms, 319µs, 906ns |
-| Phalcon(Configured, Transient) | ^5 | 291ms, 740µs, 12ns | 265ms, 152µs, 215ns | 310ms, 389µs, 41ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 258µs, 969ns | 1ms, 229µs, 47ns | 1ms, 306µs, 56ns |
-| Pimple(Configured, Transient) | ^3.5 | 103ms, 286µs, 862ns | 101ms, 176µs, 23ns | 109ms, 242µs, 916ns |
-| Quickly(Compiled, Singleton) | dev-master | 794µs, 601ns | 771µs, 45ns | 833µs, 34ns |
-| Quickly(Configured, Singleton) | dev-master | 4ms, 199µs, 481ns | 3ms, 890µs, 991ns | 6ms, 268µs, 978ns |
-| Ray-di(Compiled, Transient) | ^2.16 | 3s, 812ms, 367µs, 486ns | 2s, 116ms, 477µs, 966ns | 4s, 249ms, 892µs, 950ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 804µs, 996ns | 767µs, 946ns | 854µs, 15ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 851µs, 106ns | 793µs, 933ns | 1ms, 165µs, 151ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 888µs, 776ns | 798µs, 940ns | 1ms, 514µs, 911ns |
-| Zen(Compiled, Singleton) | ^3.1 | 823µs, 44ns | 739µs, 812ns | 1ms, 417µs, 875ns |
+| Aura-di(Configured, Transient) | ^5.0 | 1ms, 640µs, 33ns | 1ms, 582µs, 145ns | 1ms, 765µs, 966ns |
+| Dice(Configured, Singleton) | ^4.0 | 846µs, 624ns | 818µs, 967ns | 941µs, 991ns |
+| Laravel(Configured, Transient) | ^12.28 | 379ms, 493µs, 880ns | 339ms, 351µs, 892ns | 415ms, 746µs, 927ns |
+| League(Configured, Transient) | ^5.1 | 9s, 10ms, 949µs, 182ns | 7s, 642ms, 487µs, 764ns | 9s, 262ms, 754µs, 917ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 116µs, 10ns | 3ms, 988µs, 27ns | 4ms, 449µs, 129ns |
+| Phalcon(Configured, Singleton) | ^5 | 3ms, 934µs, 1ns | 3ms, 906µs, 965ns | 3ms, 972µs, 53ns |
+| Phalcon(Configured, Transient) | ^5 | 291ms, 457µs, 343ns | 262ms, 277µs, 126ns | 315ms, 646µs, 171ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 248µs, 669ns | 1ms, 236µs, 915ns | 1ms, 269µs, 102ns |
+| Pimple(Configured, Transient) | ^3.5 | 103ms, 913µs, 903ns | 100ms, 598µs, 96ns | 115ms, 264µs, 892ns |
+| Quickly(Compiled, Singleton) | dev-master | 661µs, 63ns | 648µs, 21ns | 698µs, 89ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 686µs, 212ns | 3ms, 793µs, 954ns | 6ms, 484µs, 31ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 624ms, 314µs, 379ns | 3s, 535ms, 579µs, 919ns | 3s, 915ms, 446µs, 43ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 785µs, 207ns | 764µs, 846ns | 845µs, 193ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 860µs, 404ns | 804µs, 901ns | 1ms, 141µs, 71ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 875µs, 520ns | 787µs, 19ns | 1ms, 541µs, 137ns |
+| Zen(Compiled, Singleton) | ^3.1 | 835µs, 13ns | 756µs, 25ns | 1ms, 454µs, 114ns |
 
 </details>
 
@@ -187,22 +187,22 @@ Small interface-based dependency graph including 6 interfaces total (includes co
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 2ms, 116µs, 966ns | 1ms, 680µs, 850ns | 3ms, 226µs, 995ns |
-| Dice(Configured, Singleton) | ^4.0 | 1ms, 761µs, 531ns | 1ms, 509µs, 904ns | 2ms, 244µs, 949ns |
-| Laravel(Configured, Transient) | ^12.28 | 378ms, 39µs, 741ns | 324ms, 820µs, 41ns | 397ms, 634µs, 29ns |
-| League(Configured, Transient) | ^5.1 | 4s, 102ms, 532µs, 29ns | 4s, 63ms, 441µs, 991ns | 4s, 165ms, 716µs, 171ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 550µs, 291ns | 3ms, 465µs, 890ns | 3ms, 917µs, 932ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 421µs, 281ns | 4ms, 163µs, 26ns | 5ms, 202µs, 54ns |
-| Phalcon(Configured, Transient) | ^5 | 293ms, 146µs, 491ns | 260ms, 889µs, 53ns | 342ms, 494µs, 964ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 375µs, 102ns | 1ms, 331µs, 90ns | 1ms, 649µs, 856ns |
-| Pimple(Configured, Transient) | ^3.5 | 104ms, 970µs, 502ns | 101ms, 665µs, 973ns | 111ms, 608µs, 982ns |
-| Quickly(Compiled, Singleton) | dev-master | 814µs, 771ns | 798µs, 940ns | 828µs, 981ns |
-| Quickly(Configured, Singleton) | dev-master | 6ms, 468µs, 81ns | 4ms, 43µs, 102ns | 8ms, 439µs, 64ns |
-| Ray-di(Compiled, Transient) | ^2.16 | 3s, 739ms, 680µs, 171ns | 2s, 145ms, 516µs, 157ns | 3s, 987ms, 894µs, 58ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 798µs, 606ns | 775µs, 98ns | 837µs, 87ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 431µs, 59ns | 931µs, 24ns | 4ms, 514µs, 932ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 100µs, 420ns | 874µs, 42ns | 2ms, 999µs, 67ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 68µs, 902ns | 849µs, 8ns | 2ms, 887µs, 964ns |
+| Aura-di(Configured, Transient) | ^5.0 | 2ms, 27µs, 583ns | 1ms, 690µs, 864ns | 3ms, 256µs, 82ns |
+| Dice(Configured, Singleton) | ^4.0 | 1ms, 864µs, 719ns | 1ms, 737µs, 117ns | 2ms, 207µs, 994ns |
+| Laravel(Configured, Transient) | ^12.28 | 381ms, 561µs, 970ns | 374ms, 439µs, 954ns | 405ms, 987µs, 977ns |
+| League(Configured, Transient) | ^5.1 | 8s, 977ms, 84µs, 302ns | 7s, 616ms, 846µs, 84ns | 9s, 188ms, 52µs, 177ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 129µs, 52ns | 4ms, 4µs, 955ns | 4ms, 581µs, 928ns |
+| Phalcon(Configured, Singleton) | ^5 | 5ms, 440µs, 521ns | 3ms, 962µs, 39ns | 7ms, 992µs, 29ns |
+| Phalcon(Configured, Transient) | ^5 | 296ms, 706µs, 80ns | 290ms, 23µs, 88ns | 304ms, 167µs, 985ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 373µs, 696ns | 1ms, 307µs, 10ns | 1ms, 585µs, 960ns |
+| Pimple(Configured, Transient) | ^3.5 | 103ms, 223µs, 323ns | 100ms, 430µs, 965ns | 106ms, 570µs, 5ns |
+| Quickly(Compiled, Singleton) | dev-master | 815µs, 391ns | 797µs, 33ns | 856µs, 876ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 191µs, 303ns | 4ms, 88µs, 878ns | 4ms, 773µs, 139ns |
+| Ray-di(Compiled, Transient) | ^2.16 | 3s, 589ms, 951µs, 682ns | 3s, 537ms, 544µs, 12ns | 3s, 632ms, 459µs, 878ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 750µs, 732ns | 732µs, 898ns | 788µs, 211ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 118µs, 707ns | 896µs, 930ns | 2ms, 963µs, 66ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 81µs, 776ns | 859µs, 975ns | 2ms, 941µs, 846ns |
+| Zen(Compiled, Singleton) | ^3.1 | 849µs, 819ns | 663µs, 995ns | 2ms, 289µs, 56ns |
 
 </details>
 
@@ -217,25 +217,25 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 5ms, 819µs, 511ns | 5ms, 214µs, 929ns | 10ms, 270µs, 118ns |
-| Dice(Configured, Singleton) | ^4.0 | 865µs, 530ns | 742µs, 912ns | 946µs, 998ns |
-| Dice(Reflection, Transient) | ^4.0 | 10s, 60ms, 458µs, 421ns | 9s, 947ms, 861µs, 194ns | 10s, 124ms, 783µs, 39ns |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 790µs, 190ns | 766µs, 992ns | 876µs, 903ns |
-| Laravel(Reflection, Singleton) | ^12.28 | 4ms, 166µs, 698ns | 2ms, 960µs, 920ns | 6ms, 576µs, 61ns |
-| Laravel(Reflection, Transient) | ^12.28 | 85s, 782ms, 200µs, 622ns | 75s, 491ms, 466µs, 45ns | 87s, 358ms, 852µs, 863ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 557µs, 109ns | 3ms, 407µs, 1ns | 4ms, 132µs, 32ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 611µs, 86ns | 4ms, 116µs, 58ns | 8ms, 200µs, 883ns |
-| Php-baseline |  | 662µs, 851ns | 607µs, 13ns | 849µs, 8ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 848µs, 245ns | 780µs, 820ns | 1ms, 250µs, 28ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 331µs, 830ns | 1ms, 302µs, 3ns | 1ms, 420µs, 974ns |
-| Pimple(Configured, Transient) | ^3.5 | 13s, 783ms, 650µs, 827ns | 13s, 61ms, 619µs, 997ns | 14s, 455ms, 446µs, 958ns |
-| Quickly(Compiled, Singleton) | dev-master | 870µs, 800ns | 847µs, 816ns | 902µs, 891ns |
-| Quickly(Configured, Singleton) | dev-master | 1ms, 425µs, 719ns | 1ms, 378µs, 59ns | 1ms, 475µs, 95ns |
-| Quickly(Reflection, Singleton) | dev-master | 1ms, 377µs, 940ns | 1ms, 317µs, 977ns | 1ms, 524µs, 925ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 812µs, 172ns | 797µs, 986ns | 829µs, 935ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 385µs, 641ns | 1ms, 294µs, 136ns | 1ms, 991µs, 33ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 9µs, 988ns | 795µs, 841ns | 1ms, 409µs, 53ns |
-| Zen(Compiled, Singleton) | ^3.1 | 910µs, 687ns | 770µs, 92ns | 1ms, 470µs, 88ns |
+| Aura-di(Configured, Transient) | ^5.0 | 5ms, 375µs, 385ns | 5ms, 207µs, 61ns | 6ms, 246µs, 89ns |
+| Dice(Configured, Singleton) | ^4.0 | 951µs, 290ns | 878µs, 95ns | 1ms, 482µs, 963ns |
+| Dice(Reflection, Transient) | ^4.0 | 9s, 925ms, 185µs, 465ns | 8s, 662ms, 758µs, 827ns | 10s, 133ms, 255µs, 4ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 787µs, 758ns | 755µs, 71ns | 905µs, 36ns |
+| Laravel(Reflection, Singleton) | ^12.28 | 3ms, 561µs, 425ns | 3ms, 15µs, 41ns | 3ms, 928µs, 899ns |
+| Laravel(Reflection, Transient) | ^12.28 | 79s, 800ms, 228µs, 571ns | 68s, 357ms, 495µs, 69ns | 81s, 527ms, 372µs, 837ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 5ms, 303µs, 311ns | 3ms, 460µs, 168ns | 7ms, 192µs, 850ns |
+| Phalcon(Configured, Singleton) | ^5 | 3ms, 907µs, 489ns | 3ms, 406µs, 47ns | 4ms, 113µs, 912ns |
+| Php-baseline |  | 609µs, 16ns | 473µs, 22ns | 678µs, 62ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 891µs, 971ns | 814µs, 914ns | 1ms, 288µs, 890ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 43µs, 343ns | 1ms, 33µs, 67ns | 1ms, 74µs, 75ns |
+| Pimple(Configured, Transient) | ^3.5 | 13s, 592ms, 70µs, 317ns | 12s, 992ms, 42µs, 64ns | 14s, 195ms, 283µs, 174ns |
+| Quickly(Compiled, Singleton) | dev-master | 858µs, 283ns | 839µs, 948ns | 880µs, 2ns |
+| Quickly(Configured, Singleton) | dev-master | 1ms, 369µs, 214ns | 1ms, 321µs, 77ns | 1ms, 490µs, 116ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 398µs, 38ns | 1ms, 357µs, 78ns | 1ms, 562µs, 118ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 796µs, 985ns | 777µs, 6ns | 838µs, 994ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 864µs, 791ns | 777µs, 6ns | 1ms, 163µs, 5ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 872µs, 778ns | 792µs, 980ns | 1ms, 418µs, 828ns |
+| Zen(Compiled, Singleton) | ^3.1 | 814µs, 199ns | 723µs, 123ns | 1ms, 437µs, 902ns |
 
 </details>
 
@@ -250,25 +250,25 @@ Medium size dependency graph including 16 classes total. Skipped for the slowest
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 7ms, 191µs, 85ns | 5ms, 725µs, 860ns | 12ms, 567µs, 43ns |
-| Dice(Configured, Singleton) | ^4.0 | 2ms, 172µs, 899ns | 1ms, 858µs, 949ns | 2ms, 321µs, 4ns |
-| Dice(Reflection, Transient) | ^4.0 | 10s, 101ms, 120µs, 615ns | 9s, 946ms, 392µs, 59ns | 10s, 695ms, 530µs, 891ns |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 1ms, 36µs, 620ns | 904µs, 83ns | 2ms, 113µs, 819ns |
-| Laravel(Reflection, Singleton) | ^12.28 | 5ms, 7µs, 314ns | 3ms, 945µs, 827ns | 6ms, 827µs, 116ns |
-| Laravel(Reflection, Transient) | ^12.28 | 85s, 678ms, 469µs, 920ns | 73s, 560ms, 94µs, 833ns | 88s, 323ms, 492µs, 50ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 549µs, 194ns | 3ms, 421µs, 68ns | 3ms, 911µs, 972ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 307µs, 389ns | 3ms, 646µs, 850ns | 4ms, 750µs, 967ns |
-| Php-baseline |  | 664µs, 424ns | 508µs, 69ns | 821µs, 113ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 1ms, 359µs, 796ns | 960µs, 826ns | 3ms, 446µs, 102ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 456µs, 475ns | 1ms, 392µs, 841ns | 1ms, 703µs, 977ns |
-| Pimple(Configured, Transient) | ^3.5 | 14s, 28ms, 884µs, 315ns | 13s, 906ms, 538µs, 963ns | 14s, 168ms, 762µs, 922ns |
-| Quickly(Compiled, Singleton) | dev-master | 822µs, 734ns | 803µs, 947ns | 846µs, 862ns |
-| Quickly(Configured, Singleton) | dev-master | 2ms, 263µs, 498ns | 2ms, 130µs, 31ns | 2ms, 959µs, 966ns |
-| Quickly(Reflection, Singleton) | dev-master | 1ms, 529µs, 264ns | 1ms, 409µs, 53ns | 2ms, 354µs, 860ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 860µs, 595ns | 848µs, 54ns | 875µs, 949ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 160µs, 430ns | 946µs, 998ns | 2ms, 959µs, 12ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 636µs, 314ns | 885µs, 963ns | 4ms, 307µs, 31ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 602µs, 268ns | 1ms, 255µs, 989ns | 4ms, 604µs, 101ns |
+| Aura-di(Configured, Transient) | ^5.0 | 6ms, 696µs, 224ns | 6ms, 613µs, 16ns | 6ms, 757µs, 974ns |
+| Dice(Configured, Singleton) | ^4.0 | 2ms, 181µs, 410ns | 1ms, 864µs, 194ns | 2ms, 379µs, 179ns |
+| Dice(Reflection, Transient) | ^4.0 | 9s, 874ms, 685µs, 621ns | 8s, 647ms, 554µs, 159ns | 10s, 165ms, 186µs, 166ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 1ms, 14µs, 685ns | 858µs, 68ns | 2ms, 86µs, 162ns |
+| Laravel(Reflection, Singleton) | ^12.28 | 4ms, 521µs, 12ns | 3ms, 968µs | 4ms, 961µs, 13ns |
+| Laravel(Reflection, Transient) | ^12.28 | 80s, 930ms, 330µs, 300ns | 79s, 927ms, 535µs, 57ns | 81s, 716ms, 758µs, 12ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 572µs, 487ns | 3ms, 463µs, 29ns | 3ms, 880µs, 23ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 106µs, 497ns | 3ms, 572µs, 940ns | 4ms, 200µs, 935ns |
+| Php-baseline |  | 615µs, 477ns | 461µs, 101ns | 823µs, 20ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 940µs, 537ns | 742µs, 912ns | 2ms, 537µs, 12ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 344µs, 776ns | 1ms, 289µs, 129ns | 1ms, 579µs, 999ns |
+| Pimple(Configured, Transient) | ^3.5 | 13s, 934ms, 50µs, 607ns | 12s, 969ms, 841µs, 3ns | 14s, 880ms, 644µs, 83ns |
+| Quickly(Compiled, Singleton) | dev-master | 815µs, 892ns | 790µs, 119ns | 833µs, 34ns |
+| Quickly(Configured, Singleton) | dev-master | 2ms, 185µs, 392ns | 2ms, 58µs, 982ns | 2ms, 982µs, 139ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 237µs, 320ns | 1ms, 138µs, 925ns | 1ms, 827µs, 1ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 802µs, 445ns | 772µs, 953ns | 881µs, 910ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 314µs, 330ns | 934µs, 123ns | 3ms, 71µs, 69ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 200µs, 795ns | 941µs, 991ns | 3ms, 118µs, 991ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 66µs, 327ns | 833µs, 988ns | 2ms, 910µs, 852ns |
 
 </details>
 
@@ -283,18 +283,18 @@ Medium size interface-based dependency graph including 16 interfaces total. Skip
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 1ms, 947µs, 331ns | 1ms, 646µs, 41ns | 3ms, 269µs, 910ns |
-| Dice(Configured, Singleton) | ^4.0 | 867µs, 271ns | 844µs, 955ns | 895µs, 23ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 228µs, 448ns | 3ms, 831µs, 148ns | 5ms, 389µs, 928ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 123µs, 234ns | 3ms, 458µs, 23ns | 4ms, 354µs, 953ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 260µs, 161ns | 1ms, 236µs, 915ns | 1ms, 286µs, 983ns |
-| Pimple(Configured, Transient) | ^3.5 | 13s, 872ms, 905µs, 874ns | 13s, 83ms, 425µs, 998ns | 14s, 88ms, 113µs, 69ns |
-| Quickly(Compiled, Singleton) | dev-master | 854µs, 206ns | 833µs, 988ns | 895µs, 977ns |
-| Quickly(Configured, Singleton) | dev-master | 4ms, 242µs, 277ns | 3ms, 961µs, 801ns | 5ms, 959µs, 33ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 807µs, 380ns | 792µs, 980ns | 816µs, 822ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 842µs, 308ns | 787µs, 973ns | 1ms, 170µs, 158ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 909µs, 805ns | 807µs, 46ns | 1ms, 646µs, 41ns |
-| Zen(Compiled, Singleton) | ^3.1 | 658µs, 559ns | 588µs, 893ns | 1ms, 192µs, 808ns |
+| Aura-di(Configured, Transient) | ^5.0 | 1ms, 786µs, 804ns | 1ms, 574µs, 39ns | 1ms, 858µs, 949ns |
+| Dice(Configured, Singleton) | ^4.0 | 881µs, 695ns | 862µs, 121ns | 912µs, 904ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 6ms, 487µs, 917ns | 3ms, 973µs, 960ns | 8ms, 115µs, 53ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 226µs, 398ns | 3ms, 904µs, 104ns | 6ms, 402µs, 15ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 235µs, 818ns | 1ms, 204µs, 13ns | 1ms, 265µs, 48ns |
+| Pimple(Configured, Transient) | ^3.5 | 13s, 806ms, 869µs, 196ns | 13s, 110ms, 491µs, 991ns | 14s, 166ms, 497µs, 945ns |
+| Quickly(Compiled, Singleton) | dev-master | 809µs, 288ns | 779µs, 867ns | 861µs, 167ns |
+| Quickly(Configured, Singleton) | dev-master | 3ms, 565µs, 335ns | 3ms, 511µs, 190ns | 3ms, 704µs, 71ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 752µs, 806ns | 734µs, 90ns | 849µs, 8ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 840µs, 306ns | 783µs, 920ns | 1ms, 151µs, 84ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 887µs, 870ns | 787µs, 973ns | 1ms, 549µs, 5ns |
+| Zen(Compiled, Singleton) | ^3.1 | 799µs, 608ns | 707µs, 864ns | 1ms, 446µs, 962ns |
 
 </details>
 
@@ -309,18 +309,18 @@ Medium size interface-based dependency graph including 16 interfaces total. Skip
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Aura-di(Configured, Transient) | ^5.0 | 3ms, 317µs, 546ns | 3ms, 193µs, 140ns | 3ms, 553µs, 152ns |
-| Dice(Configured, Singleton) | ^4.0 | 2ms, 189µs, 397ns | 1ms, 914µs, 24ns | 2ms, 278µs, 89ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 967µs, 738ns | 3ms, 859µs, 996ns | 4ms, 351µs, 139ns |
-| Phalcon(Configured, Singleton) | ^5 | 4ms, 361µs, 963ns | 3ms, 716µs, 945ns | 4ms, 765µs, 33ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 392µs, 579ns | 1ms, 343µs, 11ns | 1ms, 562µs, 833ns |
-| Pimple(Configured, Transient) | ^3.5 | 14s, 93ms, 221µs, 163ns | 13s, 905ms, 832µs, 52ns | 14s, 662ms, 523µs, 31ns |
-| Quickly(Compiled, Singleton) | dev-master | 819µs, 587ns | 792µs, 980ns | 848µs, 54ns |
-| Quickly(Configured, Singleton) | dev-master | 5ms, 382µs, 84ns | 4ms, 694µs, 938ns | 8ms, 636µs, 951ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 809µs, 669ns | 772µs, 953ns | 876µs, 903ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 113µs, 390ns | 871µs, 896ns | 3ms, 102µs, 64ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 114µs, 487ns | 892µs, 877ns | 2ms, 998µs, 113ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 114µs, 940ns | 850µs, 200ns | 3ms, 21µs, 955ns |
+| Aura-di(Configured, Transient) | ^5.0 | 3ms, 162µs, 455ns | 2ms, 685µs, 70ns | 3ms, 351µs, 926ns |
+| Dice(Configured, Singleton) | ^4.0 | 2ms, 253µs, 174ns | 1ms, 888µs, 36ns | 2ms, 640µs, 8ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 108µs, 905ns | 3ms, 952µs, 26ns | 4ms, 564µs, 46ns |
+| Phalcon(Configured, Singleton) | ^5 | 4ms, 33µs, 541ns | 3ms, 636µs, 837ns | 4ms, 244µs, 89ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 352µs, 500ns | 1ms, 282µs, 930ns | 1ms, 650µs, 94ns |
+| Pimple(Configured, Transient) | ^3.5 | 13s, 929ms, 870µs, 986ns | 13s, 269ms, 993µs, 66ns | 14s, 260ms, 212µs, 898ns |
+| Quickly(Compiled, Singleton) | dev-master | 814µs, 199ns | 795µs, 841ns | 847µs, 816ns |
+| Quickly(Configured, Singleton) | dev-master | 5ms, 8µs, 888ns | 4ms, 863µs, 977ns | 5ms, 659µs, 103ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 848µs, 412ns | 737µs, 905ns | 1ms, 193µs, 46ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 164µs, 221ns | 948µs, 190ns | 2ms, 969µs, 980ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 205µs, 754ns | 959µs, 873ns | 3ms, 190µs, 40ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 83µs, 707ns | 866µs, 174ns | 2ms, 858µs, 877ns |
 
 </details>
 
@@ -335,17 +335,17 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 844µs, 669ns | 812µs, 768ns | 998µs, 20ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 148µs, 841ns | 3ms, 25µs, 54ns | 3ms, 463µs, 983ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 716µs, 90ns | 662µs, 803ns | 1ms, 63µs, 108ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 457µs, 715ns | 1ms, 252µs, 889ns | 2ms, 175µs, 92ns |
-| Quickly(Compiled, Singleton) | dev-master | 821µs, 232ns | 792µs, 26ns | 898µs, 122ns |
-| Quickly(Configured, Singleton) | dev-master | 1ms, 362µs, 562ns | 1ms, 325µs, 130ns | 1ms, 440µs, 48ns |
-| Quickly(Reflection, Singleton) | dev-master | 1ms, 347µs, 160ns | 1ms, 289µs, 844ns | 1ms, 582µs, 860ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 838µs, 685ns | 794µs, 172ns | 961µs, 65ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 698µs, 614ns | 633µs, 955ns | 992µs, 59ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 865µs, 149ns | 775µs, 98ns | 1ms, 518µs, 11ns |
-| Zen(Compiled, Singleton) | ^3.1 | 897µs, 574ns | 810µs, 861ns | 1ms, 597µs, 166ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 879µs, 192ns | 806µs, 93ns | 1ms, 130µs, 819ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 534µs, 412ns | 3ms, 415µs, 107ns | 3ms, 988µs, 981ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 857µs, 210ns | 792µs, 980ns | 1ms, 289µs, 129ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 246µs, 523ns | 1ms, 214µs, 981ns | 1ms, 280µs, 69ns |
+| Quickly(Compiled, Singleton) | dev-master | 777µs, 387ns | 759µs, 840ns | 810µs, 146ns |
+| Quickly(Configured, Singleton) | dev-master | 1ms, 395µs, 201ns | 1ms, 355µs, 171ns | 1ms, 479µs, 148ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 414µs, 227ns | 1ms, 374µs, 959ns | 1ms, 616µs, 1ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 822µs, 401ns | 784µs, 873ns | 914µs, 96ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 853µs, 943ns | 792µs, 26ns | 1ms, 242µs, 160ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 848µs, 102ns | 762µs, 939ns | 1ms, 502µs, 990ns |
+| Zen(Compiled, Singleton) | ^3.1 | 852µs, 394ns | 757µs, 932ns | 1ms, 564µs, 25ns |
 
 </details>
 
@@ -360,17 +360,17 @@ Large dependency graph including a total of 26 classes. Skipped for all but the 
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 1ms, 88µs, 714ns | 932µs, 931ns | 2ms, 79µs, 963ns |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 744µs, 602ns | 3ms, 494µs, 977ns | 4ms, 694µs, 938ns |
-| Php-di(Reflection, Singleton) | ^7.0 | 1ms, 239µs, 824ns | 938µs, 177ns | 3ms, 273µs, 10ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 350µs, 498ns | 1ms, 292µs, 943ns | 1ms, 579µs, 999ns |
-| Quickly(Compiled, Singleton) | dev-master | 785µs, 470ns | 768µs, 899ns | 819µs, 921ns |
-| Quickly(Configured, Singleton) | dev-master | 2ms, 174µs, 472ns | 2ms, 25µs, 842ns | 2ms, 932µs, 71ns |
-| Quickly(Reflection, Singleton) | dev-master | 1ms, 591µs, 706ns | 1ms, 480µs, 817ns | 2ms, 331µs, 972ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 660µs, 443ns | 639µs, 915ns | 697µs, 135ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 233µs, 506ns | 987µs, 52ns | 3ms, 262µs, 996ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 980µs, 424ns | 776µs, 52ns | 2ms, 704µs, 143ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 293µs, 540ns | 916µs, 4ns | 3ms, 571µs, 33ns |
+| Laminas-servicemanager(Reflection, Singleton) | ^4.4 | 889µs, 86ns | 761µs, 32ns | 1ms, 703µs, 977ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 568µs, 720ns | 3ms, 501µs, 892ns | 3ms, 912µs, 925ns |
+| Php-di(Reflection, Singleton) | ^7.0 | 1ms, 1µs, 501ns | 789µs, 880ns | 2ms, 592µs, 86ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 374µs, 506ns | 1ms, 327µs, 37ns | 1ms, 593µs, 828ns |
+| Quickly(Compiled, Singleton) | dev-master | 816µs, 273ns | 807µs, 46ns | 832µs, 80ns |
+| Quickly(Configured, Singleton) | dev-master | 2ms, 234µs, 673ns | 2ms, 100µs, 944ns | 2ms, 997µs, 875ns |
+| Quickly(Reflection, Singleton) | dev-master | 1ms, 302µs, 552ns | 1ms, 214µs, 981ns | 1ms, 945µs, 972ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 854µs, 539ns | 818µs, 14ns | 1ms, 82µs, 181ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 222µs, 419ns | 1ms, 8µs, 987ns | 3ms, 61µs, 56ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 188µs, 492ns | 950µs, 98ns | 3ms, 20ns |
+| Zen(Compiled, Singleton) | ^3.1 | 1ms, 108µs, 2ns | 877µs, 141ns | 2ms, 912µs, 44ns |
 
 </details>
 
@@ -385,14 +385,14 @@ Large interface-based dependency graph including a total of 26 interfaces. Skipp
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 599µs, 143ns | 3ms, 512µs, 144ns | 3ms, 988µs, 981ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 258µs, 921ns | 1ms, 237µs, 154ns | 1ms, 276µs, 969ns |
-| Quickly(Compiled, Singleton) | dev-master | 808µs, 95ns | 776µs, 52ns | 859µs, 975ns |
-| Quickly(Configured, Singleton) | dev-master | 4ms, 168µs, 272ns | 3ms, 921µs, 31ns | 5ms, 923µs, 986ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 817µs, 346ns | 720µs, 24ns | 898µs, 838ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 290µs, 273ns | 781µs, 59ns | 2ms, 43µs, 962ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 890µs, 421ns | 796µs, 79ns | 1ms, 616µs, 954ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 101µs, 708ns | 960µs, 826ns | 2ms, 283µs, 96ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 4ms, 69µs, 352ns | 3ms, 967µs, 46ns | 4ms, 497µs, 51ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 4µs, 695ns | 987µs, 52ns | 1ms, 32µs, 114ns |
+| Quickly(Compiled, Singleton) | dev-master | 842µs, 499ns | 763µs, 893ns | 1ms, 59µs, 55ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 167µs, 389ns | 4ms, 119µs, 873ns | 4ms, 202µs, 842ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 823µs, 855ns | 802µs, 993ns | 844µs, 1ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 829µs, 696ns | 777µs, 959ns | 1ms, 193µs, 46ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 917µs, 696ns | 781µs, 59ns | 1ms, 980µs, 66ns |
+| Zen(Compiled, Singleton) | ^3.1 | 673µs, 794ns | 595µs, 92ns | 1ms, 250µs, 28ns |
 
 </details>
 
@@ -407,14 +407,14 @@ Large interface-based dependency graph including a total of 26 interfaces. Skipp
 
 | Container | Version | Average | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 980µs, 112ns | 3ms, 885µs, 984ns | 4ms, 301µs, 71ns |
-| Pimple(Configured, Singleton) | ^3.5 | 1ms, 410µs, 984ns | 1ms, 364µs, 946ns | 1ms, 652µs, 2ns |
-| Quickly(Compiled, Singleton) | dev-master | 837µs, 588ns | 798µs, 940ns | 916µs, 957ns |
-| Quickly(Configured, Singleton) | dev-master | 5ms, 52µs, 685ns | 4ms, 692µs, 792ns | 5ms, 991µs, 935ns |
-| Symfony(Compiled, Singleton) | ^7.0 | 853µs, 204ns | 824µs, 213ns | 916µs, 4ns |
-| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 203µs, 823ns | 977µs, 39ns | 3ms, 103µs, 17ns |
-| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 135µs, 373ns | 917µs, 911ns | 2ms, 986µs, 907ns |
-| Zen(Compiled, Singleton) | ^3.1 | 1ms, 195µs, 597ns | 941µs, 991ns | 3ms, 125µs, 905ns |
+| Nette-di(Compiled, Singleton) | ^3.2 | 3ms, 655µs, 719ns | 3ms, 528µs, 118ns | 4ms, 21µs, 167ns |
+| Pimple(Configured, Singleton) | ^3.5 | 1ms, 352µs, 787ns | 1ms, 299µs, 142ns | 1ms, 562µs, 118ns |
+| Quickly(Compiled, Singleton) | dev-master | 665µs, 807ns | 643µs, 968ns | 712µs, 871ns |
+| Quickly(Configured, Singleton) | dev-master | 4ms, 999µs, 876ns | 4ms, 755µs, 973ns | 5ms, 626µs, 916ns |
+| Symfony(Compiled, Singleton) | ^7.0 | 825µs, 715ns | 752µs, 925ns | 1ms, 68µs, 830ns |
+| Yiisoft-di(Configured, Singleton) | ^1.4 | 1ms, 10µs, 84ns | 796µs, 79ns | 2ms, 538µs, 919ns |
+| Yiisoft-di(Reflection, Singleton) | ^1.4 | 1ms, 195µs, 931ns | 973µs, 939ns | 3ms, 46µs, 989ns |
+| Zen(Compiled, Singleton) | ^3.1 | 935µs, 6ns | 755µs, 71ns | 2ms, 315µs, 44ns |
 
 </details>
 
