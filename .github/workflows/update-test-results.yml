@@ -26,7 +26,7 @@ jobs:
             - name: Save PHP CLI image
               run: docker save php:8.4-cli -o php-8.4-cli.tar
             - name: Upload PHP CLI image
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: php-8.4-cli
                 path: php-8.4-cli.tar
@@ -60,7 +60,7 @@ jobs:
                   docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
                   docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: di-benchmark-${{ matrix.container }}
                 path: di-benchmark-${{ matrix.container }}.tar
@@ -93,7 +93,7 @@ jobs:
                   docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
                   docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: di-benchmark-${{ matrix.container }}
                 path: di-benchmark-${{ matrix.container }}.tar
@@ -125,7 +125,7 @@ jobs:
                   docker build -t di-benchmark-${{ matrix.container }} -f containers/${{ matrix.container }}/Dockerfile .
                   docker save di-benchmark-${{ matrix.container }} -o di-benchmark-${{ matrix.container }}.tar
             - name: Upload image
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: di-benchmark-${{ matrix.container }}
                 path: di-benchmark-${{ matrix.container }}.tar
@@ -164,7 +164,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -203,7 +203,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -242,7 +242,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -278,7 +278,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -314,7 +314,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -350,7 +350,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 10 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -391,7 +391,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 5 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -440,7 +440,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -477,7 +477,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 5 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -522,7 +522,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -570,7 +570,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
@@ -615,7 +615,7 @@ jobs:
                   docker run --rm --memory=512m --memory-swap=512m --cpus=1.0 --pids-limit=100 -v "$PWD:/out" di-benchmark-${{ matrix.container }} php benchmark.php ${{ matrix.test }} 1 2>&1
                   mv results.json ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
             - name: Upload results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v6
               with:
                 name: result-${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}
                 path: ${{ matrix.container }}-${{ matrix.test }}-${{ matrix.run }}.json
