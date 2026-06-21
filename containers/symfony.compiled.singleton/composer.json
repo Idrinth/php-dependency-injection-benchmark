@@ -1,5 +1,5 @@
 {
     "require": {
-        "symfony/dependency-injection": "^7.0"
+        "symfony/dependency-injection": "^8.0"
     }
 }
