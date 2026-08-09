@@ -47,7 +47,7 @@ jobs:
                     - symfony.compiled.singleton
                     - zen.compiled.singleton
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
@@ -80,7 +80,7 @@ jobs:
                     - php-baseline
                     - pimple.configured.transient
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
@@ -112,7 +112,7 @@ jobs:
                     - ray-di.compiled.transient
                     - ray-di.reflection.transient
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download PHP CLI image
               uses: actions/download-artifact@v5
               with:
@@ -151,7 +151,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -190,7 +190,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -229,7 +229,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -265,7 +265,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -301,7 +301,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -337,7 +337,7 @@ jobs:
                 run:
                     - 1
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -378,7 +378,7 @@ jobs:
                     - 1
                     - 2
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -427,7 +427,7 @@ jobs:
                     - 9
                     - 10
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -464,7 +464,7 @@ jobs:
                     - 1
                     - 2
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -509,7 +509,7 @@ jobs:
                     - 9
                     - 10
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -557,7 +557,7 @@ jobs:
                     - 9
                     - 10
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -602,7 +602,7 @@ jobs:
                     - 9
                     - 10
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download image
               uses: actions/download-artifact@v5
               with:
@@ -631,7 +631,7 @@ jobs:
         permissions: write-all
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Download results
               uses: actions/download-artifact@v5
               with:
